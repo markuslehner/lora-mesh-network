@@ -1,0 +1,66 @@
+<html>
+    <head>
+    <link rel="stylesheet" href='/static/style.css' />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#packet_table').DataTable({
+                "pageLength": 30
+            });
+            table.page('last').draw('page')
+            $('#packet_table tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('my_sel')) {
+                    $(this).removeClass('my_sel');
+                }
+                else {
+                    table.$('tr.my_sel').removeClass('my_sel');
+                    $(this).addClass('my_sel');
+                }
+            });
+        });
+    </script>
+    </head>
+    <body>
+        <h1>My website</h1>
+        <table id="packet_table" class="styled-table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>SENSOR</th>
+                    <th>TYPE</th>
+                    <th>LONGITUDE</th>
+                    <th>LATITUDE</th>
+                    <th>BATTERY</th>
+                    <th>RECEIVED</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                    <td>{{item[5]}}</td>
+                    <td>{{item[6]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>SENSOR</th>
+                    <th>TYPE</th>
+                    <th>LONGITUDE</th>
+                    <th>LATITUDE</th>
+                    <th>BATTERY</th>
+                    <th>RECEIVED</th>
+                </tr>
+            </tfoot>
+            
+        </table>
+    </body>
+</html>

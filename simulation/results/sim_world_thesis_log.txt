@@ -1,0 +1,35 @@
+====================== SIMULATION PARAMETERS ==========================
+WORLD:
+  Nodes:      8
+  Blocks:     0
+      tx_min     tx_max   tx_error      decay
+      custom     custom     custom     custom
+        1500       2200       0.05          2
+NODES:
+    central      with ID:100 @ x=     0 y=     0 using logic:         logic_central_lmn(SF=7)     with handler:          handler_lmn
+    node1        with ID:  1 @ x=   200 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+    node2        with ID:  2 @ x=   800 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+    node3        with ID:  3 @ x=  1400 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+    node4        with ID:  4 @ x=  1600 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+    node5        with ID:  5 @ x=  1800 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+    node6        with ID:  6 @ x=  2000 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+    node7        with ID:  7 @ x=  2200 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
+====================== STARTING SIMULATION ============================
+(1)  [11:00:00.000] ---> START interval: 11:00:00
+(1)  [11:00:00.000] next interval: 11:05:00 (1609495500000)
+(1)  [11:00:00.000] -> num connected nodes:   0
+(1)  [11:00:00.000] -> successfully started:  False
+(1)  [11:00:00.000] -> network running:       False
+(1)  [11:00:00.000] -> nodes sending:         False
+(1)  [11:00:00.000] -> all nodes sending:     False
+(1)  [11:00:00.000] -> nodes sleeping:        False
+(1)  [11:00:00.000] -> new nodes:             False
+(2)  [11:00:00.000]   CC: START UPDATING
+(2)  [11:00:40.000]   JOIN CHECK:
+(2)  [11:00:40.000]     received 5 join requests
+(2)  [11:00:40.000]   CC: Sending ACK_JOIN to node 1 for dist: 1 (pid:0)
+(1)  [11:00:40.068] node1: successfully registered with base station 100 at distance: 1
+(2)  [11:01:20.000]   JOIN CHECK:
+(2)  [11:01:20.000]     received 7 join requests
+(2)  [11:01:20.000]   CC: Sending ACK_JOIN to node 2 for dist: 1 (pid:1)
+(1)  [11:01:20.073] node2: successfully registered with base station 100 at distance: 1

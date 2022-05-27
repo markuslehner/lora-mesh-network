@@ -1,0 +1,13 @@
+[Unit]
+Description=Webserver for DB access to received packets
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/python3.10 /home/pi/project/server/web_server.py
+Restart=on-abort
+User=pi
+WorkingDirectory=/home/pi/project/server/
+
+[Install]
+WantedBy=multi-user.target

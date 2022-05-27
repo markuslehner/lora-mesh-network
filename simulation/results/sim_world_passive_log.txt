@@ -1,0 +1,753 @@
+====================== SIMULATION PARAMETERS ==========================
+node1: setting sf to 10
+node2: setting sf to 10
+node3: setting sf to 10
+node4: setting sf to 10
+node5: setting sf to 10
+node6: setting sf to 10
+node7: setting sf to 10
+WORLD:
+  Nodes:      8
+  Blocks:     0
+      tx_min     tx_max   tx_error      decay
+      custom     custom     custom     custom
+        1500       2200       0.05          2
+NODES:
+    central      with ID:100 @ x=     0 y=     0 using logic:     logic_central_passive     with handler: handler_flooding_basic
+    node1        with ID:  1 @ x=   200 y=     0 using logic:        logic_node_passive (off=17988)    with handler:     handler_flooding
+    node2        with ID:  2 @ x=   800 y=     0 using logic:        logic_node_passive (off=19802)    with handler:     handler_flooding
+    node3        with ID:  3 @ x=  1400 y=     0 using logic:        logic_node_passive (off=3942)    with handler:     handler_flooding
+    node4        with ID:  4 @ x=  1600 y=     0 using logic:        logic_node_passive (off=12433)    with handler:     handler_flooding
+    node5        with ID:  5 @ x=  1800 y=     0 using logic:        logic_node_passive (off=8472)    with handler:     handler_flooding
+    node6        with ID:  6 @ x=  2000 y=     0 using logic:        logic_node_passive (off=4554)    with handler:     handler_flooding
+    node7        with ID:  7 @ x=  2200 y=     0 using logic:        logic_node_passive (off=2686)    with handler:     handler_flooding
+====================== STARTING SIMULATION ============================
+(1)  [11:00:20.328] setting time @ node node1 to 1609495220323 (corect time is: 1609495220328)
+(1)  [11:00:20.328] setting time @ node node2 to 1609495220323 (corect time is: 1609495220328)
+(1)  [11:00:21.934] setting time @ node node3 to 1609495220645 (corect time is: 1609495221934)
+(1)  [11:00:21.934] setting time @ node node4 to 1609495220645 (corect time is: 1609495221934)
+(1)  [11:00:23.067] setting time @ node node5 to 1609495220645 (corect time is: 1609495223067)
+(1)  [11:00:23.067] setting time @ node node6 to 1609495220645 (corect time is: 1609495223067)
+(1)  [11:00:23.067] setting time @ node node7 to 1609495220645 (corect time is: 1609495223067)
+(2)  [11:05:04.358] received at central: DATA from 3 with 1 hops payload: 34    hops: [3] debug_name: node3_1
+(2)  [11:05:05.865] received at central: DATA from 3 with 2 hops payload: 34    hops: [3, 2] debug_name: node3_1
+(2)  [11:05:07.042] received at central: DATA from 7 with 2 hops payload: 17    hops: [7, 3] debug_name: node7_1
+(2)  [11:05:07.669] received at central: DATA from 3 with 2 hops payload: 34    hops: [3, 1] debug_name: node3_1
+(2)  [11:05:08.219] received at central: DATA from 7 with 3 hops payload: 17    hops: [7, 4, 2] debug_name: node7_1
+(2)  [11:05:09.077] received at central: DATA from 7 with 3 hops payload: 17    hops: [7, 3, 1] debug_name: node7_1
+(2)  [11:05:14.467] received at central: DATA from 5 with 3 hops payload: 24    hops: [5, 6, 2] debug_name: node5_1
+(2)  [11:05:15.072] received at central: DATA from 4 with 2 hops payload: 43    hops: [4, 1] debug_name: node4_1
+(2)  [11:05:15.754] received at central: DATA from 5 with 3 hops payload: 24    hops: [5, 6, 3] debug_name: node5_1
+(2)  [11:05:18.394] received at central: DATA from 1 with 1 hops payload: 38    hops: [1] debug_name: node1_1
+(2)  [11:05:18.812] received at central: DATA from 5 with 4 hops payload: 24    hops: [5, 6, 2, 1] debug_name: node5_1
+(2)  [11:05:20.209] received at central: DATA from 2 with 1 hops payload: 41    hops: [2] debug_name: node2_1
+(2)  [11:05:21.705] received at central: DATA from 2 with 2 hops payload: 41    hops: [2, 3] debug_name: node2_1
+(2)  [11:05:22.111] received at central: DATA from 1 with 2 hops payload: 38    hops: [1, 3] debug_name: node1_1
+(2)  [11:05:23.399] received at central: DATA from 2 with 2 hops payload: 41    hops: [2, 1] debug_name: node2_1
+(2)  [11:05:24.664] received at central: DATA from 1 with 3 hops payload: 38    hops: [1, 4, 2] debug_name: node1_1
+(2)  [11:10:11.632] received at central: DATA from 5 with 2 hops payload: 32    hops: [5, 2] debug_name: node5_2
+(2)  [11:10:14.712] received at central: DATA from 5 with 3 hops payload: 32    hops: [5, 2, 1] debug_name: node5_2
+(2)  [11:10:15.118] received at central: DATA from 4 with 2 hops payload: 15    hops: [4, 1] debug_name: node4_2
+(2)  [11:10:20.212] received at central: DATA from 2 with 1 hops payload: 11    hops: [2] debug_name: node2_2
+(2)  [11:10:21.004] received at central: DATA from 2 with 2 hops payload: 11    hops: [2, 1] debug_name: node2_2
+(2)  [11:15:04.364] received at central: DATA from 3 with 1 hops payload: 37    hops: [3] debug_name: node3_3
+(2)  [11:15:05.629] received at central: DATA from 7 with 3 hops payload: 15    hops: [7, 3, 1] debug_name: node7_3
+(2)  [11:15:06.157] received at central: DATA from 7 with 2 hops payload: 15    hops: [7, 2] debug_name: node7_3
+(2)  [11:15:09.677] received at central: DATA from 5 with 2 hops payload: 9    hops: [5, 2] debug_name: node5_3
+(2)  [11:15:13.164] received at central: DATA from 5 with 2 hops payload: 9    hops: [5, 3] debug_name: node5_3
+(2)  [11:15:18.400] received at central: DATA from 1 with 1 hops payload: 9    hops: [1] debug_name: node1_3
+(2)  [11:15:20.215] received at central: DATA from 2 with 1 hops payload: 31    hops: [2] debug_name: node2_3
+(2)  [11:15:21.810] received at central: DATA from 1 with 2 hops payload: 9    hops: [1, 3] debug_name: node1_3
+(2)  [11:20:04.367] received at central: DATA from 3 with 1 hops payload: 15    hops: [3] debug_name: node3_4
+(2)  [11:20:07.579] received at central: DATA from 7 with 2 hops payload: 38    hops: [7, 3] debug_name: node7_4
+(2)  [11:20:08.250] received at central: DATA from 7 with 2 hops payload: 38    hops: [7, 2] debug_name: node7_4
+(2)  [11:20:14.520] received at central: DATA from 4 with 2 hops payload: 11    hops: [4, 2] debug_name: node4_4
+(2)  [11:20:18.810] received at central: DATA from 4 with 3 hops payload: 11    hops: [4, 2, 1] debug_name: node4_4
+(2)  [11:20:20.218] received at central: DATA from 2 with 1 hops payload: 22    hops: [2] debug_name: node2_4
+(2)  [11:20:21.791] received at central: DATA from 2 with 2 hops payload: 22    hops: [2, 3] debug_name: node2_4
+(2)  [11:20:24.255] received at central: DATA from 2 with 2 hops payload: 22    hops: [2, 1] debug_name: node2_4
+(2)  [11:25:04.370] received at central: DATA from 3 with 1 hops payload: 7    hops: [3] debug_name: node3_5
+(2)  [11:25:06.647] received at central: DATA from 3 with 2 hops payload: 7    hops: [3, 2] debug_name: node3_5
+(2)  [11:25:09.595] received at central: DATA from 3 with 2 hops payload: 7    hops: [3, 1] debug_name: node3_5
+(2)  [11:25:10.387] received at central: DATA from 5 with 2 hops payload: 7    hops: [5, 3] debug_name: node5_5
+(2)  [11:25:13.060] received at central: DATA from 5 with 2 hops payload: 7    hops: [5, 2] debug_name: node5_5
+(2)  [11:25:18.406] received at central: DATA from 1 with 1 hops payload: 9    hops: [1] debug_name: node1_5
+(2)  [11:25:19.440] received at central: DATA from 1 with 2 hops payload: 9    hops: [1, 2] debug_name: node1_5
+(2)  [11:25:20.221] received at central: DATA from 2 with 1 hops payload: 18    hops: [2] debug_name: node2_5
+(2)  [11:25:24.082] received at central: DATA from 2 with 2 hops payload: 18    hops: [2, 3] debug_name: node2_5
+(2)  [11:30:05.836] received at central: DATA from 6 with 2 hops payload: 36    hops: [6, 3] debug_name: node6_6
+(2)  [11:30:07.134] received at central: DATA from 6 with 2 hops payload: 36    hops: [6, 2] debug_name: node6_6
+(2)  [11:30:17.386] received at central: DATA from 4 with 2 hops payload: 14    hops: [4, 3] debug_name: node4_6
+(2)  [11:30:18.409] received at central: DATA from 1 with 1 hops payload: 25    hops: [1] debug_name: node1_6
+(2)  [11:30:20.224] received at central: DATA from 2 with 1 hops payload: 22    hops: [2] debug_name: node2_6
+(2)  [11:30:20.631] received at central: DATA from 1 with 2 hops payload: 25    hops: [1, 2] debug_name: node1_6
+(2)  [11:35:04.321] received at central: DATA from 7 with 2 hops payload: 22    hops: [7, 3] debug_name: node7_7
+(2)  [11:35:04.727] received at central: DATA from 3 with 1 hops payload: 41    hops: [3] debug_name: node3_7
+(2)  [11:35:07.819] received at central: DATA from 7 with 3 hops payload: 22    hops: [7, 4, 1] debug_name: node7_7
+(2)  [11:35:13.418] received at central: DATA from 5 with 3 hops payload: 8    hops: [5, 3, 1] debug_name: node5_7
+(2)  [11:35:14.001] received at central: DATA from 5 with 2 hops payload: 8    hops: [5, 2] debug_name: node5_7
+(2)  [11:35:17.455] received at central: DATA from 4 with 2 hops payload: 16    hops: [4, 1] debug_name: node4_7
+(2)  [11:35:18.412] received at central: DATA from 1 with 1 hops payload: 12    hops: [1] debug_name: node1_7
+(2)  [11:35:19.677] received at central: DATA from 4 with 3 hops payload: 16    hops: [4, 1, 2] debug_name: node4_7
+(2)  [11:35:20.227] received at central: DATA from 2 with 1 hops payload: 36    hops: [2] debug_name: node2_7
+(2)  [11:35:25.562] received at central: DATA from 2 with 2 hops payload: 36    hops: [2, 3] debug_name: node2_7
+(2)  [11:40:05.765] received at central: DATA from 7 with 2 hops payload: 15    hops: [7, 3] debug_name: node7_8
+(2)  [11:40:06.238] received at central: DATA from 7 with 3 hops payload: 15    hops: [7, 3, 1] debug_name: node7_8
+(2)  [11:40:15.203] received at central: DATA from 4 with 2 hops payload: 20    hops: [4, 1] debug_name: node4_8
+(2)  [11:40:15.819] received at central: DATA from 4 with 2 hops payload: 20    hops: [4, 2] debug_name: node4_8
+(2)  [11:40:18.415] received at central: DATA from 1 with 1 hops payload: 14    hops: [1] debug_name: node1_8
+(2)  [11:40:20.230] received at central: DATA from 2 with 1 hops payload: 7    hops: [2] debug_name: node2_8
+(2)  [11:40:23.420] received at central: DATA from 1 with 2 hops payload: 14    hops: [1, 3] debug_name: node1_8
+(2)  [11:45:04.382] received at central: DATA from 3 with 1 hops payload: 28    hops: [3] debug_name: node3_9
+(2)  [11:45:06.351] received at central: DATA from 6 with 2 hops payload: 35    hops: [6, 2] debug_name: node6_9
+(2)  [11:45:07.693] received at central: DATA from 7 with 3 hops payload: 13    hops: [7, 3, 1] debug_name: node7_9
+(2)  [11:45:08.958] received at central: DATA from 7 with 3 hops payload: 13    hops: [7, 3, 2] debug_name: node7_9
+(2)  [11:45:13.743] received at central: DATA from 4 with 2 hops payload: 17    hops: [4, 2] debug_name: node4_9
+(2)  [11:45:15.514] received at central: DATA from 4 with 2 hops payload: 17    hops: [4, 3] debug_name: node4_9
+(2)  [11:45:17.274] received at central: DATA from 4 with 2 hops payload: 17    hops: [4, 1] debug_name: node4_9
+(2)  [11:45:18.418] received at central: DATA from 1 with 1 hops payload: 15    hops: [1] debug_name: node1_9
+(2)  [11:45:19.309] received at central: DATA from 1 with 2 hops payload: 15    hops: [1, 3] debug_name: node1_9
+(2)  [11:45:20.233] received at central: DATA from 2 with 1 hops payload: 34    hops: [2] debug_name: node2_9
+(2)  [11:45:22.950] received at central: DATA from 1 with 2 hops payload: 15    hops: [1, 2] debug_name: node1_9
+(2)  [11:50:03.560] received at central: DATA from 7 with 2 hops payload: 26    hops: [7, 2] debug_name: node7_10
+(2)  [11:50:04.385] received at central: DATA from 3 with 1 hops payload: 17    hops: [3] debug_name: node3_10
+(2)  [11:50:04.946] received at central: DATA from 3 with 2 hops payload: 17    hops: [3, 2] debug_name: node3_10
+(2)  [11:50:05.441] received at central: DATA from 7 with 3 hops payload: 26    hops: [7, 2, 1] debug_name: node7_10
+(2)  [11:50:07.674] received at central: DATA from 7 with 2 hops payload: 26    hops: [7, 3] debug_name: node7_10
+(2)  [11:50:11.238] received at central: DATA from 5 with 2 hops payload: 36    hops: [5, 2] debug_name: node5_10
+(2)  [11:50:12.943] received at central: DATA from 5 with 3 hops payload: 36    hops: [5, 2, 1] debug_name: node5_10
+(2)  [11:50:18.421] received at central: DATA from 1 with 1 hops payload: 21    hops: [1] debug_name: node1_10
+(2)  [11:50:20.236] received at central: DATA from 2 with 1 hops payload: 12    hops: [2] debug_name: node2_10
+(2)  [11:50:21.237] received at central: DATA from 2 with 2 hops payload: 12    hops: [2, 3] debug_name: node2_10
+(2)  [11:50:22.062] received at central: DATA from 2 with 2 hops payload: 12    hops: [2, 1] debug_name: node2_10
+(2)  [11:55:07.325] received at central: DATA from 7 with 2 hops payload: 37    hops: [7, 3] debug_name: node7_11
+(2)  [11:55:09.272] received at central: DATA from 7 with 3 hops payload: 37    hops: [7, 3, 1] debug_name: node7_11
+(2)  [11:55:19.337] received at central: DATA from 1 with 2 hops payload: 32    hops: [1, 2] debug_name: node1_11
+(2)  [11:55:22.362] received at central: DATA from 1 with 2 hops payload: 32    hops: [1, 3] debug_name: node1_11
+(2)  [11:55:23.517] received at central: DATA from 2 with 2 hops payload: 19    hops: [2, 1] debug_name: node2_11
+(2)  [11:55:25.871] received at central: DATA from 2 with 3 hops payload: 19    hops: [2, 1, 3] debug_name: node2_11
+(2)  [12:00:04.391] received at central: DATA from 3 with 1 hops payload: 31    hops: [3] debug_name: node3_12
+(2)  [12:00:06.525] received at central: DATA from 7 with 2 hops payload: 12    hops: [7, 3] debug_name: node7_12
+(2)  [12:00:07.548] received at central: DATA from 6 with 2 hops payload: 24    hops: [6, 2] debug_name: node6_12
+(2)  [12:00:09.440] received at central: DATA from 7 with 3 hops payload: 12    hops: [7, 3, 1] debug_name: node7_12
+(2)  [12:00:10.936] received at central: DATA from 6 with 3 hops payload: 24    hops: [6, 2, 1] debug_name: node6_12
+(2)  [12:00:14.995] received at central: DATA from 4 with 2 hops payload: 43    hops: [4, 1] debug_name: node4_12
+(2)  [12:00:24.290] received at central: DATA from 2 with 3 hops payload: 25    hops: [2, 5, 3] debug_name: node2_12
+(2)  [12:00:25.896] received at central: DATA from 2 with 3 hops payload: 25    hops: [2, 4, 1] debug_name: node2_12
+(2)  [12:05:04.394] received at central: DATA from 3 with 1 hops payload: 25    hops: [3] debug_name: node3_13
+(2)  [12:05:06.286] received at central: DATA from 7 with 2 hops payload: 24    hops: [7, 3] debug_name: node7_13
+(2)  [12:05:13.634] received at central: DATA from 4 with 2 hops payload: 23    hops: [4, 3] debug_name: node4_13
+(2)  [12:05:20.245] received at central: DATA from 2 with 1 hops payload: 11    hops: [2] debug_name: node2_13
+(2)  [12:05:22.082] received at central: DATA from 2 with 2 hops payload: 11    hops: [2, 3] debug_name: node2_13
+(2)  [12:05:23.435] received at central: DATA from 2 with 2 hops payload: 11    hops: [2, 1] debug_name: node2_13
+====================== SIMULATION RESULTS =============================
+Simulation took: 1 min 13.83 s
+Simulated time: 01:08:00
+nodes sent in total: 91
+received in total: 59 / 91 = 64.84 %
+NODES:
+received from central: 0
+received from node1: 9 from 13
+received from node2: 13 from 13
+received from node3: 9 from 13
+received from node4: 9 from 13
+received from node5: 6 from 13
+received from node6: 3 from 13
+received from node7: 10 from 13
+DESTROYED
+    central destroyed packets 46
+    node1 destroyed packets 68
+    node2 destroyed packets 213
+    node3 destroyed packets 196
+    node4 destroyed packets 207
+    node5 destroyed packets 168
+    node6 destroyed packets 160
+    node7 destroyed packets 166
+CORRUPTED
+    central corrupted packets 23
+    node1 corrupted packets 29
+    node2 corrupted packets 33
+    node3 corrupted packets 36
+    node4 corrupted packets 35
+    node5 corrupted packets 12
+    node6 corrupted packets 19
+    node7 corrupted packets 23
+SENT
+    central sent in total: 2
+    node1 sent in total: 59
+    node2 sent in total: 58
+    node3 sent in total: 66
+    node4 sent in total: 61
+    node5 sent in total: 60
+    node6 sent in total: 64
+    node7 sent in total: 56
+RECEIVED
+    central successfully received: 114 from 183 (183)
+    node1 successfully received: 90 from 187 (187)
+    node2 successfully received: 122 from 368 (368)
+    node3 successfully received: 128 from 360 (360)
+    node4 successfully received: 121 from 363 (363)
+    node5 successfully received: 125 from 305 (305)
+    node6 successfully received: 122 from 301 (301)
+    node7 successfully received: 120 from 309 (309)
+ --> FURTHER ANALYSIS
+PACKETS RECEIVED IN DETAIL:
+  central
+    world: 23, forward: 0, collision: 46, sleep: 0
+  node1
+    world: 29, forward: 44, collision: 68, sleep: 0
+  node2
+    world: 33, forward: 77, collision: 213, sleep: 0
+  node3
+    world: 36, forward: 75, collision: 196, sleep: 0
+  node4
+    world: 35, forward: 73, collision: 207, sleep: 0
+  node5
+    world: 12, forward: 78, collision: 168, sleep: 0
+  node6
+    world: 19, forward: 71, collision: 160, sleep: 0
+  node7
+    world: 23, forward: 77, collision: 166, sleep: 0
+missing packets from node 1: 4
+node1_2
+    [11:10:17.992] Collision at node 3 (from 1)   [1]  other packets: ['node1_2', 'node4_2']
+    [11:10:17.992] Collision at node 2 (from 1)   [1]  other packets: ['node1_2', 'node4_2']
+    [11:10:17.992] Collision at node 4 (from 1)   [1]  other packets: ['node1_2', 'node4_2']
+    [11:10:17.992] Collision at node 100 (from 1)   [1]  other packets: ['node1_2', 'node4_2']
+node1_4
+    [11:20:17.998] Collision at node 3 (from 1)   [1]  other packets: ['node1_4', 'node4_4']
+    [11:20:17.998] destroyed in world: 1 -> 2   [1]
+    [11:20:17.998] Collision at node 4 (from 1)   [1]  other packets: ['node4_4', 'node1_4']
+    [11:20:17.998] Collision at node 100 (from 1)   [1]  other packets: ['node4_4', 'node1_4']
+node1_12
+    [12:00:18.022] Collision at node 3 (from 1)   [1]  other packets: ['node4_12', 'node4_12', 'node1_12']
+    [12:00:18.022] Collision at node 2 (from 1)   [1]  other packets: ['node4_12', 'node1_12', 'node4_12']
+    [12:00:18.022] Collision at node 4 (from 1)   [1]  other packets: ['node4_12', 'node4_12', 'node1_12']
+    [12:00:18.022] Collision at node 100 (from 1)   [1]  other packets: ['node4_12', 'node1_12']
+node1_13
+    [12:05:18.102] destroyed in world: 1 -> 3   [1]
+    [12:05:18.102] Collision at node 2 (from 1)   [1]  other packets: ['node1_13', 'node4_13']
+    [12:05:18.102] Collision at node 4 (from 1)   [1]  other packets: ['node4_13', 'node4_13', 'node1_13']
+    [12:05:18.102] Collision at node 100 (from 1)   [1]  other packets: ['node4_13', 'node4_13', 'node1_13']
+missing packets from node 3: 4
+node3_2
+    [11:10:05.144] Collision at node 3 (from 1)   [3, 1]  other packets: ['node3_2', 'node7_2', 'node7_2']
+    [11:10:03.956] Collision at node 2 (from 3)   [3]  other packets: ['node3_2', 'node7_2']
+    [11:10:05.144] Collision at node 2 (from 1)   [3, 1]  other packets: ['node6_2', 'node7_2', 'node7_2', 'node3_2', 'node7_2', 'node7_2']
+    [11:10:03.956] Collision at node 4 (from 3)   [3]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2', 'node3_2']
+    [11:10:05.144] destroyed in world: 1 -> 4   [3, 1]
+    [11:10:03.956] Collision at node 5 (from 3)   [3]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:03.956] Collision at node 6 (from 3)   [3]  other packets: ['node3_2', 'node7_2']
+    [11:10:03.956] Collision at node 7 (from 3)   [3]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:03.956] destroyed in world: 3 -> 100   [3]
+    [11:10:05.144] destroyed in world: 1 -> 100   [3, 1]
+node3_6
+    [11:30:03.968] Collision at node 2 (from 3)   [3]  other packets: ['node7_6', 'node3_6', 'node7_6']
+    [11:30:03.968] Collision at node 1 (from 3)   [3]  other packets: ['node7_6', 'node3_6']
+    [11:30:03.968] Collision at node 4 (from 3)   [3]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:03.968] Collision at node 5 (from 3)   [3]  other packets: ['node7_6', 'node3_6', 'node7_6']
+    [11:30:03.968] Collision at node 6 (from 3)   [3]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:03.968] Collision at node 7 (from 3)   [3]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:03.968] Collision at node 100 (from 3)   [3]  other packets: ['node7_6', 'node3_6']
+node3_8
+    [11:40:03.974] Collision at node 2 (from 3)   [3]  other packets: ['node3_8', 'node7_8']
+    [11:40:03.974] Collision at node 1 (from 3)   [3]  other packets: ['node3_8', 'node7_8']
+    [11:40:03.974] Collision at node 4 (from 3)   [3]  other packets: ['node3_8', 'node7_8', 'node6_8']
+    [11:40:03.974] Collision at node 5 (from 3)   [3]  other packets: ['node3_8', 'node7_8', 'node6_8']
+    [11:40:03.974] Collision at node 6 (from 3)   [3]  other packets: ['node3_8', 'node7_8']
+    [11:40:03.974] Collision at node 7 (from 3)   [3]  other packets: ['node3_8', 'node7_8', 'node6_8']
+    [11:40:03.974] destroyed in world: 3 -> 100   [3]
+node3_11
+    [11:55:03.983] Collision at node 2 (from 3)   [3]  other packets: ['node3_11', 'node7_11']
+    [11:55:03.983] Collision at node 1 (from 3)   [3]  other packets: ['node3_11', 'node7_11']
+    [11:55:03.983] destroyed in world: 3 -> 4   [3]
+    [11:55:03.983] Collision at node 5 (from 3)   [3]  other packets: ['node3_11', 'node7_11', 'node6_11']
+    [11:55:03.983] Collision at node 6 (from 3)   [3]  other packets: ['node3_11', 'node7_11']
+    [11:55:03.983] Collision at node 7 (from 3)   [3]  other packets: ['node3_11', 'node7_11', 'node6_11']
+    [11:55:03.983] destroyed in world: 3 -> 100   [3]
+missing packets from node 4: 4
+node4_3
+    [11:15:12.440] Collision at node 3 (from 4)   [4]  other packets: ['node4_3', 'node5_3']
+    [11:15:12.440] Collision at node 2 (from 4)   [4]  other packets: ['node4_3', 'node5_3', 'node5_3', 'node5_3']
+    [11:15:12.440] Collision at node 1 (from 4)   [4]  other packets: ['node4_3', 'node5_3', 'node5_3']
+    [11:15:12.440] destroyed in world: 4 -> 5   [4]
+    [11:15:12.440] Collision at node 6 (from 4)   [4]  other packets: ['node4_3', 'node5_3', 'node5_3', 'node5_3']
+    [11:15:12.440] Collision at node 7 (from 4)   [4]  other packets: ['node4_3', 'node5_3', 'node5_3']
+node4_5
+    [11:25:12.446] Collision at node 3 (from 4)   [4]  other packets: ['node5_5', 'node4_5', 'node5_5']
+    [11:25:12.446] Collision at node 2 (from 4)   [4]  other packets: ['node5_5', 'node4_5']
+    [11:25:12.446] Collision at node 1 (from 4)   [4]  other packets: ['node4_5', 'node5_5']
+    [11:25:12.446] Collision at node 5 (from 4)   [4]  other packets: ['node5_5', 'node4_5', 'node5_5']
+    [11:25:12.446] Collision at node 6 (from 4)   [4]  other packets: ['node5_5', 'node4_5', 'node5_5']
+    [11:25:12.446] Collision at node 7 (from 4)   [4]  other packets: ['node4_5', 'node5_5', 'node5_5']
+node4_10
+    [11:50:12.648] Collision at node 3 (from 4)   [4]  other packets: ['node5_10', 'node5_10', 'node4_10']
+    [11:50:13.440] Collision at node 3 (from 5)   [4, 5]  other packets: ['node5_10', 'node4_10']
+    [11:50:13.968] Collision at node 3 (from 6)   [4, 6]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.968] Collision at node 3 (from 7)   [4, 7]  other packets: ['node4_10', 'node4_10']
+    [11:50:12.648] Collision at node 2 (from 4)   [4]  other packets: ['node5_10', 'node5_10', 'node4_10']
+    [11:50:13.440] Collision at node 2 (from 5)   [4, 5]  other packets: ['node5_10', 'node4_10']
+    [11:50:13.968] Collision at node 2 (from 6)   [4, 6]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.968] destroyed in world: 7 -> 2   [4, 7]
+    [11:50:12.648] destroyed in world: 4 -> 1   [4]
+    [11:50:13.440] Collision at node 4 (from 5)   [4, 5]  other packets: ['node5_10', 'node4_10']
+    [11:50:13.968] Collision at node 4 (from 6)   [4, 6]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.968] Collision at node 4 (from 7)   [4, 7]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.968] Collision at node 5 (from 6)   [4, 6]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.968] Collision at node 5 (from 7)   [4, 7]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.440] Collision at node 6 (from 5)   [4, 5]  other packets: ['node4_10', 'node5_10']
+    [11:50:13.968] Collision at node 6 (from 7)   [4, 7]  other packets: ['node4_10', 'node4_10']
+    [11:50:13.440] Collision at node 7 (from 5)   [4, 5]  other packets: ['node5_10', 'node4_10']
+    [11:50:13.968] Collision at node 7 (from 6)   [4, 6]  other packets: ['node4_10', 'node4_10']
+node4_11
+    [11:55:12.464] Collision at node 3 (from 4)   [4]  other packets: ['node5_11', 'node4_11']
+    [11:55:12.464] Collision at node 2 (from 4)   [4]  other packets: ['node5_11', 'node4_11']
+    [11:55:12.464] destroyed in world: 4 -> 1   [4]
+    [11:55:12.464] Collision at node 5 (from 4)   [4]  other packets: ['node5_11', 'node4_11']
+    [11:55:12.464] Collision at node 6 (from 4)   [4]  other packets: ['node4_11', 'node5_11']
+    [11:55:12.464] Collision at node 7 (from 4)   [4]  other packets: ['node5_11', 'node4_11']
+missing packets from node 5: 7
+node5_4
+    [11:20:08.483] Collision at node 3 (from 5)   [5]  other packets: ['node3_4', 'node5_4']
+    [11:20:08.483] destroyed in world: 5 -> 2   [5]
+    [11:20:08.483] Collision at node 4 (from 5)   [5]  other packets: ['node3_4', 'node5_4']
+    [11:20:08.483] Collision at node 6 (from 5)   [5]  other packets: ['node5_4', 'node3_4']
+    [11:20:08.483] Collision at node 7 (from 5)   [5]  other packets: ['node3_4', 'node5_4']
+node5_6
+    [11:30:09.116] Collision at node 3 (from 2)   [5, 2]  other packets: ['node6_6', 'node5_6', 'node6_6', 'node5_6', 'node5_6']
+    [11:30:09.448] Collision at node 3 (from 7)   [5, 7]  other packets: ['node6_6', 'node5_6', 'node6_6', 'node5_6', 'node5_6']
+    [11:30:12.580] not forwarded at node 3 (from: 4), because: relay_block_time (3685/15000)   [5, 4]
+    [11:30:13.460] not forwarded at node 3 (from: 6), because: relay_block_time (4565/15000)   [5, 6]
+    [11:30:09.424] Collision at node 2 (from 3)   [5, 3]  other packets: ['node6_6', 'node5_6', 'node6_6', 'node5_6', 'node5_6']
+    [11:30:09.448] Collision at node 2 (from 7)   [5, 7]  other packets: ['node6_6', 'node5_6', 'node6_6', 'node5_6', 'node5_6']
+    [11:30:12.580] not forwarded at node 2 (from: 4), because: relay_block_time (3685/15000)   [5, 4]
+    [11:30:13.460] not forwarded at node 2 (from: 6), because: relay_block_time (4565/15000)   [5, 6]
+    [11:30:09.116] Collision at node 1 (from 2)   [5, 2]  other packets: ['node5_6', 'node5_6', 'node6_6']
+    [11:30:09.424] Collision at node 1 (from 3)   [5, 3]  other packets: ['node5_6', 'node5_6', 'node6_6']
+    [11:30:12.174] destroyed in world: 4 -> 1   [5, 4]
+    [11:30:09.116] Collision at node 4 (from 2)   [5, 2]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node5_6', 'node6_6']
+    [11:30:09.424] Collision at node 4 (from 3)   [5, 3]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node5_6', 'node6_6']
+    [11:30:09.448] Collision at node 4 (from 7)   [5, 7]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node5_6', 'node6_6']
+    [11:30:13.460] not forwarded at node 4 (from: 6), because: relay_block_time (4565/15000)   [5, 6]
+    [11:30:09.116] Collision at node 5 (from 2)   [5, 2]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node6_6', 'node5_6']
+    [11:30:09.424] Collision at node 5 (from 3)   [5, 3]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node6_6', 'node5_6']
+    [11:30:09.448] Collision at node 5 (from 7)   [5, 7]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node6_6', 'node5_6']
+    [11:30:12.580] not forwarded at node 5 (from: 4), because: return to sender   [5, 4]
+    [11:30:13.460] not forwarded at node 5 (from: 6), because: return to sender   [5, 6]
+    [11:30:09.116] Collision at node 6 (from 2)   [5, 2]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node6_6', 'node5_6']
+    [11:30:09.424] Collision at node 6 (from 3)   [5, 3]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node6_6', 'node5_6']
+    [11:30:09.448] Collision at node 6 (from 7)   [5, 7]  other packets: ['node6_6', 'node5_6', 'node5_6', 'node6_6', 'node5_6']
+    [11:30:12.580] not forwarded at node 6 (from: 4), because: relay_block_time (3685/15000)   [5, 4]
+    [11:30:09.116] Collision at node 7 (from 2)   [5, 2]  other packets: ['node5_6', 'node5_6', 'node6_6', 'node6_6']
+    [11:30:09.424] destroyed in world: 3 -> 7   [5, 3]
+    [11:30:12.580] not forwarded at node 7 (from: 4), because: relay_block_time (3685/15000)   [5, 4]
+    [11:30:13.460] not forwarded at node 7 (from: 6), because: relay_block_time (4565/15000)   [5, 6]
+    [11:30:09.116] Collision at node 100 (from 2)   [5, 2]  other packets: ['node5_6', 'node5_6']
+    [11:30:09.424] destroyed in world: 3 -> 100   [5, 3]
+node5_8
+    [11:40:09.859] Collision at node 3 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8']
+    [11:40:10.387] destroyed in world: 6 -> 3   [5, 6]
+    [11:40:10.585] destroyed in world: 7 -> 3   [5, 7]
+    [11:40:12.300] not forwarded at node 3 (from: 4), because: relay_block_time (3399/15000)   [5, 4]
+    [11:40:10.145] Collision at node 2 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.387] destroyed in world: 6 -> 2   [5, 6]
+    [11:40:10.585] Collision at node 2 (from 7)   [5, 7]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:11.894] destroyed in world: 4 -> 2   [5, 4]
+    [11:40:09.859] Collision at node 1 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8']
+    [11:40:10.145] Collision at node 1 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8']
+    [11:40:11.894] destroyed in world: 4 -> 1   [5, 4]
+    [11:40:09.859] Collision at node 4 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.145] Collision at node 4 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.387] Collision at node 4 (from 6)   [5, 6]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.585] Collision at node 4 (from 7)   [5, 7]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:09.859] Collision at node 5 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.145] Collision at node 5 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.387] Collision at node 5 (from 6)   [5, 6]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:10.585] Collision at node 5 (from 7)   [5, 7]  other packets: ['node5_8', 'node5_8', 'node5_8', 'node5_8']
+    [11:40:12.300] not forwarded at node 5 (from: 4), because: return to sender   [5, 4]
+    [11:40:09.859] Collision at node 6 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8']
+    [11:40:10.145] Collision at node 6 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8']
+    [11:40:10.585] Collision at node 6 (from 7)   [5, 7]  other packets: ['node5_8', 'node5_8']
+    [11:40:12.300] not forwarded at node 6 (from: 4), because: relay_block_time (3399/15000)   [5, 4]
+    [11:40:09.859] Collision at node 7 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8', 'node5_8']
+    [11:40:10.145] Collision at node 7 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8', 'node5_8']
+    [11:40:10.387] Collision at node 7 (from 6)   [5, 6]  other packets: ['node5_8', 'node5_8', 'node5_8']
+    [11:40:12.300] not forwarded at node 7 (from: 4), because: relay_block_time (3399/15000)   [5, 4]
+    [11:40:09.859] Collision at node 100 (from 2)   [5, 2]  other packets: ['node5_8', 'node5_8']
+    [11:40:10.145] Collision at node 100 (from 3)   [5, 3]  other packets: ['node5_8', 'node5_8']
+node5_9
+    [11:45:08.498] destroyed in world: 5 -> 3   [5]
+    [11:45:08.498] Collision at node 2 (from 5)   [5]  other packets: ['node5_9', 'node7_9']
+    [11:45:08.498] Collision at node 4 (from 5)   [5]  other packets: ['node5_9', 'node7_9']
+    [11:45:08.498] Collision at node 6 (from 5)   [5]  other packets: ['node5_9', 'node7_9']
+    [11:45:08.498] Collision at node 7 (from 5)   [5]  other packets: ['node5_9', 'node7_9']
+node5_11
+    [11:55:08.504] Collision at node 3 (from 5)   [5]  other packets: ['node5_11', 'node7_11']
+    [11:55:12.167] Collision at node 3 (from 6)   [5, 6]  other packets: ['node5_11', 'node4_11']
+    [11:55:15.246] not forwarded at node 3 (from: 4), because: relay_block_time (3432/15000)   [5, 7, 4]
+    [11:55:16.886] Collision at node 3 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+    [11:55:08.504] Collision at node 2 (from 5)   [5]  other packets: ['node5_11', 'node7_11']
+    [11:55:11.408] destroyed in world: 7 -> 2   [5, 7]
+    [11:55:12.167] Collision at node 2 (from 6)   [5, 6]  other packets: ['node5_11', 'node4_11']
+    [11:55:16.589] Collision at node 2 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:14.840] destroyed in world: 4 -> 1   [5, 7, 4]
+    [11:55:16.589] Collision at node 1 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.886] Collision at node 1 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+    [11:55:08.504] Collision at node 4 (from 5)   [5]  other packets: ['node5_11', 'node7_11']
+    [11:55:12.167] Collision at node 4 (from 6)   [5, 6]  other packets: ['node5_11', 'node4_11']
+    [11:55:16.589] Collision at node 4 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.886] Collision at node 4 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+    [11:55:11.814] not forwarded at node 5 (from: 7), because: return to sender   [5, 7]
+    [11:55:12.167] Collision at node 5 (from 6)   [5, 6]  other packets: ['node5_11', 'node4_11']
+    [11:55:15.246] not forwarded at node 5 (from: 4), because: return to sender   [5, 7, 4]
+    [11:55:16.589] Collision at node 5 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.886] Collision at node 5 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+    [11:55:11.814] not forwarded at node 6 (from: 7), because: relay_block_time (2904/15000)   [5, 7]
+    [11:55:15.246] not forwarded at node 6 (from: 4), because: relay_block_time (6336/15000)   [5, 7, 4]
+    [11:55:16.589] Collision at node 6 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.886] Collision at node 6 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+    [11:55:12.167] Collision at node 7 (from 6)   [5, 6]  other packets: ['node5_11', 'node4_11']
+    [11:55:15.246] not forwarded at node 7 (from: 4), because: relay_block_time (6336/15000)   [5, 7, 4]
+    [11:55:16.589] Collision at node 7 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.886] Collision at node 7 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.589] Collision at node 100 (from 3)   [5, 7, 3]  other packets: ['node5_11', 'node5_11']
+    [11:55:16.886] Collision at node 100 (from 2)   [5, 7, 4, 2]  other packets: ['node5_11', 'node5_11']
+node5_12
+    [12:00:08.507] Collision at node 3 (from 5)   [5]  other packets: ['node6_12', 'node5_12', 'node6_12']
+    [12:00:08.507] Collision at node 2 (from 5)   [5]  other packets: ['node6_12', 'node6_12', 'node5_12', 'node7_12']
+    [12:00:08.507] Collision at node 4 (from 5)   [5]  other packets: ['node7_12', 'node6_12', 'node6_12', 'node5_12']
+    [12:00:08.507] Collision at node 6 (from 5)   [5]  other packets: ['node7_12', 'node6_12', 'node6_12', 'node5_12']
+    [12:00:08.507] Collision at node 7 (from 5)   [5]  other packets: ['node5_12', 'node6_12']
+node5_13
+    [12:05:08.510] Collision at node 3 (from 5)   [5]  other packets: ['node7_13', 'node6_13', 'node5_13', 'node3_13', 'node6_13']
+    [12:05:08.510] Collision at node 2 (from 5)   [5]  other packets: ['node6_13', 'node5_13', 'node3_13', 'node7_13']
+    [12:05:08.510] Collision at node 4 (from 5)   [5]  other packets: ['node7_13', 'node6_13', 'node5_13', 'node3_13', 'node6_13']
+    [12:05:08.510] Collision at node 6 (from 5)   [5]  other packets: ['node5_13', 'node6_13']
+    [12:05:08.510] Collision at node 7 (from 5)   [5]  other packets: ['node5_13', 'node6_13']
+missing packets from node 6: 10
+node6_1
+    [11:05:04.832] Collision at node 3 (from 6)   [6]  other packets: ['node6_1', 'node3_1']
+    [11:05:04.832] Collision at node 2 (from 6)   [6]  other packets: ['node6_1', 'node3_1']
+    [11:05:04.832] destroyed in world: 6 -> 4   [6]
+    [11:05:04.832] Collision at node 5 (from 6)   [6]  other packets: ['node6_1', 'node3_1']
+    [11:05:04.832] Collision at node 7 (from 6)   [6]  other packets: ['node6_1', 'node3_1']
+node6_2
+    [11:10:04.561] Collision at node 3 (from 6)   [6]  other packets: ['node7_2', 'node7_2', 'node6_2', 'node7_2', 'node3_2']
+    [11:10:04.561] Collision at node 2 (from 6)   [6]  other packets: ['node6_2', 'node7_2', 'node7_2', 'node3_2', 'node7_2', 'node7_2']
+    [11:10:04.561] Collision at node 4 (from 6)   [6]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2', 'node3_2']
+    [11:10:04.561] Collision at node 5 (from 6)   [6]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:04.561] Collision at node 7 (from 6)   [6]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+node6_3
+    [11:15:04.564] Collision at node 3 (from 6)   [6]  other packets: ['node6_3', 'node7_3']
+    [11:15:04.564] Collision at node 2 (from 6)   [6]  other packets: ['node6_3', 'node7_3']
+    [11:15:04.564] Collision at node 4 (from 6)   [6]  other packets: ['node6_3', 'node7_3']
+    [11:15:04.564] Collision at node 5 (from 6)   [6]  other packets: ['node6_3', 'node7_3']
+    [11:15:04.564] Collision at node 7 (from 6)   [6]  other packets: ['node6_3', 'node7_3']
+node6_4
+    [11:20:04.567] destroyed in world: 6 -> 3   [6]
+    [11:20:04.567] Collision at node 2 (from 6)   [6]  other packets: ['node6_4', 'node7_4']
+    [11:20:04.567] Collision at node 4 (from 6)   [6]  other packets: ['node6_4', 'node7_4']
+    [11:20:04.567] Collision at node 5 (from 6)   [6]  other packets: ['node6_4', 'node7_4']
+    [11:20:04.567] destroyed in world: 6 -> 7   [6]
+node6_5
+    [11:25:04.570] Collision at node 3 (from 6)   [6]  other packets: ['node6_5', 'node7_5']
+    [11:25:04.570] Collision at node 2 (from 6)   [6]  other packets: ['node6_5', 'node7_5']
+    [11:25:04.570] Collision at node 4 (from 6)   [6]  other packets: ['node6_5', 'node7_5']
+    [11:25:04.570] Collision at node 5 (from 6)   [6]  other packets: ['node6_5', 'node7_5']
+    [11:25:04.570] Collision at node 7 (from 6)   [6]  other packets: ['node6_5', 'node7_5']
+node6_7
+    [11:35:04.576] Collision at node 3 (from 6)   [6]  other packets: ['node6_7', 'node3_7']
+    [11:35:04.576] Collision at node 2 (from 6)   [6]  other packets: ['node3_7', 'node6_7']
+    [11:35:04.576] Collision at node 4 (from 6)   [6]  other packets: ['node3_7', 'node6_7']
+    [11:35:04.576] Collision at node 5 (from 6)   [6]  other packets: ['node3_7', 'node6_7']
+    [11:35:04.576] Collision at node 7 (from 6)   [6]  other packets: ['node3_7', 'node6_7']
+node6_8
+    [11:40:04.579] Collision at node 3 (from 6)   [6]  other packets: ['node7_8', 'node6_8', 'node3_8']
+    [11:40:04.579] Collision at node 2 (from 6)   [6]  other packets: ['node6_8', 'node7_8']
+    [11:40:04.579] Collision at node 4 (from 6)   [6]  other packets: ['node3_8', 'node7_8', 'node6_8']
+    [11:40:04.579] Collision at node 5 (from 6)   [6]  other packets: ['node3_8', 'node7_8', 'node6_8']
+    [11:40:04.579] Collision at node 7 (from 6)   [6]  other packets: ['node3_8', 'node7_8', 'node6_8']
+node6_10
+    [11:50:04.585] Collision at node 3 (from 6)   [6]  other packets: ['node3_10', 'node6_10']
+    [11:50:04.585] Collision at node 2 (from 6)   [6]  other packets: ['node6_10', 'node3_10']
+    [11:50:04.585] Collision at node 4 (from 6)   [6]  other packets: ['node3_10', 'node6_10']
+    [11:50:04.585] Collision at node 5 (from 6)   [6]  other packets: ['node3_10', 'node6_10']
+    [11:50:04.585] Collision at node 7 (from 6)   [6]  other packets: ['node3_10', 'node6_10']
+node6_11
+    [11:55:04.588] Collision at node 3 (from 6)   [6]  other packets: ['node7_11', 'node6_11', 'node3_11']
+    [11:55:04.588] Collision at node 2 (from 6)   [6]  other packets: ['node6_11', 'node7_11']
+    [11:55:04.588] Collision at node 4 (from 6)   [6]  other packets: ['node3_11', 'node7_11', 'node6_11']
+    [11:55:04.588] Collision at node 5 (from 6)   [6]  other packets: ['node3_11', 'node7_11', 'node6_11']
+    [11:55:04.588] Collision at node 7 (from 6)   [6]  other packets: ['node3_11', 'node7_11', 'node6_11']
+node6_13
+    [12:05:06.552] Collision at node 3 (from 5)   [6, 5]  other packets: ['node7_13', 'node6_13', 'node6_13', 'node7_13']
+    [12:05:06.630] Collision at node 3 (from 4)   [6, 4]  other packets: ['node7_13', 'node6_13', 'node6_13', 'node7_13']
+    [12:05:08.125] Collision at node 3 (from 1)   [6, 3, 1]  other packets: ['node7_13', 'node6_13', 'node5_13', 'node3_13', 'node6_13']
+    [12:05:08.862] Collision at node 3 (from 2)   [6, 2]  other packets: ['node7_13', 'node6_13', 'node5_13', 'node3_13', 'node6_13']
+    [12:05:10.214] not forwarded at node 3 (from: 7), because: relay_block_time (5214/15000)   [6, 7]
+    [12:05:05.605] not forwarded at node 2 (from: 3), because: relay_block_time (605/15000)   [6, 3]
+    [12:05:06.552] Collision at node 2 (from 5)   [6, 5]  other packets: ['node7_13', 'node7_13', 'node6_13', 'node6_13']
+    [12:05:06.630] Collision at node 2 (from 4)   [6, 4]  other packets: ['node7_13', 'node7_13', 'node6_13', 'node6_13']
+    [12:05:08.125] Collision at node 2 (from 1)   [6, 3, 1]  other packets: ['node6_13', 'node5_13', 'node3_13', 'node7_13']
+    [12:05:09.808] destroyed in world: 7 -> 2   [6, 7]
+    [12:05:07.035] not forwarded at node 1 (from: 4), because: relay_block_time (1430/15000)   [6, 4]
+    [12:05:08.862] Collision at node 1 (from 2)   [6, 2]  other packets: ['node6_13', 'node3_13']
+    [12:05:05.605] not forwarded at node 4 (from: 3), because: relay_block_time (605/15000)   [6, 3]
+    [12:05:06.552] destroyed in world: 5 -> 4   [6, 5]
+    [12:05:08.125] Collision at node 4 (from 1)   [6, 3, 1]  other packets: ['node7_13', 'node6_13', 'node5_13', 'node3_13', 'node6_13']
+    [12:05:08.862] Collision at node 4 (from 2)   [6, 2]  other packets: ['node7_13', 'node6_13', 'node5_13', 'node3_13', 'node6_13']
+    [12:05:09.808] destroyed in world: 7 -> 4   [6, 7]
+    [12:05:05.605] not forwarded at node 5 (from: 3), because: relay_block_time (605/15000)   [6, 3]
+    [12:05:06.630] Collision at node 5 (from 4)   [6, 4]  other packets: ['node6_13', 'node6_13']
+    [12:05:08.862] Collision at node 5 (from 2)   [6, 2]  other packets: ['node6_13', 'node5_13']
+    [12:05:10.214] not forwarded at node 5 (from: 7), because: relay_block_time (5214/15000)   [6, 7]
+    [12:05:05.605] not forwarded at node 6 (from: 3), because: return to sender   [6, 3]
+    [12:05:06.552] Collision at node 6 (from 5)   [6, 5]  other packets: ['node7_13', 'node7_13', 'node6_13', 'node6_13']
+    [12:05:06.630] Collision at node 6 (from 4)   [6, 4]  other packets: ['node7_13', 'node7_13', 'node6_13', 'node6_13']
+    [12:05:08.862] Collision at node 6 (from 2)   [6, 2]  other packets: ['node5_13', 'node6_13']
+    [12:05:10.214] not forwarded at node 6 (from: 7), because: return to sender   [6, 7]
+    [12:05:05.605] not forwarded at node 7 (from: 3), because: relay_block_time (605/15000)   [6, 3]
+    [12:05:06.552] Collision at node 7 (from 5)   [6, 5]  other packets: ['node7_13', 'node7_13', 'node6_13', 'node6_13']
+    [12:05:06.630] Collision at node 7 (from 4)   [6, 4]  other packets: ['node7_13', 'node7_13', 'node6_13', 'node6_13']
+    [12:05:08.862] Collision at node 7 (from 2)   [6, 2]  other packets: ['node5_13', 'node6_13']
+    [12:05:05.199] destroyed in world: 3 -> 100   [6, 3]
+    [12:05:08.125] Collision at node 100 (from 1)   [6, 3, 1]  other packets: ['node7_13', 'node6_13']
+    [12:05:08.862] Collision at node 100 (from 2)   [6, 2]  other packets: ['node3_13', 'node6_13']
+missing packets from node 7: 3
+node7_2
+    [11:10:04.110] destroyed in world: 6 -> 3   [7, 6]
+    [11:10:04.462] Collision at node 3 (from 2)   [7, 2]  other packets: ['node7_2', 'node7_2', 'node6_2', 'node7_2', 'node3_2']
+    [11:10:04.726] Collision at node 3 (from 5)   [7, 5]  other packets: ['node7_2', 'node7_2', 'node6_2', 'node7_2', 'node3_2']
+    [11:10:05.529] Collision at node 3 (from 4)   [7, 4]  other packets: ['node3_2', 'node7_2', 'node7_2']
+    [11:10:04.110] Collision at node 2 (from 6)   [7, 6]  other packets: ['node3_2', 'node7_2']
+    [11:10:04.726] destroyed in world: 5 -> 2   [7, 5]
+    [11:10:04.803] Collision at node 2 (from 3)   [7, 3]  other packets: ['node6_2', 'node7_2', 'node7_2', 'node3_2', 'node7_2', 'node7_2']
+    [11:10:05.529] Collision at node 2 (from 4)   [7, 4]  other packets: ['node6_2', 'node7_2', 'node7_2', 'node3_2', 'node7_2', 'node7_2']
+    [11:10:04.462] Collision at node 1 (from 2)   [7, 2]  other packets: ['node7_2', 'node7_2']
+    [11:10:04.803] Collision at node 1 (from 3)   [7, 3]  other packets: ['node7_2', 'node7_2']
+    [11:10:05.529] destroyed in world: 4 -> 1   [7, 4]
+    [11:10:04.110] Collision at node 4 (from 6)   [7, 6]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2', 'node3_2']
+    [11:10:04.462] Collision at node 4 (from 2)   [7, 2]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2', 'node3_2']
+    [11:10:04.726] Collision at node 4 (from 5)   [7, 5]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2', 'node3_2']
+    [11:10:04.803] Collision at node 4 (from 3)   [7, 3]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2', 'node3_2']
+    [11:10:04.110] Collision at node 5 (from 6)   [7, 6]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:04.462] Collision at node 5 (from 2)   [7, 2]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:04.803] Collision at node 5 (from 3)   [7, 3]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:05.935] not forwarded at node 5 (from: 4), because: relay_block_time (2838/15000)   [7, 4]
+    [11:10:04.462] Collision at node 6 (from 2)   [7, 2]  other packets: ['node7_2', 'node7_2', 'node7_2', 'node6_2']
+    [11:10:04.726] Collision at node 6 (from 5)   [7, 5]  other packets: ['node7_2', 'node7_2', 'node7_2', 'node6_2']
+    [11:10:04.803] destroyed in world: 3 -> 6   [7, 3]
+    [11:10:05.935] not forwarded at node 6 (from: 4), because: relay_block_time (2838/15000)   [7, 4]
+    [11:10:04.110] Collision at node 7 (from 6)   [7, 6]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:04.462] Collision at node 7 (from 2)   [7, 2]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:04.726] Collision at node 7 (from 5)   [7, 5]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:04.803] Collision at node 7 (from 3)   [7, 3]  other packets: ['node3_2', 'node7_2', 'node7_2', 'node6_2', 'node7_2', 'node7_2']
+    [11:10:05.935] not forwarded at node 7 (from: 4), because: return to sender   [7, 4]
+    [11:10:04.462] Collision at node 100 (from 2)   [7, 2]  other packets: ['node7_2', 'node7_2', 'node3_2']
+    [11:10:04.803] Collision at node 100 (from 3)   [7, 3]  other packets: ['node7_2', 'node7_2', 'node3_2']
+node7_5
+    [11:25:04.713] Collision at node 3 (from 5)   [7, 5]  other packets: ['node6_5', 'node7_5']
+    [11:25:05.175] Collision at node 3 (from 6)   [7, 6]  other packets: ['node7_5', 'node3_5']
+    [11:25:07.045] Collision at node 3 (from 2)   [7, 2]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:07.089] Collision at node 3 (from 4)   [7, 4]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:04.713] Collision at node 2 (from 5)   [7, 5]  other packets: ['node6_5', 'node7_5']
+    [11:25:05.175] Collision at node 2 (from 6)   [7, 6]  other packets: ['node7_5', 'node3_5']
+    [11:25:06.968] Collision at node 2 (from 3)   [7, 3]  other packets: ['node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:07.089] Collision at node 2 (from 4)   [7, 4]  other packets: ['node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:06.968] Collision at node 1 (from 3)   [7, 3]  other packets: ['node7_5', 'node7_5', 'node7_5']
+    [11:25:07.045] destroyed in world: 2 -> 1   [7, 2]
+    [11:25:07.089] destroyed in world: 4 -> 1   [7, 4]
+    [11:25:04.713] Collision at node 4 (from 5)   [7, 5]  other packets: ['node6_5', 'node7_5']
+    [11:25:05.175] Collision at node 4 (from 6)   [7, 6]  other packets: ['node7_5', 'node3_5']
+    [11:25:06.968] Collision at node 4 (from 3)   [7, 3]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5']
+    [11:25:07.045] Collision at node 4 (from 2)   [7, 2]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5']
+    [11:25:05.175] Collision at node 5 (from 6)   [7, 6]  other packets: ['node7_5', 'node3_5']
+    [11:25:06.968] Collision at node 5 (from 3)   [7, 3]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:07.045] Collision at node 5 (from 2)   [7, 2]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:07.089] Collision at node 5 (from 4)   [7, 4]  other packets: ['node3_5', 'node3_5', 'node3_5', 'node7_5', 'node7_5', 'node7_5']
+    [11:25:04.713] Collision at node 6 (from 5)   [7, 5]  other packets: ['node7_5', 'node6_5']
+    [11:25:06.968] Collision at node 6 (from 3)   [7, 3]  other packets: ['node7_5', 'node7_5', 'node7_5', 'node3_5']
+    [11:25:07.045] Collision at node 6 (from 2)   [7, 2]  other packets: ['node7_5', 'node7_5', 'node7_5', 'node3_5']
+    [11:25:07.089] Collision at node 6 (from 4)   [7, 4]  other packets: ['node7_5', 'node7_5', 'node7_5', 'node3_5']
+    [11:25:04.713] Collision at node 7 (from 5)   [7, 5]  other packets: ['node6_5', 'node7_5']
+    [11:25:05.175] Collision at node 7 (from 6)   [7, 6]  other packets: ['node7_5', 'node3_5']
+    [11:25:06.968] Collision at node 7 (from 3)   [7, 3]  other packets: ['node3_5', 'node7_5', 'node7_5', 'node7_5', 'node3_5']
+    [11:25:07.045] Collision at node 7 (from 2)   [7, 2]  other packets: ['node3_5', 'node7_5', 'node7_5', 'node7_5', 'node3_5']
+    [11:25:07.089] Collision at node 7 (from 4)   [7, 4]  other packets: ['node3_5', 'node7_5', 'node7_5', 'node7_5', 'node3_5']
+    [11:25:06.968] Collision at node 100 (from 3)   [7, 3]  other packets: ['node7_5', 'node7_5']
+    [11:25:07.045] Collision at node 100 (from 2)   [7, 2]  other packets: ['node7_5', 'node7_5']
+node7_6
+    [11:30:03.649] Collision at node 3 (from 5)   [7, 5]  other packets: ['node7_6', 'node7_6']
+    [11:30:03.704] Collision at node 3 (from 2)   [7, 2]  other packets: ['node7_6', 'node7_6']
+    [11:30:07.015] Collision at node 3 (from 6)   [7, 6]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node7_6', 'node6_6']
+    [11:30:07.125] Collision at node 3 (from 4)   [7, 4]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node7_6', 'node6_6']
+    [11:30:03.649] Collision at node 2 (from 5)   [7, 5]  other packets: ['node7_6', 'node3_6', 'node7_6']
+    [11:30:07.015] Collision at node 2 (from 6)   [7, 6]  other packets: ['node6_6', 'node7_6', 'node7_6', 'node6_6', 'node7_6', 'node6_6']
+    [11:30:07.125] Collision at node 2 (from 4)   [7, 4]  other packets: ['node6_6', 'node7_6', 'node7_6', 'node6_6', 'node7_6', 'node6_6']
+    [11:30:07.664] Collision at node 2 (from 3)   [7, 3]  other packets: ['node6_6', 'node7_6', 'node7_6', 'node6_6', 'node7_6', 'node6_6']
+    [11:30:03.704] Collision at node 1 (from 2)   [7, 2]  other packets: ['node7_6', 'node3_6']
+    [11:30:07.125] Collision at node 1 (from 4)   [7, 4]  other packets: ['node6_6', 'node7_6']
+    [11:30:07.664] Collision at node 1 (from 3)   [7, 3]  other packets: ['node7_6', 'node6_6']
+    [11:30:03.649] Collision at node 4 (from 5)   [7, 5]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:03.704] Collision at node 4 (from 2)   [7, 2]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:07.015] Collision at node 4 (from 6)   [7, 6]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node6_6', 'node7_6', 'node7_6']
+    [11:30:07.664] Collision at node 4 (from 3)   [7, 3]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node6_6', 'node7_6', 'node7_6']
+    [11:30:03.704] Collision at node 5 (from 2)   [7, 2]  other packets: ['node7_6', 'node3_6', 'node7_6']
+    [11:30:07.015] Collision at node 5 (from 6)   [7, 6]  other packets: ['node6_6', 'node7_6', 'node7_6', 'node6_6']
+    [11:30:07.125] Collision at node 5 (from 4)   [7, 4]  other packets: ['node6_6', 'node7_6', 'node7_6', 'node6_6']
+    [11:30:08.070] not forwarded at node 5 (from: 3), because: relay_block_time (4961/15000)   [7, 3]
+    [11:30:03.649] Collision at node 6 (from 5)   [7, 5]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:03.704] Collision at node 6 (from 2)   [7, 2]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:07.125] Collision at node 6 (from 4)   [7, 4]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node7_6']
+    [11:30:08.070] not forwarded at node 6 (from: 3), because: relay_block_time (4961/15000)   [7, 3]
+    [11:30:03.649] Collision at node 7 (from 5)   [7, 5]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:03.704] Collision at node 7 (from 2)   [7, 2]  other packets: ['node7_6', 'node7_6', 'node3_6']
+    [11:30:07.015] Collision at node 7 (from 6)   [7, 6]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node7_6']
+    [11:30:07.125] Collision at node 7 (from 4)   [7, 4]  other packets: ['node6_6', 'node6_6', 'node7_6', 'node7_6']
+    [11:30:08.070] not forwarded at node 7 (from: 3), because: return to sender   [7, 3]
+    [11:30:03.704] Collision at node 100 (from 2)   [7, 2]  other packets: ['node7_6', 'node3_6']
+    [11:30:07.664] destroyed in world: 3 -> 100   [7, 3]
+multiple packets from node 1: 7
+node1_1
+Through hops: [1] received at 11:05:18.395
+Through hops: [1, 3] received at 11:05:22.112
+Through hops: [1, 4, 2] received at 11:05:24.665
+node1_3
+Through hops: [1] received at 11:15:18.401
+Through hops: [1, 3] received at 11:15:21.811
+node1_5
+Through hops: [1] received at 11:25:18.407
+Through hops: [1, 2] received at 11:25:19.441
+node1_6
+Through hops: [1] received at 11:30:18.410
+Through hops: [1, 2] received at 11:30:20.632
+node1_8
+Through hops: [1] received at 11:40:18.416
+Through hops: [1, 3] received at 11:40:23.421
+node1_9
+Through hops: [1] received at 11:45:18.419
+Through hops: [1, 3] received at 11:45:19.310
+Through hops: [1, 2] received at 11:45:22.951
+node1_11
+Through hops: [1, 2] received at 11:55:19.338
+Through hops: [1, 3] received at 11:55:22.363
+multiple packets from node 2: 9
+node2_1
+Through hops: [2] received at 11:05:20.210
+Through hops: [2, 3] received at 11:05:21.706
+Through hops: [2, 1] received at 11:05:23.400
+node2_2
+Through hops: [2] received at 11:10:20.213
+Through hops: [2, 1] received at 11:10:21.005
+node2_4
+Through hops: [2] received at 11:20:20.219
+Through hops: [2, 3] received at 11:20:21.792
+Through hops: [2, 1] received at 11:20:24.256
+node2_5
+Through hops: [2] received at 11:25:20.222
+Through hops: [2, 3] received at 11:25:24.083
+node2_7
+Through hops: [2] received at 11:35:20.228
+Through hops: [2, 3] received at 11:35:25.563
+node2_10
+Through hops: [2] received at 11:50:20.237
+Through hops: [2, 3] received at 11:50:21.238
+Through hops: [2, 1] received at 11:50:22.063
+node2_11
+Through hops: [2, 1] received at 11:55:23.518
+Through hops: [2, 1, 3] received at 11:55:25.872
+node2_12
+Through hops: [2, 5, 3] received at 12:00:24.291
+Through hops: [2, 4, 1] received at 12:00:25.897
+node2_13
+Through hops: [2] received at 12:05:20.246
+Through hops: [2, 3] received at 12:05:22.083
+Through hops: [2, 1] received at 12:05:23.436
+multiple packets from node 3: 3
+node3_1
+Through hops: [3] received at 11:05:04.359
+Through hops: [3, 2] received at 11:05:05.866
+Through hops: [3, 1] received at 11:05:07.670
+node3_5
+Through hops: [3] received at 11:25:04.371
+Through hops: [3, 2] received at 11:25:06.648
+Through hops: [3, 1] received at 11:25:09.596
+node3_10
+Through hops: [3] received at 11:50:04.386
+Through hops: [3, 2] received at 11:50:04.947
+multiple packets from node 4: 4
+node4_4
+Through hops: [4, 2] received at 11:20:14.521
+Through hops: [4, 2, 1] received at 11:20:18.811
+node4_7
+Through hops: [4, 1] received at 11:35:17.456
+Through hops: [4, 1, 2] received at 11:35:19.678
+node4_8
+Through hops: [4, 1] received at 11:40:15.204
+Through hops: [4, 2] received at 11:40:15.820
+node4_9
+Through hops: [4, 2] received at 11:45:13.744
+Through hops: [4, 3] received at 11:45:15.515
+Through hops: [4, 1] received at 11:45:17.275
+multiple packets from node 5: 6
+node5_1
+Through hops: [5, 6, 2] received at 11:05:14.468
+Through hops: [5, 6, 3] received at 11:05:15.755
+Through hops: [5, 6, 2, 1] received at 11:05:18.813
+node5_2
+Through hops: [5, 2] received at 11:10:11.633
+Through hops: [5, 2, 1] received at 11:10:14.713
+node5_3
+Through hops: [5, 2] received at 11:15:09.678
+Through hops: [5, 3] received at 11:15:13.165
+node5_5
+Through hops: [5, 3] received at 11:25:10.388
+Through hops: [5, 2] received at 11:25:13.061
+node5_7
+Through hops: [5, 3, 1] received at 11:35:13.419
+Through hops: [5, 2] received at 11:35:14.002
+node5_10
+Through hops: [5, 2] received at 11:50:11.239
+Through hops: [5, 2, 1] received at 11:50:12.944
+multiple packets from node 6: 2
+node6_6
+Through hops: [6, 3] received at 11:30:05.837
+Through hops: [6, 2] received at 11:30:07.135
+node6_12
+Through hops: [6, 2] received at 12:00:07.549
+Through hops: [6, 2, 1] received at 12:00:10.937
+multiple packets from node 7: 9
+node7_1
+Through hops: [7, 3] received at 11:05:07.043
+Through hops: [7, 4, 2] received at 11:05:08.220
+Through hops: [7, 3, 1] received at 11:05:09.078
+node7_3
+Through hops: [7, 3, 1] received at 11:15:05.630
+Through hops: [7, 2] received at 11:15:06.158
+node7_4
+Through hops: [7, 3] received at 11:20:07.580
+Through hops: [7, 2] received at 11:20:08.251
+node7_7
+Through hops: [7, 3] received at 11:35:04.322
+Through hops: [7, 4, 1] received at 11:35:07.820
+node7_8
+Through hops: [7, 3] received at 11:40:05.766
+Through hops: [7, 3, 1] received at 11:40:06.239
+node7_9
+Through hops: [7, 3, 1] received at 11:45:07.694
+Through hops: [7, 3, 2] received at 11:45:08.959
+node7_10
+Through hops: [7, 2] received at 11:50:03.561
+Through hops: [7, 2, 1] received at 11:50:05.442
+Through hops: [7, 3] received at 11:50:07.675
+node7_11
+Through hops: [7, 3] received at 11:55:07.326
+Through hops: [7, 3, 1] received at 11:55:09.273
+node7_12
+Through hops: [7, 3] received at 12:00:06.526
+Through hops: [7, 3, 1] received at 12:00:09.441
+EVALUATION
+Analysis where the missing packets were destroyed:
+10.53 % of missing packets were destroyed in the world (38 of 361 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 32 missing)
+40 multiple packets were received in total

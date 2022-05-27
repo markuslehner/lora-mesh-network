@@ -1,0 +1,9 @@
+[Unit]
+Description=Server for receiving LoRa packets carrying GPS data. Used for reception testing.
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/python3.10 /home/pi/project/server/central_node_gps.py
+Restart=on-abort
+User=pi
+WorkingDirectory=/home/pi/project/server

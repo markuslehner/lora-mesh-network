@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href='/static/command_style.css' />
+        <script>
+            $(document).ready(function(){
+
+                document.getElementById("include_join_path").checked = "{{include_join_path}}" == "True"
+
+                $('#include_join_path').on('change',function(){
+                    $.ajax({
+                        type: 'post',
+                        url: '/set_include_join_path',
+                        data: {
+                            include_join_path : document.getElementById("include_join_path").checked
+                        }
+                    });
+                    return false;
+                });
+
+                $('a#reset_routes').on('click', function(e) {
+                    e.preventDefault()
+                    $.ajax({
+                        type: 'post',
+                        url: '/reset_routes',
+                        data: {},
+                        success: function(response) {
+                            window.location.reload();
+                        }
+                    });
+                    return false;
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="./">MAIN</a>
+            <a class="active" href="./network_overview">Network overview</a>
+            <a href="./statistics">Statistics</a>
+            <a href="./about">About</a>
+        </div>
+
+        <div class="header">
+            <h1> <strong>Network overview</strong> </h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <img class="net_graph" src="{{ image }}"/>
+            </div>
+        </div>   
+
+        <div class="row command_palette">
+            <div class="row">
+                <h3 style="text-align: center;"> <strong>Options</strong> </h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <label class="command_inputs" for="include_join_path">Include join path in network graph: </label>
+                        <input type="checkbox" id="include_join_path" name="include_join_path">   
+                    </div>
+                    <div class="row">
+                        <label class="command_inputs" for="reset_routes">Reset route-data: </label>
+                        <a href=# id=reset_routes name="reset_routes"><button class='btn btn-default'>RESET</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+[Unit]
+Description=Server for receiving the LoRa packets
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/python3.10 /home/pi/project/server/central_node_web.py service debug_lvl=3
+Restart=on-abort
+User=pi
+WorkingDirectory=/home/pi/project/server/
+
+[Install]
+WantedBy=multi-user.target

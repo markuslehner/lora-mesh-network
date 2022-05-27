@@ -1,0 +1,12 @@
+{
+    "ltex.enabled": [
+        "bibtex",
+        "context",
+        "context.tex",
+        "latex",
+        "markdown",
+        "org",
+        "restructuredtext",
+        "rsweave"
+    ]
+}

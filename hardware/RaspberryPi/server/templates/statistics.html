@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href='/static/command_style.css' />
+        <script>
+            $(document).ready(function(){
+
+            })
+        </script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="./">MAIN</a>
+            <a href="./network_overview">Network overview</a>
+            <a class="active" href="./statistics">Statistics</a>
+            <a href="./about">About</a>
+        </div>
+
+        <div class="header">
+            <h1> <strong>Statistics</strong> </h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="status_table my_table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="my_table_info">Status Information</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="my_table_info">Time started</td>
+                                    <td class="my_table_data">{{ time_started }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Time restarted</td>
+                                    <td class="my_table_data">{{ time_restarted }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Number of packets received</td>
+                                    <td class="my_table_data">{{ num_rx }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Number of packets sent (approximation)</td>
+                                    <td class="my_table_data">{{ num_tx }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Number of requested packets</td>
+                                    <td class="my_table_data">{{ num_req }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Packet delivery ratio</td>
+                                    <td class="my_table_data">{{ pdr }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Number of rejoins</td>
+                                    <td class="my_table_data">{{ num_rejoins }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </body>
+</html>

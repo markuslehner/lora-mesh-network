@@ -1,0 +1,3 @@
+scp file.py pi@RaspberryPi:project/server
+
+pscp.exe -P 22 pi@RaspberryPi:project/server/gps_db.db D:\path\to\folder

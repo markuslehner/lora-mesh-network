@@ -1,0 +1,288 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href='/static/command_style.css' />
+        <script>
+            $(document).ready(function(){
+
+                // set initial state
+                // document.getElementById("set_distance").style.display = "none";
+                // document.getElementById("set_distance_label").style.display = "none";
+
+                // document.getElementById("block_node").style.display = "none";
+                // document.getElementById("block_node_label").style.display = "none";
+
+                document.getElementById("block_node_row").style.display = "none";
+                document.getElementById("set_distance_row").style.display = "none";
+
+
+                // reset
+                $('a#queue_command').on('click', function(e) {
+                    e.preventDefault()
+                    $.ajax({
+                        type: 'post',
+                        url: '/queue_command',
+                        data: {
+                            type : document.getElementById("commands").value,
+                            target : document.getElementById("target_node").value,
+                            prio : document.getElementById("prio").value,
+                            ack : document.getElementById("ack").checked,
+                            broadcast : document.getElementById("broadcast").checked,
+                            distance : document.getElementById("set_distance").value,
+                            block_node : document.getElementById("block_node").value
+                        },
+                        success: function(response) {
+                            window.location.reload();
+                        }
+                    });
+                    return false;
+                });
+
+                $('#commands').on('change',function(){
+                    if(this.value == "RESET") {
+                        console.log("disabling ack");
+                        document.getElementById("ack").disabled = true;
+                        document.getElementById("ack").value = 0;
+
+                        document.getElementById("prio").disabled = true;
+                        document.getElementById("prio").value = 1;
+
+                        document.getElementById("broadcast").disabled = true;
+                        document.getElementById("broadcast").checked = false;
+
+                        document.getElementById("target_node").disabled = false;
+                    } else if(this.value == "SET_INTERVAL" ) {
+                        document.getElementById("ack").disabled = true;
+                        document.getElementById("broadcast").disabled = true;
+                        document.getElementById("broadcast").checked = false;
+                    
+                    } else {
+                        document.getElementById("ack").disabled = false;
+
+                        document.getElementById("prio").disabled = false;
+                        document.getElementById("prio").value = 2;
+
+                        document.getElementById("broadcast").disabled = false;
+
+                        document.getElementById("target_node").disabled = false;
+                    }
+
+                    if(this.value == "REMOVE_BLOCK" || this.value == "SET_BLOCK") {
+                        document.getElementById("block_node_row").style.display = "block";
+                    } else {
+                        document.getElementById("block_node_row").style.display = "none";
+                    }
+
+                    if(this.value == "SET_DISTANCE") {
+                        document.getElementById("set_distance_row").style.display = "block";
+                    } else {
+                        document.getElementById("set_distance_row").style.display = "none";
+                    }
+                });
+
+                $('#broadcast').on('change',function(){
+                    if(this.checked) {
+                        console.log("disabling target selection");
+                        document.getElementById("target_node").disabled = true;
+                        document.getElementById("ack").disabled = true;
+                    } else {
+                        document.getElementById("target_node").disabled = false;
+                        document.getElementById("ack").disabled = false;
+                    }
+                });
+                
+            })
+        </script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="./">MAIN</a>
+            <a href="./network_overview">Network overview</a>
+            <a href="./statistics">Statistics</a>
+            <a href="-/about">About</a>
+        </div>
+
+        <div class="header">
+            <h1> <strong>Network status</strong> </h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="status_table my_table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="my_table_info">Status Information</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="my_table_info">Num. connected nodes</td>
+                                    <td class="my_table_data">{{ num_nodes }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Nodes sending</td>
+                                    <td class="my_table_data">{{ nodes_sending }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">All nodes sending</td>
+                                    <td class="my_table_data">{{ all_nodes_sending }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Nodes sleeping</td>
+                                    <td class="my_table_data">{{ nodes_sleeping }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">New nodes</td>
+                                    <td class="my_table_data">{{ new_nodes }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Started successfully</td>
+                                    <td class="my_table_data">{{ started_successfully }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Network running</td>
+                                    <td class="my_table_data">{{ network_running }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Interval</td>
+                                    <td class="my_table_data">{{ interval }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="my_table_info">Interval active percentage</td>
+                                    <td class="my_table_data">{{ interval_active }} %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style= "height : 20px;"></div>
+                    <div class="nodes_table my_table my_scrollable_table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>DIST</th>
+                                    <th>BAT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for node in nodes %}
+                                <tr>
+                                    <td>{{node[0]}}</td>
+                                    <td>{{node[1]}}</td>
+                                    <td>{{node[2]}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-sm-8">
+                    <img class="net_graph" src="{{ image }}"/>
+                </div>
+            </div>
+
+            <div class="row command_palette">
+                <div class="row">
+                    <h3 style="text-align: center;"> <strong>Command Center</strong> </h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <label class="command_inputs" for="commands">Choose a command type:</label>
+                            <select name="commands" id="commands">
+                                <option value="STOP_SENDING">STOP_SENDING</option>
+                                <option value="START_SENDING">START_SENDING</option>
+                                <option value="RESET">RESET</option>
+                                <option value="DISABLE_DEBUG">DISABLE_DEBUG</option>
+                                <option value="ENABLE_DEBUG">ENABLE_DEBUG</option>
+                                <option value="DISABLE_SLEEP">DISABLE_SLEEP</option>
+                                <option value="ENABLE_SLEEP">ENABLE_SLEEP</option>
+                                <option value="SET_BLOCK">SET_BLOCK</option>
+                                <option value="REMOVE_BLOCK">REMOVE_BLOCK</option>
+                                <option value="SET_DISTANCE">SET_DISTANCE</option>
+                                <option value="SET_INTERVAL">SET_INTERVAL</option>
+                                <option value="REQUEST_ROUTE">REQUEST_ROUTE</option>
+                                <option value="REQUEST">REQUEST</option>
+                                <option value="JOIN_ACK">JOIN_ACK</option>
+                                <option value="remove_node">remove_node</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <label class="command_inputs" for="target_node">Choose a target node:</label>
+                            <select name="target_node" id="target_node">
+                                {% for node in nodes %}
+                                <option value="{{node[0]}}">{{node[0]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <label class="command_inputs" for="prio">Choose priority:</label>
+                            <input type="number" value=2 id="prio" name="prio" min="1" max="5">   
+                        </div>
+
+                        <div class="row">
+                            <label class="command_inputs" for="ack">Request ACK</label>
+                            <input type="checkbox" value=0 id="ack" name="ack">   
+                        </div>
+
+                        <div class="row">
+                            <label class="command_inputs" for="ack">Broadcast to all</label>
+                            <input type="checkbox" value=0 id="broadcast" name="broadcast">   
+                        </div>
+
+                        <div class="row" id="block_node_row">
+                            <label class="command_inputs" for="block_node" id="block_node_label">Choose a node to block:</label>
+                            <select name="block_node" id="block_node">
+                                {% for node in nodes %}
+                                <option value="{{node[0]}}">{{node[0]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="row" id="set_distance_row">
+                            <label class="command_inputs" for="set_distance" id="set_distance_label">Set distance:</label>
+                            <input type="number" value=2 id="set_distance" name="set_distance" min="1" max="5">   
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-sm-4">
+                        <a href=# id=queue_command><button class='btn btn-default'>QUEUE COMMAND</button></a>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="command_table my_table my_scrollable_table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Command</th>
+                                        <th>ID</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for command in command_list %}
+                                    <tr>
+                                        <td>{{command[0]}}</td>
+                                        <td>{{command[1]}}</td>
+                                        <td>{{command[2]}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>
