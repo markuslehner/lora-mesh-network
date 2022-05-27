@@ -3,6 +3,8 @@ import time
 
 if __name__ == '__main__':
     
+    pi_interface.set_raspberry_name("MasterarbeitPi")
+
     up = False
     if(up):
         pi_interface.upload("gps", "gps_db_7.db web_server_gps.py", "project/server")

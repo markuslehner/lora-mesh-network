@@ -1,8 +1,18 @@
 import subprocess
 import keyring
 
-# Run this code with the password of user pi of the RaspberryPi
-# keyring.set_password("master_pi", "pi", "***********")
+user_name : str = "pi"
+raspberry_name : str = "RaspberryPi"
+
+def set_user(usr : str):
+    global user_name
+    user_name = usr
+
+
+def set_raspberry_name(name : str):
+    global raspberry_name
+    raspberry_name = name
+
 
 def run(cmd : str, print_cmd=False) -> subprocess.CompletedProcess[bytes]:
 
@@ -29,7 +39,7 @@ def download(src : str, dest_dir : str, relative=True, password : str = None) ->
     if(relative):
         command =  "$currentDir = Get-Location; \
                     $targetDir = $utilsDir  = Join-Path -Path $currentDir -ChildPath '%s'; \
-                    pscp -pw %s -P 22 pi@MasterarbeitPi:%s $targetDir" % (password, dest_dir, src)
+                    pscp -pw %s -P 22 %s@%s:%s $targetDir" % (password, dest_dir, user_name, raspberry_name, src)
         
         return run(command)
     else:
@@ -39,7 +49,8 @@ def download(src : str, dest_dir : str, relative=True, password : str = None) ->
 
 def upload(src_dir : str, src : str, dest_dir : str, relative=True, password : str = None) -> subprocess.CompletedProcess[bytes]:
 
-    # imput check
+    global user_name, raspberry_name
+    # input check
     if(len(src) == 0):
         print("Error: no source file specified")
         return None
@@ -51,7 +62,7 @@ def upload(src_dir : str, src : str, dest_dir : str, relative=True, password : s
         password = keyring.get_password("master_pi", "pi")
 
     if(relative):
-        command = "cd '%s'; pscp -pw %s %s pi@MasterarbeitPi:%s" % (src_dir, password, src, dest_dir)
+        command = "cd '%s'; pscp -pw %s %s %s@%s:%s" % (src_dir, password, src, user_name, raspberry_name, dest_dir)
         return run(command)
     else:
         print("currently not supported!")
