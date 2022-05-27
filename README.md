@@ -17,7 +17,9 @@ The simulation is entity-based, with the entities being located at a specific po
 
 Every node is an entity in the world with a specific two-dimensional position defined by x_n and y_n coordinates. It acts as a container for multiple other objects. These objects are used to emulate the real hardware of the sensor nodes, like the sensor, battery, and transceiver module. The transceiver is handling all the communication and can be accessed through interfaces similar to the real LoRa transceivers. This will allow the development of the software stack using the simulation rather than always performing a hardware test. To make switching between different protocol implementations easier, the software is modeled as a container called *logic*. This *logic* module contains another module called the *packet handler* that is responsible for handling all incoming packets. This creates a modular system that can easily be adapted to test different designs.
 
-![Structure of node entity](/other/node.png)
+<p align="center">
+<img src="other/node.png" width=50%>
+</p>
 
 A simulation world is used to create a common reference frame and handle the transmission parameters.
 
@@ -53,7 +55,9 @@ tx_decay = 2
 
 The spreading factor SF is the most important parameter influencing the transmission model. It defines the trade-off between communication range and data rate. It can be chosen between 7 and 12, where 7 is the shortest range and 12 is the longest. In the simulation for each SF a minimum and maximum communication range is defined. To simulate other channel qualities the minimum and maximum transmission range can also be set manually. Between these two distances the probability of a successful transmission drops from 1 minus the static error *tx_error_rate* to zero. The speed of the drop-off can be adjusted by *tx_decay*. Overall this leads to the following transmission model:
 
-![Plot of transmission model](/other/transmission_model.png)
+<p align="center">
+<img src="other/transmission_model.png" width=50%>
+</p>
 
 After defining our transmission model and configuration name, we can start adding nodes to the simulation. Each node is an entity in the simulation world, that gets updated every millisecond. Every node has a *logic* object defining its behavior, much like the code on a microcontroller would. The following code creates and adds a node with the logic for setting up the LoRa mesh network (LMN) proposed in my master's thesis:
 
@@ -71,7 +75,9 @@ cmanager.register_node(node_sensor(
 
 The node has the node ID 1 and is placed at (200,0). With this method the other six sensor nodes are added. Then to actually create the network, a gateway needs to be added. This is only different to the sensor nodes in the used logic. After adding all nodes, the scenario looks as follows:
 
-![Visualization of scenario](/other/world.png)
+<p align="center">
+<img src="other/wolrd.png" width=50%>
+</p>
 
 Every arrow represents a communication link between the nodes and the number is the likelihood of a successful transmission.
 
@@ -107,11 +113,15 @@ The hardware used for the network were Heltec LoRa 32 (V2) development boards fo
 
 The central node was realized with a RaspberryPi together with a RAK811 LoRa transceiver module for the LoRa communication. It was programmed in Python to re-use the code from the simulation.
 
-![Photo of the RaspberryPi as gateway](/other/central_node.jpg)
+<p align="center">
+<img src="other/central_node.jpg" width=50%>
+</p>
 
 A small web server is running on the Pi to visualize the status of the network. On port 5000 a table of received packets is displayed and on port 5001 a control interface with the current network status is hosted.
 
-![Screenshot of the website](/other/website_screenshot.png)
+<p align="center">
+<img src="other/website_screenshot.png" width=50%>
+</p>
 
 To set up the RaspberryPi create the following structure under the username:
 ```
@@ -134,7 +144,9 @@ For connecting the RAK811 see this resource:
 
 The sensor nodes are based on the Heltec LoRa 32 (V2) development board with an ESP32 microcontroller, integrated USB to serial interface and a charge controller for Li-Po batteries. This is already all that is needed to create the sensor nodes except the sensors themselves. It is possible to connect a large variety of sensors to the ESP32 microcontroller via common interfaces like SPI and I2C. For testing the network the MPU6050 inertial measurement unit (IMU) was used.
 
-![Schematic of sensor node with its case](/other/sensor_node_case.png)
+<p align="center">
+<img src="other/sensor_node_case.png" width=50%>
+</p>
 
 The C++ code for the ESP32 was developed using the PlatformIO plugin for Visual Studio Code. I recommend these resources to get started:
 * https://docs.platformio.org/en/stable/integration/ide/vscode.html
