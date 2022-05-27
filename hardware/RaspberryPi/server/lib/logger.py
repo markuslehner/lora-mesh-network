@@ -23,7 +23,11 @@ class logger(object):
         self.print = print_console
         self.prefix = log_prefix
 
-        self.file_name = "%s_%s" % (self.prefix, datetime.now().strftime("%m%d%Y_%H%M") )
+        if(self.prefix is None):
+            self.file_name = None
+        else:
+            self.file_name = "%s_%s" % (self.prefix, datetime.now().strftime("%m%d%Y_%H%M") )
+            
         self.current_day = int( datetime.now().strftime("%d") )
         self.log_file = None
 

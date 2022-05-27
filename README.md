@@ -76,7 +76,7 @@ cmanager.register_node(node_sensor(
 The node has the node ID 1 and is placed at (200,0). With this method the other six sensor nodes are added. Then to actually create the network, a gateway needs to be added. This is only different to the sensor nodes in the used logic. After adding all nodes, the scenario looks as follows:
 
 <p align="center">
-<img src="other/world.png" width=50%>
+<img src="other/world.png" width=90%>
 </p>
 
 Every arrow represents a communication link between the nodes and the number is the likelihood of a successful transmission.
