@@ -43,13 +43,13 @@ transmission_ranges = {
 }
 
 # returns the airtime of the packet in ms
-def get_air_time(freq, spread, band, length, cr=5) -> int:
+def get_air_time(freq : float, mod : str, band : float, length : int, cr=5) -> int:
 
     # SF_1 doesn't exist and is for testing, handle it as SF 7
-    if(spread == 1):
+    if(mod == "SF_1"):
         SF = 7
     else:
-        SF = spread
+        SF = int(mod.split("_")[1])
 
     symbol_duration = (2**SF) / (band)
 
@@ -82,7 +82,7 @@ class world(object):
         self.error_rate = error_rate
         self.decay = decay
 
-    def add(self, node, x, y) -> None:
+    def add(self, node : node, x, y) -> None:
         node.position(x, y)
         node.logic.setup()
         self.nodes.append(node)
@@ -177,7 +177,7 @@ class world(object):
         self.time += 1
 
     # get link quality for a packet (tx_packet) sent from sender to receiver
-    def get_link_quality(self, sender : node, receiver : node, spread, tx_power) -> float:
+    def get_link_quality(self, sender : node, receiver : node, mod : str, tx_power : float) -> float:
 
         dist = np.sqrt( (sender.x - receiver.x)**2 + (sender.y - receiver.y)**2 )
 
@@ -193,22 +193,22 @@ class world(object):
         # get distance from world_library
         # or use override
         if(self.min_distance is None):
-            min_dist = transmission_ranges.get("SF_%s" % spread).get("min_distance")
+            min_dist = transmission_ranges.get(mod).get("min_distance")
         else:
             min_dist = self.min_distance
 
         if(self.max_distance is None):
-            max_dist = transmission_ranges.get("SF_%s" % spread).get("max_distance")
+            max_dist = transmission_ranges.get(mod).get("max_distance")
         else:
             max_dist = self.max_distance
 
         if(self.error_rate is None):
-            error_rate = transmission_ranges.get("SF_%s" % spread).get("error_rate")
+            error_rate = transmission_ranges.get(mod).get("error_rate")
         else:
             error_rate = self.error_rate
 
         if(self.decay is None):
-            decay = transmission_ranges.get("SF_%s" % spread).get("decay")
+            decay = transmission_ranges.get(mod).get("decay")
         else:
             decay = self.decay
 
@@ -250,7 +250,7 @@ class world(object):
         # return random.random() <= self.get_link_quality(sender, receiver, tx_packet)
 
         # more spread out for debugging lost packets
-        link_quality = self.get_link_quality(sender, receiver, tx_packet.spreading_factor, tx_packet.tx_power)
+        link_quality = self.get_link_quality(sender, receiver, tx_packet.modulation, tx_packet.tx_power)
 
         if(link_quality < 0):
             return -1
@@ -283,7 +283,7 @@ class world(object):
                     
                     # calc rssi
                     if(self.max_distance is None):
-                        max_dist = transmission_ranges.get("SF_%s" % tx_packet.spreading_factor).get("max_distance")
+                        max_dist = transmission_ranges.get("SF_%s" % tx_packet.modulation).get("max_distance")
                     else:
                         max_dist = self.max_distance
                      
@@ -344,8 +344,8 @@ class world(object):
                     
                     # print("%s:   %i %i" % (n.name, n.x, n.y))
 
-                    one_two = self.get_link_quality(n, cn, n.get_transceiver().get_spreading_factor(), n.get_transceiver().get_tx_power())
-                    two_one = self.get_link_quality(cn, n, cn.get_transceiver().get_spreading_factor(), cn.get_transceiver().get_tx_power())
+                    one_two = self.get_link_quality(n, cn, n.get_transceiver().get_modulation(), n.get_transceiver().get_tx_power())
+                    two_one = self.get_link_quality(cn, n, cn.get_transceiver().get_modulation(), cn.get_transceiver().get_tx_power())
                     
                     if(one_two > 0 and two_one > 0):
                         quali = one_two
@@ -473,8 +473,8 @@ class world(object):
                     
                     # print("%s:   %i %i" % (n.name, n.x, n.y))
 
-                    one_two = self.get_link_quality(n, cn, n.get_transceiver().get_spreading_factor(), n.get_transceiver().get_tx_power())
-                    two_one = self.get_link_quality(cn, n, cn.get_transceiver().get_spreading_factor(), cn.get_transceiver().get_tx_power())
+                    one_two = self.get_link_quality(n, cn, n.get_transceiver().get_modulation(), n.get_transceiver().get_tx_power())
+                    two_one = self.get_link_quality(cn, n, cn.get_transceiver().get_modulation(), cn.get_transceiver().get_tx_power())
                     
                     if(one_two > 0 and two_one > 0):
                         quali = one_two

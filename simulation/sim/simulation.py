@@ -7,9 +7,8 @@ from sim.debugger import debugger
 from sim.destroyed_packet import destroyed_packet, Destruction_type
 from datetime import datetime
 
-import pickle
+import pickle, os, time
 import numpy as np
-import time
 from pathlib import Path
 
 class simulation(object):
@@ -285,7 +284,7 @@ class simulation(object):
                 self.debugger.log("    %s successfully received: %i from %i (%i)" % (n.name, n.get_transceiver().cnt_rec, n.get_transceiver().cnt_rec_all, n.get_transceiver().cnt_rec + n.get_transceiver().cnt_corrupted + n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
 
         # write CSV results file
-        res_file = open("Simulation\\results\\%s_res.csv" % self.name, "w")
+        res_file = open(os.path.dirname(os.path.dirname(__file__)) + "\\results\\%s_res.csv" % self.name, "w")
 
         res_file.write("nodes")
         for n in world_nodes:

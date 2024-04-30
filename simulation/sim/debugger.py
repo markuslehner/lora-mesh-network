@@ -1,4 +1,4 @@
-import datetime
+import datetime, os
 from sim.destroyed_packet import destroyed_packet
 
 class debugger(object):
@@ -12,7 +12,7 @@ class debugger(object):
         self.state = 0
         # list of destroyed packets
         self.destroyed_packets : dict = {}
-        self.log_file = open("Simulation\\results\\%s_log.txt" % sim_name, "w")
+        self.log_file = open(os.path.dirname(os.path.dirname(__file__)) + "\\results\\%s_log.txt" % sim_name, "w")
     
     def set_state(self, s):
         self.state = s   

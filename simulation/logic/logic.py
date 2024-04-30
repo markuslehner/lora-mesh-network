@@ -49,12 +49,11 @@ class representing the code framework for creating code to simulate a node
 """
 class logic_node(logic):
 
-    def __init__(self, appID : int = 0, node_id : int = 0, handler : packet_handler=None, spreading_f : int = 10):
+    def __init__(self, appID : int = 0, node_id : int = 0, handler : packet_handler=None):
         super().__init__()
         self.chapter = 0
         self.appID = appID
         self.node_id = node_id
-        self.spreading_factor = spreading_f
 
         self.node : node = None
         self.debugger : debugger = None

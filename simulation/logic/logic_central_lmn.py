@@ -12,7 +12,7 @@ from datetime import datetime
 class logic_central_lmn(logic_central):
 
     def __init__(self, appID : int, node_id : int, db : bool=False, interval : int=1000*60*10, handler=handler_lmn(), blocks : list = [], spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, db, handler, spreading_f)
+        super().__init__(appID, node_id, db, handler)
 
         self.artificial_blocks = blocks
 
@@ -190,7 +190,7 @@ class logic_central_lmn(logic_central):
         '''SENDING PARAMS'''
         # packet id stuff
         self.next_packet_id = 0
-
+        self.spreading_factor = spreading_f
 
         '''DB'''
         # write db file or not
@@ -200,7 +200,7 @@ class logic_central_lmn(logic_central):
         super().setup()
 
         self.node.get_transceiver().set_frequency(868)
-        self.node.get_transceiver().set_spreading_factor(self.spreading_factor)
+        self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
         self.node.get_transceiver().set_tx_power(14)
 
         self.last_join_check = self.node.get_time()

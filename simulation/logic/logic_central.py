@@ -1,6 +1,7 @@
 from logic.handler_flooding_basic import handler_flooding_basic
 from logic.logic import logic, logic_node
 from hw.packet import packet, Payload_type, Command_type
+from typing import List
 
 import os
 import datetime
@@ -9,14 +10,14 @@ from sqlite3 import Error
 
 class logic_central(logic_node):
 
-    def __init__(self, appID : int =0, node_id : int = 0, db :bool=False, handler=handler_flooding_basic(), spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, handler, spreading_f)
+    def __init__(self, appID : int =0, node_id : int = 0, db :bool=False, handler=handler_flooding_basic()) -> None:
+        super().__init__(appID, node_id, handler)
 
         # list of all packets received by this node
-        self.pack_list : 'list[packet]' = []
+        self.pack_list : List[packet] = []
         # list of all packets stored to db for easier access
-        self.local_db = []
-        self.local_db_rx_time = []
+        self.local_db : List[packet] = []
+        self.local_db_rx_time : List[float]= []
 
         self.time_broadcast = 1000*60*60
         self.last_time_broadcast = 20000
@@ -24,7 +25,7 @@ class logic_central(logic_node):
 
     def setup(self):
         self.node.get_transceiver().set_frequency(868)
-        self.node.get_transceiver().set_spreading_factor(10)
+        self.node.get_transceiver().set_modulation("SF_10")
         self.node.get_transceiver().set_tx_power(14)
 
         self.packetHandler.register(self.node)

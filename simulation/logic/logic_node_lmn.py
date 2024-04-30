@@ -10,9 +10,10 @@ import random
 class logic_node_lmn(logic_node):
 
     def __init__(self, appID : int, node_id : int, handler=handler_dist_pid(), blocks : list[int] = [], spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, handler, spreading_f)
+        super().__init__(appID, node_id, handler)
 
         self.artificial_blocks = blocks
+        self.spreading_factor = spreading_f
 
         # id of central node
         self.central_id = 0
@@ -85,7 +86,7 @@ class logic_node_lmn(logic_node):
     def setup(self):
         # self.packetHandler = handler_flooding()
         self.node.get_transceiver().set_frequency(868)
-        self.node.get_transceiver().set_spreading_factor(self.spreading_factor)
+        self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
         self.node.get_transceiver().set_tx_power(14)
 
         self.packetHandler.register(self.node)
@@ -196,7 +197,7 @@ class logic_node_lmn(logic_node):
                         self.last_interval_set = self.node.get_time()
 
                         # estimate transmission delay
-                        est_time_delay = (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.spreading_factor, rx_packet.bandwidth, rx_packet.get_length()))
+                        est_time_delay = (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
                         est_time_delay += + ((rx_packet.num_hops-1) * self.packetHandler.relay_time/2) 
                         
                         # update own sending params
@@ -233,7 +234,7 @@ class logic_node_lmn(logic_node):
                         self.last_interval_set = self.node.get_time()
 
                         # estimate transmission delay
-                        est_time_delay = (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.spreading_factor, rx_packet.bandwidth, rx_packet.get_length()))
+                        est_time_delay = (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
                         est_time_delay += ((rx_packet.num_hops-1) * self.packetHandler.relay_time/2) 
 
                         self.send_interval = rx_packet.payload[1]
@@ -311,7 +312,7 @@ class logic_node_lmn(logic_node):
             # self.node.set_time(rx_packet.payload)
 
             # estimate transmission time and correct received time
-            est_time = rx_packet.payload + (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.spreading_factor, rx_packet.bandwidth, rx_packet.get_length()))
+            est_time = rx_packet.payload + (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
 
             # when using handler_flooding, relay time is random
             # max relay time/2 should be the expected value

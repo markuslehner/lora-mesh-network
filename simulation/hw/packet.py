@@ -160,6 +160,12 @@ class packet(object):
         # RSSI when the packet was last received
         self.rssi : int = 0
 
+        # sending parameters
+        self.frequency : float = None
+        self.modulation : str = None
+        self.bandwidth : float = None
+        self.tx_power : float = None
+
         # debug
         self.time_received : int = 0
         self.debug_name = debug_name
@@ -173,16 +179,16 @@ class packet(object):
         cop.origin = self.origin
         cop.frequency = self.frequency
         cop.bandwidth = self.bandwidth
-        cop.spreading_factor = self.spreading_factor
+        cop.modulation = self.modulation
         cop.tx_power = self.tx_power
         
         cop.hops = self.hops.copy()
         return cop
 
     # set sending parameters
-    def send(self, freq, spread, band, tx_power):
+    def send(self, freq, mod, band, tx_power):
         self.frequency = freq
-        self.spreading_factor = spread
+        self.modulation = mod
         self.bandwidth = band
         self.tx_power = tx_power
     
@@ -205,7 +211,7 @@ class packet(object):
             return 15
 
     def get_air_time(self) -> int:
-        return world.get_air_time(self.frequency, self.spreading_factor, self.bandwidth, self.get_length())
+        return world.get_air_time(self.frequency, self.modulation, self.bandwidth, self.get_length())
 
     def add_hop(self, node):
         self.sender = node.id

@@ -9,11 +9,15 @@ class transceiver(object):
 
         # parameters
         self.frequency = 868 #Mhz
-        self.spreading_factor = 9
-        self.bandwidth = 125 #kHz
-        self.tx_power = 20 # dBm
-        self.preamble_length = 12 #num symbols
-        self.code_rate = 5 # 4/code_rate * R_b = effective bit rate
+        # TODO change to modulation to be more general
+        self.modulation : str = "SF_9"
+        self.bandwidth : float = 125.0 #kHz
+        self.tx_power : float = 20.0 # dBm
+        
+
+        # TODO LoRa parameters to subclass
+        # self.preamble_length : int = 12  #num symbols
+        # self.code_rate = 5 # 4/code_rate * R_b = effective bit rate
 
         # if true, aborts sending and retries when inc transmission detected
         # This is NOT the case with the used Semtech Transceivers
@@ -62,11 +66,11 @@ class transceiver(object):
     def get_frequency(self):
         return self.frequency
 
-    def set_spreading_factor(self, spread):
-        self.spreading_factor = spread
+    def set_modulation(self, mod : str):
+        self.modulation = mod
 
-    def get_spreading_factor(self):
-        return self.spreading_factor
+    def get_modulation(self):
+        return self.modulation
 
     def set_bandwidth(self, band):
         self.bandwidth = band
@@ -79,7 +83,7 @@ class transceiver(object):
 
     """
     set the transmit power of the transceiver
-    possible values are 7, 14, 17 adn 20 dBm
+    possible values are 7, 14, 17 and 20 dBm
     """
     def set_tx_power(self, tx_power):
         if(tx_power > 20):
@@ -112,7 +116,7 @@ class transceiver(object):
     def receive(self, packet, corrupted = False):
         if(not self.sleep):
             # print("received at node %s" % self.node.name)
-            if(packet.frequency == self.frequency and packet.spreading_factor == self.spreading_factor and packet.bandwidth == self.bandwidth):
+            if(packet.frequency == self.frequency and packet.modulation == self.modulation and packet.bandwidth == self.bandwidth):
                 # print("correct packet received at node %s" % self.node.name)
 
                 self.packet_rec = packet
@@ -168,9 +172,9 @@ class transceiver(object):
             # start sending if no cooldown
             if( self.cooldown == 0 and len(self.send_list) > 0):
                 self.cnt_sen += 1
-                self.send_list[0].send(self.frequency, self.spreading_factor, self.bandwidth, self.tx_power)
+                self.send_list[0].send(self.frequency, self.modulation, self.bandwidth, self.tx_power)
                 self.debugger.log("%s: sending packet with air-time=%i" % (self.node.name, self.send_list[0].get_air_time()), 4)
-                # self.sending_time = world.get_air_time(self.frequency, self.spreading_factor, self.bandwidth, self.send_list[0].get_length())
+                # self.sending_time = world.get_air_time(self.frequency, self.modulation, self.bandwidth, self.send_list[0].get_length())
                 self.sending_time = self.send_list[0].get_air_time()
                 self.sending = True
                 self.world.transmit_packet(self.node, self.send_list[0])

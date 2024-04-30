@@ -29,7 +29,7 @@ class packet_dist(packet_flooding):
         cop.origin = self.origin
         cop.frequency = self.frequency
         cop.bandwidth = self.bandwidth
-        cop.spreading_factor = self.spreading_factor       
+        cop.modulation = self.modulation       
         cop.hops = self.hops.copy()
 
         cop.second_last_node = self.second_last_node
