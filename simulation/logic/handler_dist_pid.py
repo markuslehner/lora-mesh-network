@@ -2,7 +2,7 @@ from hw.packet import Command_type
 from sim.destroyed_packet import destroyed_packet, Destruction_type, Forward_type
 from logic.packet_handler import packet_handler
 from hw.packet import Payload_type 
-from hw.packet import packet
+from hw.packet_dist import packet_dist
 import numpy as np
 import random
 
@@ -29,7 +29,7 @@ class handler_dist_pid(packet_handler):
     """
     Handles a received packet that is not intended for this node
     """
-    def handle_packet(self, packet) -> None:
+    def handle_packet(self, packet : packet_dist) -> None:
         
         if(packet.payload_type == Payload_type.COMMAND and packet.payload[0] == Command_type.REQUEST):
             self.node.debugger.log("%s: forwarding REQUEST target_distance:%i" % (self.node.name, packet.target_distance), 4)
@@ -49,7 +49,7 @@ class handler_dist_pid(packet_handler):
     decide if packet needs to be re-transmittied
     prepare packet for further transport
     """
-    def relay_packet(self, packet) -> None:
+    def relay_packet(self, packet : packet_dist) -> None:
         # print("reached handler at node %s" % self.node.name)
 
         # print(packet.last_node)
@@ -106,8 +106,6 @@ class handler_dist_pid(packet_handler):
                 largest_relay=largest_blocking_time,
                 relay_block=self.relay_block_time
             ))
-
-        return None
     
     def get_num_received(self, packet) -> int:
         #check if forwarded packet from this origin in the last time

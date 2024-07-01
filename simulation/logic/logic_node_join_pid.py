@@ -1,5 +1,5 @@
 from logic.logic import logic, logic_node
-from hw.packet import Payload_type, Command_type 
+from hw.packet import lora_packet, Packet_type, Payload_type, Command_type 
 from hw.packet_flooding import packet_flooding
 from logic.handler_flooding_pid import handler_flooding_pid
 from sim import debugger, world
@@ -69,22 +69,22 @@ class logic_node_join_pid(logic_node):
             if(self.connected):
 
                 if(self.node.get_transceiver().has_received()):
-                    rx_packet = self.node.get_transceiver().get_received()
-
-                    if(rx_packet.target == self.node_id):
-                        # handle payload
-                        # set display ...
-                        if(rx_packet.payload_type == Payload_type.COMMAND):
-                            if(rx_packet.payload[0] == Command_type.DELAY_INTERVAL):
-                                if(self.node.get_time() - self.last_delay > self.delay_interval_cooldown):
-                                    self.last_delay = self.node.get_time()
-                                    self.debugger.log("delaying interval @ node %s by %i" % (self.node.name, rx_packet.payload[1]), 1)
-                                    self.last_send_time += rx_packet.payload[1]
-                    else:
-                        if(rx_packet.payload_type == Payload_type.TIME_SYNC):
-                            self.set_time(rx_packet)
-                                
-                        self.packetHandler.handle_packet(rx_packet)
+                    rx_packet : lora_packet = self.node.get_transceiver().get_received()
+                    if(rx_packet.packet_type == Packet_type.LORA):
+                        if(rx_packet.target == self.node_id):
+                            # handle payload
+                            # set display ...
+                            if(rx_packet.payload_type == Payload_type.COMMAND):
+                                if(rx_packet.payload[0] == Command_type.DELAY_INTERVAL):
+                                    if(self.node.get_time() - self.last_delay > self.delay_interval_cooldown):
+                                        self.last_delay = self.node.get_time()
+                                        self.debugger.log("delaying interval @ node %s by %i" % (self.node.name, rx_packet.payload[1]), 1)
+                                        self.last_send_time += rx_packet.payload[1]
+                        else:
+                            if(rx_packet.payload_type == Payload_type.TIME_SYNC):
+                                self.set_time(rx_packet)
+                                    
+                            self.packetHandler.handle_packet(rx_packet)
 
                 if(self.node.get_time() - self.last_send_time > self.send_interval):
                     self.last_send_time = self.node.get_time()

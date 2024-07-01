@@ -28,7 +28,7 @@ class handler_lmn(packet_handler):
     """
     Handles a received packet that is not intended for this node
     """
-    def handle_packet(self, rx_packet) -> None:
+    def handle_packet(self, rx_packet : packet_dist) -> None:
         
         if(rx_packet.payload_type == Payload_type.COMMAND and rx_packet.payload[0] == Command_type.REQUEST):
             self.node.debugger.log("%s: forwarding REQUEST target_distance:%i" % (self.node.name, rx_packet.target_distance), 4)

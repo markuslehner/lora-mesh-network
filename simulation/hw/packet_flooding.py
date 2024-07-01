@@ -1,12 +1,11 @@
-from hw.packet import packet, Payload_type, Command_type
+from hw.packet import lora_packet, Payload_type, Command_type
 
-class packet_flooding(packet):
+class packet_flooding(lora_packet):
 
     def __init__(self, appID, sender, target, payload_type, payload, max_hops, packet_id=None, debug_name=None):
         super().__init__(appID, sender, target, payload_type, payload, debug_name=debug_name)
 
         # flooding parameters
-        self.second_last_node = None
         self.max_hops = max_hops
         self.num_hops = 1
         self.packet_id = packet_id
@@ -19,13 +18,11 @@ class packet_flooding(packet):
         cop.modulation = self.modulation       
         cop.hops = self.hops.copy()
 
-        cop.second_last_node = self.second_last_node
         cop.num_hops = self.num_hops
 
         return cop
 
     def add_hop(self, node):
-        self.second_last_node = self.sender
         super().add_hop(node)
         self.num_hops += 1
 

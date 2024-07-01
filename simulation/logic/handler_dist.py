@@ -1,7 +1,7 @@
 from sim.destroyed_packet import destroyed_packet, Destruction_type, Forward_type
 from logic.packet_handler import packet_handler
 from hw.packet import Payload_type 
-from hw.packet import packet
+from hw.packet_dist import packet_dist
 import numpy as np
 import random
 
@@ -23,7 +23,7 @@ class handler_dist(packet_handler):
     """
     Handles a received packet that is not intended for this node
     """
-    def handle_packet(self, packet) -> None:
+    def handle_packet(self, packet : packet_dist) -> None:
 
         if(self.node.logic.connected):
             # if JOIN packet has not been forwarded before
@@ -40,7 +40,7 @@ class handler_dist(packet_handler):
     decide if packet needs to be re-transmittied
     prepare packet for further transport
     """
-    def relay_packet(self, packet) -> None:
+    def relay_packet(self, packet : packet_dist) -> None:
         # print("reached handler at node %s" % self.node.name)
 
         # print(packet.last_node)

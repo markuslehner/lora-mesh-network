@@ -31,8 +31,6 @@ class packet_dist(packet_flooding):
         cop.bandwidth = self.bandwidth
         cop.modulation = self.modulation       
         cop.hops = self.hops.copy()
-
-        cop.second_last_node = self.second_last_node
         cop.num_hops = self.num_hops
 
         return cop

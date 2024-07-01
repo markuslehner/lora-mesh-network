@@ -1,5 +1,5 @@
 from logic.logic import logic, logic_node
-from hw.packet import Payload_type, Command_type 
+from hw.packet import lora_packet, Packet_type, Payload_type, Command_type 
 from hw.packet_dist import packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist import handler_dist
@@ -76,11 +76,12 @@ class logic_node_dist_pid(logic_node):
         if(self.chapter == 0):
 
             if(self.node.get_transceiver().has_received()):
-                rx_packet = self.node.get_transceiver().get_received()
-                if(rx_packet.target == self.node_id):
-                    self.handle_own_packet(rx_packet)
-                else:
-                    self.handle_foreign_packet(rx_packet)
+                rx_packet : lora_packet = self.node.get_transceiver().get_received()
+                if(rx_packet.packet_type == Packet_type.LORA):
+                    if(rx_packet.target == self.node_id):
+                        self.handle_own_packet(rx_packet)
+                    else:
+                        self.handle_foreign_packet(rx_packet)
 
             if(self.connected):
 

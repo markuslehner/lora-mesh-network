@@ -24,24 +24,17 @@ class handler_flooding(packet_handler):
     """
     Handles a received packet that is not intended for this node
     """
-    def handle_packet(self, packet) -> packet:
+    def handle_packet(self, packet : packet_flooding) -> packet:
         
         if(packet.payload_type == Payload_type.COMMAND and packet.payload[0] == Command_type.REQUEST):
             self.node.debugger.log("%s: forwarding REQUEST target_distance:%i" % (self.node.name, packet.target_distance), 4)
 
         if(hasattr(self.node.logic, "connected")):
             if(self.node.logic.connected):
-                # if JOIN packet has not been forwarded before
-                # add RSSI and own distance
-                if(packet.payload_type is Payload_type.JOIN):
-                    if(packet.last_distance == 127):
-                        self.node.debugger.log("Node %s: JOIN packet from node %i reached the network" % (self.node.name, packet.origin), 3)
-                        packet.payload[0] = packet.rssi
-                        packet.payload[1] = self.node.id
-
                 self.relay_packet(packet)
         else:
             self.relay_packet(packet)
+
 
     """
     decide if packet needs to be re-transmittied

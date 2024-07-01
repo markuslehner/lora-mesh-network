@@ -4,12 +4,14 @@ from hw.node_sensor import node_sensor
 from logic.logic import logic, logic_node
 from logic.logic_central import logic_central
 from sim.debugger import debugger
+from sim.event import event
 from sim.destroyed_packet import destroyed_packet, Destruction_type
 from datetime import datetime
 
 import pickle, os, time
 import numpy as np
 from pathlib import Path
+from typing import List
 
 class simulation(object):
 
@@ -19,7 +21,7 @@ class simulation(object):
         self.real_time = real_time
 
         with open(str(Path(__file__).parent.parent) + "/config/%s.pkl" % configuration, "rb") as f:
-            config = pickle.load(f)
+            config : dict = pickle.load(f)
 
         """
         SETUP PARAMETERS
@@ -90,8 +92,8 @@ class simulation(object):
         load and create nodes
         """
 
-        self.nodes = []
-        self.central_nodes = []
+        self.nodes : List[node] = []
+        self.central_nodes : List[node] = []
 
         for i in range(0, self.num_nodes):
             self.nodes.append( config.get("nodes").get(str(i)).get("type").from_dict(config.get("nodes").get(str(i))) )
@@ -111,7 +113,7 @@ class simulation(object):
         '''
         EVENTS
         '''
-        self.event_list = config.get("events")
+        self.event_list : List[event] = config.get("events")
 
         if(self.visualize):
             self.my_world.visualize()
@@ -150,6 +152,8 @@ class simulation(object):
             # print("Time in ms: %f" %  ( start_of_cycle*1000) )
             # check for trigger of event
             # support for more central nodes not implemented
+            # TODO add support for multiple central nodes by creating a server isntance that handles data collection
+            # this will require a new approach for distance based routing, as the node should only register to one central_node
             for e in self.event_list:
                 if(e.execution_time == self.world_time + i):
                     e.execute(self.my_world, self.central_nodes[0].logic)
@@ -187,7 +191,7 @@ class simulation(object):
         total_tx_cnt = 0
         total_rx_cnt = 0
 
-        world_nodes : 'list[node]'=  self.my_world.get_nodes()
+        world_nodes : List[node] =  self.my_world.get_nodes()
 
         missing_packets, multiple_packets = self.check_received_packets()
 

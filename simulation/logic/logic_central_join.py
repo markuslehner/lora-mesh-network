@@ -1,6 +1,6 @@
 from hw.packet_flooding import packet_flooding
 from logic.handler_flooding import handler_flooding
-from hw.packet import Payload_type, Command_type
+from hw.packet import Payload_type, Command_type, Packet_type, lora_packet
 from hw.packet_flooding import packet_flooding
 from logic.logic_central import logic_central
 
@@ -73,8 +73,9 @@ class logic_central_pid(logic_central):
 
             if(self.node.get_transceiver().has_received()):
                 # print(self.node.get_transceiver().rec_list)
-                rx_packet = self.node.get_transceiver().get_received()
-                self.receive(rx_packet)
+                if(rx_packet.packet_type == Packet_type.LORA):
+                    rx_packet : lora_packet = self.node.get_transceiver().get_received()
+                    self.receive(rx_packet)
 
             if(self.node.get_time() == 1609459200000 + 10*60*60*1000 + 300000):
                 self.debugger.log("Sending DELAY_INTERVAL request to node 3", 2)
@@ -151,7 +152,7 @@ class logic_central_pid(logic_central):
         else:
             self.node.wait(10)
 
-    def receive(self, rx_packet) -> None:
+    def receive(self, rx_packet : packet_flooding) -> None:
 
         if(rx_packet.appID == self.appID):
             if(rx_packet.target == self.node_id or rx_packet.target == 0):

@@ -4,7 +4,7 @@ from hw.battery import battery
 
 class node(object):
 
-    def __init__(self, id : int, name : str , logic, batt : battery =None, x : int = 0, y : int = 0):
+    def __init__(self, id : int, name : str , logic, batt : battery = None, x : int = 0, y : int = 0):
         self.id : int = id
         self.name : str = name
         self.logic = logic
@@ -24,13 +24,13 @@ class node(object):
         self.x : int = x
         self.y : int = y
 
-        self.time = 0
+        self.time : int = 0
         self.sleeping : bool = False
-        self.sleep_timer = 0
+        self.sleep_timer : int = 0
         
         self.waiting : bool = False
-        self.wait_timer = 0
-        self.debugger : debugger= None
+        self.wait_timer : int = 0
+        self.debugger : debugger = None
 
         self.logic.register(self)
 

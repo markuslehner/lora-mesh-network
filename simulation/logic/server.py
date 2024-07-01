@@ -1,0 +1,1 @@
+# TODO create class that handles the data and the command_center part of the network.

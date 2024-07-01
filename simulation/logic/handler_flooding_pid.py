@@ -25,28 +25,18 @@ class handler_flooding_pid(packet_handler):
     Handles a received packet that is not intended for this node
     """
     def handle_packet(self, packet) -> packet:
-        
-        ret_pack, fwd_reason, largest_relay = self.relay_packet(packet)
-        if(not ret_pack is None):
-            # self.node.get_transceiver().send(ret_pack) # old way
-            self.node.logic.queue_packet(ret_pack, random.randint(0, self.relay_time))
+        if(hasattr(self.node.logic, "connected")):
+            if(self.node.logic.connected):
+                self.relay_packet(packet)
         else:
-            # debug for destruction
-            self.node.debugger.add_destroyed_packet(destroyed_packet(
-                packet,
-                packet.sender,
-                self.node.id,
-                Destruction_type.FORWARD,
-                fwd_reason=fwd_reason,
-                largest_relay=largest_relay,
-                relay_block=self.relay_block_time
-            ))
+            self.relay_packet(packet)
+
 
     """
     decide if packet needs to be re-transmittied
     prepare packet for further transport
     """
-    def relay_packet(self, rx_packet : packet_flooding) -> packet:
+    def relay_packet(self, rx_packet : packet_flooding) -> None:
         # print("reached handler at node %s" % self.node.name)
 
         # print(packet.last_node)

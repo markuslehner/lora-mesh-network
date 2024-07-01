@@ -1,6 +1,6 @@
 from logic.handler_flooding_basic import handler_flooding_basic
 from logic.logic import logic, logic_node
-from hw.packet import packet, Payload_type, Command_type
+from hw.packet import packet, Payload_type, Command_type, Packet_type
 from typing import List
 
 import os
@@ -60,14 +60,14 @@ class logic_central(logic_node):
         super().update_loop()
 
     def receive(self, rx_packet) -> None:
-
-        # check if its the same network
-        if(rx_packet.appID == self.appID):
-            if(rx_packet.target == self.node_id or rx_packet.target == 0):
-                if(rx_packet.payload_type is Payload_type.DATA):
-                    self.store_packet(rx_packet)
-            else:
-                self.packetHandler.handle_packet(rx_packet)
+        if(rx_packet.packet_type == Packet_type.LORA):
+            # check if its the same network
+            if(rx_packet.appID == self.appID):
+                if(rx_packet.target == self.node_id or rx_packet.target == 0):
+                    if(rx_packet.payload_type is Payload_type.DATA):
+                        self.store_packet(rx_packet)
+                else:
+                    self.packetHandler.handle_packet(rx_packet)
 
 
     def store_packet(self, rx_packet):

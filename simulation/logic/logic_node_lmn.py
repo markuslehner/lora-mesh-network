@@ -1,5 +1,5 @@
 from logic.logic import logic, logic_node
-from hw.packet import Payload_type, Command_type 
+from hw.packet import packet, lora_packet, Payload_type, Command_type, Packet_type
 from hw.packet_dist import packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist_pid import handler_dist_pid
@@ -98,15 +98,15 @@ class logic_node_lmn(logic_node):
         if(self.chapter == 0):
 
             if(self.node.get_transceiver().has_received()):
-                rx_packet = self.node.get_transceiver().get_received()
-
-                if(rx_packet.sender in self.artificial_blocks):
-                    self.debugger.log("%s: not handling packet from %i because of artificial block" % (self.node.get_name(), rx_packet.sender), 2)
-                else:
-                    if(rx_packet.target == self.node_id):
-                        self.handle_own_packet(rx_packet)
+                rx_packet : lora_packet = self.node.get_transceiver().get_received()
+                if(rx_packet.packet_type == Packet_type.LORA):
+                    if(rx_packet.sender in self.artificial_blocks):
+                        self.debugger.log("%s: not handling packet from %i because of artificial block" % (self.node.get_name(), rx_packet.sender), 2)
                     else:
-                        self.handle_foreign_packet(rx_packet)
+                        if(rx_packet.target == self.node_id):
+                            self.handle_own_packet(rx_packet)
+                        else:
+                            self.handle_foreign_packet(rx_packet)
 
             if(self.connected):
                 
@@ -171,7 +171,7 @@ class logic_node_lmn(logic_node):
         else:
             self.node.wait(20)
 
-    def handle_foreign_packet(self, rx_packet):
+    def handle_foreign_packet(self, rx_packet : packet_dist):
 
         if(self.connected):
             if(rx_packet.payload_type == Payload_type.TIME_SYNC):

@@ -1,6 +1,12 @@
 from bitarray import bitarray
 from enum import Enum
 import sim.world as world
+from typing import List
+
+class Packet_type(Enum):
+    LORAWAN = 1
+    LORA = 2
+
 
 class Payload_type(Enum):
 
@@ -144,8 +150,37 @@ class Command_type(Enum):
         return "UNKNOWN"
 
 class packet(object):
-    def __init__(self, appID, sender, target, payload_type, payload, debug_name=None):
+    def __init__(self, pkt_t : Packet_type) -> None:
+        self.packet_type : Packet_type = pkt_t
+        self.frequency : float = 0
+        self.modulation : str = None
+        self.bandwidth : float = 0
+        self.tx_power : int = 0
+        self.rssi : int = 0
+        self.time_received : int = 0
 
+    # set sending parameters
+    def send(self, freq, mod, band, tx_power):
+        self.frequency = freq
+        self.modulation = mod
+        self.bandwidth = band
+        self.tx_power = tx_power
+
+    def set_rssi(self, rssi):
+        self.rssi = rssi
+
+    def set_receive_time(self, time):
+        self.time_received = time
+
+    def get_length(self) -> int:
+        return 20
+
+    def get_air_time(self) -> int:
+        return world.get_air_time(self.frequency, self.modulation, self.bandwidth, self.get_length())
+
+class lora_packet(packet):
+    def __init__(self, appID, sender, target, payload_type, payload, debug_name=None):
+        super().__init__(Packet_type.LORA)
         self.appID : int = appID
         # who sent the packet
         self.sender : int = sender
@@ -169,13 +204,13 @@ class packet(object):
         # debug
         self.time_received : int = 0
         self.debug_name = debug_name
-        self.hops = []
+        self.hops : List[int] = []
         self.hops.append(sender)
         #if packet was corrupted during reception
-        self.corrupted :bool = False
+        self.corrupted : bool = False
 
     def __copy__(self):
-        cop = packet(self.appID, self.origin, self.target, self.payload_type, self.payload, debug_name=self.debug_name)
+        cop = lora_packet(self.appID, self.origin, self.target, self.payload_type, self.payload, debug_name=self.debug_name)
         cop.origin = self.origin
         cop.frequency = self.frequency
         cop.bandwidth = self.bandwidth
@@ -184,13 +219,6 @@ class packet(object):
         
         cop.hops = self.hops.copy()
         return cop
-
-    # set sending parameters
-    def send(self, freq, mod, band, tx_power):
-        self.frequency = freq
-        self.modulation = mod
-        self.bandwidth = band
-        self.tx_power = tx_power
     
     # return the length of the packet payload in bytes
     def get_length(self):
@@ -210,18 +238,19 @@ class packet(object):
         else:
             return 15
 
-    def get_air_time(self) -> int:
-        return world.get_air_time(self.frequency, self.modulation, self.bandwidth, self.get_length())
-
     def add_hop(self, node):
         self.sender = node.id
         self.hops.append(node.id)
 
-    def set_rssi(self, rssi):
-        self.rssi = rssi
-
-    def set_receive_time(self, time):
-        self.time_received = time
-
     def __str__(self) -> str:
         return "%s from %i sent by %i     payload: [%s]    hops: %s debug_name %s received at %s" % (str(self.payload_type), self.origin, self.sender, str(self.payload), str(self.hops), self.debug_name)
+
+
+class lorawan_packet(packet):
+    def __init__(self, DevEUI, AppEUI, AppKey, payload, debug_name=None):
+        super().__init__(Packet_type.LORAWAN)
+        self.DevEUI : int = DevEUI
+        self.AppEUI : int = AppEUI
+        self.AppKey : int = AppKey
+        self.payload = payload
+        self.debug_name = debug_name

@@ -2,7 +2,7 @@ from logic.command.command_center import command_center
 from logic.command.action_center import action_center
 from logic.command.command import request_command, nack_command, ack_command, reset_command, ack_join_command, set_interval_command, resync_interval_command
 from logic.handler_lmn import handler_lmn
-from hw.packet import Payload_type, Command_type
+from hw.packet import Payload_type, Command_type, Packet_type, lora_packet
 from hw.packet_dist import packet_dist
 from logic.logic_central import logic_central
 
@@ -273,8 +273,11 @@ class logic_central_lmn(logic_central):
 
         if(self.node.get_transceiver().has_received()):
             # print(self.node.get_transceiver().rec_list)
-            rx_packet = self.node.get_transceiver().get_received()
-            self.receive(rx_packet)
+            rx_packet : packet_dist = self.node.get_transceiver().get_received()
+            if(rx_packet.packet_type == Packet_type.LORA):
+                self.receive(rx_packet)
+            else:
+                self.debugger.log("Received LORAWAN packet from %i, not handling it" % rx_packet.sender, 1)
         
         # Executed once at the start of each interval
         time = self.node.get_time()
