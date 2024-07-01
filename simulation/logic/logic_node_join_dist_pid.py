@@ -1,4 +1,4 @@
-from logic.logic import logic, logic_node
+from logic.logic import logic_node_lora
 from hw.packet import lora_packet, Packet_type, Payload_type, Command_type, packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist import handler_dist
@@ -6,7 +6,7 @@ from sim import world
 
 import random
 
-class logic_node_dist_pid(logic_node):
+class logic_node_dist_pid(logic_node_lora):
 
     def __init__(self, appID, send_interval, time_offset=None, handler=handler_flooding()) -> None:
         super().__init__(appID, handler)

@@ -8,6 +8,16 @@ class Packet_type(Enum):
     LORA = 2
 
 
+class LoRaWAN_type(Enum):
+    JOIN_REQUEST = 1
+    JOIN_ACCEPT = 2
+    UNCONFIRMED_DATA_UP = 3
+    UNCONFIRMED_DATA_DOWN = 4
+    CONFIRMED_DATA_UP = 5
+    CONFIRMED_DATA_DOWN = 6
+    RFU = 7
+
+
 class Payload_type(Enum):
 
     # main types
@@ -178,6 +188,7 @@ class packet(object):
     def get_air_time(self) -> int:
         return world.get_air_time(self.frequency, self.modulation, self.bandwidth, self.get_length())
 
+
 class lora_packet(packet):
     def __init__(self, appID, sender, target, payload_type, payload, debug_name=None):
         super().__init__(Packet_type.LORA)
@@ -315,12 +326,22 @@ class packet_dist(packet_flooding):
         return cop
 
 
-class lorawan_packet(packet):
-    def __init__(self, DevEUI, AppEUI, AppKey, payload, debug_name=None):
-        super().__init__(Packet_type.LORAWAN)
-        self.DevEUI : int = DevEUI
-        self.AppEUI : int = AppEUI
-        self.AppKey : int = AppKey
-        self.payload = payload
-        self.debug_name = debug_name
+class lorawan_packet(lora_packet):
+    def __init__(self, appID, sender, target, payload_type, payload, debug_name=None):
+        super().__init__(appID, sender, target, payload_type, payload, debug_name=debug_name)
+        self.packet_type : Packet_type = Packet_type.LORAWAN
+        self.payload_type : LoRaWAN_type = payload_type
 
+    def __copy__(self):
+        cop = lorawan_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, debug_name=self.debug_name)
+        cop.frequency = self.frequency
+        cop.bandwidth = self.bandwidth
+        cop.modulation = self.modulation       
+
+        return cop
+
+    def get_length(self):
+        return 26 # TODO
+    
+    def __str__(self) -> str:
+        return "LORAWAN packet from %i with payload: %s debug_name: %s" % (self.DevEUI, str(self.payload), self.debug_name)

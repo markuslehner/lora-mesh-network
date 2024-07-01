@@ -49,7 +49,7 @@ class representing the code framework for creating code to simulate a node
 """
 class logic_node(logic):
 
-    def __init__(self, appID : int = 0, node_id : int = 0, handler : packet_handler=None):
+    def __init__(self,  appID : int = 0, node_id : int = 0):
         super().__init__()
         self.chapter = 0
         self.appID = appID
@@ -57,7 +57,6 @@ class logic_node(logic):
 
         self.node : node = None
         self.debugger : debugger = None
-        self.packetHandler : packet_handler = handler
         
         # queue for packets to be sent later
         self.packet_queue = []
@@ -135,6 +134,12 @@ class logic_node(logic):
             d.get("node_id")
         )
         return instance
+    
 
+class logic_node_lora(logic_node):
+    def __init__(self, appID : int = 0, node_id : int = 0, handler : packet_handler=None) -> None:
+        super().__init__(appID, node_id)
+        self.packetHandler : packet_handler = handler
+    
     def __str__(self) -> str:
         return "%s     with handler: %s" % (str(type(self)).split(".")[-1][:-2].rjust(25), str(type(self.packetHandler)).split(".")[-1][:-2].rjust(20) )

@@ -10,8 +10,8 @@ from datetime import datetime
 
 class logic_central_lmn(logic_central):
 
-    def __init__(self, appID : int, node_id : int, db : bool=False, interval : int=1000*60*10, handler=handler_lmn(), blocks : list = [], spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, db, handler)
+    def __init__(self, appID : int, node_id : int, interval : int=1000*60*10, blocks : list = [], spreading_f : int = 10) -> None:
+        super().__init__(appID, node_id)
 
         self.artificial_blocks = blocks
 
@@ -190,10 +190,6 @@ class logic_central_lmn(logic_central):
         # packet id stuff
         self.next_packet_id = 0
         self.spreading_factor = spreading_f
-
-        '''DB'''
-        # write db file or not
-        self.write_db = db
 
     def setup(self):
         super().setup()
@@ -866,10 +862,8 @@ class logic_central_lmn(logic_central):
             "type"  : type(self),
             "appID" : self.appID,
             "node_id" : self.node_id,
-            "store" : self.write_db,
             "interval" : self.interval,
             "artificial_blocks" : self.artificial_blocks,
-            "handler" : type(self.packetHandler),
             "spread" : self.spreading_factor
         }
 
@@ -878,13 +872,11 @@ class logic_central_lmn(logic_central):
         instance = cls(
             d.get("appID"),
             d.get("node_id"),
-            d.get("store"),
             d.get("interval"),
-            d.get("handler").from_dict(d),
             d.get("artificial_blocks"),
             d.get("spread") if "spread" in d else 10
         )
         return instance
 
     def __str__(self) -> str:
-        return "%s(SF=%i)     with handler: %s" % (str(type(self)).split(".")[-1][:-2].rjust(25), self.spreading_factor, str(type(self.packetHandler)).split(".")[-1][:-2].rjust(20) )
+        return "%s(SF=%i)" % (str(type(self)).split(".")[-1][:-2].rjust(25), self.spreading_factor)

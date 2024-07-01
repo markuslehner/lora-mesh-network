@@ -6,8 +6,8 @@ from hw.packet import Payload_type, Command_type, packet_flooding
 
 class logic_central_passive(logic_central):
 
-    def __init__(self, appID=0, node_id : int = 0, db=False, handler=handler_flooding_basic()) -> None:
-        super().__init__(appID, node_id, db, handler)
+    def __init__(self, appID=0, node_id : int = 0) -> None:
+        super().__init__(appID, node_id)
 
     def setup(self):
         super().setup()

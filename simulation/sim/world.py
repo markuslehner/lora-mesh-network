@@ -5,6 +5,7 @@ from hw.node_sensor import node_sensor
 from hw.node import node
 from sim.debugger import debugger
 from sim.destroyed_packet import destroyed_packet, Destruction_type
+from logic.server import server
 
 import matplotlib.pylab as plt
 import matplotlib.patches as patches
@@ -14,6 +15,7 @@ import math
 import copy
 import re
 from pathlib import Path
+from typing import List
 
 """
 MIN_DISTANCE
@@ -68,7 +70,8 @@ class world(object):
 
     def __init__(self, min_dist, max_dist, error_rate, decay):
         super().__init__()
-        self.nodes : list[node] = []
+        self.nodes : List[node] = []
+        self.servers : List[server] = []
         self.blocks = []
         self.time = 0
 

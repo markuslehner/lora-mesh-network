@@ -8,8 +8,8 @@ import random
 
 class logic_central_pid(logic_central):
 
-    def __init__(self, appID=0, node_id=0, db=False, handler=handler_flooding()) -> None:
-        super().__init__(appID, node_id, db, handler)
+    def __init__(self, appID=0, node_id=0) -> None:
+        super().__init__(appID, node_id)
 
         # interval when to broadcast the timestamp
         self.time_broadcast = 1000*60*60
@@ -42,8 +42,6 @@ class logic_central_pid(logic_central):
         self.last_packet_pid = []
         # time to wait until a packet from the same origin is relayed again
         self.store_block_time = 10000  # old way = 0
-
-        self.write_db = db
 
     def setup(self):
 
@@ -272,8 +270,6 @@ class logic_central_pid(logic_central):
             "type"  : type(self),
             "appID" : self.appID,
             "node_id" : self.node_id,
-            "store" : self.write_db,
-            "handler" : type(self.packetHandler)
         }
 
     @classmethod
@@ -281,7 +277,5 @@ class logic_central_pid(logic_central):
         instance = cls(
             d.get("appID"),
             d.get("node_id"),
-            d.get("store"),
-            d.get("handler").from_dict(d)
         )
         return instance

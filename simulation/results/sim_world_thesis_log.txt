@@ -6,7 +6,7 @@ WORLD:
       custom     custom     custom     custom
         1500       2200       0.05          2
 NODES:
-    central      with ID:100 @ x=     0 y=     0 using logic:         logic_central_lmn(SF=7)     with handler:          handler_lmn
+    central      with ID:100 @ x=     0 y=     0 using logic:         logic_central_lmn(SF=7)
     node1        with ID:  1 @ x=   200 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
     node2        with ID:  2 @ x=   800 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
     node3        with ID:  3 @ x=  1400 y=     0 using logic:            logic_node_lmn(SF=7)     with handler:          handler_lmn
@@ -26,18 +26,18 @@ NODES:
 (1)  [11:00:00.000] -> new nodes:             False
 (2)  [11:00:00.000]   CC: START UPDATING
 (2)  [11:00:40.000]   JOIN CHECK:
-(2)  [11:00:40.000]     received 5 join requests
+(2)  [11:00:40.000]     received 4 join requests
 (2)  [11:00:40.000]   CC: Sending ACK_JOIN to node 1 for dist: 1 (pid:0)
 (1)  [11:00:40.068] node1: successfully registered with base station 100 at distance: 1
 (2)  [11:01:20.000]   JOIN CHECK:
-(2)  [11:01:20.000]     received 8 join requests
-(2)  [11:01:20.000]   CC: Sending ACK_JOIN to node 2 for dist: 2 (pid:1)
-(1)  [11:01:20.073] node2: successfully registered with base station 100 at distance: 2
+(2)  [11:01:20.000]     received 7 join requests
+(2)  [11:01:20.000]   CC: Sending ACK_JOIN to node 2 for dist: 1 (pid:1)
+(1)  [11:01:20.073] node2: successfully registered with base station 100 at distance: 1
 (2)  [11:02:00.000]   JOIN CHECK:
-(2)  [11:02:00.000]     received 9 join requests
-(2)  [11:02:00.000]   CC: Sending ACK_JOIN to node 4 for dist: 3 (pid:2)
-(1)  [11:02:00.246] node4: successfully registered with base station 100 at distance: 3
+(2)  [11:02:00.000]     received 13 join requests
+(2)  [11:02:00.000]   CC: Sending ACK_JOIN to node 3 for dist: 2 (pid:2)
+(1)  [11:02:00.057] node3: successfully registered with base station 100 at distance: 2
 (2)  [11:02:40.000]   JOIN CHECK:
-(2)  [11:02:40.000]     received 11 join requests
-(2)  [11:02:40.000]   CC: Sending ACK_JOIN to node 5 for dist: 4 (pid:3)
-(1)  [11:02:40.860] node5: successfully registered with base station 100 at distance: 4
+(2)  [11:02:40.000]     received 10 join requests
+(2)  [11:02:40.000]   CC: Sending ACK_JOIN to node 4 for dist: 3 (pid:3)
+(1)  [11:02:40.629] node4: successfully registered with base station 100 at distance: 3

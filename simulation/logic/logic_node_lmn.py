@@ -1,4 +1,4 @@
-from logic.logic import logic, logic_node
+from logic.logic import logic_node_lora
 from hw.packet import packet, lora_packet, Payload_type, Command_type, Packet_type, packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist_pid import handler_dist_pid
@@ -6,7 +6,7 @@ from sim import world
 
 import random
 
-class logic_node_lmn(logic_node):
+class logic_node_lmn(logic_node_lora):
 
     def __init__(self, appID : int, node_id : int, handler=handler_dist_pid(), blocks : list[int] = [], spreading_f : int = 10) -> None:
         super().__init__(appID, node_id, handler)

@@ -1,5 +1,4 @@
-from hw.packet import packet, Payload_type, Command_type
-from hw.packet_dist import packet_dist
+from hw.packet import packet, Payload_type, Command_type, packet_dist
 import struct
 
 class command(object):

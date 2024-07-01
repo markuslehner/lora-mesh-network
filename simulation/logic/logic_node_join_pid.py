@@ -1,11 +1,11 @@
-from logic.logic import logic, logic_node
+from logic.logic import logic_node_lora
 from hw.packet import lora_packet, Packet_type, Payload_type, Command_type, packet_flooding
 from logic.handler_flooding_pid import handler_flooding_pid
 from sim import debugger, world
 
 import random
 
-class logic_node_join_pid(logic_node):
+class logic_node_join_pid(logic_node_lora):
 
     def __init__(self, appID : int, node_id : int, send_interval : int, time_offset : int=None, handler=handler_flooding_pid()) -> None:
         super().__init__(appID, node_id, handler)
