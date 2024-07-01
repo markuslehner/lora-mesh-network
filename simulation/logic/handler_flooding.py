@@ -1,8 +1,6 @@
 from sim.destroyed_packet import destroyed_packet, Destruction_type, Forward_type
 from logic.packet_handler import packet_handler
-from hw.packet import Payload_type, Command_type
-from hw.packet import packet
-from hw.packet_flooding import packet_flooding
+from hw.packet import Payload_type, Command_type, packet, packet_flooding
 import numpy as np
 import random
 

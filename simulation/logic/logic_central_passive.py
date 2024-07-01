@@ -2,8 +2,7 @@ from logic.handler_flooding_basic import handler_flooding_basic
 from logic.logic import logic
 from logic.logic_central import logic_central
 from logic.handler_flooding import handler_flooding
-from hw.packet import Payload_type, Command_type
-from hw.packet_flooding import packet_flooding
+from hw.packet import Payload_type, Command_type, packet_flooding
 
 class logic_central_passive(logic_central):
 

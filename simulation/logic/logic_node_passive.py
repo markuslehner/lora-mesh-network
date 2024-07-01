@@ -1,6 +1,5 @@
 from logic.logic import logic, logic_node
-from hw.packet import Payload_type, Command_type
-from hw.packet_flooding import packet_flooding
+from hw.packet import Payload_type, Command_type, packet_flooding
 from logic.handler_flooding_basic import handler_flooding_basic
 from sim import debugger
 from sim import world

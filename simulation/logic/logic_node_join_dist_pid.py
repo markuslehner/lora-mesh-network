@@ -1,6 +1,5 @@
 from logic.logic import logic, logic_node
-from hw.packet import lora_packet, Packet_type, Payload_type, Command_type 
-from hw.packet_dist import packet_dist
+from hw.packet import lora_packet, Packet_type, Payload_type, Command_type, packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist import handler_dist
 from sim import world

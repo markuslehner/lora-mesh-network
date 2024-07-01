@@ -2,8 +2,7 @@ from logic.command.command_center import command_center
 from logic.command.action_center import action_center
 from logic.command.command import request_command, nack_command, ack_command, reset_command, ack_join_command, set_interval_command, resync_interval_command
 from logic.handler_lmn import handler_lmn
-from hw.packet import Payload_type, Command_type, Packet_type, lora_packet
-from hw.packet_dist import packet_dist
+from hw.packet import Payload_type, Command_type, Packet_type, packet_dist
 from logic.logic_central import logic_central
 
 import numpy as np
