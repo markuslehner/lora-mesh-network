@@ -159,50 +159,26 @@ class node(object):
                     self.logic.update_loop()
     
     def to_dict(self):
-        if(self.battery is None):
-            return {
-                "type"      : type(self),
-                "name"      : self.name,
-                "id"        : self.id,
-                "logic"     : self.logic.to_dict(),
-                "battery"   : None,
-                "x"         : self.x,
-                "y"         : self.y
-            }
-        else:
-            return {
-                "type"      : type(self),
-                "name"      : self.name,
-                "id"        : self.id,
-                "logic"     : self.logic.to_dict(),
-                "battery"   : self.battery.to_dict(),
-                "x"         : self.x,
-                "y"         : self.y
-            }
+        return {
+            "type"      : type(self),
+            "name"      : self.name,
+            "id"        : self.id,
+            "logic"     : self.logic.to_dict(),
+            "battery"   : None if(self.battery is None) else self.battery.to_dict(),
+            "x"         : self.x,
+            "y"         : self.y
+        }
+
     @classmethod
     def from_dict(cls, d):
-        if(d.get("battery") is None):
-            instance = cls(
-                d.get("id"),
-                d.get("name"),
-                d.get("logic").get("type").from_dict(d.get("logic")),
-                None,
-                x=d.get("x"),
-                y=d.get("y")
-            )
-        else:
-            instance = cls(
-                d.get("id"),
-                d.get("name"),
-                d.get("logic").get("type").from_dict(d.get("logic")),
-                d.get("battery").get("type").from_dict(d.get("battery")),
-                x=d.get("x"),
-                y=d.get("y")
-            )
-        return instance
+        return cls(
+            d.get("id"),
+            d.get("name"),
+            d.get("logic").get("type").from_dict(d.get("logic")),
+            None if(d.get("battery") is None) else d.get("battery").get("type").from_dict(d.get("battery")),
+            x=d.get("x"),
+            y=d.get("y"))
+    
 
     def __str__(self) -> str:
         return "%s with ID:%s @ x=%s y=%s using logic: %s" % (str(self.name).ljust(12), str(self.id).rjust(3), str(self.x).rjust(6), str(self.y).rjust(6), str(self.logic))
-
-
-    

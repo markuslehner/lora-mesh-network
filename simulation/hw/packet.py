@@ -327,10 +327,11 @@ class packet_dist(packet_flooding):
 
 
 class lorawan_packet(lora_packet):
-    def __init__(self, appID, sender, target, payload_type, payload, debug_name=None):
+    def __init__(self, appID : int , sender : int, target : int, payload_type : LoRaWAN_type, payload : List[int], packet_id : int, debug_name=None):
         super().__init__(appID, sender, target, payload_type, payload, debug_name=debug_name)
         self.packet_type : Packet_type = Packet_type.LORAWAN
         self.payload_type : LoRaWAN_type = payload_type
+        self.packet_id : int = packet_id
 
     def __copy__(self):
         cop = lorawan_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, debug_name=self.debug_name)

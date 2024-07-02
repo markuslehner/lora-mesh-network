@@ -3,11 +3,6 @@ from logic.logic import logic_node
 from hw.packet import packet, Payload_type, Command_type, Packet_type
 from typing import List
 
-import os
-import datetime
-import sqlite3
-from sqlite3 import Error
-
 class logic_central(logic_node):
 
     def __init__(self, appID : int =0, node_id : int = 0) -> None:

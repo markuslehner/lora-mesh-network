@@ -1,5 +1,5 @@
 from simulation.logic.logic_node_lorawan import logic_node_lora
-from logic.logic_central_lora import logic_central_lora
+from simulation.logic.logic_central_lorawan import logic_central_lora
 
 from hw.node_sensor import node_sensor
 from hw.node import node

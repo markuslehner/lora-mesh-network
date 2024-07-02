@@ -26,18 +26,22 @@ NODES:
 (1)  [11:00:00.000] -> new nodes:             False
 (2)  [11:00:00.000]   CC: START UPDATING
 (2)  [11:00:40.000]   JOIN CHECK:
-(2)  [11:00:40.000]     received 4 join requests
+(2)  [11:00:40.000]     received 5 join requests
 (2)  [11:00:40.000]   CC: Sending ACK_JOIN to node 1 for dist: 1 (pid:0)
-(1)  [11:00:40.068] node1: successfully registered with base station 100 at distance: 1
 (2)  [11:01:20.000]   JOIN CHECK:
 (2)  [11:01:20.000]     received 7 join requests
-(2)  [11:01:20.000]   CC: Sending ACK_JOIN to node 2 for dist: 1 (pid:1)
-(1)  [11:01:20.073] node2: successfully registered with base station 100 at distance: 1
+(1)  [11:01:20.000]     Node 1: rejoining
+(2)  [11:01:20.000]   CC: Sending ACK_JOIN to node 1 for dist: 1 (pid:1)
+(1)  [11:01:20.073] node1: successfully registered with base station 100 at distance: 1
 (2)  [11:02:00.000]   JOIN CHECK:
-(2)  [11:02:00.000]     received 13 join requests
-(2)  [11:02:00.000]   CC: Sending ACK_JOIN to node 3 for dist: 2 (pid:2)
-(1)  [11:02:00.057] node3: successfully registered with base station 100 at distance: 2
+(2)  [11:02:00.000]     received 8 join requests
+(2)  [11:02:00.000]   CC: Sending ACK_JOIN to node 2 for dist: 1 (pid:2)
+(1)  [11:02:00.057] node2: successfully registered with base station 100 at distance: 1
 (2)  [11:02:40.000]   JOIN CHECK:
 (2)  [11:02:40.000]     received 10 join requests
-(2)  [11:02:40.000]   CC: Sending ACK_JOIN to node 4 for dist: 3 (pid:3)
-(1)  [11:02:40.629] node4: successfully registered with base station 100 at distance: 3
+(2)  [11:02:40.000]   CC: Sending ACK_JOIN to node 3 for dist: 2 (pid:3)
+(1)  [11:02:41.049] node3: successfully registered with base station 100 at distance: 2
+(2)  [11:03:20.000]   JOIN CHECK:
+(2)  [11:03:20.000]     received 10 join requests
+(2)  [11:03:20.000]   CC: Sending ACK_JOIN to node 4 for dist: 3 (pid:4)
+(1)  [11:03:20.466] node4: successfully registered with base station 100 at distance: 3

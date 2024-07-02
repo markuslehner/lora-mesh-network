@@ -52,7 +52,7 @@ class logic_central_pid(logic_central):
 
     # get next free packet id
     # counting up until 255 then return to 0
-    # should be enouh to differentiate the packets in the network
+    # should be enough to differentiate the packets in the network
     def get_packet_id(self) -> int:
         last = self.next_packet_id
         self.next_packet_id += 1
@@ -240,30 +240,6 @@ class logic_central_pid(logic_central):
             self.last_packet_pid.append(rx_packet.packet_id)
             return True
 
-
-    def store_packet(self, rx_packet):
-
-        self.local_db.append(rx_packet)
-        self.local_db_rx_time.append(self.node.get_time())
-
-        if(self.write_db):
-            # local debug
-            """
-            Create a new packet into the packets table
-            :param conn:
-            :param packet:
-            :return: project id
-            """
-            sql = ''' INSERT INTO packets(sender,type,data,time_received)
-                    VALUES(?,?,?,?) '''
-            cur = self.conn.cursor()
-            cur.execute(sql, (
-                rx_packet.origin,
-                str(rx_packet.payload_type)[13:],
-                rx_packet.payload,
-                datetime.datetime.fromtimestamp(int(self.node.get_time()/1000)).strftime("%H:%M:%S")
-            ))
-            self.conn.commit()
 
     def to_dict(self) -> dict:
         return {

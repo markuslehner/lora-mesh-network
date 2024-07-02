@@ -12,7 +12,7 @@ my_debug = 2
 my_runtime = 1000*60*60*1 + 1000*60*8
 
 # override visualization
-visualize = True
+visualize = False
 
 # simulate in real-time
 real_time = False
