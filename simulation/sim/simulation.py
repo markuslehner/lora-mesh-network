@@ -3,6 +3,7 @@ from hw.node import node
 from hw.node_sensor import node_sensor
 from logic.logic import logic, logic_node
 from logic.logic_central import logic_central
+from logic.server import server
 from sim.debugger import debugger
 from sim.event import event
 from sim.destroyed_packet import destroyed_packet, Destruction_type
@@ -69,6 +70,7 @@ class simulation(object):
         self.use_same_offset = config.get("config").get("use_same_offset")
 
         self.num_nodes = config.get("config").get("num_nodes")
+        self.num_servers = config.get("config").get("num_servers") if "num_servers" in config.get("config") else 0
         self.num_blocks = config.get("config").get("num_blocks")
 
         """
@@ -94,6 +96,11 @@ class simulation(object):
 
         self.nodes : List[node] = []
         self.central_nodes : List[node] = []
+        self.servers : List[server] = []
+
+        for i in range(0, self.num_servers):
+            self.servers.append( config.get("servers").get(str(i)).get("type").from_dict(config.get("servers").get(str(i))) )
+            self.servers[i].set_debugger(self.debugger)
 
         for i in range(0, self.num_nodes):
             self.nodes.append( config.get("nodes").get(str(i)).get("type").from_dict(config.get("nodes").get(str(i))) )
@@ -103,6 +110,9 @@ class simulation(object):
             self.nodes[i].set_debugger(self.debugger)
 
         self.blocks = config.get("blocks")
+
+        for s in self.servers:
+            self.my_world.register_server(s)
 
         for n in self.nodes:
             self.my_world.add(n, n.x, n.y)
@@ -574,14 +584,3 @@ class simulation(object):
     def stop(self):
         print("SIMULATION: ToDo: clean up!")
         self.debugger.finish()
-
-
-
-
-        
-
-
-
-
-
-    

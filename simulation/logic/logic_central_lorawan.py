@@ -1,10 +1,10 @@
 from logic.logic import logic_node
-from hw.packet import packet, Payload_type, Packet_type
+from hw.packet import packet, Payload_type, Packet_type, lorawan_packet
 
 from typing import List
 
 
-class logic_central_lora(logic_node):
+class logic_central_lorawan(logic_node):
 
     def __init__(self, appID : int = 0, node_ID : int = 0) -> None:
         super().__init__(appID, node_ID)
@@ -33,6 +33,14 @@ class logic_central_lora(logic_node):
 
     def update_loop(self): 
         super().update_loop()
+
+        if(self.node.get_transceiver().has_received()):
+            # print(self.node.get_transceiver().rec_list)
+            rx_packet : lorawan_packet = self.node.get_transceiver().get_received()
+            if(rx_packet.packet_type == Packet_type.LORAWAN):
+                self.receive(rx_packet)
+            else:
+                self.debugger.log("Received LORA packet from %i, not handling it" % rx_packet.sender, 1)
 
 
     def receive(self, rx_packet) -> None:

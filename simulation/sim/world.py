@@ -15,7 +15,7 @@ import math
 import copy
 import re
 from pathlib import Path
-from typing import List
+from typing import List, Dict
 
 """
 MIN_DISTANCE
@@ -71,7 +71,7 @@ class world(object):
     def __init__(self, min_dist, max_dist, error_rate, decay):
         super().__init__()
         self.nodes : List[node] = []
-        self.servers : List[server] = []
+        self.servers : Dict[str, server] = {}
         self.blocks = []
         self.time = 0
 
@@ -99,6 +99,19 @@ class world(object):
 
     def get_time(self):
         return self.time
+    
+    def get_server(self, appID):
+        if(appID in self.servers):
+            return self.servers.get(appID)
+        else:
+            return None
+        
+    def register_server(self, server : server):
+        if(server.appID in self.servers):
+            self.debugger.log("Server with AppID %i already registered" % server.appID, 1)
+        else:
+            self.servers[server.appID] = server
+            server.register_in_world(self)
 
     def get_nodes(self) -> list[node]:
         return self.nodes
@@ -113,8 +126,8 @@ class world(object):
         self.debugger.log("  Nodes:  %s" % str(len(self.nodes)).rjust(5))
         self.debugger.log("  Blocks: %s" % str(len(self.blocks)).rjust(5))
     
-        label_arr : 'list[str]' = []
-        entry_arr : 'list[str]' = []
+        label_arr : List[str] = []
+        entry_arr : List[str] = []
 
         if(self.min_distance is None):
             label_arr.append("LoRa")
@@ -155,9 +168,9 @@ class world(object):
     """
     def add(self, node : node, x, y) -> None:
         node.position(x, y)
+        node.get_transceiver().register_in_world(self)
         node.logic.setup()
         self.nodes.append(node)
-        node.get_transceiver().register_in_world(self)
 
     """
     Block transmissions from sender to receiver
@@ -176,6 +189,9 @@ class world(object):
 
         for n in self.nodes:
             n.update()
+
+        for s in self.servers:
+            self.servers[s].update()
 
         self.time += 1
 

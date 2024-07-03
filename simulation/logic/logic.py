@@ -1,5 +1,4 @@
 from hw.node import node
-from logic.packet_handler import packet_handler
 from sim.debugger import debugger
 
 """
@@ -137,9 +136,34 @@ class logic_node(logic):
     
 
 class logic_node_lora(logic_node):
-    def __init__(self, appID : int = 0, node_id : int = 0, handler : packet_handler=None) -> None:
+    def __init__(self, appID : int = 0, node_id : int = 0, handler = None, spreading_factor : int = 7) -> None:
         super().__init__(appID, node_id)
-        self.packetHandler : packet_handler = handler
+        self.packetHandler = handler
+        self.spreading_factor = spreading_factor
+
+    def setup(self):
+        self.node.get_transceiver().set_frequency(868)
+        self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
+        self.node.get_transceiver().set_tx_power(14)
+
+        if self.packetHandler is not None:
+            self.packetHandler.register(self.node)
+
+    def to_dict(self) -> dict:
+        d =  super().to_dict()
+        d.update({"spread" : self.spreading_factor})
+        d.update({"packet_handler" : type(self.packetHandler)})
+        return d
     
+    @classmethod
+    def from_dict(cls, d):
+        instance = cls(
+            d.get("appID"),
+            d.get("node_id"),
+            d.get("packet_handler").from_dict(d),
+            d.get("spread")
+        )
+        return instance
+
     def __str__(self) -> str:
         return "%s     with handler: %s" % (str(type(self)).split(".")[-1][:-2].rjust(25), str(type(self.packetHandler)).split(".")[-1][:-2].rjust(20) )

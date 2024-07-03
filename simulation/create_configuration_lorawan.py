@@ -1,5 +1,5 @@
-from simulation.logic.logic_node_lorawan import logic_node_lora
-from simulation.logic.logic_central_lorawan import logic_central_lora
+from simulation.logic.logic_node_lorawan import logic_node_lorawan
+from simulation.logic.logic_central_lorawan import logic_central_lorawan
 
 from hw.node_sensor import node_sensor
 from hw.node import node
@@ -21,13 +21,13 @@ tx_error_rate = 0.05
 tx_decay = 2
 
 
-logic_to_use = logic_node_lora
+logic_to_use = logic_node_lorawan
 
 # create nodes
 cmanager.register_node(node(
     100,
     "central",
-    logic_central_lora(appID=appID, spreading_f=SF),
+    logic_central_lorawan(appID=appID, spreading_f=SF),
     x=400,
     y=400
 ))

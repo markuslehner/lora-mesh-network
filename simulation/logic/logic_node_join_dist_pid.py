@@ -8,8 +8,8 @@ import random
 
 class logic_node_dist_pid(logic_node_lora):
 
-    def __init__(self, appID, send_interval, time_offset=None, handler=handler_flooding()) -> None:
-        super().__init__(appID, handler)
+    def __init__(self, appID, nodeID, send_interval, time_offset=None, handler=handler_flooding(), spreading_f : int = 7) -> None:
+        super().__init__(appID, nodeID, handler, spreading_f)
 
         # send interval at whioch to send DATA
         self.send_interval = send_interval
@@ -63,7 +63,7 @@ class logic_node_dist_pid(logic_node_lora):
     def setup(self):
         # self.packetHandler = handler_flooding()
         self.node.get_transceiver().set_frequency(868)
-        self.node.get_transceiver().set_modulation("SF_1")
+        self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
         self.node.get_transceiver().set_tx_power(20)
 
         self.packetHandler.register(self.node)
@@ -83,7 +83,6 @@ class logic_node_dist_pid(logic_node_lora):
                         self.handle_foreign_packet(rx_packet)
 
             if(self.connected):
-
                 if(self.node.get_time() - self.last_send_time > self.send_interval):
                     self.last_send_time = self.node.get_time()
                     self.send_cnt += 1
@@ -92,13 +91,13 @@ class logic_node_dist_pid(logic_node_lora):
                             self.appID,
                             self.node_id,
                             0,
-                            Payload_type.DATA,
-                            self.node.sensor.get_value(),
-                            5,
+                            8,
+                            self.get_packet_id(),
                             self.distance,
                             True,
-                            packet_id=self.get_packet_id(),
-                            debug_name=("%s_%s" % (self.node.name, str(self.send_cnt))) 
+                            Payload_type.DATA,
+                            [self.node.sensor.get_value(), 77],
+                            debug_name=("%s_%i" % (self.node.name, self.send_cnt)) 
                         )
                     )
             else:
@@ -106,18 +105,18 @@ class logic_node_dist_pid(logic_node_lora):
                     # print("%s: sending JOIN request" % self.node.name)
                     self.last_connection_retry = self.node.get_time()
                     self.node.get_transceiver().send(
-                            packet_dist(
-                                self.appID,
-                                self.node_id,
-                                0,
-                                Payload_type.JOIN,
-                                [0, 0, self.send_interval],
-                                10,
-                                255,
-                                True,
-                                packet_id=self.get_packet_id(),
-                            )
+                        packet_dist(
+                            self.appID,
+                            self.node_id,
+                            0,
+                            10,
+                            self.get_packet_id(),
+                            self.distance,
+                            True,
+                            Payload_type.JOIN,
+                            [0, 0, self.send_interval]  # rssi, first network node distance
                         )
+                    )
 
             self.node.wait(20)
         else:
@@ -184,7 +183,6 @@ class logic_node_dist_pid(logic_node_lora):
         d =  super().to_dict()
         d.update({"send_interval" : self.send_interval})
         d.update({"time_offset" : self.start_time_offset})
-        d.update({"packet_handler" : type(self.packetHandler)})
         return d
 
     @classmethod    
@@ -194,7 +192,8 @@ class logic_node_dist_pid(logic_node_lora):
             d.get("node_id"),
             d.get("send_interval"),
             d.get("time_offset"),
-            d.get("packet_handler").from_dict(d)
+            d.get("packet_handler").from_dict(d),
+            d.get("spread")
         )
         return instance
         

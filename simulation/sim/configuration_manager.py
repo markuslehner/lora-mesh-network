@@ -1,7 +1,9 @@
 from sim.event import event
 from hw.node import node
 from logic.logic_node_passive import logic_node_passive
+from logic.server import server
 
+from typing import List, Tuple
 import pickle
 
 """
@@ -40,12 +42,14 @@ tx_error_rate : float = None
 tx_decay : float = None
 
 # node list
-nodes : 'list[node]' = []
+nodes : List[node] = []
 # list for blocks
 # tuples specifying the indices of the blocking nodes in the 'nodes' list
-blocks : 'tuple[int,int]'= []
+blocks : List[Tuple[int,int]] = []
 # list for events
-event_list : 'list[event]'= []
+event_list : List[event] = []
+# server list
+servers : List[server] = []
 
 def register_event(e : event):
     global event_list
@@ -54,6 +58,10 @@ def register_event(e : event):
 def register_node(n : node):
     global nodes
     nodes.append(n)
+
+def register_server(s : server):
+    global servers
+    servers.append(s)
 
 def register_block(a : int, b : int, uni_directional : bool = False):
     global blocks
@@ -80,11 +88,15 @@ def write_configuration(cname : str):
         "blocks": {},
         "config": {},
         "world" : {},
-        "events": {}
+        "events": {},
+        "servers" : {}
     }
 
     for i in range(0, len(nodes)):
         config.get("nodes").update({ ("%i" % i) : nodes[i].to_dict()})
+
+    for i in range(0, len(servers)):
+        config.get("servers").update({ ("%i" % i) : servers[i].to_dict()})
 
     config.update({ "blocks" : blocks})
 
@@ -96,7 +108,8 @@ def write_configuration(cname : str):
         "debug"                     :   debug,
         "visualize"                 :   visualize,
         "background"                :   background,
-        "num_nodes"                 :   len(nodes)
+        "num_nodes"                 :   len(nodes),
+        "num_servers"               :   len(servers)
     }})
 
     config.update({ "world" : {

@@ -2,16 +2,17 @@ from logic.command.command_center import command_center
 from logic.command.action_center import action_center
 from logic.command.command import request_command, nack_command, ack_command, reset_command, ack_join_command, set_interval_command, resync_interval_command
 from logic.handler_lmn import handler_lmn
-from hw.packet import Payload_type, Command_type, Packet_type, packet_dist
+from hw.packet import Payload_type, Command_type, Packet_type, packet_dist, packet
 from logic.logic_central import logic_central
 
 import numpy as np
 from datetime import datetime
+from typing import List
 
 class logic_central_lmn(logic_central):
 
     def __init__(self, appID : int, node_id : int, interval : int=1000*60*10, blocks : list = [], spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id)
+        super().__init__(appID, node_id, None)
 
         self.artificial_blocks = blocks
 
@@ -137,6 +138,15 @@ class logic_central_lmn(logic_central):
         self.white_list = [1, 2, 3, 4, 5, 6]
         self.assigned_distances : dict = {}
         self.white_list = []
+
+
+        '''PACKET STORAGE'''
+        # list of all packets received by this node
+        self.pack_list : List[packet] = []
+        # list of all packets stored to db for easier access
+        self.local_db : List[packet] = []
+        self.local_db_rx_time : List[float]= []
+
 
         '''DUPLICATE DETECTION'''
         # origin id of the relayed packet

@@ -1,0 +1,109 @@
+====================== SIMULATION PARAMETERS ==========================
+WORLD:
+  Nodes:      8
+  Blocks:     0
+      tx_min     tx_max   tx_error      decay
+      custom     custom     custom     custom
+        1500       2200       0.05          2
+NODES:
+    central      with ID:100 @ x=     0 y=     0 using logic:  logic_central_pid_server     with handler:     handler_dist_pid
+    node1        with ID:  1 @ x=   200 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+    node2        with ID:  2 @ x=   800 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+    node3        with ID:  3 @ x=  1400 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+    node4        with ID:  4 @ x=  1600 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+    node5        with ID:  5 @ x=  1800 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+    node6        with ID:  6 @ x=  2000 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+    node7        with ID:  7 @ x=  2200 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
+====================== STARTING SIMULATION ============================
+(1)  [11:00:00.000] Sending TIME_SYNC
+(1)  [11:00:00.000] Checking node status
+(2)  [11:00:03.093] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 0
+(1)  [11:00:03.093] receiving join request from node with ID: 5 with RSSI:-108
+(2)  [11:00:05.004] received at Server (123): JOIN from 6 with 1 hops payload: [0, 0, 300000]    hops: [6] debug_name: None PID: 0
+(1)  [11:00:05.004] receiving join request from node with ID: 6 with RSSI:-119
+(2)  [11:00:26.739] received at Server (123): JOIN from 3 with 1 hops payload: [0, 0, 300000]    hops: [3] debug_name: None PID: 0
+(1)  [11:00:26.739] receiving join request from node with ID: 3 with RSSI:-86
+(1)  [11:00:28.161] node3: successfully registered with base station at distance: 1
+(2)  [11:00:28.965] received at Server (123): JOIN from 2 with 1 hops payload: [0, 0, 300000]    hops: [2] debug_name: None PID: 0
+(1)  [11:00:28.965] receiving join request from node with ID: 2 with RSSI:-53
+(1)  [11:00:30.513] node2: successfully registered with base station at distance: 1
+(2)  [11:00:46.878] received at Server (123): JOIN from 1 with 1 hops payload: [0, 0, 300000]    hops: [1] debug_name: None PID: 0
+(1)  [11:00:46.878] receiving join request from node with ID: 1 with RSSI:-20
+(1)  [11:00:48.111] node1: successfully registered with base station at distance: 1
+(2)  [11:00:48.217] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 2] debug_name: None PID: 5
+(2)  [11:00:58.113] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 1
+(1)  [11:00:58.113] receiving join request from node with ID: 5 with RSSI:-108
+(2)  [11:00:59.729] received at Server (123): DATA from 3 with 1 hops payload: [11, 77]    hops: [3] debug_name: node3_1 PID: 1
+(2)  [11:01:19.427] received at Server (123): DATA from 2 with 2 hops payload: [10, 77]    hops: [2, 1] debug_name: node2_1 PID: 1
+(2)  [11:01:23.963] received at Server (123): DATA from 1 with 2 hops payload: [31, 77]    hops: [1, 2] debug_name: node1_1 PID: 1
+(2)  [11:01:53.133] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 2
+(1)  [11:01:53.133] receiving join request from node with ID: 5 with RSSI:-108
+(2)  [11:01:55.044] received at Server (123): JOIN from 6 with 1 hops payload: [0, 0, 300000]    hops: [6] debug_name: None PID: 2
+(1)  [11:01:55.044] receiving join request from node with ID: 6 with RSSI:-119
+(1)  [11:01:55.227] node5: successfully registered with base station at distance: 1
+(2)  [11:01:55.228] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 7
+(1)  [11:01:57.285] node6: successfully registered with base station at distance: 1
+(2)  [11:01:57.286] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 8
+(2)  [11:02:28.664] received at Server (123): DATA from 6 with 1 hops payload: [26, 77]    hops: [6] debug_name: node6_1 PID: 3
+(2)  [11:02:31.730] received at Server (123): DATA from 5 with 2 hops payload: [18, 77]    hops: [5, 2] debug_name: node5_1 PID: 3
+(2)  [11:05:00.000] Sending DELAY_INTERVAL request to node 3
+(1)  [11:05:00.048] delaying interval @ node node3 by 2424
+(2)  [11:05:00.243] received at Server (123): COMMAND from 100 with 2 hops payload: [<Command_type.DELAY_INTERVAL: bitarray('11000101')>, 2424]    hops: [100, 2] debug_name: None PID: 9
+(2)  [11:06:02.171] received at Server (123): DATA from 3 with 1 hops payload: [11, 77]    hops: [3] debug_name: node3_2 PID: 2
+(2)  [11:06:18.383] received at Server (123): DATA from 2 with 1 hops payload: [20, 77]    hops: [2] debug_name: node2_2 PID: 2
+(2)  [11:06:21.932] received at Server (123): DATA from 1 with 1 hops payload: [28, 77]    hops: [1] debug_name: node1_2 PID: 2
+(2)  [11:07:28.670] received at Server (123): DATA from 6 with 1 hops payload: [36, 77]    hops: [6] debug_name: node6_2 PID: 4
+(2)  [11:11:02.177] received at Server (123): DATA from 3 with 1 hops payload: [36, 77]    hops: [3] debug_name: node3_3 PID: 3
+(2)  [11:11:18.389] received at Server (123): DATA from 2 with 1 hops payload: [21, 77]    hops: [2] debug_name: node2_3 PID: 3
+(2)  [11:12:28.676] received at Server (123): DATA from 6 with 1 hops payload: [14, 77]    hops: [6] debug_name: node6_3 PID: 5
+(2)  [11:12:31.154] received at Server (123): DATA from 5 with 1 hops payload: [11, 77]    hops: [5] debug_name: node5_3 PID: 5
+(2)  [11:12:41.318] received at Server (123): DATA from 5 with 8 hops payload: [11, 77]    hops: [5, 2, 1, 6, 1, 6, 2, 6] debug_name: node5_3 PID: 5
+(2)  [11:16:02.183] received at Server (123): DATA from 3 with 1 hops payload: [22, 77]    hops: [3] debug_name: node3_4 PID: 4
+(2)  [11:16:12.473] received at Server (123): DATA from 3 with 8 hops payload: [22, 77]    hops: [3, 5, 6, 5, 1, 6, 2, 1] debug_name: node3_4 PID: 4
+(2)  [11:16:18.395] received at Server (123): DATA from 2 with 1 hops payload: [25, 77]    hops: [2] debug_name: node2_4 PID: 4
+(2)  [11:16:21.944] received at Server (123): DATA from 1 with 1 hops payload: [31, 77]    hops: [1] debug_name: node1_4 PID: 4
+(2)  [11:17:28.682] received at Server (123): DATA from 6 with 1 hops payload: [16, 77]    hops: [6] debug_name: node6_4 PID: 6
+(2)  [11:17:38.888] received at Server (123): DATA from 6 with 8 hops payload: [16, 77]    hops: [6, 1, 5, 2, 5, 3, 5, 3] debug_name: node6_4 PID: 6
+(2)  [11:21:02.189] received at Server (123): DATA from 3 with 1 hops payload: [8, 77]    hops: [3] debug_name: node3_5 PID: 5
+(2)  [11:21:18.401] received at Server (123): DATA from 2 with 1 hops payload: [15, 77]    hops: [2] debug_name: node2_5 PID: 5
+(2)  [11:22:28.688] received at Server (123): DATA from 6 with 1 hops payload: [41, 77]    hops: [6] debug_name: node6_5 PID: 7
+(2)  [11:22:31.166] received at Server (123): DATA from 5 with 1 hops payload: [41, 77]    hops: [5] debug_name: node5_5 PID: 7
+(2)  [11:26:02.195] received at Server (123): DATA from 3 with 1 hops payload: [7, 77]    hops: [3] debug_name: node3_6 PID: 6
+(2)  [11:26:18.407] received at Server (123): DATA from 2 with 1 hops payload: [16, 77]    hops: [2] debug_name: node2_6 PID: 6
+(2)  [11:26:21.956] received at Server (123): DATA from 1 with 1 hops payload: [43, 77]    hops: [1] debug_name: node1_6 PID: 6
+(2)  [11:26:28.781] received at Server (123): DATA from 2 with 8 hops payload: [16, 77]    hops: [2, 1, 6, 5, 1, 3, 6, 3] debug_name: node2_6 PID: 6
+(2)  [11:27:28.862] received at Server (123): DATA from 6 with 2 hops payload: [33, 77]    hops: [6, 5] debug_name: node6_6 PID: 8
+(2)  [11:27:31.198] received at Server (123): DATA from 5 with 1 hops payload: [8, 77]    hops: [5] debug_name: node5_6 PID: 8
+(1)  [11:30:00.001] Checking node status
+(1)  [11:30:00.001] node with ID:   5 not connected for full interval
+(1)  [11:30:00.001] node with ID:   6 not connected for full interval
+(1)  [11:30:00.001] node with ID:   3 not connected for full interval
+(1)  [11:30:00.001] node with ID:   2 not connected for full interval
+(1)  [11:30:00.001] node with ID:   1 not connected for full interval
+(2)  [11:31:02.201] received at Server (123): DATA from 3 with 1 hops payload: [9, 77]    hops: [3] debug_name: node3_7 PID: 7
+(2)  [11:31:18.623] received at Server (123): DATA from 2 with 2 hops payload: [24, 77]    hops: [2, 3] debug_name: node2_7 PID: 7
+(2)  [11:32:28.700] received at Server (123): DATA from 6 with 1 hops payload: [8, 77]    hops: [6] debug_name: node6_7 PID: 9
+(2)  [11:36:02.207] received at Server (123): DATA from 3 with 1 hops payload: [9, 77]    hops: [3] debug_name: node3_8 PID: 8
+(2)  [11:36:18.419] received at Server (123): DATA from 2 with 1 hops payload: [31, 77]    hops: [2] debug_name: node2_8 PID: 8
+(2)  [11:37:28.706] received at Server (123): DATA from 6 with 1 hops payload: [39, 77]    hops: [6] debug_name: node6_8 PID: 10
+(2)  [11:37:38.933] received at Server (123): DATA from 6 with 8 hops payload: [39, 77]    hops: [6, 5, 2, 5, 3, 1, 5, 2] debug_name: node6_8 PID: 10
+(2)  [11:41:02.213] received at Server (123): DATA from 3 with 1 hops payload: [22, 77]    hops: [3] debug_name: node3_9 PID: 9
+(2)  [11:41:12.419] received at Server (123): DATA from 3 with 7 hops payload: [22, 77]    hops: [3, 1, 2, 1, 2, 1, 2] debug_name: node3_9 PID: 9
+(2)  [11:41:18.425] received at Server (123): DATA from 2 with 1 hops payload: [43, 77]    hops: [2] debug_name: node2_9 PID: 9
+(2)  [11:41:21.974] received at Server (123): DATA from 1 with 1 hops payload: [20, 77]    hops: [1] debug_name: node1_9 PID: 9
+(2)  [11:42:28.712] received at Server (123): DATA from 6 with 1 hops payload: [36, 77]    hops: [6] debug_name: node6_9 PID: 11
+(2)  [11:46:02.219] received at Server (123): DATA from 3 with 1 hops payload: [10, 77]    hops: [3] debug_name: node3_10 PID: 10
+(2)  [11:46:18.431] received at Server (123): DATA from 2 with 1 hops payload: [16, 77]    hops: [2] debug_name: node2_10 PID: 10
+(2)  [11:46:21.980] received at Server (123): DATA from 1 with 1 hops payload: [36, 77]    hops: [1] debug_name: node1_10 PID: 10
+(2)  [11:47:29.033] received at Server (123): DATA from 6 with 2 hops payload: [38, 77]    hops: [6, 1] debug_name: node6_10 PID: 12
+(2)  [11:51:02.225] received at Server (123): DATA from 3 with 1 hops payload: [35, 77]    hops: [3] debug_name: node3_11 PID: 11
+(2)  [11:51:18.437] received at Server (123): DATA from 2 with 1 hops payload: [17, 77]    hops: [2] debug_name: node2_11 PID: 11
+(2)  [11:51:22.060] received at Server (123): DATA from 1 with 1 hops payload: [35, 77]    hops: [1] debug_name: node1_11 PID: 11
+(2)  [11:52:28.724] received at Server (123): DATA from 6 with 1 hops payload: [20, 77]    hops: [6] debug_name: node6_11 PID: 13
+(2)  [11:56:03.155] received at Server (123): DATA from 3 with 2 hops payload: [37, 77]    hops: [3, 2] debug_name: node3_12 PID: 12
+(2)  [11:56:18.443] received at Server (123): DATA from 2 with 1 hops payload: [25, 77]    hops: [2] debug_name: node2_12 PID: 12
+(2)  [11:56:21.992] received at Server (123): DATA from 1 with 1 hops payload: [11, 77]    hops: [1] debug_name: node1_12 PID: 12
+(2)  [11:57:28.730] received at Server (123): DATA from 6 with 1 hops payload: [20, 77]    hops: [6] debug_name: node6_12 PID: 14
+(1)  [12:00:00.001] Sending TIME_SYNC
+(1)  [12:00:00.002] Checking node status
+(1)  [12:00:00.002] Did not receive enough packets from node with ID: 5

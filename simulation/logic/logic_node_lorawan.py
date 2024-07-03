@@ -7,10 +7,10 @@ import random
 
 class logic_node_lorawan(logic_node):
 
-    def __init__(self, appID : int, node_id : int, send_interval : int, AppKey : int, time_offset : int=None) -> None:
+    def __init__(self, appID : int, node_id : int, send_interval : int, NwkKey : int, time_offset : int=None) -> None:
         super().__init__(appID, node_id)
         
-        self.AppKey : int = AppKey
+        self.NwkKey : int = NwkKey
         self.send_interval : int = send_interval
 
         self.connected : bool = False
@@ -78,7 +78,7 @@ class logic_node_lorawan(logic_node):
                             self.node_id,
                             0,
                             LoRaWAN_type.UNCONFIRMED_DATA_UP,
-                            self.node.sensor.get_value(),
+                            [self.node.sensor.get_value()],
                             packet_id= self.get_packet_id(),
                             debug_name=("%s_%s" % (self.node.name, str(self.send_cnt))) 
                         )
@@ -104,7 +104,7 @@ class logic_node_lorawan(logic_node):
                                 # handle payload
                                 # set display ...
                                 if(rx_packet.payload_type == LoRaWAN_type.JOIN_ACCEPT):
-                                    self.debugger.log("%s: successfully registered with base station" % self.node.name, 1)
+                                    self.debugger.log("%s: successfully registered with network" % self.node.name, 1)
                                     self.connected = True
                                     # set last_send_time to start first transmission after the specified offset + relay_block_time
                                     self.last_send_time = self.node.get_time() - self.send_interval + 30000 + self.start_time_offset
@@ -133,7 +133,7 @@ class logic_node_lorawan(logic_node):
         d =  super().to_dict()
         d.update({"send_interval" : self.send_interval})
         d.update({"time_offset" : self.start_time_offset})
-        d.update({"packet_handler" : type(self.packetHandler)})
+        d.update({"NwkKey" : self.NwkKey})
         return d
 
     @classmethod    
@@ -142,7 +142,7 @@ class logic_node_lorawan(logic_node):
             d.get("appID"),
             d.get("node_id"),
             d.get("send_interval"),
-            d.get("time_offset"),
-            d.get("packet_handler").from_dict(d)
+            d.get("NwkKey"),
+            d.get("time_offset")
         )
         return instance

@@ -8,11 +8,10 @@ import random
 
 class logic_node_lmn(logic_node_lora):
 
-    def __init__(self, appID : int, node_id : int, handler=handler_dist_pid(), blocks : list[int] = [], spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, handler)
+    def __init__(self, appID : int, node_id : int, handler=handler_dist_pid(), spreading_f : int = 10, blocks : list[int] = []) -> None:
+        super().__init__(appID, node_id, handler, spreading_f)
 
         self.artificial_blocks = blocks
-        self.spreading_factor = spreading_f
 
         # id of central node
         self.central_id = 0
@@ -83,12 +82,7 @@ class logic_node_lmn(logic_node_lora):
         return last
 
     def setup(self):
-        # self.packetHandler = handler_flooding()
-        self.node.get_transceiver().set_frequency(868)
-        self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
-        self.node.get_transceiver().set_tx_power(14)
-
-        self.packetHandler.register(self.node)
+        super().setup()
 
     def update_loop(self):
 
@@ -366,9 +360,7 @@ class logic_node_lmn(logic_node_lora):
 
     def to_dict(self) -> dict:
         d =  super().to_dict()
-        d.update({"packet_handler" : type(self.packetHandler)})
         d.update({"artificial_blocks" : self.artificial_blocks})
-        d.update({"spread" : self.spreading_factor})
         return d
 
     @classmethod    
@@ -377,8 +369,8 @@ class logic_node_lmn(logic_node_lora):
             d.get("appID"),
             d.get("node_id"),
             d.get("packet_handler").from_dict(d),
-            d.get("artificial_blocks"),
-            d.get("spread") if "spread" in d else 10
+            d.get("spread") if "spread" in d else 10,
+            d.get("artificial_blocks")
         )
         return instance
         

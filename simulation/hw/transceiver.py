@@ -1,4 +1,5 @@
 from sim.destroyed_packet import destroyed_packet, Destruction_type
+from typing import List, Union
 
 class transceiver(object):
     
@@ -8,11 +9,13 @@ class transceiver(object):
         self.world = None
 
         # parameters
-        self.frequency = 868 #Mhz
-        # TODO change to modulation to be more general
+        self.frequency : float = 868.0 #Mhz
+        self.rec_frequency : List[float]= None
         self.modulation : str = "SF_9"
+        self.rec_modulation : List[str] = None
         self.bandwidth : float = 125.0 #kHz
         self.tx_power : float = 20.0 # dBm
+
         
 
         # TODO LoRa parameters to subclass
@@ -60,14 +63,24 @@ class transceiver(object):
     def register_in_world(self, world):
         self.world = world
 
-    def set_frequency(self, freq):
-        self.frequency = freq
+    def set_frequency(self, freq : float):
+        self.frequency : float = freq
+        if self.rec_frequency is None:
+            self.rec_frequency = [freq]
 
     def get_frequency(self):
         return self.frequency
+    
+    def set_rec_frequency(self, freq : Union[float, List[float]]):
+        self.rec_frequency : List[float] = freq if isinstance(freq, list) else [freq]
+
+    def set_rec_modulation(self, mod : Union[str, List[str]]):
+        self.rec_modulation : List[str] = mod if isinstance(mod, list) else [mod]
 
     def set_modulation(self, mod : str):
-        self.modulation = mod
+        self.modulation : str = mod
+        if(self.rec_modulation is None):
+            self.rec_modulation = [mod]
 
     def get_modulation(self):
         return self.modulation
@@ -116,7 +129,7 @@ class transceiver(object):
     def receive(self, packet, corrupted = False):
         if(not self.sleep):
             # print("received at node %s" % self.node.name)
-            if(packet.frequency == self.frequency and packet.modulation == self.modulation and packet.bandwidth == self.bandwidth):
+            if(packet.frequency in self.rec_frequency and packet.modulation in self.rec_modulation and packet.bandwidth == self.bandwidth):
                 # print("correct packet received at node %s" % self.node.name)
 
                 self.packet_rec = packet
@@ -219,6 +232,7 @@ class transceiver(object):
                     if(self.receiving_time > 0):
                         self.receiving_time -= 1
                     else:
+                        self.debugger.log("%s: received packet from node: %i" % (self.node.name, self.packet_rec.sender), 4)
                         self.cnt_rec += 1
                         self.flag_rec = 0
                         # self.rec_list.append(copy.copy( self.packet_rec))

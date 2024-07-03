@@ -1,15 +1,25 @@
 from logic.handler_flooding import handler_flooding
-from hw.packet import Payload_type, Command_type, Packet_type, lora_packet, packet_flooding
+from hw.packet import Payload_type, Command_type, Packet_type, lora_packet, packet_flooding, packet
 from logic.logic_central import logic_central
 
 import numpy as np
 import datetime
 import random
+from typing import List
 
 class logic_central_pid(logic_central):
 
     def __init__(self, appID=0, node_id=0) -> None:
         super().__init__(appID, node_id)
+
+        # list of all packets received by this node
+        self.pack_list : List[packet] = []
+        # list of all packets stored to db for easier access
+        self.local_db : List[packet] = []
+        self.local_db_rx_time : List[float]= []
+
+        self.time_broadcast = 1000*60*60
+        self.last_time_broadcast = 20000
 
         # interval when to broadcast the timestamp
         self.time_broadcast = 1000*60*60
