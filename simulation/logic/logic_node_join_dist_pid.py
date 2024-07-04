@@ -2,7 +2,7 @@ from logic.logic import logic_node_lora
 from hw.packet import lora_packet, Packet_type, Payload_type, Command_type, packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist import handler_dist
-from sim import world
+from sim.utils import get_air_time
 
 import random
 
@@ -35,7 +35,7 @@ class logic_node_dist_pid(logic_node_lora):
             self.start_time_offset = time_offset
 
         # distance from central node
-        self.distance = 255
+        self.distance = 127
 
         # packet id counter
         self.next_packet_id = 0
@@ -64,7 +64,7 @@ class logic_node_dist_pid(logic_node_lora):
         # self.packetHandler = handler_flooding()
         self.node.get_transceiver().set_frequency(868)
         self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
-        self.node.get_transceiver().set_tx_power(20)
+        self.node.get_transceiver().set_tx_power(14)
 
         self.packetHandler.register(self.node)
 
@@ -123,13 +123,11 @@ class logic_node_dist_pid(logic_node_lora):
             self.node.wait(20)
 
     def handle_foreign_packet(self, rx_packet):
-
         if(rx_packet.payload_type == Payload_type.TIME_SYNC):
             self.set_time(rx_packet)
-
         self.packetHandler.handle_packet(rx_packet)
 
-    def handle_own_packet(self, rx_packet):
+    def handle_own_packet(self, rx_packet : lora_packet):
 
         if(self.connected):
             # handle payload
@@ -151,7 +149,7 @@ class logic_node_dist_pid(logic_node_lora):
                 self.last_send_time = self.node.get_time() - self.send_interval + 30000 + self.start_time_offset
 
 
-    def set_time(self, rx_packet):
+    def set_time(self, rx_packet : lora_packet):
         # cooldown, to avoid setting the time many times in a row
         if(self.node.get_time() - self.last_time_set > self.time_set_cooldown):
             # no correction of air time
@@ -159,7 +157,7 @@ class logic_node_dist_pid(logic_node_lora):
             # self.node.set_time(rx_packet.payload)
 
             # estimate transmission time and correct received time
-            est_time = rx_packet.payload + (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
+            est_time = rx_packet.payload + (rx_packet.num_hops * get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
 
             # when using handler_flooding, relay time is random
             # max relay time/2 should be the expected value
@@ -170,7 +168,7 @@ class logic_node_dist_pid(logic_node_lora):
             # after update to use new time
             self.last_time_set = self.node.get_time()
 
-    def update_time(self, new_time) -> None:
+    def update_time(self, new_time : int) -> None:
 
         self.last_send_time += new_time - self.node.get_time()
         if(type(self.packetHandler) is handler_flooding):

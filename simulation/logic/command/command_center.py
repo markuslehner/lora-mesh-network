@@ -41,11 +41,11 @@ class command_center(object):
         self.start_of_this_interval = 0
 
     def register_command(self, command : command, prio : int = None):
-
         if( not prio is None):
             command.set_prio(prio)
 
         self.command_list.append(command)
+
 
     def update(self):
 

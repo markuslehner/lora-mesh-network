@@ -1,6 +1,6 @@
 from bitarray import bitarray
 from enum import Enum
-import sim.world as world
+from sim.utils import get_air_time
 from typing import List
 
 class Packet_type(Enum):
@@ -186,7 +186,7 @@ class packet(object):
         return 20
 
     def get_air_time(self) -> int:
-        return world.get_air_time(self.frequency, self.modulation, self.bandwidth, self.get_length())
+        return get_air_time(self.frequency, self.modulation, self.bandwidth, self.get_length())
 
 
 class lora_packet(packet):

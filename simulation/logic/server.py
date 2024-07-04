@@ -11,32 +11,25 @@ class server(object):
         self.gateways = [] 
         self.debugger : debugger = None
 
-        # interval when to broadcast the timestamp
-        self.time_broadcast = 1000*60*60
-        self.last_time_broadcast = 0
-
         # list of all packets received by this nodeö
         self.pack_list : List[packet] = []
         # list of all packets stored to db for easier access
         self.local_db : List[packet] = []
         self.local_db_rx_time : List[float]= []
-
+        
+        '''NETWORK PARAMS'''
+        # number of connected nodes
         self.num_connected_nodes = 0
         # time when node registered
         self.first_connection = np.zeros((100))
         # time since last packet received
         self.last_connection = np.zeros((100))
-        # sending interval for the nodes in ms
-        self.nodes_interval = np.zeros((100))
         # number of packets in total check
         self.num_packets_received = np.zeros((100))
         # number of packets since last connection check
         self.num_packets_received_interval = np.zeros((100))
-        # interval when to check for inactivity of nodes
-        self.last_connection_check = 0
-        self.interval_connection_check = 1000*60*30
         # id of nodes
-        self.nodes_id = []
+        self.node_ids = []
 
     def set_debugger(self, debugger : debugger):
         self.debugger = debugger
@@ -57,6 +50,9 @@ class server(object):
         pass #TODO
 
     def update(self):
+        pass #TODO
+
+    def setup(self):
         pass #TODO
 
     def to_dict(self):

@@ -1,6 +1,5 @@
 from hw.node import node
 from sim.debugger import debugger
-from logic.server import server
 from hw.packet import packet, lora_packet
 from hw.packet import Packet_type
 
@@ -224,12 +223,20 @@ class logic_gateway(logic_node_lora):
 
     def setup(self):
         super().setup()
-        self.server : server = self.node.transceiver.world.get_server(self.appID)
+        self.server = self.node.transceiver.world.get_server(self.appID)
         self.server.register_gateway(self)
 
     def handle_server_request(self, rx_packet : packet, delay : int = 0):
         self.debugger.log("Handling server request: %s" % str(rx_packet), 5)
         self.queue_packet(rx_packet, delay)
 
-    def update_loop(self): 
+    def update_loop(self):
         super().update_loop()
+
+        if(self.chapter == 0):
+            if(self.node.get_transceiver().has_received()):
+                rx_packet : lora_packet = self.node.get_transceiver().get_received()
+                if(rx_packet.packet_type == Packet_type.LORA):
+                    self.server.handle_packet(rx_packet, self.node_id) 
+        else:
+            self.node.wait(10)

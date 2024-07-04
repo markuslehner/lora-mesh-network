@@ -40,7 +40,7 @@ class handler_dist_pid(packet_handler):
                 if(packet.last_distance == 127):
                     self.node.debugger.log("Node %s: JOIN packet from node %i reached the network" % (self.node.name, packet.origin), 3)
                     packet.payload[0] = packet.rssi
-                    packet.payload[1] = self.node.logic.distance
+                    packet.payload[1] = self.node.id
 
             self.relay_packet(packet)
 

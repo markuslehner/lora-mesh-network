@@ -2,7 +2,7 @@ from logic.logic import logic_node_lora
 from hw.packet import packet, lora_packet, Payload_type, Command_type, Packet_type, packet_dist
 from logic.handler_flooding import handler_flooding
 from logic.handler_dist_pid import handler_dist_pid
-from sim import world
+from sim.utils import get_air_time
 
 import random
 
@@ -190,7 +190,7 @@ class logic_node_lmn(logic_node_lora):
                         self.last_interval_set = self.node.get_time()
 
                         # estimate transmission delay
-                        est_time_delay = (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
+                        est_time_delay = (rx_packet.num_hops * get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
                         est_time_delay += + ((rx_packet.num_hops-1) * self.packetHandler.relay_time/2) 
                         
                         # update own sending params
@@ -227,7 +227,7 @@ class logic_node_lmn(logic_node_lora):
                         self.last_interval_set = self.node.get_time()
 
                         # estimate transmission delay
-                        est_time_delay = (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
+                        est_time_delay = (rx_packet.num_hops * get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
                         est_time_delay += ((rx_packet.num_hops-1) * self.packetHandler.relay_time/2) 
 
                         self.send_interval = rx_packet.payload[1]
@@ -305,7 +305,7 @@ class logic_node_lmn(logic_node_lora):
             # self.node.set_time(rx_packet.payload)
 
             # estimate transmission time and correct received time
-            est_time = rx_packet.payload + (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
+            est_time = rx_packet.payload + (rx_packet.num_hops * get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
 
             # when using handler_flooding, relay time is random
             # max relay time/2 should be the expected value

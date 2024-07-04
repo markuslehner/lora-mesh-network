@@ -4,7 +4,6 @@ import random
 from hw.node_sensor import node_sensor
 from hw.node import node
 from sim.debugger import debugger
-from sim.destroyed_packet import destroyed_packet, Destruction_type
 from logic.server import server
 
 import matplotlib.pylab as plt
@@ -43,20 +42,6 @@ transmission_ranges = {
     "SF_11" : { "min_distance": 3500, "max_distance": 7400, "error_rate": 0.05, "decay" : 2},
     "SF_12" : { "min_distance": 4200, "max_distance": 9000, "error_rate": 0.05, "decay" : 2},
 }
-
-# returns the airtime of the packet in ms
-def get_air_time(freq : float, mod : str, band : float, length : int, cr=5) -> int:
-
-    # SF_1 doesn't exist and is for testing, handle it as SF 7
-    if(mod == "SF_1"):
-        SF = 7
-    else:
-        SF = int(mod.split("_")[1])
-
-    symbol_duration = (2**SF) / (band)
-
-    return math.ceil( (12 + 4.25 + 8 + math.ceil( (8*length - 4*SF +28)/(4*SF) )*cr )*symbol_duration )
-
 
 def thread_function(nodes, bar, time):
     
@@ -448,7 +433,7 @@ class world(object):
 
         plt.show()
 
-    def visualize(self):
+    def visualize(self, tikz = False):
         # x, y , -x, -y
         max_dim = [0, 0, 0, 0]
 
@@ -644,40 +629,42 @@ class world(object):
 
         ax.set_xlabel(r"$x$ in m")
         ax.set_ylabel(r"$y$ in m")
-        tikzplotlib.save(str(Path(__file__).parent.parent) + "/results/world_vis.tex", encoding="utf-8")
 
-        # post processing to transform to scale and add cureved arrows
+        if(tikz):
+            tikzplotlib.save(str(Path(__file__).parent.parent) + "/results/world_vis.tex", encoding="utf-8")
 
-        reading_file = open(str(Path(__file__).parent.parent) + "/results/world_vis.tex", "r")
+            # post processing to transform to scale and add cureved arrows
 
-        arrow_cnt = 0
+            reading_file = open(str(Path(__file__).parent.parent) + "/results/world_vis.tex", "r")
 
-        new_file_content = ""
-        for line in reading_file:
-            stripped_line = line.strip()
+            arrow_cnt = 0
 
-            new_line = stripped_line
+            new_file_content = ""
+            for line in reading_file:
+                stripped_line = line.strip()
 
-            if(stripped_line.__contains__("ellipse")):
-                split_line = stripped_line.split("ellipse ")
-                numbers = re.findall('-?\d+\.?\d*', split_line[-1])
-                el_x = float(numbers[0])
-                el_y = y_dim/x_dim * target_width/target_height * el_x
-                new_line = split_line[0] + ( "ellipse (%.2f and %.2f);" % (el_x, el_y) )
+                new_line = stripped_line
 
-            elif(stripped_line.__contains__("<->")):
-                new_line = tex_arrows[arrow_cnt]
-                arrow_cnt+=1
+                if(stripped_line.__contains__("ellipse")):
+                    split_line = stripped_line.split("ellipse ")
+                    numbers = re.findall('-?\d+\.?\d*', split_line[-1])
+                    el_x = float(numbers[0])
+                    el_y = y_dim/x_dim * target_width/target_height * el_x
+                    new_line = split_line[0] + ( "ellipse (%.2f and %.2f);" % (el_x, el_y) )
 
-            elif(stripped_line.__contains__("_")):
-                new_line = stripped_line.replace("_", "")
+                elif(stripped_line.__contains__("<->")):
+                    new_line = tex_arrows[arrow_cnt]
+                    arrow_cnt+=1
 
-            new_file_content += new_line +"\n"
+                elif(stripped_line.__contains__("_")):
+                    new_line = stripped_line.replace("_", "")
 
-        reading_file.close()
+                new_file_content += new_line +"\n"
 
-        writing_file = open(str(Path(__file__).parent.parent) + "/results/world_vis.tex", "w")
-        writing_file.write(new_file_content)
-        writing_file.close()
+            reading_file.close()
+
+            writing_file = open(str(Path(__file__).parent.parent) + "/results/world_vis.tex", "w")
+            writing_file.write(new_file_content)
+            writing_file.close()
 
         plt.show()

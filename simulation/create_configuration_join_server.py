@@ -1,6 +1,6 @@
 from logic.logic_node_join_dist_pid import logic_node_dist_pid
 from logic.handler_dist_pid import handler_dist_pid
-from logic.logic_central_join_server import logic_central_pid_server
+from logic.logic import logic_gateway
 from logic.server_join import server_join
 
 from hw.node_sensor import node_sensor
@@ -35,7 +35,7 @@ cmanager.register_server(
 cmanager.register_node(node(
     100,
     "central",
-    logic_central_pid_server(appID=appID, node_id=100, handler=handler_to_use(), spreading_f=SF),
+    logic_gateway(appID=appID, node_id=100, handler=handler_to_use(), spreading_f=SF),
     x=0,
     y=0
 ))

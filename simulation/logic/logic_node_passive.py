@@ -1,15 +1,14 @@
-from logic.logic import logic, logic_node
+from logic.logic import logic_node_lora
 from hw.packet import Payload_type, Command_type, packet_flooding
 from logic.handler_flooding_basic import handler_flooding_basic
-from sim import debugger
-from sim import world
+from sim.utils import get_air_time
 
 import random
 
-class logic_node_passive(logic_node):
+class logic_node_passive(logic_node_lora):
 
     def __init__(self, appID, node_id, send_interval, time_offset=None, handler=handler_flooding_basic(), spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, handler)
+        super().__init__(appID, node_id, handler, spreading_f)
 
         self.spreading_factor = spreading_f 
         self.send_interval = send_interval
@@ -34,7 +33,6 @@ class logic_node_passive(logic_node):
 
     def setup(self):
         self.node.get_transceiver().set_frequency(868)
-        self.debugger.log("%s: setting sf to %i" % (self.node.name, self.spreading_factor), 2)
         self.node.get_transceiver().set_modulation("SF_%i" % self.spreading_factor)
         self.node.get_transceiver().set_tx_power(14)
 
@@ -65,7 +63,7 @@ class logic_node_passive(logic_node):
                                 # self.node.set_time(rx_packet.payload)
 
                                 # estimate transmission time and correct received time
-                                est_time = rx_packet.payload + (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
+                                est_time = rx_packet.payload + (rx_packet.num_hops * get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
                                 self.last_send_time += est_time - self.node.time
                                 self.update_time(est_time)
                                 self.last_time_set = self.node.get_time()

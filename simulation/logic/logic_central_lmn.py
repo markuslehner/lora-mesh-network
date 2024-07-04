@@ -11,10 +11,8 @@ from typing import List
 
 class logic_central_lmn(logic_central_lora):
 
-    def __init__(self, appID : int, node_id : int, interval : int=1000*60*10, blocks : list = [], spreading_f : int = 10) -> None:
+    def __init__(self, appID : int, node_id : int, interval : int=1000*60*10, spreading_f : int = 10) -> None:
         super().__init__(appID, node_id, None, spreading_f)
-
-        self.artificial_blocks = blocks
 
         '''COMMANDS'''
         # command priority and timing
@@ -349,107 +347,6 @@ class logic_central_lmn(logic_central_lora):
             self.debugger.log("-> nodes sleeping:        %s" % self.nodes_sleeping, 1)
             self.debugger.log("-> new nodes:             %s" % self.new_nodes_to_join, 1)
 
-        ''' 
-        JOIN REQUESTS
-        handle all join requests that were received in the last interval
-        '''
-        if(self.node.get_time() - self.last_join_check > self.interval_join_check):
-            self.debugger.log("  JOIN CHECK:", 2 if (self.num_empty_join_intervals < 4 or self.num_received_join_requests > 0) else 4)
-            self.debugger.log("    received %i join requests" % self.num_received_join_requests, 2 if (self.num_empty_join_intervals < 4 or self.num_received_join_requests > 0) else 4)
-
-            # if the nodes started sending the JOIN requests are scheduled to avoid
-            # the sending interval
-            # when the nodes are sleeping they are only handled once every interval
-            if(self.nodes_started_sending):
-                if(self.nodes_sleeping):
-                    self.last_join_check = self.next_interval_start - self.interval_join_check + self.num_connected_nodes*self.interval_slot_width
-                else:
-                    self.last_join_check += self.interval_join_check
-                    if(self.last_join_check > self.next_interval_start - self.interval_join_check - 30*1000 and self.last_join_check < self.next_interval_start - self.interval_join_check + self.num_connected_nodes*self.interval_slot_width):
-                        self.debugger.log("    Setting JOIN-CHECK to end of send-interval", 2)
-                        self.last_join_check = self.next_interval_start - self.interval_join_check + self.num_connected_nodes*self.interval_slot_width
-            else:
-                self.last_join_check += self.interval_join_check
-
-            node_to_join = None
-            node_to_join_dist = 1
-            node_to_join_first_node = self.node_id
-            
-            '''
-            decide which nodes should be allowed to join next
-
-            always add the node with the lowest RSSI
-            only add one node at a time
-            
-            get distance of node (B) that received the JOIN request
-            assign node (A) the distance of node (B) + 1
-            '''
-            # received a JOIN request directly at central
-            if(self.num_received_join_requests > 0):
-
-                idx = np.argmax(self.received_join_requests_rssi[:self.num_received_join_requests])
-                
-                self.num_empty_join_intervals = 0
-                self.new_nodes_to_join = True
-                self.all_nodes_sending = False
-                self.network_running = False
-
-                node_to_join = self.received_join_requests[idx]
-                node_to_join_first_node = self.received_join_requests_first_node[idx]
-
-                if(node_to_join in self.node_ids):
-                    node_to_join_dist = self.node_distances[self.node_ids.index(self.received_join_requests[idx])]
-                elif(not node_to_join_first_node == self.node_id):
-                    if(("%i" % node_to_join) in self.assigned_distances):
-                        node_to_join_dist = self.assigned_distances.get("%i" % node_to_join)
-                    else:
-                        node_to_join_dist = self.node_distances[self.node_ids.index(int(node_to_join_first_node))] + 1
-
-                # update connected node parameters
-                # and
-                # send the join requests
-                if(not node_to_join in self.node_ids):
-                    self.num_connected_nodes += 1
-                    self.first_connection[self.num_connected_nodes-1] = self.node.get_time()
-                    self.node_ids.append(int(node_to_join))
-                    self.node_battery_level.append(-1)
-                    # self.node_distances.append(nodes_to_join_dist[n])
-                    self.node_distances.append(node_to_join_dist)
-                    self.node_of_first_contact.append(node_to_join_first_node)
-                    self.node_sending_status.append(False)
-                    self.node_sleeping_status.append(False)
-                    self.node_wanted_sleeping_status.append(False)
-                    # not accepted interval
-                    self.node_interval_ack.append(False)
-                    self.node_interval_sent.append(False)
-
-                    '''STATISTICS'''
-                    self.statistics.get("num_rx_after_start").update( { str(int(node_to_join)) : 0} )
-                    self.statistics.get("num_rx_requested").update( { str(int(node_to_join)) : 0} )
-
-                else:
-                    self.debugger.log("    Node %i: rejoining" % node_to_join, 1)
-                    idx = self.node_ids.index(node_to_join)
-                    self.node_interval_sent[idx] = False
-                    self.node_interval_ack[idx] = False
-                    self.node_sending_status[idx] = False
-                    self.node_sleeping_status[idx] = False
-                    self.num_packets_received_after_join[idx] = 0
-
-                self.command_center.register_command(ack_join_command(
-                        node_to_join,
-                        node_to_join_dist,
-                        self.node_id
-                    ))
-
-            else:
-                self.num_empty_join_intervals += 1
-
-            # reset join info
-            self.received_join_requests = np.zeros((100))
-            self.received_join_requests_rssi = np.zeros((100))
-            self.received_join_requests_first_node = np.zeros((100))
-            self.num_received_join_requests = 0
 
         ''' 
         INTERVAL
@@ -807,7 +704,7 @@ class logic_central_lmn(logic_central_lora):
     def remove_received_join_requests(self, nid : int) -> None:
         
         if(self.num_received_join_requests > 0):
-            self.logger.log("  removing join requests from node %i" % nid, 3)
+            self.debugger.log("  removing join requests from node %i" % nid, 3)
             idxs_stay = []
             for i in range(self.num_received_join_requests):
                 if(int(self.received_join_requests[i]) != nid): 
@@ -827,7 +724,7 @@ class logic_central_lmn(logic_central_lora):
                 self.received_join_requests_rssi[:len(new_received_join_requests_rssi)] = new_received_join_requests_rssi
                 self.received_join_requests_first_node[:len(new_received_join_requests_first_node)] = new_received_join_requests_first_node 
 
-            self.logger.log("  removed %i join requests" % (self.num_received_join_requests - len(idxs_stay)), 3)
+            self.debugger.log("  removed %i join requests" % (self.num_received_join_requests - len(idxs_stay)), 3)
             self.num_received_join_requests = len(idxs_stay)
 
     def get_time(self) -> int:
@@ -854,7 +751,6 @@ class logic_central_lmn(logic_central_lora):
             "appID" : self.appID,
             "node_id" : self.node_id,
             "interval" : self.interval,
-            "artificial_blocks" : self.artificial_blocks,
             "spread" : self.spreading_factor
         }
 
@@ -864,7 +760,6 @@ class logic_central_lmn(logic_central_lora):
             d.get("appID"),
             d.get("node_id"),
             d.get("interval"),
-            d.get("artificial_blocks"),
             d.get("spread") if "spread" in d else 10
         )
         return instance

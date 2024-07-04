@@ -4,7 +4,7 @@ from hw.node_sensor import node_sensor
 from logic.logic import logic, logic_node, logic_central
 from logic.server import server
 from sim.debugger import debugger
-from sim.event import event
+from sim.event import event, event_application
 from sim.destroyed_packet import destroyed_packet, Destruction_type
 from datetime import datetime
 
@@ -96,8 +96,6 @@ class simulation(object):
         self.applications : Dict[int, Union[logic_central, server]] = {}
         self.application_nodes : Dict[int, List[node]] = {}
 
-
-
         self.nodes : List[node] = []
         self.central_nodes : List[node] = []
         self.servers : List[server] = []
@@ -161,6 +159,9 @@ class simulation(object):
             self.debugger.log("    %s" % str(n))
 
         self.debugger.set_state(1)
+        
+        for s in self.servers:
+            s.setup()
 
     def run(self) -> float:
 
@@ -178,14 +179,13 @@ class simulation(object):
         for i in range(self.runtime):
             
             start_of_cycle = time.time()
-            # print("Time in ms: %f" %  ( start_of_cycle*1000) )
             # check for trigger of event
-            # support for more central nodes not implemented
-            # TODO add support for multiple central nodes by creating a server isntance that handles data collection
-            # this will require a new approach for distance based routing, as the node should only register to one central_node
             for e in self.event_list:
                 if(e.execution_time == self.world_time + i):
-                    e.execute(self.my_world, self.central_nodes[0].logic)
+                    if(isinstance(e, event_application)):
+                        e.execute(self.my_world, self.applications.get(e.application))
+                    else:
+                        e.execute(self.my_world)
 
             # log battery
             if(self.log_battery):

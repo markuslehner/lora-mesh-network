@@ -1,7 +1,7 @@
 from logic.logic import logic_node_lora
 from hw.packet import lora_packet, Packet_type, Payload_type, Command_type, packet_flooding
 from logic.handler_flooding_pid import handler_flooding_pid
-from sim import debugger, world
+from sim.utils import get_air_time
 
 import random
 
@@ -148,7 +148,7 @@ class logic_node_join_pid(logic_node_lora):
             # self.node.set_time(rx_packet.payload)
 
             # estimate transmission time and correct received time
-            est_time = rx_packet.payload + (rx_packet.num_hops * world.get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
+            est_time = rx_packet.payload + (rx_packet.num_hops * get_air_time(rx_packet.frequency, rx_packet.modulation, rx_packet.bandwidth, rx_packet.get_length()))
 
             # when using handler_flooding, relay time is random
             # max relay time/2 should be the expected value

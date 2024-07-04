@@ -3,7 +3,7 @@ from sim.destroyed_packet import Forward_type
 
 
 # configuration file to use
-configuration = "world_thesis"
+configuration = "world_join_server"
 
 # override the debug level from configuration file
 my_debug = 2
