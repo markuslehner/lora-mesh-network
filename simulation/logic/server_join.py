@@ -30,7 +30,7 @@ class server_join(server):
         # time to wait for join requests to decide which node to add first
         # should be double the join repeat interval
         self.last_join_check = 0
-        self.interval_join_check = 1000*40
+        self.interval_join_check = 1000*60
         # number of received join requests in last interval
         self.num_received_join_requests = 0
         # all received join requests, store the id of node here
@@ -204,9 +204,9 @@ class server_join(server):
             self.last_packet_origins.pop(remove[i]-i)
             self.last_packet_pid.pop(remove[i]-i)
             # print(self.last_packet_origins)
-            self.debugger.log("Server (%i): not handling packet %s from node %i because it was received multiple times" % (self.appID, str(rx_packet.payload_type)[13:], rx_packet.origin), 3)
 
         if(num_blocks > 0):
+            self.debugger.log("Server (%i): not handling packet %s from node %i because it was received multiple times" % (self.appID, str(rx_packet.payload_type)[13:], rx_packet.origin), 3)
             return False
         else:
             self.last_packet_relay.append(self.get_time())

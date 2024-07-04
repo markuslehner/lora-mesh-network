@@ -3,10 +3,10 @@ from sim.destroyed_packet import Forward_type
 
 
 # configuration file to use
-configuration = "world_join_server"
+configuration = "world_lorawan"
 
 # override the debug level from configuration file
-my_debug = 2
+my_debug = 3
 
 # override the runtime from configuration file
 my_runtime = 1000*60*60*1 + 1000*60*8

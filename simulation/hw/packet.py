@@ -334,7 +334,7 @@ class lorawan_packet(lora_packet):
         self.packet_id : int = packet_id
 
     def __copy__(self):
-        cop = lorawan_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, debug_name=self.debug_name)
+        cop = lorawan_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, self.packet_id, debug_name=self.debug_name)
         cop.frequency = self.frequency
         cop.bandwidth = self.bandwidth
         cop.modulation = self.modulation       
@@ -345,4 +345,4 @@ class lorawan_packet(lora_packet):
         return 26 # TODO
     
     def __str__(self) -> str:
-        return "LORAWAN packet from %i with payload: %s debug_name: %s" % (self.DevEUI, str(self.payload), self.debug_name)
+        return "LORAWAN packet from %i with payload: %s debug_name: %s" % (self.sender, str(self.payload), self.debug_name)

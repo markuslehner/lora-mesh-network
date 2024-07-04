@@ -1,0 +1,12 @@
+nodes;node1
+node ids;1
+received DATA packets;14
+from sent DATA packets;14
+received DATA packets before start;14
+received DATA packets after start;0
+received requested DATA packets after join;0
+from sent DATA packets after join;0
+destroyed packets;0
+sent packets;15
+successfully received packets;1
+total received packets;1

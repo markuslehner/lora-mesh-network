@@ -15,295 +15,73 @@ NODES:
     node6        with ID:  6 @ x=  2000 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
     node7        with ID:  7 @ x=  2200 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
 ====================== STARTING SIMULATION ============================
-(2)  [11:00:40.001]   JOIN CHECK:
-(2)  [11:00:40.001]     received 0 join requests
-(1)  [11:00:48.432] receiving join request from node with ID: 1 with RSSI:-20 [0, 0, 300000]
-(1)  [11:00:48.852] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(2)  [11:01:20.001]   JOIN CHECK:
-(2)  [11:01:20.001]     received 2 join requests
-(1)  [11:01:20.001]     Server (123): Sending JOIN_ACK to node 1 for dist: 1
-(1)  [11:01:21.900] node1: successfully registered with base station at distance: 1
-(1)  [11:01:36.081] receiving join request from node with ID: 4 with RSSI:-20 [np.float64(-86.36363636363636), 1, 300000]
-(1)  [11:01:39.525] receiving join request from node with ID: 2 with RSSI:-53 [0, 0, 300000]
-(1)  [11:01:43.872] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(2)  [11:02:00.001]   JOIN CHECK:
-(2)  [11:02:00.001]     received 3 join requests
-(1)  [11:02:00.001]     Server (123): Sending JOIN_ACK to node 2 for dist: 1
-(1)  [11:02:00.918] node2: successfully registered with base station at distance: 1
-(1)  [11:02:32.235] receiving join request from node with ID: 4 with RSSI:-20 [np.float64(-53.63636363636364), 2, 300000]
-(1)  [11:02:32.949] receiving join request from node with ID: 6 with RSSI:-53 [np.float64(-75.45454545454545), 2, 300000]
-(1)  [11:02:38.892] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(2)  [11:02:40.001]   JOIN CHECK:
-(2)  [11:02:40.001]     received 3 join requests
-(1)  [11:02:40.001]     Server (123): Sending JOIN_ACK to node 4 for dist: 2
-(1)  [11:02:41.406] node4: successfully registered with base station at distance: 2
-(2)  [11:03:20.001]   JOIN CHECK:
-(2)  [11:03:20.001]     received 0 join requests
-(1)  [11:03:27.255] receiving join request from node with ID: 6 with RSSI:-53 [np.float64(-31.81818181818182), 4, 300000]
-(1)  [11:03:33.912] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(1)  [11:03:42.102] receiving join request from node with ID: 7 with RSSI:-53 [np.float64(-42.72727272727273), 4, 300000]
-(1)  [11:03:50.838] receiving join request from node with ID: 5 with RSSI:-53 [np.float64(-20.90909090909091), 4, 300000]
-(2)  [11:04:00.001]   JOIN CHECK:
-(2)  [11:04:00.001]     received 4 join requests
-(1)  [11:04:00.001]     Server (123): Sending JOIN_ACK to node 5 for dist: 3
-(1)  [11:04:03.432] node5: successfully registered with base station at distance: 3
-(1)  [11:04:22.002] receiving join request from node with ID: 6 with RSSI:-53 [np.float64(-20.90909090909091), 5, 300000]
-(1)  [11:04:28.932] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(1)  [11:04:36.870] receiving join request from node with ID: 7 with RSSI:-53 [np.float64(-31.81818181818182), 5, 300000]
-(2)  [11:04:40.001]   JOIN CHECK:
-(2)  [11:04:40.001]     received 3 join requests
-(1)  [11:04:40.001]     Server (123): Sending JOIN_ACK to node 6 for dist: 4
-(1)  [11:04:42.660] node6: successfully registered with base station at distance: 4
-(1)  [11:04:47.328] receiving join request from node with ID: 7 with RSSI:-53 [np.float64(-31.81818181818182), 5, 300000]
-(2)  [11:05:20.001]   JOIN CHECK:
-(2)  [11:05:20.001]     received 1 join requests
-(1)  [11:05:20.001]     Server (123): Sending JOIN_ACK to node 7 for dist: 4
-(1)  [11:05:23.952] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(1)  [11:05:32.457] receiving join request from node with ID: 7 with RSSI:-53 [np.float64(-20.90909090909091), 6, 300000]
-(2)  [11:06:00.001]   JOIN CHECK:
-(2)  [11:06:00.001]     received 2 join requests
-(1)  [11:06:00.001]     Node 7: rejoining
-(1)  [11:06:00.001]     Server (123): Sending JOIN_ACK to node 7 for dist: 4
-(1)  [11:06:01.158] node7: successfully registered with base station at distance: 4
-(1)  [11:06:18.972] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(2)  [11:06:40.001]   JOIN CHECK:
-(2)  [11:06:40.001]     received 1 join requests
-(1)  [11:06:40.001]     Server (123): Sending JOIN_ACK to node 3 for dist: 1
-(1)  [11:07:13.992] receiving join request from node with ID: 3 with RSSI:-86 [0, 0, 300000]
-(2)  [11:07:20.001]   JOIN CHECK:
-(2)  [11:07:20.001]     received 1 join requests
-(1)  [11:07:20.001]     Node 3: rejoining
-(1)  [11:07:20.001]     Server (123): Sending JOIN_ACK to node 3 for dist: 1
-(1)  [11:07:21.189] node3: successfully registered with base station at distance: 1
-(2)  [11:08:00.001]   JOIN CHECK:
-(2)  [11:08:00.001]     received 0 join requests
-(2)  [11:08:40.001]   JOIN CHECK:
-(2)  [11:08:40.001]     received 0 join requests
-(2)  [11:09:20.001]   JOIN CHECK:
-(2)  [11:09:20.001]     received 0 join requests
-(2)  [11:10:00.001]   JOIN CHECK:
-(2)  [11:10:00.001]     received 0 join requests
-(2)  [11:10:40.001]   JOIN CHECK:
-(2)  [11:10:40.001]     received 0 join requests
-(2)  [11:11:20.001]   JOIN CHECK:
-(2)  [11:11:20.001]     received 0 join requests
-(2)  [11:12:00.001]   JOIN CHECK:
-(2)  [11:12:00.001]     received 0 join requests
-(2)  [11:12:40.001]   JOIN CHECK:
-(2)  [11:12:40.001]     received 0 join requests
-(2)  [11:13:20.001]   JOIN CHECK:
-(2)  [11:13:20.001]     received 0 join requests
-(2)  [11:14:00.001]   JOIN CHECK:
-(2)  [11:14:00.001]     received 0 join requests
-(2)  [11:14:40.001]   JOIN CHECK:
-(2)  [11:14:40.001]     received 0 join requests
-(2)  [11:15:20.001]   JOIN CHECK:
-(2)  [11:15:20.001]     received 0 join requests
-(2)  [11:16:00.001]   JOIN CHECK:
-(2)  [11:16:00.001]     received 0 join requests
-(2)  [11:16:40.001]   JOIN CHECK:
-(2)  [11:16:40.001]     received 0 join requests
-(2)  [11:17:20.001]   JOIN CHECK:
-(2)  [11:17:20.001]     received 0 join requests
-(2)  [11:18:00.001]   JOIN CHECK:
-(2)  [11:18:00.001]     received 0 join requests
-(2)  [11:18:40.001]   JOIN CHECK:
-(2)  [11:18:40.001]     received 0 join requests
-(2)  [11:19:20.001]   JOIN CHECK:
-(2)  [11:19:20.001]     received 0 join requests
-(2)  [11:20:00.001]   JOIN CHECK:
-(2)  [11:20:00.001]     received 0 join requests
-(2)  [11:20:40.001]   JOIN CHECK:
-(2)  [11:20:40.001]     received 0 join requests
-(2)  [11:21:20.001]   JOIN CHECK:
-(2)  [11:21:20.001]     received 0 join requests
-(2)  [11:22:00.001]   JOIN CHECK:
-(2)  [11:22:00.001]     received 0 join requests
-(2)  [11:22:40.001]   JOIN CHECK:
-(2)  [11:22:40.001]     received 0 join requests
-(2)  [11:23:20.001]   JOIN CHECK:
-(2)  [11:23:20.001]     received 0 join requests
-(2)  [11:24:00.001]   JOIN CHECK:
-(2)  [11:24:00.001]     received 0 join requests
-(2)  [11:24:40.001]   JOIN CHECK:
-(2)  [11:24:40.001]     received 0 join requests
-(2)  [11:25:20.001]   JOIN CHECK:
-(2)  [11:25:20.001]     received 0 join requests
-(2)  [11:26:00.001]   JOIN CHECK:
-(2)  [11:26:00.001]     received 0 join requests
-(2)  [11:26:40.001]   JOIN CHECK:
-(2)  [11:26:40.001]     received 0 join requests
-(2)  [11:27:20.001]   JOIN CHECK:
-(2)  [11:27:20.001]     received 0 join requests
-(2)  [11:28:00.001]   JOIN CHECK:
-(2)  [11:28:00.001]     received 0 join requests
-(2)  [11:28:40.001]   JOIN CHECK:
-(2)  [11:28:40.001]     received 0 join requests
-(2)  [11:29:20.001]   JOIN CHECK:
-(2)  [11:29:20.001]     received 0 join requests
-(2)  [11:30:00.001]   JOIN CHECK:
-(2)  [11:30:00.001]     received 0 join requests
-(2)  [11:30:40.001]   JOIN CHECK:
-(2)  [11:30:40.001]     received 0 join requests
-(2)  [11:31:20.001]   JOIN CHECK:
-(2)  [11:31:20.001]     received 0 join requests
-(2)  [11:32:00.001]   JOIN CHECK:
-(2)  [11:32:00.001]     received 0 join requests
-(2)  [11:32:40.001]   JOIN CHECK:
-(2)  [11:32:40.001]     received 0 join requests
-(2)  [11:33:20.001]   JOIN CHECK:
-(2)  [11:33:20.001]     received 0 join requests
-(2)  [11:34:00.001]   JOIN CHECK:
-(2)  [11:34:00.001]     received 0 join requests
-(2)  [11:34:40.001]   JOIN CHECK:
-(2)  [11:34:40.001]     received 0 join requests
-(2)  [11:35:20.001]   JOIN CHECK:
-(2)  [11:35:20.001]     received 0 join requests
-(2)  [11:36:00.001]   JOIN CHECK:
-(2)  [11:36:00.001]     received 0 join requests
-(2)  [11:36:40.001]   JOIN CHECK:
-(2)  [11:36:40.001]     received 0 join requests
-(2)  [11:37:20.001]   JOIN CHECK:
-(2)  [11:37:20.001]     received 0 join requests
-(2)  [11:38:00.001]   JOIN CHECK:
-(2)  [11:38:00.001]     received 0 join requests
-(2)  [11:38:40.001]   JOIN CHECK:
-(2)  [11:38:40.001]     received 0 join requests
-(2)  [11:39:20.001]   JOIN CHECK:
-(2)  [11:39:20.001]     received 0 join requests
-(2)  [11:40:00.001]   JOIN CHECK:
-(2)  [11:40:00.001]     received 0 join requests
-(2)  [11:40:40.001]   JOIN CHECK:
-(2)  [11:40:40.001]     received 0 join requests
-(2)  [11:41:20.001]   JOIN CHECK:
-(2)  [11:41:20.001]     received 0 join requests
-(2)  [11:42:00.001]   JOIN CHECK:
-(2)  [11:42:00.001]     received 0 join requests
-(2)  [11:42:40.001]   JOIN CHECK:
-(2)  [11:42:40.001]     received 0 join requests
-(2)  [11:43:20.001]   JOIN CHECK:
-(2)  [11:43:20.001]     received 0 join requests
-(2)  [11:44:00.001]   JOIN CHECK:
-(2)  [11:44:00.001]     received 0 join requests
-(2)  [11:44:40.001]   JOIN CHECK:
-(2)  [11:44:40.001]     received 0 join requests
-(2)  [11:45:20.001]   JOIN CHECK:
-(2)  [11:45:20.001]     received 0 join requests
-(2)  [11:46:00.001]   JOIN CHECK:
-(2)  [11:46:00.001]     received 0 join requests
-(2)  [11:46:40.001]   JOIN CHECK:
-(2)  [11:46:40.001]     received 0 join requests
-(2)  [11:47:20.001]   JOIN CHECK:
-(2)  [11:47:20.001]     received 0 join requests
-(2)  [11:48:00.001]   JOIN CHECK:
-(2)  [11:48:00.001]     received 0 join requests
-(2)  [11:48:40.001]   JOIN CHECK:
-(2)  [11:48:40.001]     received 0 join requests
-(2)  [11:49:20.001]   JOIN CHECK:
-(2)  [11:49:20.001]     received 0 join requests
-(2)  [11:50:00.001]   JOIN CHECK:
-(2)  [11:50:00.001]     received 0 join requests
-(2)  [11:50:40.001]   JOIN CHECK:
-(2)  [11:50:40.001]     received 0 join requests
-(2)  [11:51:20.001]   JOIN CHECK:
-(2)  [11:51:20.001]     received 0 join requests
-(2)  [11:52:00.001]   JOIN CHECK:
-(2)  [11:52:00.001]     received 0 join requests
-(2)  [11:52:40.001]   JOIN CHECK:
-(2)  [11:52:40.001]     received 0 join requests
-(2)  [11:53:20.001]   JOIN CHECK:
-(2)  [11:53:20.001]     received 0 join requests
-(2)  [11:54:00.001]   JOIN CHECK:
-(2)  [11:54:00.001]     received 0 join requests
-(2)  [11:54:40.001]   JOIN CHECK:
-(2)  [11:54:40.001]     received 0 join requests
-(2)  [11:55:20.001]   JOIN CHECK:
-(2)  [11:55:20.001]     received 0 join requests
-(2)  [11:56:00.001]   JOIN CHECK:
-(2)  [11:56:00.001]     received 0 join requests
-(2)  [11:56:40.001]   JOIN CHECK:
-(2)  [11:56:40.001]     received 0 join requests
-(2)  [11:57:20.001]   JOIN CHECK:
-(2)  [11:57:20.001]     received 0 join requests
-(2)  [11:58:00.001]   JOIN CHECK:
-(2)  [11:58:00.001]     received 0 join requests
-(2)  [11:58:40.001]   JOIN CHECK:
-(2)  [11:58:40.001]     received 0 join requests
-(2)  [11:59:20.001]   JOIN CHECK:
-(2)  [11:59:20.001]     received 0 join requests
-(2)  [12:00:00.001]   JOIN CHECK:
-(2)  [12:00:00.001]     received 0 join requests
-(2)  [12:00:40.001]   JOIN CHECK:
-(2)  [12:00:40.001]     received 0 join requests
-(2)  [12:01:20.001]   JOIN CHECK:
-(2)  [12:01:20.001]     received 0 join requests
-(2)  [12:02:00.001]   JOIN CHECK:
-(2)  [12:02:00.001]     received 0 join requests
-(2)  [12:02:40.001]   JOIN CHECK:
-(2)  [12:02:40.001]     received 0 join requests
-(2)  [12:03:20.001]   JOIN CHECK:
-(2)  [12:03:20.001]     received 0 join requests
-(2)  [12:04:00.001]   JOIN CHECK:
-(2)  [12:04:00.001]     received 0 join requests
-(2)  [12:04:40.001]   JOIN CHECK:
-(2)  [12:04:40.001]     received 0 join requests
-(2)  [12:05:20.001]   JOIN CHECK:
-(2)  [12:05:20.001]     received 0 join requests
-(2)  [12:06:00.001]   JOIN CHECK:
-(2)  [12:06:00.001]     received 0 join requests
-(2)  [12:06:40.001]   JOIN CHECK:
-(2)  [12:06:40.001]     received 0 join requests
-(2)  [12:07:20.001]   JOIN CHECK:
-(2)  [12:07:20.001]     received 0 join requests
+(2)  [11:01:00.001]     Server (123): Sending JOIN_ACK to node 1 for dist: 1
+(1)  [11:01:01.341] node1: successfully registered with base station at distance: 1
+(2)  [11:02:00.001]     Server (123): Sending JOIN_ACK to node 2 for dist: 1
+(1)  [11:02:01.443] node2: successfully registered with base station at distance: 1
+(2)  [11:03:00.001]     Server (123): Sending JOIN_ACK to node 3 for dist: 2
+(1)  [11:03:00.768] node3: successfully registered with base station at distance: 2
+(2)  [11:04:00.001]     Server (123): Sending JOIN_ACK to node 4 for dist: 3
+(1)  [11:04:02.193] node4: successfully registered with base station at distance: 3
+(2)  [11:05:00.001]     Server (123): Sending JOIN_ACK to node 5 for dist: 4
+(2)  [11:06:00.001]     Node 5: rejoining
+(2)  [11:06:00.001]     Server (123): Sending JOIN_ACK to node 5 for dist: 4
+(1)  [11:06:01.284] node5: successfully registered with base station at distance: 4
+(2)  [11:07:00.001]     Server (123): Sending JOIN_ACK to node 6 for dist: 5
+(1)  [11:07:03.129] node6: successfully registered with base station at distance: 5
+(2)  [11:08:00.001]     Server (123): Sending JOIN_ACK to node 7 for dist: 6
+(1)  [11:08:03.882] node7: successfully registered with base station at distance: 6
+(2)  [11:09:00.001]     Node 7: rejoining
+(2)  [11:09:00.001]     Server (123): Sending JOIN_ACK to node 7 for dist: 6
 ====================== SIMULATION RESULTS =============================
-Simulation took: 1 min 18.808 s
+Simulation took: 1 min 17.205 s
 Simulated time: 01:08:00
-nodes sent in total: 93
-received in total: 92 / 93 = 98.92 %
+nodes sent in total: 92
+received in total: 88 / 92 = 95.65 %
 NODES:
   node:      node1 distance:   1 battery: 97.06 %
   node:      node2 distance:   1 battery: 97.06 %
-  node:      node3 distance:   1 battery: 97.06 %
-  node:      node4 distance:   2 battery: 97.07 %
-  node:      node5 distance:   3 battery: 97.07 %
-  node:      node6 distance:   4 battery: 97.07 %
-  node:      node7 distance:   4 battery: 97.07 %
-received from node1: 14 from 14
+  node:      node3 distance:   2 battery: 97.07 %
+  node:      node4 distance:   3 battery: 97.07 %
+  node:      node5 distance:   4 battery: 97.07 %
+  node:      node6 distance:   5 battery: 97.07 %
+  node:      node7 distance:   6 battery: 97.07 %
+received from node1: 13 from 14
 received from node2: 14 from 14
-received from node3: 12 from 13
+received from node3: 11 from 13
 received from node4: 13 from 13
-received from node5: 13 from 13
+received from node5: 12 from 13
 received from node6: 13 from 13
-received from node7: 13 from 13
+received from node7: 12 from 12
 DESTROYED
-    node1 destroyed packets 534
-    node2 destroyed packets 571
-    node3 destroyed packets 590
-    node4 destroyed packets 736
-    node5 destroyed packets 364
-    node6 destroyed packets 372
-    node7 destroyed packets 352
+    node1 destroyed packets 190
+    node2 destroyed packets 229
+    node3 destroyed packets 303
+    node4 destroyed packets 302
+    node5 destroyed packets 133
+    node6 destroyed packets 136
+    node7 destroyed packets 129
 CORRUPTED
-    node1 corrupted packets 126
-    node2 corrupted packets 106
-    node3 corrupted packets 96
-    node4 corrupted packets 295
-    node5 corrupted packets 104
-    node6 corrupted packets 101
-    node7 corrupted packets 258
+    node1 corrupted packets 67
+    node2 corrupted packets 65
+    node3 corrupted packets 98
+    node4 corrupted packets 204
+    node5 corrupted packets 40
+    node6 corrupted packets 64
+    node7 corrupted packets 171
 SENT
-    node1 sent in total: 813
-    node2 sent in total: 845
-    node3 sent in total: 741
-    node4 sent in total: 128
-    node5 sent in total: 80
-    node6 sent in total: 40
-    node7 sent in total: 35
+    node1 sent in total: 639
+    node2 sent in total: 663
+    node3 sent in total: 173
+    node4 sent in total: 116
+    node5 sent in total: 79
+    node6 sent in total: 48
+    node7 sent in total: 32
 RECEIVED
-    node1 successfully received: 1063 from 1723 (1723)
-    node2 successfully received: 1169 from 1846 (1846)
-    node3 successfully received: 1264 from 1950 (1950)
-    node4 successfully received: 1523 from 2554 (2554)
-    node5 successfully received: 1321 from 1789 (1789)
-    node6 successfully received: 1356 from 1829 (1829)
-    node7 successfully received: 1224 from 1834 (1834)
+    node1 successfully received: 704 from 961 (961)
+    node2 successfully received: 802 from 1096 (1096)
+    node3 successfully received: 1185 from 1586 (1586)
+    node4 successfully received: 1128 from 1634 (1634)
+    node5 successfully received: 859 from 1032 (1032)
+    node6 successfully received: 863 from 1063 (1063)
+    node7 successfully received: 779 from 1079 (1079)

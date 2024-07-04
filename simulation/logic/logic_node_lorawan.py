@@ -1,19 +1,22 @@
-from logic.logic import logic_node
+from logic.logic import logic_node_lora
 from hw.packet import lorawan_packet, Packet_type, LoRaWAN_type
 
 import random
 
-class logic_node_lorawan(logic_node):
+class logic_node_lorawan(logic_node_lora):
 
-    def __init__(self, appID : int, node_id : int, send_interval : int, NwkKey : int, time_offset : int=None) -> None:
-        super().__init__(appID, node_id)
+    def __init__(self, appID : int, node_id : int, send_interval : int, NwkKey : int, time_offset : int = None, spreading_f : int = 7) -> None:
+        super().__init__(appID, node_id, None, spreading_factor=spreading_f)
         
         self.NwkKey : int = NwkKey
         self.send_interval : int = send_interval
 
         self.connected : bool = False
-        self.last_connection_retry : int = -random.randint(0, 67000)
-        self.connection_retry : int = 67000
+        self.last_connection_retry : int = -random.randint(0, 47000)
+        self.connection_retry : int = 47000
+
+        self.next_sleep_time : int = 0
+        self.go_to_sleep = False
 
         if(time_offset is None):
             self.last_send_time = random.randint(0, 20000)
@@ -44,14 +47,11 @@ class logic_node_lorawan(logic_node):
             self.next_packet_id = 0
 
         return last
+    
 
-    def setup(self):
-        # self.packetHandler = handler_flooding()
-        self.node.get_transceiver().set_frequency(868)
-        self.node.get_transceiver().set_modulation("SF_1")
-        self.node.get_transceiver().set_tx_power(20)
+    def handle_packet(self, packet : lorawan_packet):
+        pass
 
-        self.packetHandler.register(self.node)
 
     def update_loop(self):
 
@@ -64,8 +64,7 @@ class logic_node_lorawan(logic_node):
                     rx_packet : lorawan_packet = self.node.get_transceiver().get_received()
                     if(rx_packet.packet_type == Packet_type.LORAWAN):
                         if(rx_packet.target == self.node_id):
-                            # handle payload
-                            pass
+                            self.handle_packet(rx_packet)
                             
                 if(self.node.get_time() - self.last_send_time > self.send_interval):
                     self.last_send_time = self.node.get_time()
@@ -81,16 +80,15 @@ class logic_node_lorawan(logic_node):
                             debug_name=("%s_%s" % (self.node.name, str(self.send_cnt))) 
                         )
                     )
+                    self.next_sleep_time = self.node.get_time() + 500
+                    self.go_to_sleep = True
 
-                if(self.last_send_time < self.node.get_time()):
-                    last_sleep = self.next_sleep_interval
-                    self.next_sleep_interval = self.node.get_time() + self.send_interval
-
+                if(self.go_to_sleep and self.next_sleep_time + 500 < self.node.get_time()):
                     self.node.get_transceiver().start_sleep()
                     self.chapter = 1
                     self.node.sleep(self.last_send_time - self.node.get_time() + self.send_interval - 5000)
                     self.clear_packet_queue()
-                    self.debugger.log("%s: starting to sleep" % (self.node.name), 3)
+                    self.debugger.log("%s: starting to sleep" % (self.node.name), 2)
 
             else:
                 if(self.node.get_transceiver().has_received()):
@@ -105,7 +103,7 @@ class logic_node_lorawan(logic_node):
                                     self.debugger.log("%s: successfully registered with network" % self.node.name, 1)
                                     self.connected = True
                                     # set last_send_time to start first transmission after the specified offset + relay_block_time
-                                    self.last_send_time = self.node.get_time() - self.send_interval + 30000 + self.start_time_offset
+                                    self.last_send_time = self.node.get_time() - self.send_interval + 30000 - self.start_time_offset
 
                 elif(self.node.get_time() - self.last_connection_retry > self.connection_retry):
                     # print("%s: sending JOIN request" % self.node.name)
@@ -116,13 +114,17 @@ class logic_node_lorawan(logic_node):
                                 self.node_id,
                                 0,
                                 LoRaWAN_type.JOIN_REQUEST,
-                                self.send_interval,
-                                10,
+                                [self.NwkKey, self.send_interval],
                                 packet_id= self.get_packet_id()
                             )
                         )
 
             self.node.wait(20)
+        elif(self.chapter == 1):
+            self.debugger.log("%s: waking up" % (self.node.name), 2)
+            self.node.get_transceiver().stop_sleep()
+            self.chapter = 0        
+            self.go_to_sleep = False
         else:
             self.node.wait(20)
 

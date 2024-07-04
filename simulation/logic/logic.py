@@ -156,7 +156,7 @@ class logic_node_lora(logic_node):
     def to_dict(self) -> dict:
         d =  super().to_dict()
         d.update({"spread" : self.spreading_factor})
-        d.update({"packet_handler" : type(self.packetHandler)})
+        d.update({"packet_handler" : type(self.packetHandler) if self.packetHandler is not None else None})
         return d
     
     @classmethod
@@ -164,7 +164,7 @@ class logic_node_lora(logic_node):
         instance = cls(
             d.get("appID"),
             d.get("node_id"),
-            d.get("packet_handler").from_dict(d),
+            d.get("packet_handler").from_dict(d) if d.get("packet_handler") is not None else None,
             d.get("spread")
         )
         return instance
@@ -230,6 +230,10 @@ class logic_gateway(logic_node_lora):
         self.debugger.log("Handling server request: %s" % str(rx_packet), 5)
         self.queue_packet(rx_packet, delay)
 
+class logic_gateway_lora(logic_gateway):
+    def __init__(self, appID : int, node_id : int, handler, spreading_f : int = 7):
+        super().__init__(appID, node_id, handler, spreading_f)
+    
     def update_loop(self):
         super().update_loop()
 
@@ -237,6 +241,21 @@ class logic_gateway(logic_node_lora):
             if(self.node.get_transceiver().has_received()):
                 rx_packet : lora_packet = self.node.get_transceiver().get_received()
                 if(rx_packet.packet_type == Packet_type.LORA):
+                    self.server.handle_packet(rx_packet, self.node_id) 
+        else:
+            self.node.wait(10)
+
+class logic_gateway_lorawan(logic_gateway):
+    def __init__(self, appID : int, node_id : int, handler, spreading_f : int = 7):
+        super().__init__(appID, node_id, handler, spreading_f)
+        
+    def update_loop(self):
+        super().update_loop()
+
+        if(self.chapter == 0):
+            if(self.node.get_transceiver().has_received()):
+                rx_packet : lora_packet = self.node.get_transceiver().get_received()
+                if(rx_packet.packet_type == Packet_type.LORAWAN):
                     self.server.handle_packet(rx_packet, self.node_id) 
         else:
             self.node.wait(10)

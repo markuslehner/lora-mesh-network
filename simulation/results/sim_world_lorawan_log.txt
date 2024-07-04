@@ -1,0 +1,70 @@
+====================== SIMULATION PARAMETERS ==========================
+WORLD:
+  Nodes:      2
+  Blocks:     0
+      tx_min     tx_max   tx_error      decay
+      custom     custom     custom     custom
+        1500       2200       0.05          2
+NODES:
+    central      with ID:100 @ x=   400 y=   400 using logic:     logic_gateway_lorawan     with handler:     <class 'NoneType
+    node1        with ID:  1 @ x=   800 y=   800 using logic:        logic_node_lorawan     with handler:     <class 'NoneType
+====================== STARTING SIMULATION ============================
+(2)  [11:00:27.263] received at Server (123): LORAWAN packet from 1 with payload: [345, 300000] debug_name: None
+(3)  [11:00:27.263] receiving join request from node with ID: 1 with RSSI:-40 [345, 300000]
+(1)  [11:00:27.699] node1: successfully registered with network
+(2)  [11:00:55.277] received at Server (123): LORAWAN packet from 1 with payload: [14] debug_name: node1_1
+(2)  [11:00:56.217] node1: starting to sleep
+(2)  [11:05:50.230] node1: waking up
+(2)  [11:05:55.297] received at Server (123): LORAWAN packet from 1 with payload: [11] debug_name: node1_2
+(2)  [11:05:56.237] node1: starting to sleep
+(2)  [11:10:50.250] node1: waking up
+(2)  [11:10:55.317] received at Server (123): LORAWAN packet from 1 with payload: [20] debug_name: node1_3
+(2)  [11:10:56.257] node1: starting to sleep
+(2)  [11:15:50.270] node1: waking up
+(2)  [11:15:55.337] received at Server (123): LORAWAN packet from 1 with payload: [22] debug_name: node1_4
+(2)  [11:15:56.277] node1: starting to sleep
+(2)  [11:20:50.290] node1: waking up
+(2)  [11:20:55.357] received at Server (123): LORAWAN packet from 1 with payload: [17] debug_name: node1_5
+(2)  [11:20:56.297] node1: starting to sleep
+(2)  [11:25:50.310] node1: waking up
+(2)  [11:25:55.377] received at Server (123): LORAWAN packet from 1 with payload: [37] debug_name: node1_6
+(2)  [11:25:56.317] node1: starting to sleep
+(2)  [11:30:50.330] node1: waking up
+(2)  [11:30:55.397] received at Server (123): LORAWAN packet from 1 with payload: [25] debug_name: node1_7
+(2)  [11:30:56.337] node1: starting to sleep
+(2)  [11:35:50.350] node1: waking up
+(2)  [11:35:55.417] received at Server (123): LORAWAN packet from 1 with payload: [33] debug_name: node1_8
+(2)  [11:35:56.357] node1: starting to sleep
+(2)  [11:40:50.370] node1: waking up
+(2)  [11:40:55.437] received at Server (123): LORAWAN packet from 1 with payload: [23] debug_name: node1_9
+(2)  [11:40:56.377] node1: starting to sleep
+(2)  [11:45:50.390] node1: waking up
+(2)  [11:45:55.457] received at Server (123): LORAWAN packet from 1 with payload: [22] debug_name: node1_10
+(2)  [11:45:56.397] node1: starting to sleep
+(2)  [11:50:50.410] node1: waking up
+(2)  [11:50:55.477] received at Server (123): LORAWAN packet from 1 with payload: [8] debug_name: node1_11
+(2)  [11:50:56.417] node1: starting to sleep
+(2)  [11:55:50.430] node1: waking up
+(2)  [11:55:55.497] received at Server (123): LORAWAN packet from 1 with payload: [27] debug_name: node1_12
+(2)  [11:55:56.437] node1: starting to sleep
+(2)  [12:00:50.450] node1: waking up
+(2)  [12:00:55.517] received at Server (123): LORAWAN packet from 1 with payload: [15] debug_name: node1_13
+(2)  [12:00:56.457] node1: starting to sleep
+(2)  [12:05:50.470] node1: waking up
+(2)  [12:05:55.537] received at Server (123): LORAWAN packet from 1 with payload: [35] debug_name: node1_14
+(2)  [12:05:56.477] node1: starting to sleep
+====================== SIMULATION RESULTS =============================
+Simulation took: 0 min 18.783 s
+Simulated time: 01:08:00
+nodes sent in total: 14
+received in total: 14 / 14 = 100.00 %
+NODES:
+received from node1: 14 from 14
+DESTROYED
+    node1 destroyed packets 0
+CORRUPTED
+    node1 corrupted packets 0
+SENT
+    node1 sent in total: 15
+RECEIVED
+    node1 successfully received: 1 from 1 (1)

@@ -18,8 +18,8 @@ class logic_node_dist_pid(logic_node_lora):
         self.connected = False
 
         # simulate, that not all nodes start at the same time and send a JOIN request
-        self.last_connection_retry = -random.randint(0, 55000)
-        self.connection_retry = 55000
+        self.last_connection_retry = -random.randint(0, 25000)
+        self.connection_retry = 25000
 
         self.time_set_cooldown = 20000
         self.last_time_set = 0
