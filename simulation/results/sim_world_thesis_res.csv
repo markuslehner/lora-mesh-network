@@ -1,12 +1,12 @@
-nodes;central;node1;node2;node3;node4;node5;node6;node7
-node ids;100;1;2;3;4;5;6;7
-received DATA packets;0;11;11;11;11;11;11;11
-from sent DATA packets;0;11;11;11;11;11;11;11
-received DATA packets before start;0;1;1;1;1;1;1;1
-received DATA packets after start;0;10;10;10;10;10;10;10
-received requested DATA packets after join;0;0;0;0;2;0;1;0
-from sent DATA packets after join;0;10;10;10;10;10;10;10
-destroyed packets;29;48;81;84;74;55;54;57
-sent packets;25;154;154;94;112;88;60;48
-successfully received packets;337;299;458;514;448;384;419;388
-total received packets;402;385;581;641;598;468;496;508
+nodes;node1;node2;node3;node4;node5;node6;node7
+node ids;1;2;3;4;5;6;7
+received DATA packets;11;11;11;11;11;11;11
+from sent DATA packets;11;11;11;11;11;11;11
+received DATA packets before start;1;1;1;1;1;1;1
+received DATA packets after start;10;10;10;10;10;10;10
+received requested DATA packets after join;0;0;0;0;0;0;0
+from sent DATA packets after join;10;10;10;10;10;10;10
+destroyed packets;25;65;86;70;52;48;51
+sent packets;154;155;46;115;95;76;59
+successfully received packets;269;461;551;454;385;396;384
+total received packets;341;570;679;585;451;470;487

@@ -1,13 +1,13 @@
 from logic.handler_flooding import handler_flooding
 from hw.packet import Payload_type, Command_type, Packet_type, lora_packet, packet_flooding, packet
-from logic.logic_central import logic_central
+from logic.logic import logic_central_lora
 
 import numpy as np
 import datetime
 import random
 from typing import List
 
-class logic_central_pid(logic_central):
+class logic_central_pid(logic_central_lora):
 
     def __init__(self, appID=0, node_id=0) -> None:
         super().__init__(appID, node_id)

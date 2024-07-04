@@ -1,10 +1,10 @@
-from logic.logic import logic_node
+from logic.logic import logic_gateway
 from hw.packet import packet, Payload_type, Packet_type, lorawan_packet
 
 from typing import List
 
 
-class logic_central_lorawan(logic_node):
+class logic_gateway_lorawan(logic_gateway):
 
     def __init__(self, appID : int = 0, node_ID : int = 0) -> None:
         super().__init__(appID, node_ID)

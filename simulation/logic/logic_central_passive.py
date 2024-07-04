@@ -1,11 +1,10 @@
 from logic.handler_flooding_basic import handler_flooding_basic
-from logic.logic import logic
-from logic.logic_central import logic_central
+from logic.logic import logic_central_lora
 from logic.handler_flooding import handler_flooding
 from hw.packet import Payload_type, Command_type, packet_flooding, packet
 from typing import List
 
-class logic_central_passive(logic_central):
+class logic_central_passive(logic_central_lora):
 
     def __init__(self, appID=0, node_id : int = 0) -> None:
         super().__init__(appID, node_id)
@@ -15,6 +14,10 @@ class logic_central_passive(logic_central):
         # list of all packets stored to db for easier access
         self.local_db : List[packet] = []
         self.local_db_rx_time : List[float]= []
+
+        # time to broadcast time sync packet
+        self.time_broadcast = 1000*60*60
+        self.last_time_broadcast = 20000
 
     def setup(self):
         super().setup()

@@ -1,5 +1,10 @@
 from hw.node import node
 from sim.debugger import debugger
+from logic.server import server
+from hw.packet import packet, lora_packet
+from hw.packet import Packet_type
+
+from typing import List
 
 """
 class representing the code that goes onto the MCU
@@ -167,3 +172,64 @@ class logic_node_lora(logic_node):
 
     def __str__(self) -> str:
         return "%s     with handler: %s" % (str(type(self)).split(".")[-1][:-2].rjust(25), str(type(self.packetHandler)).split(".")[-1][:-2].rjust(20) )
+    
+
+class logic_central(logic_node_lora):
+    def __init__(self, appID : int, node_id : int, handler, spreading_f : int = 7) -> None:
+        super().__init__(appID, node_id, handler, spreading_f)
+
+        # list of all packets received by this node
+        self.pack_list : List[packet] = []
+        # list of all packets stored to db for easier access
+        self.local_db : List[packet] = []
+        self.local_db_rx_time : List[float]= []
+
+    def update_loop(self): 
+        super().update_loop()
+
+        if(self.chapter == 0):
+
+            if(self.node.get_transceiver().has_received()):
+                # print(self.node.get_transceiver().rec_list)
+                rx_packet = self.node.get_transceiver().get_received()
+                self.receive(rx_packet)     
+        else:
+            self.node.wait(10)
+
+    def receive(self, rx_packet : packet) -> None:
+        pass
+    
+    def store_packet(self, rx_packet) -> None:
+        self.pack_list.append(rx_packet)
+        self.local_db.append(rx_packet)
+        self.local_db_rx_time.append(self.node.get_time())
+
+
+class logic_central_lora(logic_central):
+    def __init__(self, appID, node_id : int, handler = None, spreading_f : int = 7) -> None:
+        super().__init__(appID, node_id, handler, spreading_f)
+
+    def receive(self, rx_packet: lora_packet) -> None:
+        if rx_packet.packet_type == Packet_type.LORA:
+            # check if its the same network
+            if rx_packet.appID == self.appID:
+                if rx_packet.target == self.node_id or rx_packet.target == 0:
+                    self.store_packet(rx_packet)
+
+
+class logic_gateway(logic_node_lora):
+
+    def __init__(self, appID : int, node_id : int, handler, spreading_f : int = 7) -> None:
+        super().__init__(appID, node_id, handler, spreading_f)
+
+    def setup(self):
+        super().setup()
+        self.server : server = self.node.transceiver.world.get_server(self.appID)
+        self.server.register_gateway(self)
+
+    def handle_server_request(self, rx_packet : packet, delay : int = 0):
+        self.debugger.log("Handling server request: %s" % str(rx_packet), 5)
+        self.queue_packet(rx_packet, delay)
+
+    def update_loop(self): 
+        super().update_loop()

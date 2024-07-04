@@ -1,8 +1,7 @@
 from sim.world import world
 from hw.node import node
 from hw.node_sensor import node_sensor
-from logic.logic import logic, logic_node
-from logic.logic_central import logic_central
+from logic.logic import logic, logic_node, logic_central
 from logic.server import server
 from sim.debugger import debugger
 from sim.event import event
@@ -12,7 +11,7 @@ from datetime import datetime
 import pickle, os, time
 import numpy as np
 from pathlib import Path
-from typing import List
+from typing import List, Union, Dict
 
 class simulation(object):
 
@@ -94,6 +93,11 @@ class simulation(object):
         load and create nodes
         """
 
+        self.applications : Dict[int, Union[logic_central, server]] = {}
+        self.application_nodes : Dict[int, List[node]] = {}
+
+
+
         self.nodes : List[node] = []
         self.central_nodes : List[node] = []
         self.servers : List[server] = []
@@ -101,22 +105,37 @@ class simulation(object):
         for i in range(0, self.num_servers):
             self.servers.append( config.get("servers").get(str(i)).get("type").from_dict(config.get("servers").get(str(i))) )
             self.servers[i].set_debugger(self.debugger)
+            if not self.servers[i].appID in self.applications:
+                self.applications.update({self.servers[i].appID : self.servers[i]})
+            else: 
+                self.debugger.log("Application ID %i already in use (Server)!" % self.servers[i].appID, 1)
 
         for i in range(0, self.num_nodes):
             self.nodes.append( config.get("nodes").get(str(i)).get("type").from_dict(config.get("nodes").get(str(i))) )
             if(isinstance(self.nodes[i].logic, logic_central) ):
                 self.nodes[i].set_time(self.world_time)
                 self.central_nodes.append(self.nodes[i])
+                if not self.central_nodes[i].logic.appID in self.applications:
+                    self.applications.update({self.central_nodes[i].logic.appID : self.central_nodes[i].logic})
+                else: 
+                    self.debugger.log("Application ID %i already in use (Central)!" % self.central_nodes[i].logic.appID, 1)
+
             self.nodes[i].set_debugger(self.debugger)
 
-        self.blocks = config.get("blocks")
+        for appID in self.applications:
+            self.application_nodes.update({appID : []})
+
+        for i in range(len(self.nodes)):
+            if(type(self.nodes[i]) is node_sensor):
+                self.application_nodes.get(self.nodes[i].logic.appID).append(self.nodes[i])
 
         for s in self.servers:
             self.my_world.register_server(s)
 
         for n in self.nodes:
             self.my_world.add(n, n.x, n.y)
-        
+
+        self.blocks = config.get("blocks")
         for b in self.blocks:
             self.my_world.block_path(b[0], b[1])
 
@@ -191,6 +210,32 @@ class simulation(object):
         self.end_time = time.time() * 1000
 
     def analyze(self, dont_print_additional=True):
+        """
+        post simulation analysis
+        """
+        self.debugger.set_state(2)
+
+
+        seconds=(self.runtime/1000)%60
+        seconds = int(seconds)
+        minutes=(self.runtime/(1000*60))%60
+        minutes = int(minutes)
+        hours= int(self.runtime/(1000*60*60))
+
+        elapsed_time = self.end_time - self.start_time
+        milis_sim = int( (elapsed_time)%1000 )
+        seconds_sim=  int( (elapsed_time/1000)%60 )
+        minutes_sim=  int( (elapsed_time/(1000*60))%60 )
+
+        self.debugger.log("Simulation took: %i min %i.%i s" % (minutes_sim, seconds_sim, milis_sim))
+        self.debugger.log("Simulated time: %s:%s:%s" % (str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2) ))
+
+        for appID in self.applications:
+            self.statistics.update({appID : {}})
+            self.analyze_application(self.applications.get(appID), self.application_nodes.get(appID), dont_print_additional)
+
+
+    def analyze_central(self, dont_print_additional=True):
         """
         post simulation analysis
         """
@@ -390,22 +435,203 @@ class simulation(object):
 
         res_file.close()
 
-    def further_analysis(self, print_packets=True, more_info=False, fwd_reasons_to_print=None):
-        
-        self.debugger.log(" --> FURTHER ANALYSIS")
-
+    def analyze_application(self, application_manager : Union[logic_central, server], nodes : List[node_sensor], dont_print_additional=True):
+        """
+        post simulation analysis per application
+        """
         node_ids = []
-        world_nodes = self.my_world.get_nodes()
-        destroyed_packets : 'list[destroyed_packet]' = self.debugger.get_destroyed_packets()
+        tx_cnt = []
+        total_tx_cnt = 0
+        total_rx_cnt = 0
+
+        missing_packets, multiple_packets = self.check_received_packets(application_manager, nodes)
+
+        for i in range(len(nodes)):
+            node_ids.append(nodes[i].id)
+            tx_cnt.append(nodes[i].logic.send_cnt)
+            total_tx_cnt += nodes[i].logic.send_cnt
+
+        rx_cnt = np.zeros((len(nodes)))
+
+        for i in range(len(missing_packets)):
+            rx_cnt[i] = tx_cnt[i] - len(missing_packets[i])
+            total_rx_cnt +=  rx_cnt[i]
+            
+        self.statistics.get(application_manager.appID).update({"total_rx_cnt" : total_rx_cnt})
+        self.statistics.get(application_manager.appID).update({"total_tx_cnt" : total_tx_cnt})
+
+        self.debugger.log("nodes sent in total: %i" % total_tx_cnt)
+        # this is only the packets the nodes actually sent, so when a nodes loses power
+        # it doesn't send, but central thinks it should be sending
+        # Because of this the number here may differ from "received after start"
+        # This is more indicative of packet loss characteristic when transmitting
+        # the other more indicative of overall network performance
+        self.debugger.log("received in total: %i / %i = %.2f %s" % ( total_rx_cnt, total_tx_cnt, 100*total_rx_cnt / float(total_tx_cnt), '%' ) )
+        self.statistics.update({"received_total" : total_rx_cnt / float(total_tx_cnt)})
+
+        if(hasattr(application_manager, 'num_not_received_on_first_try')):
+            if(application_manager.num_tx_after_start > 0):
+                after_start_frac = application_manager.num_rx_after_start / float(application_manager.num_tx_after_start)
+            else:
+                after_start_frac = 0
+
+            self.debugger.log("received after start in total: %i / %i = %.2f %s" % ( application_manager.num_rx_after_start, application_manager.num_tx_after_start, 100*after_start_frac, '%' ) )
+            self.statistics.update({"received_after_start" : after_start_frac})
+
+            if(application_manager.successfully_started):
+                self.debugger.log("received after start in total (without requested packets): %i / %i = %.2f %s" % ( application_manager.num_rx_after_start - application_manager.num_not_received_on_first_try, application_manager.num_tx_after_start, 100*(application_manager.num_rx_after_start - application_manager.num_not_received_on_first_try) / float(application_manager.num_tx_after_start), '%' ) )
+                self.statistics.update({"received_after_start_no_request" : (application_manager.num_rx_after_start - application_manager.num_not_received_on_first_try) / float(application_manager.num_tx_after_start)})
+        
+        self.debugger.log("NODES:")
+        if(self.additionalInfo):
+            for n in nodes:
+                # if(not isinstance(n.logic, logic_central)):
+                #     if(hasattr(n.logic, 'distance')):
+                #         self.debugger.log("sensor-node %s [distance: %s] started with an interval delay of: %i" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(2), n.logic.start_time_offset) )
+                #     else:
+                #         self.debugger.log("sensor-node %s  started with an interval delay of: %i" % (str(n.name).rjust(10), n.logic.start_time_offset) )
+
+                if(hasattr(n.logic, 'distance')):
+                    if(n.battery is None):
+                        self.debugger.log("  node: %s distance: %s" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(3)))
+                    else:
+                        self.debugger.log("  node: %s distance: %s battery: %s %%" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(3), ("%.2f" % (100*n.battery.get_level())).rjust(5) ))
+
+            for i in range(0, len(nodes)):
+                if(not isinstance(nodes[i].logic, logic_central)):
+                # if(type(nodes[i].logic) is logic_flooding_join or type(nodes[i].logic) is logic_flooding or type(nodes[i].logic) is logic_node_dist):
+                    self.debugger.log("received from %s: %i from %i" % (nodes[i].name, rx_cnt[i], nodes[i].logic.send_cnt))
+                else:
+                    self.debugger.log("received from %s: %i" % (nodes[i].name, rx_cnt[i]))
+
+            self.debugger.log("DESTROYED", disable_print=dont_print_additional)
+            for n in nodes:
+                self.debugger.log("    %s destroyed packets %i" % (n.name, n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
+            
+            self.debugger.log("CORRUPTED", disable_print=dont_print_additional)
+            for n in nodes:
+                self.debugger.log("    %s corrupted packets %i" % (n.name, n.get_transceiver().cnt_corrupted), disable_print=dont_print_additional )
+
+            self.debugger.log("SENT", disable_print=dont_print_additional)
+            for n in nodes:
+                self.debugger.log("    %s sent in total: %i" % (n.name, n.get_transceiver().cnt_sen), disable_print=dont_print_additional )
+
+            self.debugger.log("RECEIVED", disable_print=dont_print_additional)
+            for n in nodes:
+                self.debugger.log("    %s successfully received: %i from %i (%i)" % (n.name, n.get_transceiver().cnt_rec, n.get_transceiver().cnt_rec_all, n.get_transceiver().cnt_rec + n.get_transceiver().cnt_corrupted + n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
+
+        # write CSV results file
+        res_file = open(os.path.dirname(os.path.dirname(__file__)) + "\\results\\%s_res.csv" % self.name, "w")
+
+        res_file.write("nodes")
+        for n in nodes:
+            res_file.write(";%s" % n.name)
+        res_file.write("\n")
+
+        res_file.write("node ids")
+        for n in nodes:
+            res_file.write(";%s" % n.id)
+        res_file.write("\n")
+
+        res_file.write("received DATA packets")
+        for rx in rx_cnt:
+            res_file.write(";%i" % rx)
+        res_file.write("\n")
+
+        res_file.write("from sent DATA packets")
+        for i in range(0, len(nodes)):
+            if( isinstance(nodes[i].logic, logic_node) ):
+                res_file.write(";%i" % nodes[i].logic.send_cnt)
+            else:
+                res_file.write(";%i" % 0)
+        res_file.write("\n")
+
+        res_file.write("received DATA packets before start")
+        for n in range(len(nodes)):
+            if(isinstance(nodes[n].logic, logic_central)):
+                res_file.write(";%i" % 0)
+            else:
+                if(hasattr(application_manager, "successfully_started") and application_manager.successfully_started):
+                    res_file.write(";%i" % application_manager.statistics.get("num_rx_before_start").get(str(int(nodes[n].id))))
+                else:
+                    res_file.write(";%i" % rx_cnt[n])
+        res_file.write("\n")
+
+        res_file.write("received DATA packets after start")
+        for n in nodes:
+            if(isinstance(n.logic, logic_central)):
+                res_file.write(";%i" % 0)
+            else:
+                if(hasattr(application_manager, "successfully_started") and application_manager.successfully_started):
+                    res_file.write(";%i" % application_manager.statistics.get("num_rx_after_start").get(str(int(n.id))))
+                else:
+                    res_file.write(";%i" % 0)
+        res_file.write("\n")
+
+        res_file.write("received requested DATA packets after join")
+        for n in nodes:
+            if(isinstance(n.logic, logic_central)):
+                res_file.write(";%i" % 0)
+            else:
+                if(hasattr(application_manager, "successfully_started") and application_manager.successfully_started):
+                    res_file.write(";%i" % application_manager.statistics.get("num_rx_requested").get(str(int(n.id))))
+                else:
+                    res_file.write(";%i" % 0)
+        
+        res_file.write("\n")
+
+        res_file.write("from sent DATA packets after join")
+        for n in nodes:
+            if(isinstance(n.logic, logic_central)):
+                res_file.write(";%i" % 0)
+            else:
+                if(hasattr(application_manager, "successfully_started") and application_manager.successfully_started):
+                    res_file.write(";%i" % ( application_manager.interval_count - application_manager.statistics.get("start_interval") ) )
+                else:
+                    res_file.write(";%i" % 0)
+        res_file.write("\n")
+
+        res_file.write("destroyed packets")
+        for n in nodes:
+            res_file.write(";%s" % n.get_transceiver().cnt_destroyed)
+        res_file.write("\n")
+
+        res_file.write("sent packets")
+        for n in nodes:
+            res_file.write(";%s" % n.get_transceiver().cnt_sen)
+        res_file.write("\n")
+
+        res_file.write("successfully received packets")
+        for n in nodes:
+            res_file.write(";%s" % n.get_transceiver().cnt_rec)
+        res_file.write("\n")
+
+        res_file.write("total received packets")
+        for n in nodes:
+            res_file.write(";%s" % n.get_transceiver().cnt_rec_all)
+        res_file.write("\n")
+
+        res_file.close()
+
+    def further_analysis(self, print_packets=True, more_info=False, fwd_reasons_to_print=None):
+        for appID in self.applications:
+            self.further_analysis_application(self.applications.get(appID), self.application_nodes.get(appID), print_packets, more_info, fwd_reasons_to_print)
+
+
+    def further_analysis_application(self, application_manager : Union[logic_central, server], nodes : List[node_sensor], print_packets=True, more_info=False, fwd_reasons_to_print=None):
+        
+        self.debugger.log(" --> FURTHER ANALYSIS (%i)" % application_manager.appID)
+        node_ids = []
+        destroyed_packets : List[destroyed_packet] = self.debugger.get_destroyed_packets()
 
         """
         Evaluate cause of destruction
         """
         self.debugger.log("PACKETS RECEIVED IN DETAIL:")
 
-        for i in range(len(world_nodes)):
-            self.debugger.log("  %s" % world_nodes[i].name )
-            destroyed_packets_node : 'list[destroyed_packet]' = self.debugger.get_destroyed_packets(world_nodes[i].id)
+        for i in range(len(nodes)):
+            self.debugger.log("  %s" % nodes[i].name )
+            destroyed_packets_node : 'list[destroyed_packet]' = self.debugger.get_destroyed_packets(nodes[i].id)
 
             # world, forward, collision, sleep
             num_per_class = np.zeros((4))
@@ -418,68 +644,64 @@ class simulation(object):
             self.debugger.log("    world: %i, forward: %i, collision: %i, sleep: %i" % (num_per_class[0], num_per_class[1], num_per_class[2], num_per_class[3]) )
 
 
-        missing_packets, multiple_packets = self.check_received_packets()
+        missing_packets, multiple_packets = self.check_received_packets(application_manager, nodes)
 
-        for i in range(len(world_nodes)):
-            # if(type(world_nodes[i]) is node_sensor):
-            node_ids.append(world_nodes[i].id)
+        for i in range(len(nodes)):
+            # if(type(nodes[i]) is node_sensor):
+            node_ids.append(nodes[i].id)
 
-        # only possible for children of logic_central
-        if(isinstance(self.central_nodes[0].logic, logic_central) ):
+        """
+        check where packet was destroyed
+        also check tx error --> more tricky needs to be done in world
+        possible wrapper for packets --> destroyed packet + reason + location
+        """
+        rx_central = application_manager.local_db
+        rx_central_times = application_manager.local_db_rx_time
 
-            rx_central = self.central_nodes[0].logic.local_db
-            rx_central_times = self.central_nodes[0].logic.local_db_rx_time
+        cnt_destroyed_in_world = 0
+        cnt_destroyed_total = 0
 
-            """
-            check where packet was destroyed
-            also check tx error --> more tricky needs to be done in world
-            possible wrapper for packets --> destroyed packet + reason + location
-            """
-            
-            cnt_destroyed_in_world = 0
-            cnt_destroyed_total = 0
-
-            cnt_only_destroyed_in_world = 0
-            cnt_missing_total = 0
+        cnt_only_destroyed_in_world = 0
+        cnt_missing_total = 0
 
 
-            """
-            Print all copies of the missing DATA packe to allow tracing the cause of transmission error
-            """
-            for n in range(len(node_ids)):
-                if len(missing_packets[n]) > 0:
-                    self.debugger.log("missing packets from node %i: %i" % (node_ids[n], len(missing_packets[n])) )
-                    cnt_missing_total += len(missing_packets[n])
-                    for p in missing_packets[n]:
-                        if(print_packets): self.debugger.log(p)
+        """
+        Print all copies of the missing DATA packets to allow tracing the cause of transmission error
+        """
+        for n in range(len(node_ids)):
+            if len(missing_packets[n]) > 0:
+                self.debugger.log("missing packets from node %i: %i" % (node_ids[n], len(missing_packets[n])) )
+                cnt_missing_total += len(missing_packets[n])
+                for p in missing_packets[n]:
+                    if(print_packets): self.debugger.log(p)
 
-                        # counter for other reasons than world, if > 0 then packet does not count as destructed by world
-                        cnt_other = 0
-                        # loop over all destroyed packets
-                        # check if name is same as missing packet
-                        # if yes, print reason why this copy of the packet was destroyed (if more_info = True)
-                        for l in destroyed_packets:
-                            if(l.packet.debug_name == p):
-                                cnt_destroyed_total += 1
-                                if(more_info and print_packets): 
-                                    # only for forward reasons
-                                    if(l.reason is Destruction_type.FORWARD):
-                                        # if no reasons provided, print all
-                                        if(fwd_reasons_to_print is None):
-                                            self.debugger.log("    %s" % str(l))
-                                        else:
-                                            if(l.fwd_reason in fwd_reasons_to_print):
-                                                self.debugger.log("    %s" % str(l))
-                                    else:
+                    # counter for other reasons than world, if > 0 then packet does not count as destructed by world
+                    cnt_other = 0
+                    # loop over all destroyed packets
+                    # check if name is same as missing packet
+                    # if yes, print reason why this copy of the packet was destroyed (if more_info = True)
+                    for l in destroyed_packets:
+                        if(l.packet.debug_name == p):
+                            cnt_destroyed_total += 1
+                            if(more_info and print_packets): 
+                                # only for forward reasons
+                                if(l.reason is Destruction_type.FORWARD):
+                                    # if no reasons provided, print all
+                                    if(fwd_reasons_to_print is None):
                                         self.debugger.log("    %s" % str(l))
-
-                                if(l.reason == Destruction_type.WORLD):
-                                    cnt_destroyed_in_world += 1
+                                    else:
+                                        if(l.fwd_reason in fwd_reasons_to_print):
+                                            self.debugger.log("    %s" % str(l))
                                 else:
-                                    cnt_other += 1
+                                    self.debugger.log("    %s" % str(l))
 
-                        if(cnt_other == 0):
-                            cnt_only_destroyed_in_world += 1
+                            if(l.reason == Destruction_type.WORLD):
+                                cnt_destroyed_in_world += 1
+                            else:
+                                cnt_other += 1
+
+                    if(cnt_other == 0):
+                        cnt_only_destroyed_in_world += 1
 
             sum_multiple = 0
             for n in range(len(node_ids)):
@@ -514,59 +736,50 @@ class simulation(object):
             # for p in self.central_nodes[0].logic.pack_list:
             #     self.debugger.log("%s received at %s" % (p, datetime.fromtimestamp(p.time_received/1000).strftime("%H:%M:%S.%f") ) )
 
-    def check_received_packets(self):
+    def check_received_packets(self, application_manager : Union[logic_central, server], sensor_nodes : List[node]):
 
         node_ids = []
         node_tx_cnt = []
-        world_nodes = self.my_world.get_nodes()
-        sensor_nodes = []
 
-        for i in range(len(world_nodes)):
-            sensor_nodes.append(world_nodes[i])
-            node_ids.append(world_nodes[i].id)
-            if(type(world_nodes[i]) is node_sensor):
-                node_tx_cnt.append(world_nodes[i].logic.send_cnt)
-            else:
-                node_tx_cnt.append(0)
+        for i in range(len(sensor_nodes)):
+            node_ids.append(sensor_nodes[i].id)
+            node_tx_cnt.append(sensor_nodes[i].logic.send_cnt)
 
         missing_packets = []
         multiple_packets = []
 
-        # only possible for subclasses of logic_central
-        if(isinstance(self.central_nodes[0].logic, logic_central) ):
+        rx_central = application_manager.local_db
+        rx_central_times = application_manager.local_db_rx_time
 
-            rx_central = self.central_nodes[0].logic.local_db
-            rx_central_times = self.central_nodes[0].logic.local_db_rx_time
+        """
+        check which packets are missing
+        """
+        # all packets that were received from node with index from node_ids
+        rx_from_node = []
 
-            """
-            check which packets are missing
-            """
-            # all packets that were received from node with index from node_ids
-            rx_from_node = []
+        for n in range(len(node_ids)):
+            rx_from_node.append([])
+            for i in range(len(rx_central)):
+                if(rx_central[i].origin == node_ids[n]):
+                    rx_from_node[n].append(rx_central[i])
 
-            for n in range(len(node_ids)):
-                rx_from_node.append([])
-                for i in range(len(rx_central)):
-                    if(rx_central[i].origin == node_ids[n]):
-                        rx_from_node[n].append(rx_central[i])
+        # check which packets were received
+        # debug_name = node.name + "_" + send_cnt
+        for n in range(len(node_ids)):
+            missing_packets.append([])
+            multiple_packets.append([])
+            rx_cnt = np.zeros((node_tx_cnt[n]))
 
-            # check which packets were received
-            # debug_name = node.name + "_" + send_cnt
-            for n in range(len(node_ids)):
-                missing_packets.append([])
-                multiple_packets.append([])
-                rx_cnt = np.zeros((node_tx_cnt[n]))
+            for rx_packet in rx_from_node[n]:
+                if(not rx_packet.debug_name is None and str(rx_packet.debug_name).startswith(sensor_nodes[n].name)):
+                    packet_nr = int(rx_packet.debug_name.replace("%s_" % sensor_nodes[n].name, ""))
+                    rx_cnt[packet_nr-1] += 1
 
-                for rx_packet in rx_from_node[n]:
-                    if(not rx_packet.debug_name is None and str(rx_packet.debug_name).startswith(sensor_nodes[n].name)):
-                        packet_nr = int(rx_packet.debug_name.replace("%s_" % sensor_nodes[n].name, ""))
-                        rx_cnt[packet_nr-1] += 1
-
-                for k in range(node_tx_cnt[n]):
-                    if(rx_cnt[k] == 0):
-                        missing_packets[n].append("%s_%i" % (sensor_nodes[n].name, k+1))
-                    elif(rx_cnt[k] > 1):
-                        multiple_packets[n].append("%s_%i" % (sensor_nodes[n].name, k+1))
+            for k in range(node_tx_cnt[n]):
+                if(rx_cnt[k] == 0):
+                    missing_packets[n].append("%s_%i" % (sensor_nodes[n].name, k+1))
+                elif(rx_cnt[k] > 1):
+                    multiple_packets[n].append("%s_%i" % (sensor_nodes[n].name, k+1))
 
 
         return missing_packets, multiple_packets

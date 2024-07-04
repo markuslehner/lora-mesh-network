@@ -10,33 +10,6 @@ class server_join(server):
     def __init__(self, AppID: int):
         super().__init__(AppID)
 
-        # interval when to broadcast the timestamp
-        self.time_broadcast = 1000*60*60
-        self.last_time_broadcast = 0
-
-        # list of all packets received by this nodeö
-        self.pack_list : List[packet] = []
-        # list of all packets stored to db for easier access
-        self.local_db : List[packet] = []
-        self.local_db_rx_time : List[float]= []
-
-        self.num_connected_nodes = 0
-        # time when node registered
-        self.first_connection = np.zeros((100))
-        # time since last packet received
-        self.last_connection = np.zeros((100))
-        # sending interval for the nodes in ms
-        self.nodes_interval = np.zeros((100))
-        # number of packets in total check
-        self.num_packets_received = np.zeros((100))
-        # number of packets since last connection check
-        self.num_packets_received_interval = np.zeros((100))
-        # interval when to check for inactivity of nodes
-        self.last_connection_check = 0
-        self.interval_connection_check = 1000*60*30
-        # id of nodes
-        self.nodes_id = []
-
         # packet id stuff
         self.next_packet_id = 0
         # origin id of the relayed packet
@@ -70,7 +43,7 @@ class server_join(server):
         # handle packet
         if(self.check_multiple_packet(rx_packet)):
 
-            self.debugger.log("received at Server (%i): %s" % (self.appID, str(rx_packet)), 2)
+            self.debugger.log("received at Server (%i): %s" % (self.appID, str(rx_packet)), 3)
 
             if(rx_packet.payload_type is Payload_type.JOIN):
                 self.debugger.log("receiving join request from node with ID: %i with RSSI:%i" % (rx_packet.origin, rx_packet.rssi), 1)

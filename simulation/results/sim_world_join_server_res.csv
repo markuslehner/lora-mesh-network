@@ -1,0 +1,12 @@
+nodes;node1;node2;node3;node4;node5;node6;node7
+node ids;1;2;3;4;5;6;7
+received DATA packets;13;8;6;13;5;8;13
+from sent DATA packets;14;14;14;14;14;14;14
+received DATA packets before start;13;8;6;13;5;8;13
+received DATA packets after start;0;0;0;0;0;0;0
+received requested DATA packets after join;0;0;0;0;0;0;0
+from sent DATA packets after join;0;0;0;0;0;0;0
+destroyed packets;2675;2651;2704;2704;2660;2622;2704
+sent packets;631;734;658;674;744;736;578
+successfully received packets;1132;1179;1192;1172;1154;1178;1171
+total received packets;4138;4035;4111;4081;4011;4019;4177

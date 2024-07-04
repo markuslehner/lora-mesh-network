@@ -3,16 +3,16 @@ from logic.command.action_center import action_center
 from logic.command.command import request_command, nack_command, ack_command, reset_command, ack_join_command, set_interval_command, resync_interval_command
 from logic.handler_lmn import handler_lmn
 from hw.packet import Payload_type, Command_type, Packet_type, packet_dist, packet
-from logic.logic_central import logic_central
+from logic.logic import logic_central_lora
 
 import numpy as np
 from datetime import datetime
 from typing import List
 
-class logic_central_lmn(logic_central):
+class logic_central_lmn(logic_central_lora):
 
     def __init__(self, appID : int, node_id : int, interval : int=1000*60*10, blocks : list = [], spreading_f : int = 10) -> None:
-        super().__init__(appID, node_id, None)
+        super().__init__(appID, node_id, None, spreading_f)
 
         self.artificial_blocks = blocks
 
@@ -847,25 +847,6 @@ class logic_central_lmn(logic_central):
           
         self.local_db.append(rx_packet)
         self.local_db_rx_time.append(self.node.get_time())
-
-        if(self.write_db):
-            # local debug
-            """
-            Create a new packet into the packets table
-            :param conn:
-            :param packet:
-            :return: project id
-            """
-            sql = ''' INSERT INTO packets(sender,type,data,time_received)
-                    VALUES(?,?,?,?) '''
-            cur = self.conn.cursor()
-            cur.execute(sql, (
-                rx_packet.origin,
-                str(rx_packet.payload_type)[13:],
-                rx_packet.payload,
-                datetime.datetime.fromtimestamp(int(self.node.get_time()/1000)).strftime("%H:%M:%S")
-            ))
-            self.conn.commit()
 
     def to_dict(self) -> dict:
         return {

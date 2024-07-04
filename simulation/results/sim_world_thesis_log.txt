@@ -26,7 +26,7 @@ NODES:
 (1)  [11:00:00.000] -> new nodes:             False
 (2)  [11:00:00.000]   CC: START UPDATING
 (2)  [11:00:40.000]   JOIN CHECK:
-(2)  [11:00:40.000]     received 3 join requests
+(2)  [11:00:40.000]     received 5 join requests
 (2)  [11:00:40.000]   CC: Sending ACK_JOIN to node 1 for dist: 1 (pid:0)
 (1)  [11:00:40.068] node1: successfully registered with base station 100 at distance: 1
 (2)  [11:01:20.000]   JOIN CHECK:
@@ -36,4 +36,487 @@ NODES:
 (2)  [11:02:00.000]   JOIN CHECK:
 (2)  [11:02:00.000]     received 11 join requests
 (2)  [11:02:00.000]   CC: Sending ACK_JOIN to node 4 for dist: 2 (pid:2)
-(1)  [11:02:00.372] node4: successfully registered with base station 100 at distance: 2
+(1)  [11:02:01.128] node4: successfully registered with base station 100 at distance: 2
+(2)  [11:02:40.000]   JOIN CHECK:
+(2)  [11:02:40.000]     received 12 join requests
+(2)  [11:02:40.000]   CC: Sending ACK_JOIN to node 5 for dist: 3 (pid:3)
+(1)  [11:02:40.398] node5: successfully registered with base station 100 at distance: 3
+(2)  [11:03:20.000]   JOIN CHECK:
+(2)  [11:03:20.000]     received 5 join requests
+(2)  [11:03:20.000]   CC: Sending ACK_JOIN to node 6 for dist: 4 (pid:4)
+(1)  [11:03:20.886] node6: successfully registered with base station 100 at distance: 4
+(2)  [11:04:00.000]   JOIN CHECK:
+(2)  [11:04:00.000]     received 6 join requests
+(2)  [11:04:00.000]   CC: Sending ACK_JOIN to node 7 for dist: 5 (pid:5)
+(1)  [11:04:00.702] node7: successfully registered with base station 100 at distance: 5
+(2)  [11:04:40.000]   JOIN CHECK:
+(2)  [11:04:40.000]     received 3 join requests
+(2)  [11:04:40.000]   CC: Sending ACK_JOIN to node 3 for dist: 6 (pid:6)
+(1)  [11:04:40.056] node3: successfully registered with base station 100 at distance: 6
+(2)  [11:04:55.000]   CC: END UPDATING
+(1)  [11:05:00.000] ---> START interval: 11:05:00
+(1)  [11:05:00.000] next interval: 11:10:00 (1609495800000)
+(1)  [11:05:00.000] -> num connected nodes:   7
+(1)  [11:05:00.000] -> successfully started:  False
+(1)  [11:05:00.000] -> network running:       False
+(1)  [11:05:00.000] -> nodes sending:         False
+(1)  [11:05:00.000] -> all nodes sending:     False
+(1)  [11:05:00.000] -> nodes sleeping:        False
+(1)  [11:05:00.000] -> new nodes:             True
+(2)  [11:05:00.000]   CC: START UPDATING
+(2)  [11:05:20.000]   JOIN CHECK:
+(2)  [11:05:20.000]     received 0 join requests
+(2)  [11:06:00.000]   JOIN CHECK:
+(2)  [11:06:00.000]     received 0 join requests
+(2)  [11:06:00.000]   INTERVAL-CHECK
+(2)  [11:06:00.001]   INTERVAL-CHECK
+(2)  [11:06:00.001]   Sending interval data to nodes [1, 2, 4, 5, 6, 7, 3]
+(2)  [11:06:00.002]   INTERVAL-CHECK
+(2)  [11:06:00.003]   INTERVAL-CHECK
+(2)  [11:06:00.004]   INTERVAL-CHECK
+(2)  [11:06:10.000]   CC: Sending SET_INTERVAL to node 1 with: time_to_next: 229999 (pid:7)
+(2)  [11:06:10.083] node1: interval start= 600017
+(1)  [11:06:10.083] node1: successfully received interval data [int:300000, off:0, active:72500, send:False]
+(2)  [11:06:14.137]   receiving ACK from node 1
+(2)  [11:06:30.000]   CC: Sending SET_INTERVAL to node 2 with: time_to_next: 209999 (pid:8)
+(2)  [11:06:30.075] node2: interval start= 600009
+(1)  [11:06:30.075] node2: successfully received interval data [int:300000, off:7500, active:72500, send:False]
+(2)  [11:06:34.129]   receiving ACK from node 2
+(2)  [11:06:40.000]   JOIN CHECK:
+(2)  [11:06:40.000]     received 0 join requests
+(2)  [11:06:40.000]   INTERVAL-CHECK
+(2)  [11:06:50.000]   CC: Sending SET_INTERVAL to node 4 with: time_to_next: 189999 (pid:9)
+(2)  [11:06:51.348] node4: interval start= 600216
+(1)  [11:06:51.348] node4: successfully received interval data [int:300000, off:15000, active:72500, send:False]
+(2)  [11:06:56.221]   receiving ACK from node 4
+(2)  [11:07:10.000]   CC: Sending SET_INTERVAL to node 5 with: time_to_next: 169999 (pid:10)
+(2)  [11:07:11.130] node5: interval start= 598932
+(1)  [11:07:11.130] node5: successfully received interval data [int:300000, off:22500, active:72500, send:False]
+(2)  [11:07:16.738]   receiving ACK from node 5
+(2)  [11:07:20.000]   JOIN CHECK:
+(2)  [11:07:20.000]     received 0 join requests
+(2)  [11:07:30.000]   CC: Sending SET_INTERVAL to node 6 with: time_to_next: 149999 (pid:11)
+(2)  [11:07:30.975] node6: interval start= 599843
+(1)  [11:07:30.975] node6: successfully received interval data [int:300000, off:30000, active:72500, send:False]
+(2)  [11:07:35.638]   receiving ACK from node 6
+(2)  [11:07:50.000]   CC: Sending SET_INTERVAL to node 7 with: time_to_next: 129999 (pid:12)
+(2)  [11:07:51.198] node7: interval start= 599000
+(1)  [11:07:51.198] node7: successfully received interval data [int:300000, off:37500, active:72500, send:False]
+(2)  [11:07:55.924]   receiving ACK from node 7
+(2)  [11:08:00.000]   INTERVAL-CHECK
+(2)  [11:08:10.000]   CC: Sending SET_INTERVAL to node 3 with: time_to_next: 109999 (pid:13)
+(2)  [11:08:10.077] node3: interval start= 600011
+(1)  [11:08:10.077] node3: successfully received interval data [int:300000, off:45000, active:72500, send:False]
+(2)  [11:08:14.131]   receiving ACK from node 3
+(2)  [11:09:55.000]   CC: END UPDATING
+(1)  [11:10:00.000] ---> START interval: 11:10:00
+(1)  [11:10:00.000] next interval: 11:15:00 (1609496100000)
+(1)  [11:10:00.000] -> num connected nodes:   7
+(1)  [11:10:00.000] -> successfully started:  False
+(1)  [11:10:00.000] -> network running:       False
+(1)  [11:10:00.000] -> nodes sending:         False
+(1)  [11:10:00.000] -> all nodes sending:     False
+(1)  [11:10:00.000] -> nodes sleeping:        False
+(1)  [11:10:00.000] -> new nodes:             True
+(2)  [11:10:00.000]   INTERVAL-CHECK
+(1)  [11:10:00.000]   Central: All connected nodes have ACK the interval
+(1)  [11:10:00.000]   Sending first START_SENDING to nodes
+(2)  [11:10:52.500]   CC: START UPDATING
+(2)  [11:10:52.500]   CC: Sending START_SENDING to all nodes (pid:14)
+(2)  [11:10:52.554] node1: Received START_SENDING
+(2)  [11:10:52.554] node2: Received START_SENDING
+(2)  [11:10:53.163] node3: Received START_SENDING
+(2)  [11:10:53.163] node4: Received START_SENDING
+(2)  [11:10:53.562] node5: Received START_SENDING
+(2)  [11:10:53.562] node6: Received START_SENDING
+(2)  [11:10:53.562] node7: Received START_SENDING
+(2)  [11:11:02.500]   CC: Sending START_SENDING to all nodes (pid:15)
+(2)  [11:11:12.500]   CC: Sending START_SENDING to all nodes (pid:16)
+(2)  [11:14:00.000]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:14:55.000]   CC: END UPDATING
+(1)  [11:15:00.000] ---> START interval: 11:15:00
+(1)  [11:15:00.000] next interval: 11:20:00 (1609496400000)
+(1)  [11:15:00.000]   RESYNCING INTERVAL DATA!
+(1)  [11:15:00.000] -> num connected nodes:   7
+(1)  [11:15:00.000] -> successfully started:  False
+(1)  [11:15:00.000] -> network running:       False
+(1)  [11:15:00.000] -> nodes sending:         True
+(1)  [11:15:00.000] -> all nodes sending:     True
+(1)  [11:15:00.000] -> nodes sleeping:        False
+(1)  [11:15:00.000] -> new nodes:             False
+(2)  [11:15:00.107]   DATA from node 1 (pid=3) (last sender=1)
+(2)  [11:15:07.583]   DATA from node 2 (pid=5) (last sender=2)
+(2)  [11:15:15.416]   DATA from node 4 (pid=9) (last sender=2)
+(2)  [11:15:23.396]   DATA from node 5 (pid=10) (last sender=2)
+(2)  [11:15:30.704]   DATA from node 6 (pid=13) (last sender=2)
+(2)  [11:15:36.731]   DATA from node 7 (pid=16) (last sender=2)
+(2)  [11:15:45.089]   DATA from node 3 (pid=18) (last sender=3)
+(2)  [11:15:52.500]   checking the received packets after joining
+(2)  [11:15:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:15:52.500]     Received:    1   1   1   1   1   1   1
+(1)  [11:15:52.500]   SUCCESSFULLY STARTED THE NETWORK
+(2)  [11:15:52.500]   CC: START UPDATING
+(2)  [11:15:52.500]   CC: Sending RESYNC_INTERVAL to all nodes with: time_to_next: 247499 (pid:17)
+(2)  [11:16:12.500] cleaning up receive-check
+(2)  [11:16:12.500] <--- END of active part of interval
+(2)  [11:19:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:19:55.000]   CC: END UPDATING
+(1)  [11:20:00.000] ---> START interval: 11:20:00
+(1)  [11:20:00.000] next interval: 11:25:00 (1609496700000)
+(1)  [11:20:00.000] -> num connected nodes:   7
+(1)  [11:20:00.000] -> successfully started:  True
+(1)  [11:20:00.000] -> network running:       True
+(1)  [11:20:00.000] -> nodes sending:         True
+(1)  [11:20:00.000] -> all nodes sending:     True
+(1)  [11:20:00.000] -> nodes sleeping:        False
+(1)  [11:20:00.000] -> new nodes:             False
+(2)  [11:20:00.113]   DATA from node 1 (pid=4) (last sender=1)
+(2)  [11:20:07.589]   DATA from node 2 (pid=6) (last sender=2)
+(2)  [11:20:15.968]   DATA from node 4 (pid=10) (last sender=1)
+(2)  [11:20:22.163]   DATA from node 5 (pid=11) (last sender=2)
+(2)  [11:20:30.794]   DATA from node 6 (pid=14) (last sender=2)
+(2)  [11:20:37.535]   DATA from node 7 (pid=17) (last sender=2)
+(2)  [11:20:45.095]   DATA from node 3 (pid=19) (last sender=3)
+(2)  [11:20:52.500]   checking the received packets
+(2)  [11:20:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:20:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [11:20:52.500]   CC: START UPDATING
+(2)  [11:21:12.500] cleaning up receive-check
+(2)  [11:21:12.500] <--- END of active part of interval
+(2)  [11:24:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:24:55.000]   CC: END UPDATING
+(1)  [11:25:00.000] ---> START interval: 11:25:00
+(1)  [11:25:00.000] next interval: 11:30:00 (1609497000000)
+(1)  [11:25:00.000] -> num connected nodes:   7
+(1)  [11:25:00.000] -> successfully started:  True
+(1)  [11:25:00.000] -> network running:       True
+(1)  [11:25:00.000] -> nodes sending:         True
+(1)  [11:25:00.000] -> all nodes sending:     True
+(1)  [11:25:00.000] -> nodes sleeping:        False
+(1)  [11:25:00.000] -> new nodes:             False
+(2)  [11:25:00.119]   DATA from node 1 (pid=5) (last sender=1)
+(2)  [11:25:07.595]   DATA from node 2 (pid=7) (last sender=2)
+(2)  [11:25:23.471]   DATA from node 5 (pid=12) (last sender=1)
+(2)  [11:25:30.611]   DATA from node 6 (pid=15) (last sender=2)
+(2)  [11:25:37.310]   DATA from node 7 (pid=18) (last sender=2)
+(2)  [11:25:45.983]   DATA from node 3 (pid=20) (last sender=2)
+(2)  [11:25:52.500]   checking the received packets
+(2)  [11:25:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:25:52.500]     Received:    1   1   0   1   1   1   1
+(2)  [11:25:52.500]     Missing packet from node: 4
+(2)  [11:25:52.500]   CC: START UPDATING
+(2)  [11:25:52.500]   CC: Sending REQUEST to node 4 (pid:18)
+(2)  [11:25:52.782]     node4: receiving REQUEST, sending DATA again
+(2)  [11:26:12.500] cleaning up receive-check
+(2)  [11:26:12.500] <--- END of active part of interval
+(2)  [11:26:12.500]   CC: Sending REQUEST to node 4 (pid:19)
+(2)  [11:26:13.572]     node4: receiving REQUEST, sending DATA again
+(2)  [11:26:32.500]   CC: Sending REQUEST to node 4 (pid:20)
+(2)  [11:26:32.913]     node4: receiving REQUEST, sending DATA again
+(2)  [11:26:35.690]   DATA from node 4 (pid=14) (last sender=2)
+(2)  [11:29:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:29:55.000]   CC: END UPDATING
+(1)  [11:30:00.000] ---> START interval: 11:30:00
+(1)  [11:30:00.000] next interval: 11:35:00 (1609497300000)
+(1)  [11:30:00.000] -> num connected nodes:   7
+(1)  [11:30:00.000] -> successfully started:  True
+(1)  [11:30:00.000] -> network running:       True
+(1)  [11:30:00.000] -> nodes sending:         True
+(1)  [11:30:00.000] -> all nodes sending:     True
+(1)  [11:30:00.000] -> nodes sleeping:        False
+(1)  [11:30:00.000] -> new nodes:             False
+(2)  [11:30:00.125]   DATA from node 1 (pid=6) (last sender=1)
+(2)  [11:30:07.601]   DATA from node 2 (pid=8) (last sender=2)
+(2)  [11:30:16.421]   DATA from node 4 (pid=15) (last sender=2)
+(2)  [11:30:23.750]   DATA from node 5 (pid=13) (last sender=1)
+(2)  [11:30:30.638]   DATA from node 6 (pid=16) (last sender=2)
+(2)  [11:30:45.107]   DATA from node 3 (pid=21) (last sender=3)
+(2)  [11:30:52.500]   checking the received packets
+(2)  [11:30:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:30:52.500]     Received:    1   1   2   1   1   0   1
+(2)  [11:30:52.500]     Missing packet from node: 7
+(2)  [11:30:52.500]   CC: START UPDATING
+(2)  [11:30:52.500]   CC: Sending REQUEST to node 7 (pid:21)
+(2)  [11:30:52.977]     node7: receiving REQUEST, sending DATA again
+(2)  [11:31:12.500] cleaning up receive-check
+(2)  [11:31:12.500] <--- END of active part of interval
+(2)  [11:31:12.500]   CC: Sending REQUEST to node 7 (pid:22)
+(2)  [11:31:13.494]     node7: receiving REQUEST, sending DATA again
+(2)  [11:31:18.875]   DATA from node 7 (pid=21) (last sender=2)
+(2)  [11:34:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:34:55.000]   CC: END UPDATING
+(1)  [11:35:00.000] ---> START interval: 11:35:00
+(1)  [11:35:00.000] next interval: 11:40:00 (1609497600000)
+(1)  [11:35:00.000]   RESYNCING INTERVAL DATA!
+(1)  [11:35:00.000] -> num connected nodes:   7
+(1)  [11:35:00.000] -> successfully started:  True
+(1)  [11:35:00.000] -> network running:       True
+(1)  [11:35:00.000] -> nodes sending:         True
+(1)  [11:35:00.000] -> all nodes sending:     True
+(1)  [11:35:00.000] -> nodes sleeping:        False
+(1)  [11:35:00.000] -> new nodes:             False
+(2)  [11:35:00.131]   DATA from node 1 (pid=7) (last sender=1)
+(2)  [11:35:07.607]   DATA from node 2 (pid=9) (last sender=2)
+(2)  [11:35:16.994]   DATA from node 4 (pid=16) (last sender=1)
+(2)  [11:35:23.630]   DATA from node 5 (pid=14) (last sender=1)
+(2)  [11:35:30.938]   DATA from node 6 (pid=17) (last sender=2)
+(2)  [11:35:38.141]   DATA from node 7 (pid=22) (last sender=2)
+(2)  [11:35:45.113]   DATA from node 3 (pid=22) (last sender=3)
+(2)  [11:35:52.500]   checking the received packets
+(2)  [11:35:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:35:52.500]     Received:    1   1   1   1   1   2   1
+(2)  [11:35:52.500]   CC: START UPDATING
+(2)  [11:35:52.500]   CC: Sending RESYNC_INTERVAL to all nodes with: time_to_next: 247499 (pid:23)
+(2)  [11:36:12.500] cleaning up receive-check
+(2)  [11:36:12.500] <--- END of active part of interval
+(2)  [11:39:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:39:55.000]   CC: END UPDATING
+(1)  [11:40:00.000] ---> START interval: 11:40:00
+(1)  [11:40:00.000] next interval: 11:45:00 (1609497900000)
+(1)  [11:40:00.000] -> num connected nodes:   7
+(1)  [11:40:00.000] -> successfully started:  True
+(1)  [11:40:00.000] -> network running:       True
+(1)  [11:40:00.000] -> nodes sending:         True
+(1)  [11:40:00.000] -> all nodes sending:     True
+(1)  [11:40:00.000] -> nodes sleeping:        False
+(1)  [11:40:00.000] -> new nodes:             False
+(2)  [11:40:00.137]   DATA from node 1 (pid=8) (last sender=1)
+(2)  [11:40:07.613]   DATA from node 2 (pid=10) (last sender=2)
+(2)  [11:40:15.509]   DATA from node 4 (pid=17) (last sender=2)
+(2)  [11:40:21.830]   DATA from node 5 (pid=15) (last sender=2)
+(2)  [11:40:31.994]   DATA from node 6 (pid=18) (last sender=2)
+(2)  [11:40:37.685]   DATA from node 7 (pid=23) (last sender=2)
+(2)  [11:40:46.862]   DATA from node 3 (pid=23) (last sender=1)
+(2)  [11:40:52.500]   checking the received packets
+(2)  [11:40:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:40:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [11:40:52.500]   CC: START UPDATING
+(2)  [11:41:12.500] cleaning up receive-check
+(2)  [11:41:12.500] <--- END of active part of interval
+(2)  [11:44:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:44:55.000]   CC: END UPDATING
+(1)  [11:45:00.000] ---> START interval: 11:45:00
+(1)  [11:45:00.000] next interval: 11:50:00 (1609498200000)
+(1)  [11:45:00.000] -> num connected nodes:   7
+(1)  [11:45:00.000] -> successfully started:  True
+(1)  [11:45:00.000] -> network running:       True
+(1)  [11:45:00.000] -> nodes sending:         True
+(1)  [11:45:00.000] -> all nodes sending:     True
+(1)  [11:45:00.000] -> nodes sleeping:        False
+(1)  [11:45:00.000] -> new nodes:             False
+(2)  [11:45:01.949]   DATA from node 1 (pid=9) (last sender=2)
+(2)  [11:45:07.619]   DATA from node 2 (pid=11) (last sender=2)
+(2)  [11:45:16.124]   DATA from node 4 (pid=18) (last sender=2)
+(2)  [11:45:23.012]   DATA from node 5 (pid=16) (last sender=2)
+(2)  [11:45:30.635]   DATA from node 6 (pid=19) (last sender=2)
+(2)  [11:45:38.468]   DATA from node 7 (pid=24) (last sender=2)
+(2)  [11:45:45.125]   DATA from node 3 (pid=24) (last sender=3)
+(2)  [11:45:52.500]   checking the received packets
+(2)  [11:45:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:45:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [11:45:52.500]   CC: START UPDATING
+(2)  [11:46:12.500] cleaning up receive-check
+(2)  [11:46:12.500] <--- END of active part of interval
+(2)  [11:49:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:49:55.000]   CC: END UPDATING
+(1)  [11:50:00.000] ---> START interval: 11:50:00
+(1)  [11:50:00.000] next interval: 11:55:00 (1609498500000)
+(1)  [11:50:00.000] -> num connected nodes:   7
+(1)  [11:50:00.000] -> successfully started:  True
+(1)  [11:50:00.000] -> network running:       True
+(1)  [11:50:00.000] -> nodes sending:         True
+(1)  [11:50:00.000] -> all nodes sending:     True
+(1)  [11:50:00.000] -> nodes sleeping:        False
+(1)  [11:50:00.000] -> new nodes:             False
+(2)  [11:50:00.149]   DATA from node 1 (pid=10) (last sender=1)
+(2)  [11:50:07.625]   DATA from node 2 (pid=12) (last sender=2)
+(2)  [11:50:15.521]   DATA from node 4 (pid=19) (last sender=2)
+(2)  [11:50:21.800]   DATA from node 5 (pid=17) (last sender=2)
+(2)  [11:50:30.242]   DATA from node 6 (pid=20) (last sender=2)
+(2)  [11:50:38.684]   DATA from node 7 (pid=25) (last sender=2)
+(2)  [11:50:45.467]   DATA from node 3 (pid=25) (last sender=2)
+(2)  [11:50:52.500]   checking the received packets
+(2)  [11:50:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:50:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [11:50:52.500]   CC: START UPDATING
+(2)  [11:51:12.500] cleaning up receive-check
+(2)  [11:51:12.500] <--- END of active part of interval
+(2)  [11:54:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:54:55.000]   CC: END UPDATING
+(1)  [11:55:00.000] ---> START interval: 11:55:00
+(1)  [11:55:00.000] next interval: 12:00:00 (1609498800000)
+(1)  [11:55:00.000]   RESYNCING INTERVAL DATA!
+(1)  [11:55:00.000] -> num connected nodes:   7
+(1)  [11:55:00.000] -> successfully started:  True
+(1)  [11:55:00.000] -> network running:       True
+(1)  [11:55:00.000] -> nodes sending:         True
+(1)  [11:55:00.000] -> all nodes sending:     True
+(1)  [11:55:00.000] -> nodes sleeping:        False
+(1)  [11:55:00.000] -> new nodes:             False
+(2)  [11:55:00.155]   DATA from node 1 (pid=11) (last sender=1)
+(2)  [11:55:07.631]   DATA from node 2 (pid=13) (last sender=2)
+(2)  [11:55:15.800]   DATA from node 4 (pid=20) (last sender=1)
+(2)  [11:55:21.701]   DATA from node 5 (pid=18) (last sender=2)
+(2)  [11:55:31.697]   DATA from node 6 (pid=21) (last sender=2)
+(2)  [11:55:37.430]   DATA from node 7 (pid=26) (last sender=2)
+(2)  [11:55:45.137]   DATA from node 3 (pid=26) (last sender=3)
+(2)  [11:55:52.500]   checking the received packets
+(2)  [11:55:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [11:55:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [11:55:52.500]   CC: START UPDATING
+(2)  [11:55:52.500]   CC: Sending RESYNC_INTERVAL to all nodes with: time_to_next: 247499 (pid:24)
+(2)  [11:56:12.500] cleaning up receive-check
+(2)  [11:56:12.500] <--- END of active part of interval
+(2)  [11:59:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [11:59:55.000]   CC: END UPDATING
+(1)  [12:00:00.000] ---> START interval: 12:00:00
+(1)  [12:00:00.000] next interval: 12:05:00 (1609499100000)
+(1)  [12:00:00.000] -> num connected nodes:   7
+(1)  [12:00:00.000] -> successfully started:  True
+(1)  [12:00:00.000] -> network running:       True
+(1)  [12:00:00.000] -> nodes sending:         True
+(1)  [12:00:00.000] -> all nodes sending:     True
+(1)  [12:00:00.000] -> nodes sleeping:        False
+(1)  [12:00:00.000] -> new nodes:             False
+(2)  [12:00:00.161]   DATA from node 1 (pid=12) (last sender=1)
+(2)  [12:00:07.637]   DATA from node 2 (pid=14) (last sender=2)
+(2)  [12:00:15.449]   DATA from node 4 (pid=21) (last sender=1)
+(2)  [12:00:22.442]   DATA from node 5 (pid=19) (last sender=2)
+(2)  [12:00:30.191]   DATA from node 6 (pid=22) (last sender=2)
+(2)  [12:00:37.730]   DATA from node 7 (pid=27) (last sender=2)
+(2)  [12:00:46.235]   DATA from node 3 (pid=27) (last sender=1)
+(2)  [12:00:52.500]   checking the received packets
+(2)  [12:00:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [12:00:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [12:00:52.500]   CC: START UPDATING
+(2)  [12:01:12.500] cleaning up receive-check
+(2)  [12:01:12.500] <--- END of active part of interval
+(2)  [12:04:12.500]     Setting JOIN-CHECK to end of send-interval
+(2)  [12:04:55.000]   CC: END UPDATING
+(1)  [12:05:00.000] ---> START interval: 12:05:00
+(1)  [12:05:00.000] next interval: 12:10:00 (1609499400000)
+(1)  [12:05:00.000] -> num connected nodes:   7
+(1)  [12:05:00.000] -> successfully started:  True
+(1)  [12:05:00.000] -> network running:       True
+(1)  [12:05:00.000] -> nodes sending:         True
+(1)  [12:05:00.000] -> all nodes sending:     True
+(1)  [12:05:00.000] -> nodes sleeping:        False
+(1)  [12:05:00.000] -> new nodes:             False
+(2)  [12:05:00.167]   DATA from node 1 (pid=13) (last sender=1)
+(2)  [12:05:07.643]   DATA from node 2 (pid=15) (last sender=2)
+(2)  [12:05:17.240]   DATA from node 4 (pid=22) (last sender=2)
+(2)  [12:05:22.238]   DATA from node 5 (pid=20) (last sender=2)
+(2)  [12:05:32.192]   DATA from node 6 (pid=23) (last sender=1)
+(2)  [12:05:38.135]   DATA from node 7 (pid=28) (last sender=2)
+(2)  [12:05:45.149]   DATA from node 3 (pid=28) (last sender=3)
+(2)  [12:05:52.500]   checking the received packets
+(2)  [12:05:52.500]     Node:        1   2   4   5   6   7   3
+(2)  [12:05:52.500]     Received:    1   1   1   1   1   1   1
+(2)  [12:05:52.500]   CC: START UPDATING
+(2)  [12:06:12.500] cleaning up receive-check
+(2)  [12:06:12.500] <--- END of active part of interval
+====================== SIMULATION RESULTS =============================
+Simulation took: 1 min 26.67 s
+Simulated time: 01:08:00
+nodes sent in total: 77
+received in total: 77 / 77 = 100.00 %
+received after start in total: 70 / 70 = 100.00 %
+received after start in total (without requested packets): 68 / 70 = 97.14 %
+NODES:
+  node:      node1 distance:   1 battery: 97.07 %
+  node:      node2 distance:   1 battery: 97.07 %
+  node:      node3 distance:   6 battery: 97.07 %
+  node:      node4 distance:   2 battery: 97.07 %
+  node:      node5 distance:   3 battery: 97.07 %
+  node:      node6 distance:   4 battery: 97.07 %
+  node:      node7 distance:   5 battery: 97.07 %
+received from node1: 11 from 11
+received from node2: 11 from 11
+received from node3: 11 from 11
+received from node4: 11 from 11
+received from node5: 11 from 11
+received from node6: 11 from 11
+received from node7: 11 from 11
+DESTROYED
+    node1 destroyed packets 25
+    node2 destroyed packets 65
+    node3 destroyed packets 86
+    node4 destroyed packets 70
+    node5 destroyed packets 52
+    node6 destroyed packets 48
+    node7 destroyed packets 51
+CORRUPTED
+    node1 corrupted packets 47
+    node2 corrupted packets 44
+    node3 corrupted packets 42
+    node4 corrupted packets 61
+    node5 corrupted packets 14
+    node6 corrupted packets 26
+    node7 corrupted packets 52
+SENT
+    node1 sent in total: 154
+    node2 sent in total: 155
+    node3 sent in total: 46
+    node4 sent in total: 115
+    node5 sent in total: 95
+    node6 sent in total: 76
+    node7 sent in total: 59
+RECEIVED
+    node1 successfully received: 269 from 341 (341)
+    node2 successfully received: 461 from 570 (570)
+    node3 successfully received: 551 from 679 (679)
+    node4 successfully received: 454 from 585 (585)
+    node5 successfully received: 385 from 451 (451)
+    node6 successfully received: 396 from 470 (470)
+    node7 successfully received: 384 from 487 (487)
+ --> FURTHER ANALYSIS (123)
+PACKETS RECEIVED IN DETAIL:
+  node1
+    world: 47, forward: 119, collision: 25, sleep: 0
+  node2
+    world: 44, forward: 288, collision: 65, sleep: 0
+  node3
+    world: 42, forward: 346, collision: 86, sleep: 0
+  node4
+    world: 61, forward: 287, collision: 70, sleep: 0
+  node5
+    world: 14, forward: 239, collision: 52, sleep: 0
+  node6
+    world: 26, forward: 247, collision: 48, sleep: 0
+  node7
+    world: 52, forward: 235, collision: 51, sleep: 0
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 0 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 0 missing)
+0 multiple packets were received in total

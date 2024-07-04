@@ -3,7 +3,7 @@ from sim.destroyed_packet import Forward_type
 
 
 # configuration file to use
-configuration = "world_join_server"
+configuration = "world_thesis"
 
 # override the debug level from configuration file
 my_debug = 2
@@ -26,9 +26,9 @@ sim = simulation(configuration,
 
 sim.prepare()
 sim.run()
-# sim.analyze(dont_print_additional=True)
+sim.analyze(dont_print_additional=True)
 # reasons = [Forward_type.RELAY_BLOCK, Forward_type.RETURN_TO_LAST]
-# reasons = None
+# # reasons = None
 # sim.further_analysis(print_packets=True, more_info=True, fwd_reasons_to_print=reasons)
 
 sim.stop()

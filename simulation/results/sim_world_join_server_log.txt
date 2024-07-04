@@ -17,93 +17,842 @@ NODES:
 ====================== STARTING SIMULATION ============================
 (1)  [11:00:00.000] Sending TIME_SYNC
 (1)  [11:00:00.000] Checking node status
-(2)  [11:00:03.093] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 0
-(1)  [11:00:03.093] receiving join request from node with ID: 5 with RSSI:-108
-(2)  [11:00:05.004] received at Server (123): JOIN from 6 with 1 hops payload: [0, 0, 300000]    hops: [6] debug_name: None PID: 0
-(1)  [11:00:05.004] receiving join request from node with ID: 6 with RSSI:-119
-(2)  [11:00:26.739] received at Server (123): JOIN from 3 with 1 hops payload: [0, 0, 300000]    hops: [3] debug_name: None PID: 0
-(1)  [11:00:26.739] receiving join request from node with ID: 3 with RSSI:-86
-(1)  [11:00:28.161] node3: successfully registered with base station at distance: 1
-(2)  [11:00:28.965] received at Server (123): JOIN from 2 with 1 hops payload: [0, 0, 300000]    hops: [2] debug_name: None PID: 0
-(1)  [11:00:28.965] receiving join request from node with ID: 2 with RSSI:-53
-(1)  [11:00:30.513] node2: successfully registered with base station at distance: 1
-(2)  [11:00:46.878] received at Server (123): JOIN from 1 with 1 hops payload: [0, 0, 300000]    hops: [1] debug_name: None PID: 0
-(1)  [11:00:46.878] receiving join request from node with ID: 1 with RSSI:-20
-(1)  [11:00:48.111] node1: successfully registered with base station at distance: 1
-(2)  [11:00:48.217] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 2] debug_name: None PID: 5
-(2)  [11:00:58.113] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 1
-(1)  [11:00:58.113] receiving join request from node with ID: 5 with RSSI:-108
-(2)  [11:00:59.729] received at Server (123): DATA from 3 with 1 hops payload: [11, 77]    hops: [3] debug_name: node3_1 PID: 1
-(2)  [11:01:19.427] received at Server (123): DATA from 2 with 2 hops payload: [10, 77]    hops: [2, 1] debug_name: node2_1 PID: 1
-(2)  [11:01:23.963] received at Server (123): DATA from 1 with 2 hops payload: [31, 77]    hops: [1, 2] debug_name: node1_1 PID: 1
-(2)  [11:01:53.133] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 2
-(1)  [11:01:53.133] receiving join request from node with ID: 5 with RSSI:-108
-(2)  [11:01:55.044] received at Server (123): JOIN from 6 with 1 hops payload: [0, 0, 300000]    hops: [6] debug_name: None PID: 2
-(1)  [11:01:55.044] receiving join request from node with ID: 6 with RSSI:-119
-(1)  [11:01:55.227] node5: successfully registered with base station at distance: 1
-(2)  [11:01:55.228] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 7
-(1)  [11:01:57.285] node6: successfully registered with base station at distance: 1
-(2)  [11:01:57.286] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 8
-(2)  [11:02:28.664] received at Server (123): DATA from 6 with 1 hops payload: [26, 77]    hops: [6] debug_name: node6_1 PID: 3
-(2)  [11:02:31.730] received at Server (123): DATA from 5 with 2 hops payload: [18, 77]    hops: [5, 2] debug_name: node5_1 PID: 3
+(2)  [11:00:10.674] received at Server (123): JOIN from 2 with 1 hops payload: [0, 0, 300000]    hops: [2] debug_name: None PID: 0
+(1)  [11:00:10.674] receiving join request from node with ID: 2 with RSSI:-53
+(1)  [11:00:12.264] node2: successfully registered with base station at distance: 1
+(2)  [11:00:19.326] received at Server (123): JOIN from 1 with 1 hops payload: [0, 0, 300000]    hops: [1] debug_name: None PID: 0
+(1)  [11:00:19.326] receiving join request from node with ID: 1 with RSSI:-20
+(1)  [11:00:20.076] node1: successfully registered with base station at distance: 1
+(2)  [11:00:20.775] received at Server (123): JOIN from 4 with 1 hops payload: [0, 0, 300000]    hops: [4] debug_name: None PID: 0
+(1)  [11:00:20.775] receiving join request from node with ID: 4 with RSSI:-97
+(1)  [11:00:22.785] node4: successfully registered with base station at distance: 1
+(2)  [11:00:22.786] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 3
+(2)  [11:00:39.738] received at Server (123): JOIN from 5 with 1 hops payload: [0, 0, 300000]    hops: [5] debug_name: None PID: 0
+(1)  [11:00:39.738] receiving join request from node with ID: 5 with RSSI:-108
+(1)  [11:00:41.832] node5: successfully registered with base station at distance: 1
+(2)  [11:00:41.833] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 2] debug_name: None PID: 4
+(2)  [11:00:42.258] received at Server (123): JOIN from 6 with 1 hops payload: [0, 0, 300000]    hops: [6] debug_name: None PID: 0
+(1)  [11:00:42.258] receiving join request from node with ID: 6 with RSSI:-119
+(1)  [11:00:44.352] node6: successfully registered with base station at distance: 1
+(2)  [11:00:44.353] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 5
+(2)  [11:00:47.361] received at Server (123): JOIN from 3 with 1 hops payload: [0, 0, 300000]    hops: [3] debug_name: None PID: 0
+(1)  [11:00:47.361] receiving join request from node with ID: 3 with RSSI:-86
+(1)  [11:00:48.468] node3: successfully registered with base station at distance: 1
+(2)  [11:00:50.065] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 6
+(2)  [11:00:53.891] received at Server (123): DATA from 1 with 1 hops payload: [20, 77]    hops: [1] debug_name: node1_1 PID: 1
+(2)  [11:00:53.891] Storing at Server (123): DATA from 1 with 1 hops payload: [20, 77]    hops: [1] debug_name: node1_1 PID: 1
+(2)  [11:00:56.160] received at Server (123): JOIN from 7 with 2 hops payload: [0, 0, 300000]    hops: [7, 1] debug_name: None PID: 1
+(1)  [11:00:56.160] receiving join request from node with ID: 7 with RSSI:-20
+(1)  [11:00:58.296] node7: successfully registered with base station at distance: 1
+(2)  [11:00:58.297] received at Server (123): ACK from 100 with 2 hops payload: 1    hops: [100, 1] debug_name: None PID: 7
+(2)  [11:01:00.128] received at Server (123): DATA from 2 with 1 hops payload: [31, 77]    hops: [2] debug_name: node2_1 PID: 1
+(2)  [11:01:00.128] Storing at Server (123): DATA from 2 with 1 hops payload: [31, 77]    hops: [2] debug_name: node2_1 PID: 1
+(2)  [11:01:10.061] received at Server (123): DATA from 4 with 1 hops payload: [15, 77]    hops: [4] debug_name: node4_1 PID: 1
+(2)  [11:01:10.061] Storing at Server (123): DATA from 4 with 1 hops payload: [15, 77]    hops: [4] debug_name: node4_1 PID: 1
+(2)  [11:01:15.731] received at Server (123): DATA from 6 with 1 hops payload: [25, 77]    hops: [6] debug_name: node6_1 PID: 1
+(2)  [11:01:15.731] Storing at Server (123): DATA from 6 with 1 hops payload: [25, 77]    hops: [6] debug_name: node6_1 PID: 1
+(2)  [11:01:20.036] received at Server (123): DATA from 3 with 1 hops payload: [27, 77]    hops: [3] debug_name: node3_1 PID: 1
+(2)  [11:01:20.036] Storing at Server (123): DATA from 3 with 1 hops payload: [27, 77]    hops: [3] debug_name: node3_1 PID: 1
+(2)  [11:01:43.787] received at Server (123): DATA from 7 with 2 hops payload: [41, 77]    hops: [7, 5] debug_name: node7_1 PID: 2
+(2)  [11:01:43.787] Storing at Server (123): DATA from 7 with 2 hops payload: [41, 77]    hops: [7, 5] debug_name: node7_1 PID: 2
 (2)  [11:05:00.000] Sending DELAY_INTERVAL request to node 3
 (1)  [11:05:00.048] delaying interval @ node node3 by 2424
-(2)  [11:05:00.243] received at Server (123): COMMAND from 100 with 2 hops payload: [<Command_type.DELAY_INTERVAL: bitarray('11000101')>, 2424]    hops: [100, 2] debug_name: None PID: 9
-(2)  [11:06:02.171] received at Server (123): DATA from 3 with 1 hops payload: [11, 77]    hops: [3] debug_name: node3_2 PID: 2
-(2)  [11:06:18.383] received at Server (123): DATA from 2 with 1 hops payload: [20, 77]    hops: [2] debug_name: node2_2 PID: 2
-(2)  [11:06:21.932] received at Server (123): DATA from 1 with 1 hops payload: [28, 77]    hops: [1] debug_name: node1_2 PID: 2
-(2)  [11:07:28.670] received at Server (123): DATA from 6 with 1 hops payload: [36, 77]    hops: [6] debug_name: node6_2 PID: 4
-(2)  [11:11:02.177] received at Server (123): DATA from 3 with 1 hops payload: [36, 77]    hops: [3] debug_name: node3_3 PID: 3
-(2)  [11:11:18.389] received at Server (123): DATA from 2 with 1 hops payload: [21, 77]    hops: [2] debug_name: node2_3 PID: 3
-(2)  [11:12:28.676] received at Server (123): DATA from 6 with 1 hops payload: [14, 77]    hops: [6] debug_name: node6_3 PID: 5
-(2)  [11:12:31.154] received at Server (123): DATA from 5 with 1 hops payload: [11, 77]    hops: [5] debug_name: node5_3 PID: 5
-(2)  [11:12:41.318] received at Server (123): DATA from 5 with 8 hops payload: [11, 77]    hops: [5, 2, 1, 6, 1, 6, 2, 6] debug_name: node5_3 PID: 5
-(2)  [11:16:02.183] received at Server (123): DATA from 3 with 1 hops payload: [22, 77]    hops: [3] debug_name: node3_4 PID: 4
-(2)  [11:16:12.473] received at Server (123): DATA from 3 with 8 hops payload: [22, 77]    hops: [3, 5, 6, 5, 1, 6, 2, 1] debug_name: node3_4 PID: 4
-(2)  [11:16:18.395] received at Server (123): DATA from 2 with 1 hops payload: [25, 77]    hops: [2] debug_name: node2_4 PID: 4
-(2)  [11:16:21.944] received at Server (123): DATA from 1 with 1 hops payload: [31, 77]    hops: [1] debug_name: node1_4 PID: 4
-(2)  [11:17:28.682] received at Server (123): DATA from 6 with 1 hops payload: [16, 77]    hops: [6] debug_name: node6_4 PID: 6
-(2)  [11:17:38.888] received at Server (123): DATA from 6 with 8 hops payload: [16, 77]    hops: [6, 1, 5, 2, 5, 3, 5, 3] debug_name: node6_4 PID: 6
-(2)  [11:21:02.189] received at Server (123): DATA from 3 with 1 hops payload: [8, 77]    hops: [3] debug_name: node3_5 PID: 5
-(2)  [11:21:18.401] received at Server (123): DATA from 2 with 1 hops payload: [15, 77]    hops: [2] debug_name: node2_5 PID: 5
-(2)  [11:22:28.688] received at Server (123): DATA from 6 with 1 hops payload: [41, 77]    hops: [6] debug_name: node6_5 PID: 7
-(2)  [11:22:31.166] received at Server (123): DATA from 5 with 1 hops payload: [41, 77]    hops: [5] debug_name: node5_5 PID: 7
-(2)  [11:26:02.195] received at Server (123): DATA from 3 with 1 hops payload: [7, 77]    hops: [3] debug_name: node3_6 PID: 6
-(2)  [11:26:18.407] received at Server (123): DATA from 2 with 1 hops payload: [16, 77]    hops: [2] debug_name: node2_6 PID: 6
-(2)  [11:26:21.956] received at Server (123): DATA from 1 with 1 hops payload: [43, 77]    hops: [1] debug_name: node1_6 PID: 6
-(2)  [11:26:28.781] received at Server (123): DATA from 2 with 8 hops payload: [16, 77]    hops: [2, 1, 6, 5, 1, 3, 6, 3] debug_name: node2_6 PID: 6
-(2)  [11:27:28.862] received at Server (123): DATA from 6 with 2 hops payload: [33, 77]    hops: [6, 5] debug_name: node6_6 PID: 8
-(2)  [11:27:31.198] received at Server (123): DATA from 5 with 1 hops payload: [8, 77]    hops: [5] debug_name: node5_6 PID: 8
+(2)  [11:05:00.852] received at Server (123): COMMAND from 100 with 2 hops payload: [<Command_type.DELAY_INTERVAL: bitarray('11000101')>, 2424]    hops: [100, 2] debug_name: None PID: 8
+(2)  [11:05:53.897] received at Server (123): DATA from 1 with 1 hops payload: [25, 77]    hops: [1] debug_name: node1_2 PID: 2
+(2)  [11:05:53.897] Storing at Server (123): DATA from 1 with 1 hops payload: [25, 77]    hops: [1] debug_name: node1_2 PID: 2
+(2)  [11:06:00.134] received at Server (123): DATA from 2 with 1 hops payload: [19, 77]    hops: [2] debug_name: node2_2 PID: 2
+(2)  [11:06:00.134] Storing at Server (123): DATA from 2 with 1 hops payload: [19, 77]    hops: [2] debug_name: node2_2 PID: 2
+(2)  [11:06:10.067] received at Server (123): DATA from 4 with 1 hops payload: [19, 77]    hops: [4] debug_name: node4_2 PID: 2
+(2)  [11:06:10.067] Storing at Server (123): DATA from 4 with 1 hops payload: [19, 77]    hops: [4] debug_name: node4_2 PID: 2
+(2)  [11:06:15.737] received at Server (123): DATA from 6 with 1 hops payload: [24, 77]    hops: [6] debug_name: node6_2 PID: 2
+(2)  [11:06:15.737] Storing at Server (123): DATA from 6 with 1 hops payload: [24, 77]    hops: [6] debug_name: node6_2 PID: 2
+(2)  [11:06:27.518] received at Server (123): DATA from 6 with 8 hops payload: [24, 77]    hops: [6, 5, 2, 5, 2, 5, 2, 5] debug_name: node6_2 PID: 2
+(2)  [11:06:27.518] Storing at Server (123): DATA from 6 with 8 hops payload: [24, 77]    hops: [6, 5, 2, 5, 2, 5, 2, 5] debug_name: node6_2 PID: 2
+(2)  [11:06:44.465] received at Server (123): DATA from 7 with 2 hops payload: [35, 77]    hops: [7, 5] debug_name: node7_2 PID: 3
+(2)  [11:06:44.465] Storing at Server (123): DATA from 7 with 2 hops payload: [35, 77]    hops: [7, 5] debug_name: node7_2 PID: 3
+(2)  [11:10:53.903] received at Server (123): DATA from 1 with 1 hops payload: [37, 77]    hops: [1] debug_name: node1_3 PID: 3
+(2)  [11:10:53.903] Storing at Server (123): DATA from 1 with 1 hops payload: [37, 77]    hops: [1] debug_name: node1_3 PID: 3
+(2)  [11:11:03.941] received at Server (123): DATA from 1 with 8 hops payload: [37, 77]    hops: [1, 6, 4, 6, 4, 3, 7, 5] debug_name: node1_3 PID: 3
+(2)  [11:11:03.941] Storing at Server (123): DATA from 1 with 8 hops payload: [37, 77]    hops: [1, 6, 4, 6, 4, 3, 7, 5] debug_name: node1_3 PID: 3
+(2)  [11:11:10.073] received at Server (123): DATA from 4 with 1 hops payload: [40, 77]    hops: [4] debug_name: node4_3 PID: 3
+(2)  [11:11:10.073] Storing at Server (123): DATA from 4 with 1 hops payload: [40, 77]    hops: [4] debug_name: node4_3 PID: 3
+(2)  [11:11:17.759] received at Server (123): DATA from 5 with 1 hops payload: [9, 77]    hops: [5] debug_name: node5_3 PID: 3
+(2)  [11:11:17.759] Storing at Server (123): DATA from 5 with 1 hops payload: [9, 77]    hops: [5] debug_name: node5_3 PID: 3
+(2)  [11:11:43.778] received at Server (123): DATA from 7 with 2 hops payload: [42, 77]    hops: [7, 3] debug_name: node7_3 PID: 4
+(2)  [11:11:43.778] Storing at Server (123): DATA from 7 with 2 hops payload: [42, 77]    hops: [7, 3] debug_name: node7_3 PID: 4
+(2)  [11:11:54.131] received at Server (123): DATA from 7 with 8 hops payload: [42, 77]    hops: [7, 3, 6, 1, 4, 5, 2, 5] debug_name: node7_3 PID: 4
+(2)  [11:11:54.131] Storing at Server (123): DATA from 7 with 8 hops payload: [42, 77]    hops: [7, 3, 6, 1, 4, 5, 2, 5] debug_name: node7_3 PID: 4
+(2)  [11:15:53.909] received at Server (123): DATA from 1 with 1 hops payload: [44, 77]    hops: [1] debug_name: node1_4 PID: 4
+(2)  [11:15:53.909] Storing at Server (123): DATA from 1 with 1 hops payload: [44, 77]    hops: [1] debug_name: node1_4 PID: 4
+(2)  [11:16:10.079] received at Server (123): DATA from 4 with 1 hops payload: [43, 77]    hops: [4] debug_name: node4_4 PID: 4
+(2)  [11:16:10.079] Storing at Server (123): DATA from 4 with 1 hops payload: [43, 77]    hops: [4] debug_name: node4_4 PID: 4
+(2)  [11:16:17.765] received at Server (123): DATA from 5 with 1 hops payload: [23, 77]    hops: [5] debug_name: node5_4 PID: 4
+(2)  [11:16:17.765] Storing at Server (123): DATA from 5 with 1 hops payload: [23, 77]    hops: [5] debug_name: node5_4 PID: 4
+(2)  [11:16:43.784] received at Server (123): DATA from 7 with 2 hops payload: [13, 77]    hops: [7, 6] debug_name: node7_4 PID: 5
+(2)  [11:16:43.784] Storing at Server (123): DATA from 7 with 2 hops payload: [13, 77]    hops: [7, 6] debug_name: node7_4 PID: 5
+(2)  [11:20:53.915] received at Server (123): DATA from 1 with 1 hops payload: [20, 77]    hops: [1] debug_name: node1_5 PID: 5
+(2)  [11:20:53.915] Storing at Server (123): DATA from 1 with 1 hops payload: [20, 77]    hops: [1] debug_name: node1_5 PID: 5
+(2)  [11:21:00.152] received at Server (123): DATA from 2 with 1 hops payload: [37, 77]    hops: [2] debug_name: node2_5 PID: 5
+(2)  [11:21:00.152] Storing at Server (123): DATA from 2 with 1 hops payload: [37, 77]    hops: [2] debug_name: node2_5 PID: 5
+(2)  [11:21:10.085] received at Server (123): DATA from 4 with 1 hops payload: [20, 77]    hops: [4] debug_name: node4_5 PID: 5
+(2)  [11:21:10.085] Storing at Server (123): DATA from 4 with 1 hops payload: [20, 77]    hops: [4] debug_name: node4_5 PID: 5
+(2)  [11:21:15.755] received at Server (123): DATA from 6 with 1 hops payload: [40, 77]    hops: [6] debug_name: node6_5 PID: 5
+(2)  [11:21:15.755] Storing at Server (123): DATA from 6 with 1 hops payload: [40, 77]    hops: [6] debug_name: node6_5 PID: 5
+(2)  [11:21:17.776] received at Server (123): DATA from 5 with 1 hops payload: [36, 77]    hops: [5] debug_name: node5_5 PID: 5
+(2)  [11:21:17.776] Storing at Server (123): DATA from 5 with 1 hops payload: [36, 77]    hops: [5] debug_name: node5_5 PID: 5
+(2)  [11:21:44.294] received at Server (123): DATA from 7 with 2 hops payload: [16, 77]    hops: [7, 3] debug_name: node7_5 PID: 6
+(2)  [11:21:44.294] Storing at Server (123): DATA from 7 with 2 hops payload: [16, 77]    hops: [7, 3] debug_name: node7_5 PID: 6
+(2)  [11:25:53.921] received at Server (123): DATA from 1 with 1 hops payload: [37, 77]    hops: [1] debug_name: node1_6 PID: 6
+(2)  [11:25:53.921] Storing at Server (123): DATA from 1 with 1 hops payload: [37, 77]    hops: [1] debug_name: node1_6 PID: 6
+(2)  [11:26:00.158] received at Server (123): DATA from 2 with 1 hops payload: [32, 77]    hops: [2] debug_name: node2_6 PID: 6
+(2)  [11:26:00.158] Storing at Server (123): DATA from 2 with 1 hops payload: [32, 77]    hops: [2] debug_name: node2_6 PID: 6
+(2)  [11:26:10.280] received at Server (123): DATA from 2 with 8 hops payload: [32, 77]    hops: [2, 4, 3, 1, 6, 3, 7, 6] debug_name: node2_6 PID: 6
+(2)  [11:26:10.280] Storing at Server (123): DATA from 2 with 8 hops payload: [32, 77]    hops: [2, 4, 3, 1, 6, 3, 7, 6] debug_name: node2_6 PID: 6
+(2)  [11:26:15.761] received at Server (123): DATA from 6 with 1 hops payload: [10, 77]    hops: [6] debug_name: node6_6 PID: 6
+(2)  [11:26:15.761] Storing at Server (123): DATA from 6 with 1 hops payload: [10, 77]    hops: [6] debug_name: node6_6 PID: 6
+(2)  [11:26:26.576] received at Server (123): DATA from 6 with 8 hops payload: [10, 77]    hops: [6, 3, 4, 2, 7, 4, 3, 4] debug_name: node6_6 PID: 6
+(2)  [11:26:26.576] Storing at Server (123): DATA from 6 with 8 hops payload: [10, 77]    hops: [6, 3, 4, 2, 7, 4, 3, 4] debug_name: node6_6 PID: 6
+(2)  [11:26:44.069] received at Server (123): DATA from 7 with 2 hops payload: [30, 77]    hops: [7, 3] debug_name: node7_6 PID: 7
+(2)  [11:26:44.069] Storing at Server (123): DATA from 7 with 2 hops payload: [30, 77]    hops: [7, 3] debug_name: node7_6 PID: 7
 (1)  [11:30:00.001] Checking node status
+(1)  [11:30:00.001] node with ID:   2 not connected for full interval
+(1)  [11:30:00.001] node with ID:   1 not connected for full interval
+(1)  [11:30:00.001] node with ID:   4 not connected for full interval
 (1)  [11:30:00.001] node with ID:   5 not connected for full interval
 (1)  [11:30:00.001] node with ID:   6 not connected for full interval
 (1)  [11:30:00.001] node with ID:   3 not connected for full interval
-(1)  [11:30:00.001] node with ID:   2 not connected for full interval
-(1)  [11:30:00.001] node with ID:   1 not connected for full interval
-(2)  [11:31:02.201] received at Server (123): DATA from 3 with 1 hops payload: [9, 77]    hops: [3] debug_name: node3_7 PID: 7
-(2)  [11:31:18.623] received at Server (123): DATA from 2 with 2 hops payload: [24, 77]    hops: [2, 3] debug_name: node2_7 PID: 7
-(2)  [11:32:28.700] received at Server (123): DATA from 6 with 1 hops payload: [8, 77]    hops: [6] debug_name: node6_7 PID: 9
-(2)  [11:36:02.207] received at Server (123): DATA from 3 with 1 hops payload: [9, 77]    hops: [3] debug_name: node3_8 PID: 8
-(2)  [11:36:18.419] received at Server (123): DATA from 2 with 1 hops payload: [31, 77]    hops: [2] debug_name: node2_8 PID: 8
-(2)  [11:37:28.706] received at Server (123): DATA from 6 with 1 hops payload: [39, 77]    hops: [6] debug_name: node6_8 PID: 10
-(2)  [11:37:38.933] received at Server (123): DATA from 6 with 8 hops payload: [39, 77]    hops: [6, 5, 2, 5, 3, 1, 5, 2] debug_name: node6_8 PID: 10
-(2)  [11:41:02.213] received at Server (123): DATA from 3 with 1 hops payload: [22, 77]    hops: [3] debug_name: node3_9 PID: 9
-(2)  [11:41:12.419] received at Server (123): DATA from 3 with 7 hops payload: [22, 77]    hops: [3, 1, 2, 1, 2, 1, 2] debug_name: node3_9 PID: 9
-(2)  [11:41:18.425] received at Server (123): DATA from 2 with 1 hops payload: [43, 77]    hops: [2] debug_name: node2_9 PID: 9
-(2)  [11:41:21.974] received at Server (123): DATA from 1 with 1 hops payload: [20, 77]    hops: [1] debug_name: node1_9 PID: 9
-(2)  [11:42:28.712] received at Server (123): DATA from 6 with 1 hops payload: [36, 77]    hops: [6] debug_name: node6_9 PID: 11
-(2)  [11:46:02.219] received at Server (123): DATA from 3 with 1 hops payload: [10, 77]    hops: [3] debug_name: node3_10 PID: 10
-(2)  [11:46:18.431] received at Server (123): DATA from 2 with 1 hops payload: [16, 77]    hops: [2] debug_name: node2_10 PID: 10
-(2)  [11:46:21.980] received at Server (123): DATA from 1 with 1 hops payload: [36, 77]    hops: [1] debug_name: node1_10 PID: 10
-(2)  [11:47:29.033] received at Server (123): DATA from 6 with 2 hops payload: [38, 77]    hops: [6, 1] debug_name: node6_10 PID: 12
-(2)  [11:51:02.225] received at Server (123): DATA from 3 with 1 hops payload: [35, 77]    hops: [3] debug_name: node3_11 PID: 11
-(2)  [11:51:18.437] received at Server (123): DATA from 2 with 1 hops payload: [17, 77]    hops: [2] debug_name: node2_11 PID: 11
-(2)  [11:51:22.060] received at Server (123): DATA from 1 with 1 hops payload: [35, 77]    hops: [1] debug_name: node1_11 PID: 11
-(2)  [11:52:28.724] received at Server (123): DATA from 6 with 1 hops payload: [20, 77]    hops: [6] debug_name: node6_11 PID: 13
-(2)  [11:56:03.155] received at Server (123): DATA from 3 with 2 hops payload: [37, 77]    hops: [3, 2] debug_name: node3_12 PID: 12
-(2)  [11:56:18.443] received at Server (123): DATA from 2 with 1 hops payload: [25, 77]    hops: [2] debug_name: node2_12 PID: 12
-(2)  [11:56:21.992] received at Server (123): DATA from 1 with 1 hops payload: [11, 77]    hops: [1] debug_name: node1_12 PID: 12
-(2)  [11:57:28.730] received at Server (123): DATA from 6 with 1 hops payload: [20, 77]    hops: [6] debug_name: node6_12 PID: 14
+(1)  [11:30:00.001] node with ID:   7 not connected for full interval
+(2)  [11:30:53.927] received at Server (123): DATA from 1 with 1 hops payload: [15, 77]    hops: [1] debug_name: node1_7 PID: 7
+(2)  [11:30:53.927] Storing at Server (123): DATA from 1 with 1 hops payload: [15, 77]    hops: [1] debug_name: node1_7 PID: 7
+(2)  [11:31:00.232] received at Server (123): DATA from 2 with 1 hops payload: [9, 77]    hops: [2] debug_name: node2_7 PID: 7
+(2)  [11:31:00.232] Storing at Server (123): DATA from 2 with 1 hops payload: [9, 77]    hops: [2] debug_name: node2_7 PID: 7
+(2)  [11:31:10.097] received at Server (123): DATA from 4 with 1 hops payload: [32, 77]    hops: [4] debug_name: node4_7 PID: 7
+(2)  [11:31:10.097] Storing at Server (123): DATA from 4 with 1 hops payload: [32, 77]    hops: [4] debug_name: node4_7 PID: 7
+(2)  [11:31:15.767] received at Server (123): DATA from 6 with 1 hops payload: [10, 77]    hops: [6] debug_name: node6_7 PID: 7
+(2)  [11:31:15.767] Storing at Server (123): DATA from 6 with 1 hops payload: [10, 77]    hops: [6] debug_name: node6_7 PID: 7
+(2)  [11:31:43.697] received at Server (123): DATA from 7 with 2 hops payload: [13, 77]    hops: [7, 4] debug_name: node7_7 PID: 8
+(2)  [11:31:43.697] Storing at Server (123): DATA from 7 with 2 hops payload: [13, 77]    hops: [7, 4] debug_name: node7_7 PID: 8
+(2)  [11:35:53.933] received at Server (123): DATA from 1 with 1 hops payload: [21, 77]    hops: [1] debug_name: node1_8 PID: 8
+(2)  [11:35:53.933] Storing at Server (123): DATA from 1 with 1 hops payload: [21, 77]    hops: [1] debug_name: node1_8 PID: 8
+(2)  [11:36:00.590] received at Server (123): DATA from 2 with 3 hops payload: [25, 77]    hops: [2, 7, 6] debug_name: node2_8 PID: 8
+(2)  [11:36:00.590] Storing at Server (123): DATA from 2 with 3 hops payload: [25, 77]    hops: [2, 7, 6] debug_name: node2_8 PID: 8
+(2)  [11:36:11.132] received at Server (123): DATA from 4 with 2 hops payload: [32, 77]    hops: [4, 2] debug_name: node4_8 PID: 8
+(2)  [11:36:11.132] Storing at Server (123): DATA from 4 with 2 hops payload: [32, 77]    hops: [4, 2] debug_name: node4_8 PID: 8
+(2)  [11:36:15.773] received at Server (123): DATA from 6 with 1 hops payload: [29, 77]    hops: [6] debug_name: node6_8 PID: 8
+(2)  [11:36:15.773] Storing at Server (123): DATA from 6 with 1 hops payload: [29, 77]    hops: [6] debug_name: node6_8 PID: 8
+(2)  [11:36:22.514] received at Server (123): DATA from 3 with 1 hops payload: [13, 77]    hops: [3] debug_name: node3_8 PID: 8
+(2)  [11:36:22.514] Storing at Server (123): DATA from 3 with 1 hops payload: [13, 77]    hops: [3] debug_name: node3_8 PID: 8
+(2)  [11:36:44.060] received at Server (123): DATA from 7 with 2 hops payload: [44, 77]    hops: [7, 5] debug_name: node7_8 PID: 9
+(2)  [11:36:44.060] Storing at Server (123): DATA from 7 with 2 hops payload: [44, 77]    hops: [7, 5] debug_name: node7_8 PID: 9
+(2)  [11:40:53.939] received at Server (123): DATA from 1 with 1 hops payload: [41, 77]    hops: [1] debug_name: node1_9 PID: 9
+(2)  [11:40:53.939] Storing at Server (123): DATA from 1 with 1 hops payload: [41, 77]    hops: [1] debug_name: node1_9 PID: 9
+(2)  [11:41:10.109] received at Server (123): DATA from 4 with 1 hops payload: [36, 77]    hops: [4] debug_name: node4_9 PID: 9
+(2)  [11:41:10.109] Storing at Server (123): DATA from 4 with 1 hops payload: [36, 77]    hops: [4] debug_name: node4_9 PID: 9
+(2)  [11:41:15.779] received at Server (123): DATA from 6 with 1 hops payload: [14, 77]    hops: [6] debug_name: node6_9 PID: 9
+(2)  [11:41:15.779] Storing at Server (123): DATA from 6 with 1 hops payload: [14, 77]    hops: [6] debug_name: node6_9 PID: 9
+(2)  [11:41:25.922] received at Server (123): DATA from 6 with 8 hops payload: [14, 77]    hops: [6, 5, 1, 4, 5, 1, 4, 2] debug_name: node6_9 PID: 9
+(2)  [11:41:25.922] Storing at Server (123): DATA from 6 with 8 hops payload: [14, 77]    hops: [6, 5, 1, 4, 5, 1, 4, 2] debug_name: node6_9 PID: 9
+(2)  [11:41:44.045] received at Server (123): DATA from 7 with 2 hops payload: [40, 77]    hops: [7, 1] debug_name: node7_9 PID: 10
+(2)  [11:41:44.045] Storing at Server (123): DATA from 7 with 2 hops payload: [40, 77]    hops: [7, 1] debug_name: node7_9 PID: 10
+(2)  [11:45:53.945] received at Server (123): DATA from 1 with 1 hops payload: [21, 77]    hops: [1] debug_name: node1_10 PID: 10
+(2)  [11:45:53.945] Storing at Server (123): DATA from 1 with 1 hops payload: [21, 77]    hops: [1] debug_name: node1_10 PID: 10
+(2)  [11:46:10.115] received at Server (123): DATA from 4 with 1 hops payload: [41, 77]    hops: [4] debug_name: node4_10 PID: 10
+(2)  [11:46:10.115] Storing at Server (123): DATA from 4 with 1 hops payload: [41, 77]    hops: [4] debug_name: node4_10 PID: 10
+(2)  [11:46:17.848] received at Server (123): DATA from 5 with 1 hops payload: [9, 77]    hops: [5] debug_name: node5_10 PID: 10
+(2)  [11:46:17.848] Storing at Server (123): DATA from 5 with 1 hops payload: [9, 77]    hops: [5] debug_name: node5_10 PID: 10
+(2)  [11:46:22.526] received at Server (123): DATA from 3 with 1 hops payload: [38, 77]    hops: [3] debug_name: node3_10 PID: 10
+(2)  [11:46:22.526] Storing at Server (123): DATA from 3 with 1 hops payload: [38, 77]    hops: [3] debug_name: node3_10 PID: 10
+(2)  [11:46:44.408] received at Server (123): DATA from 7 with 3 hops payload: [38, 77]    hops: [7, 2, 1] debug_name: node7_10 PID: 11
+(2)  [11:46:44.408] Storing at Server (123): DATA from 7 with 3 hops payload: [38, 77]    hops: [7, 2, 1] debug_name: node7_10 PID: 11
+(2)  [11:46:54.845] received at Server (123): DATA from 7 with 8 hops payload: [38, 77]    hops: [7, 5, 2, 1, 4, 1, 3, 1] debug_name: node7_10 PID: 11
+(2)  [11:46:54.845] Storing at Server (123): DATA from 7 with 8 hops payload: [38, 77]    hops: [7, 5, 2, 1, 4, 1, 3, 1] debug_name: node7_10 PID: 11
+(2)  [11:50:53.951] received at Server (123): DATA from 1 with 1 hops payload: [42, 77]    hops: [1] debug_name: node1_11 PID: 11
+(2)  [11:50:53.951] Storing at Server (123): DATA from 1 with 1 hops payload: [42, 77]    hops: [1] debug_name: node1_11 PID: 11
+(2)  [11:51:10.121] received at Server (123): DATA from 4 with 1 hops payload: [30, 77]    hops: [4] debug_name: node4_11 PID: 11
+(2)  [11:51:10.121] Storing at Server (123): DATA from 4 with 1 hops payload: [30, 77]    hops: [4] debug_name: node4_11 PID: 11
+(2)  [11:51:22.532] received at Server (123): DATA from 3 with 1 hops payload: [19, 77]    hops: [3] debug_name: node3_11 PID: 11
+(2)  [11:51:22.532] Storing at Server (123): DATA from 3 with 1 hops payload: [19, 77]    hops: [3] debug_name: node3_11 PID: 11
+(2)  [11:55:53.957] received at Server (123): DATA from 1 with 1 hops payload: [17, 77]    hops: [1] debug_name: node1_12 PID: 12
+(2)  [11:55:53.957] Storing at Server (123): DATA from 1 with 1 hops payload: [17, 77]    hops: [1] debug_name: node1_12 PID: 12
+(2)  [11:56:10.127] received at Server (123): DATA from 4 with 1 hops payload: [22, 77]    hops: [4] debug_name: node4_12 PID: 12
+(2)  [11:56:10.127] Storing at Server (123): DATA from 4 with 1 hops payload: [22, 77]    hops: [4] debug_name: node4_12 PID: 12
+(2)  [11:56:20.522] received at Server (123): DATA from 4 with 8 hops payload: [22, 77]    hops: [4, 2, 5, 7, 2, 1, 5, 6] debug_name: node4_12 PID: 12
+(2)  [11:56:20.522] Storing at Server (123): DATA from 4 with 8 hops payload: [22, 77]    hops: [4, 2, 5, 7, 2, 1, 5, 6] debug_name: node4_12 PID: 12
+(2)  [11:56:22.538] received at Server (123): DATA from 3 with 1 hops payload: [32, 77]    hops: [3] debug_name: node3_12 PID: 12
+(2)  [11:56:22.538] Storing at Server (123): DATA from 3 with 1 hops payload: [32, 77]    hops: [3] debug_name: node3_12 PID: 12
+(2)  [11:56:44.525] received at Server (123): DATA from 7 with 2 hops payload: [31, 77]    hops: [7, 3] debug_name: node7_12 PID: 13
+(2)  [11:56:44.525] Storing at Server (123): DATA from 7 with 2 hops payload: [31, 77]    hops: [7, 3] debug_name: node7_12 PID: 13
 (1)  [12:00:00.001] Sending TIME_SYNC
 (1)  [12:00:00.002] Checking node status
+(1)  [12:00:00.002] Did not receive enough packets from node with ID: 2
 (1)  [12:00:00.002] Did not receive enough packets from node with ID: 5
+(1)  [12:00:00.002] Did not receive enough packets from node with ID: 6
+(1)  [12:00:00.002] Did not receive enough packets from node with ID: 3
+(1)  [12:00:00.072] setting time @ node node1 to 1609498800052 (corect time is: 1609498800072)
+(1)  [12:00:00.072] setting time @ node node2 to 1609498800052 (corect time is: 1609498800072)
+(2)  [12:00:00.314] received at Server (123): TIME_SYNC from 100 with 2 hops payload: 1609498800001    hops: [100, 1] debug_name: None PID: 9
+(1)  [12:00:00.324] setting time @ node node4 to 1609498800103 (corect time is: 1609498800324)
+(1)  [12:00:00.324] setting time @ node node5 to 1609498800103 (corect time is: 1609498800324)
+(1)  [12:00:00.324] setting time @ node node6 to 1609498800103 (corect time is: 1609498800324)
+(1)  [12:00:00.324] setting time @ node node7 to 1609498800103 (corect time is: 1609498800324)
+(2)  [12:00:10.499] received at Server (123): TIME_SYNC from 100 with 10 hops payload: 1609498800001    hops: [100, 1, 5, 2, 1, 7, 5, 2, 1, 4] debug_name: None PID: 9
+(1)  [12:00:46.020] delaying interval @ node node3 by 2424
+(2)  [12:00:46.089] received at Server (123): COMMAND from 100 with 2 hops payload: [<Command_type.DELAY_INTERVAL: bitarray('11000101')>, 2424]    hops: [100, 1] debug_name: None PID: 11
+(2)  [12:00:57.261] received at Server (123): COMMAND from 100 with 10 hops payload: [<Command_type.DELAY_INTERVAL: bitarray('11000101')>, 2424]    hops: [100, 1, 6, 4, 2, 4, 6, 4, 2, 6] debug_name: None PID: 11
+(2)  [12:01:00.200] received at Server (123): DATA from 2 with 1 hops payload: [14, 77]    hops: [2] debug_name: node2_13 PID: 13
+(2)  [12:01:00.200] Storing at Server (123): DATA from 2 with 1 hops payload: [14, 77]    hops: [2] debug_name: node2_13 PID: 13
+(2)  [12:01:10.133] received at Server (123): DATA from 4 with 1 hops payload: [27, 77]    hops: [4] debug_name: node4_13 PID: 13
+(2)  [12:01:10.133] Storing at Server (123): DATA from 4 with 1 hops payload: [27, 77]    hops: [4] debug_name: node4_13 PID: 13
+(2)  [12:01:15.803] received at Server (123): DATA from 6 with 1 hops payload: [32, 77]    hops: [6] debug_name: node6_13 PID: 13
+(2)  [12:01:15.803] Storing at Server (123): DATA from 6 with 1 hops payload: [32, 77]    hops: [6] debug_name: node6_13 PID: 13
+(1)  [12:01:16.512] delaying interval @ node node3 by 2424
+(2)  [12:01:17.253] received at Server (123): COMMAND from 100 with 2 hops payload: [<Command_type.DELAY_INTERVAL: bitarray('11000101')>, 2424]    hops: [100, 1] debug_name: None PID: 13
+(2)  [12:01:27.395] received at Server (123): DATA from 3 with 1 hops payload: [18, 77]    hops: [3] debug_name: node3_13 PID: 13
+(2)  [12:01:27.395] Storing at Server (123): DATA from 3 with 1 hops payload: [18, 77]    hops: [3] debug_name: node3_13 PID: 13
+(2)  [12:01:44.468] received at Server (123): DATA from 7 with 2 hops payload: [28, 77]    hops: [7, 6] debug_name: node7_13 PID: 14
+(2)  [12:01:44.468] Storing at Server (123): DATA from 7 with 2 hops payload: [28, 77]    hops: [7, 6] debug_name: node7_13 PID: 14
+(2)  [12:05:53.969] received at Server (123): DATA from 1 with 1 hops payload: [17, 77]    hops: [1] debug_name: node1_14 PID: 14
+(2)  [12:05:53.969] Storing at Server (123): DATA from 1 with 1 hops payload: [17, 77]    hops: [1] debug_name: node1_14 PID: 14
+(2)  [12:06:00.211] received at Server (123): DATA from 2 with 1 hops payload: [42, 77]    hops: [2] debug_name: node2_14 PID: 14
+(2)  [12:06:00.211] Storing at Server (123): DATA from 2 with 1 hops payload: [42, 77]    hops: [2] debug_name: node2_14 PID: 14
+(2)  [12:06:10.139] received at Server (123): DATA from 4 with 1 hops payload: [36, 77]    hops: [4] debug_name: node4_14 PID: 14
+(2)  [12:06:10.139] Storing at Server (123): DATA from 4 with 1 hops payload: [36, 77]    hops: [4] debug_name: node4_14 PID: 14
+(2)  [12:06:17.825] received at Server (123): DATA from 5 with 1 hops payload: [40, 77]    hops: [5] debug_name: node5_14 PID: 14
+(2)  [12:06:17.825] Storing at Server (123): DATA from 5 with 1 hops payload: [40, 77]    hops: [5] debug_name: node5_14 PID: 14
+(2)  [12:06:28.262] received at Server (123): DATA from 5 with 8 hops payload: [40, 77]    hops: [5, 3, 6, 3, 6, 2, 3, 1] debug_name: node5_14 PID: 14
+(2)  [12:06:28.262] Storing at Server (123): DATA from 5 with 8 hops payload: [40, 77]    hops: [5, 3, 6, 3, 6, 2, 3, 1] debug_name: node5_14 PID: 14
+(2)  [12:06:43.781] received at Server (123): DATA from 7 with 2 hops payload: [7, 77]    hops: [7, 1] debug_name: node7_14 PID: 15
+(2)  [12:06:43.781] Storing at Server (123): DATA from 7 with 2 hops payload: [7, 77]    hops: [7, 1] debug_name: node7_14 PID: 15
+====================== SIMULATION RESULTS =============================
+Simulation took: 1 min 23.367 s
+Simulated time: 01:08:00
+nodes sent in total: 98
+received in total: 66 / 98 = 67.35 %
+NODES:
+  node:      node1 distance:   1 battery: 96.98 %
+  node:      node2 distance:   1 battery: 96.96 %
+  node:      node3 distance:   1 battery: 96.97 %
+  node:      node4 distance:   1 battery: 96.97 %
+  node:      node5 distance:   1 battery: 96.96 %
+  node:      node6 distance:   1 battery: 96.96 %
+  node:      node7 distance:   1 battery: 96.98 %
+received from node1: 13 from 14
+received from node2: 8 from 14
+received from node3: 6 from 14
+received from node4: 13 from 14
+received from node5: 5 from 14
+received from node6: 8 from 14
+received from node7: 13 from 14
+DESTROYED
+    node1 destroyed packets 2675
+    node2 destroyed packets 2651
+    node3 destroyed packets 2704
+    node4 destroyed packets 2704
+    node5 destroyed packets 2660
+    node6 destroyed packets 2622
+    node7 destroyed packets 2704
+CORRUPTED
+    node1 corrupted packets 331
+    node2 corrupted packets 205
+    node3 corrupted packets 215
+    node4 corrupted packets 205
+    node5 corrupted packets 197
+    node6 corrupted packets 219
+    node7 corrupted packets 302
+SENT
+    node1 sent in total: 631
+    node2 sent in total: 734
+    node3 sent in total: 658
+    node4 sent in total: 674
+    node5 sent in total: 744
+    node6 sent in total: 736
+    node7 sent in total: 578
+RECEIVED
+    node1 successfully received: 1132 from 4138 (4138)
+    node2 successfully received: 1179 from 4035 (4035)
+    node3 successfully received: 1192 from 4111 (4111)
+    node4 successfully received: 1172 from 4081 (4081)
+    node5 successfully received: 1154 from 4011 (4011)
+    node6 successfully received: 1178 from 4019 (4019)
+    node7 successfully received: 1171 from 4177 (4177)
+ --> FURTHER ANALYSIS (123)
+PACKETS RECEIVED IN DETAIL:
+  node1
+    world: 331, forward: 1127, collision: 2675, sleep: 0
+  node2
+    world: 205, forward: 1176, collision: 2651, sleep: 0
+  node3
+    world: 215, forward: 1031, collision: 2704, sleep: 0
+  node4
+    world: 205, forward: 1166, collision: 2704, sleep: 0
+  node5
+    world: 197, forward: 1140, collision: 2660, sleep: 0
+  node6
+    world: 219, forward: 1158, collision: 2622, sleep: 0
+  node7
+    world: 302, forward: 1131, collision: 2704, sleep: 0
+missing packets from node 1: 1
+node1_13
+    [12:00:53.896] Collision at node 3 (from 1)   [1]  other packets: ['node1_13', None]
+    [12:00:53.896] Collision at node 100 (from 1)   [1]  other packets: ['node1_13', None]
+    [12:00:53.896] Collision at node 6 (from 1)   [1]  other packets: ['node1_13', None]
+    [12:00:53.896] Collision at node 4 (from 1)   [1]  other packets: ['node1_13', None]
+    [12:00:53.896] Collision at node 7 (from 1)   [1]  other packets: ['node1_13', None]
+    [12:00:53.896] Collision at node 2 (from 1)   [1]  other packets: ['node1_13', None]
+    [12:00:53.896] Collision at node 5 (from 1)   [1]  other packets: ['node1_13', None]
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+0.00 % of missing packets were destroyed in the world (0 of 7 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 1 missing)
+9 multiple packets were received in total
+missing packets from node 2: 6
+node2_3
+    [11:11:00.073] Collision at node 3 (from 2)   [2]  other packets: ['node2_3', 'node1_3', 'node1_3']
+    [11:11:00.073] Collision at node 100 (from 2)   [2]  other packets: ['node2_3', 'node1_3', 'node1_3']
+    [11:11:00.073] Collision at node 6 (from 2)   [2]  other packets: ['node2_3', 'node1_3']
+    [11:11:00.073] Collision at node 4 (from 2)   [2]  other packets: ['node2_3', 'node1_3', 'node1_3']
+    [11:11:00.073] Collision at node 7 (from 2)   [2]  other packets: ['node2_3', 'node1_3', 'node1_3']
+    [11:11:00.073] Collision at node 1 (from 2)   [2]  other packets: ['node2_3', 'node1_3', 'node1_3']
+    [11:11:00.073] Collision at node 5 (from 2)   [2]  other packets: ['node2_3', 'node1_3', 'node1_3']
+node2_4
+    [11:16:00.079] Collision at node 3 (from 2)   [2]  other packets: ['node2_4', 'node1_4', 'node1_4']
+    [11:16:00.079] Collision at node 100 (from 2)   [2]  other packets: ['node2_4', 'node1_4', 'node1_4']
+    [11:16:00.079] Collision at node 6 (from 2)   [2]  other packets: ['node2_4', 'node1_4']
+    [11:16:00.079] Collision at node 4 (from 2)   [2]  other packets: ['node2_4', 'node1_4', 'node1_4']
+    [11:16:00.079] Collision at node 7 (from 2)   [2]  other packets: ['node2_4', 'node1_4', 'node1_4']
+    [11:16:00.079] destroyed in world: 2 -> 1   [2]
+    [11:16:00.079] Collision at node 5 (from 2)   [2]  other packets: ['node2_4', 'node1_4', 'node1_4']
+node2_9
+    [11:41:00.109] Collision at node 3 (from 2)   [2]  other packets: ['node2_9', 'node1_9']
+    [11:41:00.109] Collision at node 100 (from 2)   [2]  other packets: ['node1_9', 'node2_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9']
+    [11:41:00.109] destroyed in world: 2 -> 6   [2]
+    [11:41:00.109] Collision at node 4 (from 2)   [2]  other packets: ['node1_9', 'node2_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9']
+    [11:41:00.109] Collision at node 7 (from 2)   [2]  other packets: ['node1_9', 'node2_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9']
+    [11:41:00.109] Collision at node 1 (from 2)   [2]  other packets: ['node1_9', 'node2_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9']
+    [11:41:00.109] Collision at node 5 (from 2)   [2]  other packets: ['node1_9', 'node2_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9', 'node1_9']
+node2_10
+    [11:46:00.115] destroyed in world: 2 -> 3   [2]
+    [11:46:00.115] Collision at node 100 (from 2)   [2]  other packets: ['node2_10', 'node1_10', 'node1_10', 'node1_10']
+    [11:46:00.115] Collision at node 6 (from 2)   [2]  other packets: ['node2_10', 'node1_10', 'node1_10', 'node1_10']
+    [11:46:00.115] Collision at node 4 (from 2)   [2]  other packets: ['node2_10', 'node1_10', 'node1_10', 'node1_10']
+    [11:46:00.115] Collision at node 7 (from 2)   [2]  other packets: ['node2_10', 'node1_10', 'node1_10', 'node1_10']
+    [11:46:00.115] Collision at node 1 (from 2)   [2]  other packets: ['node2_10', 'node1_10', 'node1_10', 'node1_10']
+    [11:46:00.115] Collision at node 5 (from 2)   [2]  other packets: ['node2_10', 'node1_10']
+node2_11
+    [11:51:00.121] Collision at node 3 (from 2)   [2]  other packets: ['node2_11', 'node1_11']
+    [11:51:00.121] Collision at node 100 (from 2)   [2]  other packets: ['node2_11', 'node1_11', 'node1_11', 'node1_11']
+    [11:51:00.121] Collision at node 6 (from 2)   [2]  other packets: ['node2_11', 'node1_11', 'node1_11', 'node1_11']
+    [11:51:00.121] Collision at node 4 (from 2)   [2]  other packets: ['node2_11', 'node1_11', 'node1_11', 'node1_11']
+    [11:51:00.121] destroyed in world: 2 -> 7   [2]
+    [11:51:00.121] Collision at node 1 (from 2)   [2]  other packets: ['node2_11', 'node1_11', 'node1_11', 'node1_11']
+    [11:51:00.121] Collision at node 5 (from 2)   [2]  other packets: ['node2_11', 'node1_11', 'node1_11', 'node1_11']
+node2_12
+    [11:56:00.153] Collision at node 3 (from 2)   [2]  other packets: ['node2_12', 'node1_12', 'node1_12', 'node1_12']
+    [11:56:00.153] Collision at node 100 (from 2)   [2]  other packets: ['node2_12', 'node1_12', 'node1_12', 'node1_12']
+    [11:56:00.153] Collision at node 6 (from 2)   [2]  other packets: ['node2_12', 'node1_12', 'node1_12', 'node1_12']
+    [11:56:00.153] Collision at node 4 (from 2)   [2]  other packets: ['node2_12', 'node1_12', 'node1_12', 'node1_12']
+    [11:56:00.153] Collision at node 7 (from 2)   [2]  other packets: ['node2_12', 'node1_12', 'node1_12', 'node1_12']
+    [11:56:00.153] Collision at node 1 (from 2)   [2]  other packets: ['node2_12', 'node1_12', 'node1_12', 'node1_12']
+    [11:56:00.153] Collision at node 5 (from 2)   [2]  other packets: ['node2_12', 'node1_12']
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+8.16 % of missing packets were destroyed in the world (4 of 49 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 7 missing)
+9 multiple packets were received in total
+missing packets from node 3: 8
+node3_2
+    [11:06:22.411] destroyed in world: 3 -> 100   [3]
+    [11:06:22.411] Collision at node 6 (from 3)   [3]  other packets: ['node3_2', 'node6_2']
+    [11:06:22.411] Collision at node 4 (from 3)   [3]  other packets: ['node3_2', 'node6_2']
+    [11:06:22.411] Collision at node 7 (from 3)   [3]  other packets: ['node3_2', 'node6_2']
+    [11:06:22.411] Collision at node 2 (from 3)   [3]  other packets: ['node3_2', 'node6_2']
+    [11:06:22.411] Collision at node 1 (from 3)   [3]  other packets: ['node3_2', 'node6_2']
+    [11:06:22.411] Collision at node 5 (from 3)   [3]  other packets: ['node3_2', 'node6_2']
+node3_3
+    [11:11:22.417] Collision at node 100 (from 3)   [3]  other packets: ['node5_3', 'node5_3', 'node3_3']
+    [11:11:22.417] Collision at node 6 (from 3)   [3]  other packets: ['node5_3', 'node3_3', 'node5_3']
+    [11:11:22.417] destroyed in world: 3 -> 4   [3]
+    [11:11:22.417] Collision at node 7 (from 3)   [3]  other packets: ['node5_3', 'node5_3', 'node3_3']
+    [11:11:22.417] Collision at node 2 (from 3)   [3]  other packets: ['node5_3', 'node5_3', 'node3_3']
+    [11:11:22.417] Collision at node 1 (from 3)   [3]  other packets: ['node3_3', 'node5_3']
+    [11:11:22.417] Collision at node 5 (from 3)   [3]  other packets: ['node5_3', 'node5_3', 'node3_3']
+node3_4
+    [11:16:22.423] Collision at node 100 (from 3)   [3]  other packets: ['node5_4', 'node5_4', 'node5_4', 'node3_4']
+    [11:16:22.423] Collision at node 6 (from 3)   [3]  other packets: ['node5_4', 'node5_4', 'node3_4', 'node5_4']
+    [11:16:22.423] Collision at node 4 (from 3)   [3]  other packets: ['node3_4', 'node5_4']
+    [11:16:22.423] Collision at node 7 (from 3)   [3]  other packets: ['node5_4', 'node5_4', 'node3_4', 'node5_4']
+    [11:16:22.423] Collision at node 2 (from 3)   [3]  other packets: ['node5_4', 'node5_4', 'node5_4', 'node3_4']
+    [11:16:22.423] Collision at node 1 (from 3)   [3]  other packets: ['node5_4', 'node5_4', 'node5_4', 'node3_4']
+    [11:16:22.423] Collision at node 5 (from 3)   [3]  other packets: ['node5_4', 'node5_4', 'node5_4', 'node3_4']
+node3_5
+    [11:21:22.429] Collision at node 100 (from 3)   [3]  other packets: ['node6_5', 'node6_5', 'node6_5', 'node6_5', 'node3_5']
+    [11:21:22.429] Collision at node 6 (from 3)   [3]  other packets: ['node6_5', 'node6_5', 'node6_5', 'node6_5', 'node3_5']
+    [11:21:22.429] Collision at node 4 (from 3)   [3]  other packets: ['node6_5', 'node6_5', 'node3_5', 'node6_5']
+    [11:21:22.429] Collision at node 7 (from 3)   [3]  other packets: ['node3_5', 'node6_5']
+    [11:21:22.429] Collision at node 2 (from 3)   [3]  other packets: ['node6_5', 'node6_5', 'node6_5', 'node6_5', 'node3_5']
+    [11:21:22.429] destroyed in world: 3 -> 1   [3]
+    [11:21:22.429] Collision at node 5 (from 3)   [3]  other packets: ['node6_5', 'node6_5', 'node6_5', 'node6_5', 'node3_5']
+node3_6
+    [11:26:22.435] Collision at node 100 (from 3)   [3]  other packets: ['node6_6', 'node3_6']
+    [11:26:22.435] Collision at node 6 (from 3)   [3]  other packets: ['node6_6', 'node3_6']
+    [11:26:22.435] Collision at node 4 (from 3)   [3]  other packets: ['node6_6', 'node3_6']
+    [11:26:22.435] Collision at node 7 (from 3)   [3]  other packets: ['node3_6', 'node6_6']
+    [11:26:22.435] Collision at node 2 (from 3)   [3]  other packets: ['node6_6', 'node3_6']
+    [11:26:22.435] Collision at node 1 (from 3)   [3]  other packets: ['node6_6', 'node3_6']
+    [11:26:22.435] Collision at node 5 (from 3)   [3]  other packets: ['node6_6', 'node3_6']
+node3_7
+    [11:31:22.441] Collision at node 100 (from 3)   [3]  other packets: ['node6_7', 'node6_7', 'node3_7']
+    [11:31:22.441] Collision at node 6 (from 3)   [3]  other packets: ['node6_7', 'node6_7', 'node3_7']
+    [11:31:22.441] Collision at node 4 (from 3)   [3]  other packets: ['node6_7', 'node6_7', 'node3_7']
+    [11:31:22.441] Collision at node 7 (from 3)   [3]  other packets: ['node6_7', 'node3_7', 'node6_7']
+    [11:31:22.441] Collision at node 2 (from 3)   [3]  other packets: ['node6_7', 'node3_7', 'node6_7']
+    [11:31:22.441] Collision at node 1 (from 3)   [3]  other packets: ['node6_7', 'node6_7', 'node3_7']
+    [11:31:22.441] Collision at node 5 (from 3)   [3]  other packets: ['node6_7', 'node6_7', 'node3_7']
+node3_9
+    [11:41:22.453] Collision at node 100 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node6_9', 'node6_9', 'node3_9']
+    [11:41:22.453] Collision at node 6 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node6_9', 'node6_9', 'node3_9']
+    [11:41:22.453] Collision at node 4 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node6_9', 'node6_9', 'node3_9']
+    [11:41:22.453] Collision at node 7 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node3_9', 'node6_9']
+    [11:41:22.453] Collision at node 2 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node3_9', 'node6_9']
+    [11:41:22.453] Collision at node 1 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node6_9', 'node6_9', 'node3_9']
+    [11:41:22.453] Collision at node 5 (from 3)   [3]  other packets: ['node6_9', 'node6_9', 'node6_9', 'node3_9', 'node6_9']
+node3_14
+    [12:06:27.334] Collision at node 100 (from 3)   [3]  other packets: ['node5_14', 'node3_14']
+    [12:06:27.334] Collision at node 6 (from 3)   [3]  other packets: ['node3_14', 'node5_14']
+    [12:06:27.334] Collision at node 4 (from 3)   [3]  other packets: ['node5_14', 'node3_14']
+    [12:06:27.334] Collision at node 7 (from 3)   [3]  other packets: ['node5_14', 'node3_14']
+    [12:06:27.334] Collision at node 2 (from 3)   [3]  other packets: ['node5_14', 'node3_14']
+    [12:06:27.334] Collision at node 1 (from 3)   [3]  other packets: ['node5_14', 'node3_14']
+    [12:06:27.334] Collision at node 5 (from 3)   [3]  other packets: ['node5_14', 'node3_14']
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+6.67 % of missing packets were destroyed in the world (7 of 105 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 15 missing)
+9 multiple packets were received in total
+missing packets from node 4: 1
+node4_6
+    [11:26:10.024] Collision at node 3 (from 4)   [4]  other packets: ['node4_6', 'node2_6']
+    [11:26:10.024] Collision at node 100 (from 4)   [4]  other packets: ['node2_6', 'node4_6']
+    [11:26:10.024] Collision at node 6 (from 4)   [4]  other packets: ['node2_6', 'node4_6']
+    [11:26:10.024] Collision at node 7 (from 4)   [4]  other packets: ['node2_6', 'node4_6']
+    [11:26:10.024] Collision at node 2 (from 4)   [4]  other packets: ['node2_6', 'node4_6']
+    [11:26:10.024] Collision at node 1 (from 4)   [4]  other packets: ['node2_6', 'node4_6']
+    [11:26:10.024] Collision at node 5 (from 4)   [4]  other packets: ['node2_6', 'node4_6']
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+6.25 % of missing packets were destroyed in the world (7 of 112 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 16 missing)
+9 multiple packets were received in total
+missing packets from node 5: 9
+node5_1
+    [11:01:17.680] Collision at node 3 (from 5)   [5]  other packets: ['node6_1', 'node6_1', 'node5_1']
+    [11:01:17.680] Collision at node 100 (from 5)   [5]  other packets: ['node6_1', 'node6_1', 'node5_1']
+    [11:01:17.680] Collision at node 6 (from 5)   [5]  other packets: ['node6_1', 'node6_1', 'node5_1']
+    [11:01:17.680] Collision at node 4 (from 5)   [5]  other packets: ['node6_1', 'node5_1', 'node6_1']
+    [11:01:17.680] Collision at node 7 (from 5)   [5]  other packets: ['node5_1', 'node6_1']
+    [11:01:17.680] Collision at node 2 (from 5)   [5]  other packets: ['node6_1', 'node6_1', 'node5_1']
+    [11:01:17.680] Collision at node 1 (from 5)   [5]  other packets: ['node6_1', 'node6_1', 'node5_1']
+node5_2
+    [11:06:17.686] Collision at node 3 (from 5)   [5]  other packets: ['node6_2', 'node5_2']
+    [11:06:17.686] Collision at node 100 (from 5)   [5]  other packets: ['node6_2', 'node5_2']
+    [11:06:17.686] Collision at node 6 (from 5)   [5]  other packets: ['node6_2', 'node5_2']
+    [11:06:17.686] Collision at node 4 (from 5)   [5]  other packets: ['node6_2', 'node5_2']
+    [11:06:17.686] Collision at node 7 (from 5)   [5]  other packets: ['node6_2', 'node5_2']
+    [11:06:17.686] Collision at node 2 (from 5)   [5]  other packets: ['node5_2', 'node6_2']
+    [11:06:17.686] Collision at node 1 (from 5)   [5]  other packets: ['node6_2', 'node5_2']
+node5_6
+    [11:26:17.710] Collision at node 3 (from 5)   [5]  other packets: ['node5_6', 'node6_6', 'node6_6']
+    [11:26:17.710] Collision at node 100 (from 5)   [5]  other packets: ['node5_6', 'node6_6', 'node6_6']
+    [11:26:17.710] Collision at node 6 (from 5)   [5]  other packets: ['node5_6', 'node6_6', 'node6_6']
+    [11:26:17.710] Collision at node 4 (from 5)   [5]  other packets: ['node5_6', 'node6_6']
+    [11:26:17.710] Collision at node 7 (from 5)   [5]  other packets: ['node5_6', 'node6_6', 'node6_6']
+    [11:26:17.710] Collision at node 2 (from 5)   [5]  other packets: ['node5_6', 'node6_6', 'node6_6']
+    [11:26:17.710] Collision at node 1 (from 5)   [5]  other packets: ['node5_6', 'node6_6', 'node6_6']
+node5_7
+    [11:31:17.716] Collision at node 3 (from 5)   [5]  other packets: ['node6_7', 'node5_7']
+    [11:31:17.716] Collision at node 100 (from 5)   [5]  other packets: ['node6_7', 'node5_7']
+    [11:31:17.716] Collision at node 6 (from 5)   [5]  other packets: ['node6_7', 'node5_7']
+    [11:31:17.716] Collision at node 4 (from 5)   [5]  other packets: ['node6_7', 'node5_7']
+    [11:31:17.716] Collision at node 7 (from 5)   [5]  other packets: ['node5_7', 'node6_7']
+    [11:31:17.716] Collision at node 2 (from 5)   [5]  other packets: ['node6_7', 'node5_7']
+    [11:31:17.716] Collision at node 1 (from 5)   [5]  other packets: ['node6_7', 'node5_7']
+node5_8
+    [11:36:17.722] Collision at node 3 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+    [11:36:17.722] Collision at node 100 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+    [11:36:17.722] Collision at node 6 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+    [11:36:17.722] Collision at node 4 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+    [11:36:17.722] Collision at node 7 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+    [11:36:17.722] Collision at node 2 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+    [11:36:17.722] Collision at node 1 (from 5)   [5]  other packets: ['node5_8', 'node6_8']
+node5_9
+    [11:41:17.871] Collision at node 3 (from 5)   [5]  other packets: ['node5_9', 'node6_9', 'node6_9', 'node6_9', 'node6_9']
+    [11:41:17.871] Collision at node 100 (from 5)   [5]  other packets: ['node5_9', 'node6_9', 'node6_9', 'node6_9', 'node6_9']
+    [11:41:17.871] Collision at node 6 (from 5)   [5]  other packets: ['node5_9', 'node6_9', 'node6_9', 'node6_9', 'node6_9']
+    [11:41:17.871] Collision at node 4 (from 5)   [5]  other packets: ['node5_9', 'node6_9', 'node6_9', 'node6_9', 'node6_9']
+    [11:41:17.871] Collision at node 7 (from 5)   [5]  other packets: ['node5_9', 'node6_9', 'node6_9']
+    [11:41:17.871] destroyed in world: 5 -> 2   [5]
+    [11:41:17.871] Collision at node 1 (from 5)   [5]  other packets: ['node5_9', 'node6_9']
+node5_11
+    [11:51:17.740] Collision at node 3 (from 5)   [5]  other packets: ['node4_11', 'node4_11', 'node4_11', 'node5_11']
+    [11:51:17.740] destroyed in world: 5 -> 100   [5]
+    [11:51:17.740] Collision at node 6 (from 5)   [5]  other packets: ['node4_11', 'node4_11', 'node4_11', 'node5_11']
+    [11:51:17.740] Collision at node 4 (from 5)   [5]  other packets: ['node4_11', 'node4_11', 'node4_11', 'node5_11']
+    [11:51:17.740] Collision at node 7 (from 5)   [5]  other packets: ['node4_11', 'node4_11', 'node4_11', 'node5_11']
+    [11:51:17.740] Collision at node 2 (from 5)   [5]  other packets: ['node4_11', 'node4_11', 'node5_11', 'node4_11']
+    [11:51:17.740] Collision at node 1 (from 5)   [5]  other packets: ['node5_11', 'node4_11']
+node5_12
+    [11:56:17.746] Collision at node 3 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+    [11:56:17.746] Collision at node 100 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+    [11:56:17.746] Collision at node 6 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+    [11:56:17.746] Collision at node 4 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+    [11:56:17.746] Collision at node 7 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+    [11:56:17.746] Collision at node 2 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+    [11:56:17.746] Collision at node 1 (from 5)   [5]  other packets: ['node5_12', 'node4_12']
+node5_13
+    [12:01:17.752] Collision at node 3 (from 5)   [5]  other packets: ['node5_13', None]
+    [12:01:17.752] Collision at node 100 (from 5)   [5]  other packets: ['node5_13', None]
+    [12:01:17.752] Collision at node 6 (from 5)   [5]  other packets: ['node5_13', None]
+    [12:01:17.752] Collision at node 4 (from 5)   [5]  other packets: ['node5_13', None]
+    [12:01:17.752] Collision at node 7 (from 5)   [5]  other packets: ['node5_13', None]
+    [12:01:17.752] Collision at node 2 (from 5)   [5]  other packets: ['node5_13', None]
+    [12:01:17.752] Collision at node 1 (from 5)   [5]  other packets: ['node5_13', None]
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+5.14 % of missing packets were destroyed in the world (9 of 175 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 25 missing)
+9 multiple packets were received in total
+missing packets from node 6: 6
+node6_3
+    [11:11:15.676] Collision at node 3 (from 6)   [6]  other packets: ['node4_3', 'node6_3']
+    [11:11:15.676] Collision at node 100 (from 6)   [6]  other packets: ['node4_3', 'node6_3']
+    [11:11:15.676] Collision at node 4 (from 6)   [6]  other packets: ['node4_3', 'node6_3']
+    [11:11:15.676] Collision at node 7 (from 6)   [6]  other packets: ['node4_3', 'node6_3']
+    [11:11:15.676] Collision at node 2 (from 6)   [6]  other packets: ['node6_3', 'node4_3']
+    [11:11:15.676] Collision at node 1 (from 6)   [6]  other packets: ['node4_3', 'node6_3']
+    [11:11:15.676] Collision at node 5 (from 6)   [6]  other packets: ['node4_3', 'node6_3']
+node6_4
+    [11:16:15.682] Collision at node 3 (from 6)   [6]  other packets: ['node4_4', 'node6_4']
+    [11:16:15.682] Collision at node 100 (from 6)   [6]  other packets: ['node4_4', 'node6_4']
+    [11:16:15.682] Collision at node 4 (from 6)   [6]  other packets: ['node4_4', 'node6_4']
+    [11:16:15.682] Collision at node 7 (from 6)   [6]  other packets: ['node4_4', 'node6_4']
+    [11:16:15.682] Collision at node 2 (from 6)   [6]  other packets: ['node4_4', 'node6_4']
+    [11:16:15.682] Collision at node 1 (from 6)   [6]  other packets: ['node4_4', 'node6_4']
+    [11:16:15.682] Collision at node 5 (from 6)   [6]  other packets: ['node6_4', 'node4_4']
+node6_10
+    [11:46:15.718] Collision at node 3 (from 6)   [6]  other packets: ['node4_10', 'node6_10']
+    [11:46:15.718] Collision at node 100 (from 6)   [6]  other packets: ['node4_10', 'node6_10']
+    [11:46:15.718] Collision at node 4 (from 6)   [6]  other packets: ['node4_10', 'node6_10']
+    [11:46:15.718] Collision at node 7 (from 6)   [6]  other packets: ['node6_10', 'node4_10']
+    [11:46:15.718] destroyed in world: 6 -> 2   [6]
+    [11:46:15.718] Collision at node 1 (from 6)   [6]  other packets: ['node4_10', 'node6_10']
+    [11:46:15.718] Collision at node 5 (from 6)   [6]  other packets: ['node4_10', 'node6_10']
+node6_11
+    [11:51:15.724] Collision at node 3 (from 6)   [6]  other packets: ['node4_11', 'node4_11', 'node6_11']
+    [11:51:15.724] Collision at node 100 (from 6)   [6]  other packets: ['node4_11', 'node4_11', 'node6_11']
+    [11:51:15.724] Collision at node 4 (from 6)   [6]  other packets: ['node4_11', 'node4_11', 'node6_11']
+    [11:51:15.724] Collision at node 7 (from 6)   [6]  other packets: ['node4_11', 'node6_11', 'node4_11']
+    [11:51:15.724] Collision at node 2 (from 6)   [6]  other packets: ['node4_11', 'node4_11', 'node6_11']
+    [11:51:15.724] Collision at node 1 (from 6)   [6]  other packets: ['node4_11', 'node4_11', 'node6_11']
+    [11:51:15.724] Collision at node 5 (from 6)   [6]  other packets: ['node6_11', 'node4_11']
+node6_12
+    [11:56:15.805] Collision at node 3 (from 6)   [6]  other packets: ['node4_12', 'node4_12', 'node6_12', 'node4_12', 'node4_12', 'node4_12', 'node4_12']
+    [11:56:15.805] Collision at node 100 (from 6)   [6]  other packets: ['node4_12', 'node4_12', 'node4_12', 'node4_12', 'node6_12', 'node4_12', 'node4_12', 'node4_12', 'node4_12']
+    [11:56:15.805] Collision at node 4 (from 6)   [6]  other packets: ['node4_12', 'node4_12', 'node4_12', 'node4_12', 'node6_12', 'node4_12', 'node4_12', 'node4_12', 'node4_12']
+    [11:56:15.805] Collision at node 7 (from 6)   [6]  other packets: ['node4_12', 'node4_12', 'node4_12', 'node4_12', 'node6_12', 'node4_12', 'node4_12', 'node4_12', 'node4_12']
+    [11:56:15.805] destroyed in world: 6 -> 2   [6]
+    [11:56:15.805] Collision at node 1 (from 6)   [6]  other packets: ['node4_12', 'node4_12', 'node4_12', 'node4_12', 'node6_12', 'node4_12', 'node4_12']
+    [11:56:15.805] Collision at node 5 (from 6)   [6]  other packets: ['node6_12', 'node4_12', 'node4_12', 'node4_12', 'node4_12']
+node6_14
+    [12:06:15.817] Collision at node 3 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node6_14', 'node4_14']
+    [12:06:15.817] Collision at node 100 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node4_14', 'node6_14']
+    [12:06:15.817] Collision at node 4 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node4_14', 'node6_14']
+    [12:06:15.817] Collision at node 7 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node6_14', 'node4_14']
+    [12:06:15.817] Collision at node 2 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node4_14', 'node6_14']
+    [12:06:15.817] Collision at node 1 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node4_14', 'node6_14']
+    [12:06:15.817] Collision at node 5 (from 6)   [6]  other packets: ['node4_14', 'node4_14', 'node4_14', 'node6_14']
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+5.07 % of missing packets were destroyed in the world (11 of 217 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 31 missing)
+9 multiple packets were received in total
+missing packets from node 7: 1
+node7_11
+    [11:51:44.242] Collision at node 3 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] Collision at node 3 (from 1)   [7, 1]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.788] Collision at node 3 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.830] Collision at node 3 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 3 (from 2)   [7, 2]  other packets: ['node7_11', 'node7_11']
+    [11:51:43.549] destroyed in world: 7 -> 100   [7]
+    [11:51:44.242] Collision at node 100 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] Collision at node 100 (from 1)   [7, 1]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.788] Collision at node 100 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.830] Collision at node 100 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 100 (from 2)   [7, 2]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 100 (from 3)   [7, 3]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] Collision at node 6 (from 1)   [7, 1]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.788] Collision at node 6 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.830] Collision at node 6 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 6 (from 2)   [7, 2]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 6 (from 3)   [7, 3]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.242] Collision at node 4 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] Collision at node 4 (from 1)   [7, 1]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.788] Collision at node 4 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 4 (from 2)   [7, 2]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 4 (from 3)   [7, 3]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.242] Collision at node 7 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] destroyed in world: 1 -> 7   [7, 1]
+    [11:51:44.788] Collision at node 7 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.830] Collision at node 7 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 7 (from 2)   [7, 2]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] destroyed in world: 3 -> 7   [7, 3]
+    [11:51:44.242] Collision at node 2 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] Collision at node 2 (from 1)   [7, 1]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.788] Collision at node 2 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.830] Collision at node 2 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 2 (from 3)   [7, 3]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.242] Collision at node 1 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.788] Collision at node 1 (from 5)   [7, 5]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.830] Collision at node 1 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] destroyed in world: 2 -> 1   [7, 2]
+    [11:51:44.998] Collision at node 1 (from 3)   [7, 3]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.242] Collision at node 5 (from 6)   [7, 6]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.284] destroyed in world: 1 -> 5   [7, 1]
+    [11:51:44.830] Collision at node 5 (from 4)   [7, 4]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 5 (from 2)   [7, 2]  other packets: ['node7_11', 'node7_11']
+    [11:51:44.998] Collision at node 5 (from 3)   [7, 3]  other packets: ['node7_11', 'node7_11']
+multiple packets from node 1: 1
+node1_3
+Through hops: [1] received at 11:10:53.903
+Through hops: [1, 6, 4, 6, 4, 3, 7, 5] received at 11:11:03.941
+multiple packets from node 2: 1
+node2_6
+Through hops: [2] received at 11:26:00.158
+Through hops: [2, 4, 3, 1, 6, 3, 7, 6] received at 11:26:10.280
+multiple packets from node 4: 1
+node4_12
+Through hops: [4] received at 11:56:10.127
+Through hops: [4, 2, 5, 7, 2, 1, 5, 6] received at 11:56:20.522
+multiple packets from node 5: 1
+node5_14
+Through hops: [5] received at 12:06:17.825
+Through hops: [5, 3, 6, 3, 6, 2, 3, 1] received at 12:06:28.262
+multiple packets from node 6: 3
+node6_2
+Through hops: [6] received at 11:06:15.737
+Through hops: [6, 5, 2, 5, 2, 5, 2, 5] received at 11:06:27.518
+node6_6
+Through hops: [6] received at 11:26:15.761
+Through hops: [6, 3, 4, 2, 7, 4, 3, 4] received at 11:26:26.576
+node6_9
+Through hops: [6] received at 11:41:15.779
+Through hops: [6, 5, 1, 4, 5, 1, 4, 2] received at 11:41:25.922
+multiple packets from node 7: 2
+node7_3
+Through hops: [7, 3] received at 11:11:43.778
+Through hops: [7, 3, 6, 1, 4, 5, 2, 5] received at 11:11:54.131
+node7_10
+Through hops: [7, 2, 1] received at 11:46:44.408
+Through hops: [7, 5, 2, 1, 4, 1, 3, 1] received at 11:46:54.845
+EVALUATION
+Analysis where the missing packets were destroyed:
+6.02 % of missing packets were destroyed in the world (16 of 266 destroyed)
+0.00 % of missing packets were only destroyed in the world (0 of 32 missing)
+9 multiple packets were received in total
