@@ -38,8 +38,6 @@ class simulation(object):
         # only output to txt file
         self.background = config.get("config").get("background")
 
-        self.additionalInfo = config.get("config").get("runtime")
-
         # 0 - Off
         # 1 - light
         # 2 - mid
@@ -209,7 +207,7 @@ class simulation(object):
 
         self.end_time = time.time() * 1000
 
-    def analyze(self, dont_print_additional=True):
+    def analyze(self, additional_info=False):
         """
         post simulation analysis
         """
@@ -232,210 +230,10 @@ class simulation(object):
 
         for appID in self.applications:
             self.statistics.update({appID : {}})
-            self.analyze_application(self.applications.get(appID), self.application_nodes.get(appID), dont_print_additional)
+            self.analyze_application(self.applications.get(appID), self.application_nodes.get(appID), additional_info)
 
 
-    def analyze_central(self, dont_print_additional=True):
-        """
-        post simulation analysis
-        """
-        self.debugger.set_state(2)
-        sensor_nodes = []
-        node_ids = []
-        tx_cnt = []
-        total_tx_cnt = 0
-        total_rx_cnt = 0
-
-        world_nodes : List[node] =  self.my_world.get_nodes()
-
-        missing_packets, multiple_packets = self.check_received_packets()
-
-        for i in range(len(world_nodes)):
-            if(type(world_nodes[i]) is node_sensor):
-                sensor_nodes.append(world_nodes[i])
-                node_ids.append(world_nodes[i].id)
-                tx_cnt.append(world_nodes[i].logic.send_cnt)
-                total_tx_cnt += world_nodes[i].logic.send_cnt
-            else:
-                tx_cnt.append(0)
-
-        rx_cnt = np.zeros((len(world_nodes)))
-
-        for i in range(len(missing_packets)):
-            rx_cnt[i] = tx_cnt[i] - len(missing_packets[i])
-            total_rx_cnt +=  rx_cnt[i]
-            
-        self.statistics.update({"total_rx_cnt" : total_rx_cnt})
-        self.statistics.update({"total_tx_cnt" : total_tx_cnt})
-
-        seconds=(self.runtime/1000)%60
-        seconds = int(seconds)
-        minutes=(self.runtime/(1000*60))%60
-        minutes = int(minutes)
-        hours= int(self.runtime/(1000*60*60))
-
-        elapsed_time = self.end_time - self.start_time
-        milis_sim = int( (elapsed_time)%1000 )
-        seconds_sim=  int( (elapsed_time/1000)%60 )
-        minutes_sim=  int( (elapsed_time/(1000*60))%60 )
-
-        self.debugger.log("Simulation took: %i min %i.%i s" % (minutes_sim, seconds_sim, milis_sim))
-        self.debugger.log("Simulated time: %s:%s:%s" % (str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2) ))
-
-        self.debugger.log("nodes sent in total: %i" % total_tx_cnt)
-        # this is only the packets the nodes actually sent, so when a nodes loses power
-        # it doesn't send, but central thinks it should be sending
-        # Because of this the number here may differ from "received after start"
-        # This is more indicative of packet loss characteristic when transmitting
-        # the other more indicative of overall network performance
-        self.debugger.log("received in total: %i / %i = %.2f %s" % ( total_rx_cnt, total_tx_cnt, 100*total_rx_cnt / float(total_tx_cnt), '%' ) )
-        self.statistics.update({"received_total" : total_rx_cnt / float(total_tx_cnt)})
-
-        if(hasattr(self.central_nodes[0].logic, 'num_not_received_on_first_try')):
-            if(self.central_nodes[0].logic.num_tx_after_start > 0):
-                after_start_frac = self.central_nodes[0].logic.num_rx_after_start / float(self.central_nodes[0].logic.num_tx_after_start)
-            else:
-                after_start_frac = 0
-
-            self.debugger.log("received after start in total: %i / %i = %.2f %s" % ( self.central_nodes[0].logic.num_rx_after_start, self.central_nodes[0].logic.num_tx_after_start, 100*after_start_frac, '%' ) )
-            self.statistics.update({"received_after_start" : after_start_frac})
-
-            if(self.central_nodes[0].logic.successfully_started):
-                self.debugger.log("received after start in total (without requested packets): %i / %i = %.2f %s" % ( self.central_nodes[0].logic.num_rx_after_start - self.central_nodes[0].logic.num_not_received_on_first_try, self.central_nodes[0].logic.num_tx_after_start, 100*(self.central_nodes[0].logic.num_rx_after_start - self.central_nodes[0].logic.num_not_received_on_first_try) / float(self.central_nodes[0].logic.num_tx_after_start), '%' ) )
-                self.statistics.update({"received_after_start_no_request" : (self.central_nodes[0].logic.num_rx_after_start - self.central_nodes[0].logic.num_not_received_on_first_try) / float(self.central_nodes[0].logic.num_tx_after_start)})
-        
-        self.debugger.log("NODES:")
-        if(self.additionalInfo):
-            for n in world_nodes:
-                # if(not isinstance(n.logic, logic_central)):
-                #     if(hasattr(n.logic, 'distance')):
-                #         self.debugger.log("sensor-node %s [distance: %s] started with an interval delay of: %i" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(2), n.logic.start_time_offset) )
-                #     else:
-                #         self.debugger.log("sensor-node %s  started with an interval delay of: %i" % (str(n.name).rjust(10), n.logic.start_time_offset) )
-
-                if(hasattr(n.logic, 'distance')):
-                    if(n.battery is None):
-                        self.debugger.log("  node: %s distance: %s" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(3)))
-                    else:
-                        self.debugger.log("  node: %s distance: %s battery: %s %%" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(3), ("%.2f" % (100*n.battery.get_level())).rjust(5) ))
-
-            for i in range(0, len(world_nodes)):
-                if(not isinstance(world_nodes[i].logic, logic_central)):
-                # if(type(world_nodes[i].logic) is logic_flooding_join or type(world_nodes[i].logic) is logic_flooding or type(world_nodes[i].logic) is logic_node_dist):
-                    self.debugger.log("received from %s: %i from %i" % (world_nodes[i].name, rx_cnt[i], world_nodes[i].logic.send_cnt))
-                else:
-                    self.debugger.log("received from %s: %i" % (world_nodes[i].name, rx_cnt[i]))
-
-            self.debugger.log("DESTROYED", disable_print=dont_print_additional)
-            for n in world_nodes:
-                self.debugger.log("    %s destroyed packets %i" % (n.name, n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
-            
-            self.debugger.log("CORRUPTED", disable_print=dont_print_additional)
-            for n in world_nodes:
-                self.debugger.log("    %s corrupted packets %i" % (n.name, n.get_transceiver().cnt_corrupted), disable_print=dont_print_additional )
-
-            self.debugger.log("SENT", disable_print=dont_print_additional)
-            for n in world_nodes:
-                self.debugger.log("    %s sent in total: %i" % (n.name, n.get_transceiver().cnt_sen), disable_print=dont_print_additional )
-
-            self.debugger.log("RECEIVED", disable_print=dont_print_additional)
-            for n in world_nodes:
-                self.debugger.log("    %s successfully received: %i from %i (%i)" % (n.name, n.get_transceiver().cnt_rec, n.get_transceiver().cnt_rec_all, n.get_transceiver().cnt_rec + n.get_transceiver().cnt_corrupted + n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
-
-        # write CSV results file
-        res_file = open(os.path.dirname(os.path.dirname(__file__)) + "\\results\\%s_res.csv" % self.name, "w")
-
-        res_file.write("nodes")
-        for n in world_nodes:
-            res_file.write(";%s" % n.name)
-        res_file.write("\n")
-
-        res_file.write("node ids")
-        for n in world_nodes:
-            res_file.write(";%s" % n.id)
-        res_file.write("\n")
-
-        res_file.write("received DATA packets")
-        for rx in rx_cnt:
-            res_file.write(";%i" % rx)
-        res_file.write("\n")
-
-        res_file.write("from sent DATA packets")
-        for i in range(0, len(world_nodes)):
-            if( isinstance(world_nodes[i].logic, logic_node) ):
-                res_file.write(";%i" % world_nodes[i].logic.send_cnt)
-            else:
-                res_file.write(";%i" % 0)
-        res_file.write("\n")
-
-        res_file.write("received DATA packets before start")
-        for n in range(len(world_nodes)):
-            if(isinstance(world_nodes[n].logic, logic_central)):
-                res_file.write(";%i" % 0)
-            else:
-                if(hasattr(self.central_nodes[0].logic, "successfully_started") and self.central_nodes[0].logic.successfully_started):
-                    res_file.write(";%i" % self.central_nodes[0].logic.statistics.get("num_rx_before_start").get(str(int(world_nodes[n].id))))
-                else:
-                    res_file.write(";%i" % rx_cnt[n])
-        res_file.write("\n")
-
-        res_file.write("received DATA packets after start")
-        for n in world_nodes:
-            if(isinstance(n.logic, logic_central)):
-                res_file.write(";%i" % 0)
-            else:
-                if(hasattr(self.central_nodes[0].logic, "successfully_started") and self.central_nodes[0].logic.successfully_started):
-                    res_file.write(";%i" % self.central_nodes[0].logic.statistics.get("num_rx_after_start").get(str(int(n.id))))
-                else:
-                    res_file.write(";%i" % 0)
-        res_file.write("\n")
-
-        res_file.write("received requested DATA packets after join")
-        for n in world_nodes:
-            if(isinstance(n.logic, logic_central)):
-                res_file.write(";%i" % 0)
-            else:
-                if(hasattr(self.central_nodes[0].logic, "successfully_started") and self.central_nodes[0].logic.successfully_started):
-                    res_file.write(";%i" % self.central_nodes[0].logic.statistics.get("num_rx_requested").get(str(int(n.id))))
-                else:
-                    res_file.write(";%i" % 0)
-        
-        res_file.write("\n")
-
-        res_file.write("from sent DATA packets after join")
-        for n in world_nodes:
-            if(isinstance(n.logic, logic_central)):
-                res_file.write(";%i" % 0)
-            else:
-                if(hasattr(self.central_nodes[0].logic, "successfully_started") and self.central_nodes[0].logic.successfully_started):
-                    res_file.write(";%i" % ( self.central_nodes[0].logic.interval_count - self.central_nodes[0].logic.statistics.get("start_interval") ) )
-                else:
-                    res_file.write(";%i" % 0)
-        res_file.write("\n")
-
-        res_file.write("destroyed packets")
-        for n in world_nodes:
-            res_file.write(";%s" % n.get_transceiver().cnt_destroyed)
-        res_file.write("\n")
-
-        res_file.write("sent packets")
-        for n in world_nodes:
-            res_file.write(";%s" % n.get_transceiver().cnt_sen)
-        res_file.write("\n")
-
-        res_file.write("successfully received packets")
-        for n in world_nodes:
-            res_file.write(";%s" % n.get_transceiver().cnt_rec)
-        res_file.write("\n")
-
-        res_file.write("total received packets")
-        for n in world_nodes:
-            res_file.write(";%s" % n.get_transceiver().cnt_rec_all)
-        res_file.write("\n")
-
-        res_file.close()
-
-    def analyze_application(self, application_manager : Union[logic_central, server], nodes : List[node_sensor], dont_print_additional=True):
+    def analyze_application(self, application_manager : Union[logic_central, server], nodes : List[node_sensor], additional_info=False):
         """
         post simulation analysis per application
         """
@@ -483,42 +281,37 @@ class simulation(object):
                 self.statistics.update({"received_after_start_no_request" : (application_manager.num_rx_after_start - application_manager.num_not_received_on_first_try) / float(application_manager.num_tx_after_start)})
         
         self.debugger.log("NODES:")
-        if(self.additionalInfo):
+        for i in range(0, len(nodes)):
+            node_info = "    %s(" % str(nodes[i].name)
+            if(hasattr(nodes[i].logic, 'distance')):
+                node_info += " distance: %s" % str(int(nodes[i].logic.distance)).rjust(3)
+            if(nodes[i].battery is not None):
+                node_info += " battery: %.2f %%" % (100*nodes[i].battery.get_level())
+            node_info += ") "
+
+            if(not isinstance(nodes[i].logic, logic_central)):
+                node_info += "received %i / %i = %.2f %%" % (rx_cnt[i], nodes[i].logic.send_cnt, 100*rx_cnt[i] / nodes[i].logic.send_cnt)
+            else:
+                node_info += "received %i" % (rx_cnt[i])
+
+            self.debugger.log(node_info)
+
+        if(additional_info):
+            self.debugger.log("DESTROYED")
             for n in nodes:
-                # if(not isinstance(n.logic, logic_central)):
-                #     if(hasattr(n.logic, 'distance')):
-                #         self.debugger.log("sensor-node %s [distance: %s] started with an interval delay of: %i" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(2), n.logic.start_time_offset) )
-                #     else:
-                #         self.debugger.log("sensor-node %s  started with an interval delay of: %i" % (str(n.name).rjust(10), n.logic.start_time_offset) )
-
-                if(hasattr(n.logic, 'distance')):
-                    if(n.battery is None):
-                        self.debugger.log("  node: %s distance: %s" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(3)))
-                    else:
-                        self.debugger.log("  node: %s distance: %s battery: %s %%" % (str(n.name).rjust(10), str(int(n.logic.distance)).rjust(3), ("%.2f" % (100*n.battery.get_level())).rjust(5) ))
-
-            for i in range(0, len(nodes)):
-                if(not isinstance(nodes[i].logic, logic_central)):
-                # if(type(nodes[i].logic) is logic_flooding_join or type(nodes[i].logic) is logic_flooding or type(nodes[i].logic) is logic_node_dist):
-                    self.debugger.log("received from %s: %i from %i" % (nodes[i].name, rx_cnt[i], nodes[i].logic.send_cnt))
-                else:
-                    self.debugger.log("received from %s: %i" % (nodes[i].name, rx_cnt[i]))
-
-            self.debugger.log("DESTROYED", disable_print=dont_print_additional)
-            for n in nodes:
-                self.debugger.log("    %s destroyed packets %i" % (n.name, n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
+                self.debugger.log("    %s destroyed packets %i" % (n.name, n.get_transceiver().cnt_destroyed) )
             
-            self.debugger.log("CORRUPTED", disable_print=dont_print_additional)
+            self.debugger.log("CORRUPTED")
             for n in nodes:
-                self.debugger.log("    %s corrupted packets %i" % (n.name, n.get_transceiver().cnt_corrupted), disable_print=dont_print_additional )
+                self.debugger.log("    %s corrupted packets %i" % (n.name, n.get_transceiver().cnt_corrupted))
 
-            self.debugger.log("SENT", disable_print=dont_print_additional)
+            self.debugger.log("SENT")
             for n in nodes:
-                self.debugger.log("    %s sent in total: %i" % (n.name, n.get_transceiver().cnt_sen), disable_print=dont_print_additional )
+                self.debugger.log("    %s sent in total: %i" % (n.name, n.get_transceiver().cnt_sen))
 
-            self.debugger.log("RECEIVED", disable_print=dont_print_additional)
+            self.debugger.log("RECEIVED")
             for n in nodes:
-                self.debugger.log("    %s successfully received: %i from %i (%i)" % (n.name, n.get_transceiver().cnt_rec, n.get_transceiver().cnt_rec_all, n.get_transceiver().cnt_rec + n.get_transceiver().cnt_corrupted + n.get_transceiver().cnt_destroyed), disable_print=dont_print_additional )
+                self.debugger.log("    %s successfully received: %i from %i (%i)" % (n.name, n.get_transceiver().cnt_rec, n.get_transceiver().cnt_rec_all, n.get_transceiver().cnt_rec + n.get_transceiver().cnt_corrupted + n.get_transceiver().cnt_destroyed))
 
         # write CSV results file
         res_file = open(os.path.dirname(os.path.dirname(__file__)) + "\\results\\%s_res.csv" % self.name, "w")
@@ -795,5 +588,4 @@ class simulation(object):
             return 0
 
     def stop(self):
-        print("SIMULATION: ToDo: clean up!")
         self.debugger.finish()

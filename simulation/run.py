@@ -9,10 +9,10 @@ configuration = "world_lorawan_hybrid"
 my_debug = 2
 
 # override the runtime from configuration file
-my_runtime = 1000*60*60*1 + 1000*60*8
+my_runtime = 1000*60*60*4 + 1000*60*8
 
 # override visualization
-visualize = True
+visualize = False
 
 # simulate in real-time
 real_time = False
@@ -26,7 +26,7 @@ sim = simulation(configuration,
 
 sim.prepare()
 sim.run()
-sim.analyze(dont_print_additional=False)
+sim.analyze(additional_info=True)
 # reasons = [Forward_type.RELAY_BLOCK, Forward_type.RETURN_TO_LAST]
 reasons = None
 # sim.further_analysis(print_packets=True, more_info=True, fwd_reasons_to_print=reasons)

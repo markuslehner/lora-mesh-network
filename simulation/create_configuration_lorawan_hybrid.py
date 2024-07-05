@@ -19,7 +19,7 @@ SF = 7
 # if None, LoRa range chart is used
 tx_min = 1500
 tx_max = 2200
-tx_error_rate = 0.05
+tx_error_rate = 0.015
 tx_decay = 2
 
 interval = 1000*60*5
@@ -32,7 +32,7 @@ cmanager.register_server(
 # create nodes
 cmanager.register_node(node(
     100,
-    "central",
+    "GW1",
     logic_gateway_lorawan(appID, 100, None, spreading_f=SF),
     x=0,
     y=0

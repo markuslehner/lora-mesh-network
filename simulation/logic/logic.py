@@ -156,7 +156,7 @@ class logic_node_lora(logic_node):
     def to_dict(self) -> dict:
         d =  super().to_dict()
         d.update({"spread" : self.spreading_factor})
-        d.update({"packet_handler" : type(self.packetHandler) if self.packetHandler is not None else None})
+        d.update({"packet_handler" : type(self.packetHandler) if not self.packetHandler is None else None})
         return d
     
     @classmethod
@@ -170,7 +170,7 @@ class logic_node_lora(logic_node):
         return instance
 
     def __str__(self) -> str:
-        return "%s     with handler: %s" % (str(type(self)).split(".")[-1][:-2].rjust(25), str(type(self.packetHandler)).split(".")[-1][:-2].rjust(20) )
+        return "%s     with handler: %s" % (str(type(self)).split(".")[-1][:-2].rjust(25), None if self.packetHandler is None else str(type(self.packetHandler)).split(".")[-1][:-2].rjust(20) )
     
 
 class logic_central(logic_node_lora):
