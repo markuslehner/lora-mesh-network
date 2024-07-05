@@ -1,5 +1,5 @@
 from logic.logic import logic_node_lora
-from hw.packet import lorawan_packet, Packet_type, LoRaWAN_type
+from hw.packet import Payload_type, lorawan_packet, Packet_type, LoRaWAN_type, Command_type
 
 import random
 
@@ -17,6 +17,7 @@ class logic_node_lorawan(logic_node_lora):
 
         self.next_sleep_time : int = 0
         self.go_to_sleep = False
+        self.sleeping_enabled : bool = False
 
         if(time_offset is None):
             self.last_send_time = random.randint(0, 20000)
@@ -49,8 +50,18 @@ class logic_node_lorawan(logic_node_lora):
         return last
     
 
-    def handle_packet(self, packet : lorawan_packet):
-        pass
+    def handle_packet(self, rx_packet : lorawan_packet):
+        if(rx_packet.appID == self.appID):
+            if(rx_packet.target == 0):
+                if(rx_packet.payload_type == LoRaWAN_type.UNCONFIRMED_DATA_DOWN):
+                    self.debugger.log("%s: receiving packet from GW%i" % (self.node.name, rx_packet.origin), 3)
+                    if(rx_packet.payload[0] == Payload_type.COMMAND):
+                        if(rx_packet.payload[1] == Command_type.ENABLE_SLEEP):
+                            self.debugger.log("%s: receiving ENABLE_SLEEP request from GW%i" % (self.node.name, rx_packet.origin), 2)
+                            self.sleeping_enabled = True
+                        elif(rx_packet.payload[1] == Command_type.DISABLE_SLEEP):
+                            self.debugger.log("%s: receiving DISABLE_SLEEP request from GW%i" % (self.node.name, rx_packet.origin), 2)
+                            self.sleeping_enabled = False
 
 
     def update_loop(self):
@@ -63,8 +74,7 @@ class logic_node_lorawan(logic_node_lora):
                 if(self.node.get_transceiver().has_received()):
                     rx_packet : lorawan_packet = self.node.get_transceiver().get_received()
                     if(rx_packet.packet_type == Packet_type.LORAWAN):
-                        if(rx_packet.target == self.node_id):
-                            self.handle_packet(rx_packet)
+                        self.handle_packet(rx_packet)
                             
                 if(self.node.get_time() - self.last_send_time > self.send_interval):
                     self.last_send_time = self.node.get_time()
@@ -75,13 +85,13 @@ class logic_node_lorawan(logic_node_lora):
                             self.node_id,
                             0,
                             LoRaWAN_type.UNCONFIRMED_DATA_UP,
-                            [self.node.sensor.get_value()],
+                            [self.node_id, self.node.sensor.get_value()],
                             packet_id= self.get_packet_id(),
                             debug_name=("%s_%s" % (self.node.name, str(self.send_cnt))) 
                         )
                     )
                     self.next_sleep_time = self.node.get_time() + 500
-                    self.go_to_sleep = True
+                    self.go_to_sleep = self.sleeping_enabled
 
                 if(self.go_to_sleep and self.next_sleep_time + 500 < self.node.get_time()):
                     self.node.get_transceiver().start_sleep()
@@ -104,6 +114,7 @@ class logic_node_lorawan(logic_node_lora):
                                     self.connected = True
                                     # set last_send_time to start first transmission after the specified offset + relay_block_time
                                     self.last_send_time = self.node.get_time() - self.send_interval + 30000 - self.start_time_offset
+
 
                 elif(self.node.get_time() - self.last_connection_retry > self.connection_retry):
                     # print("%s: sending JOIN request" % self.node.name)

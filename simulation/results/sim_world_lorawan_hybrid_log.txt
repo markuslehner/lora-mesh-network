@@ -1,0 +1,525 @@
+====================== SIMULATION PARAMETERS ==========================
+WORLD:
+  Nodes:      9
+  Blocks:    12
+      tx_min     tx_max   tx_error      decay
+      custom     custom     custom     custom
+        1500       2200       0.05          2
+NODES:
+    central      with ID:100 @ x=     0 y=     0 using logic:     logic_gateway_lorawan     with handler:     <class 'NoneType
+    node1        with ID:  1 @ x=   800 y=     0 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node2        with ID:  2 @ x=  1200 y=     0 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node3        with ID:  3 @ x=   800 y=   400 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node4        with ID:  4 @ x=   800 y=  -400 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node5        with ID:  5 @ x=  -800 y=     0 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node6        with ID:  6 @ x= -1200 y=     0 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node7        with ID:  7 @ x=  -800 y=   400 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+    node8        with ID:  8 @ x=  -800 y=  -400 using logic: logic_node_lorawan_hybrid     with handler:     <class 'NoneType
+====================== STARTING SIMULATION ============================
+(1)  [11:00:15.687] node1: successfully registered with network
+(2)  [11:00:18.690] node1: sending data (dependent:False)
+(2)  [11:00:18.758] Server (123): received DATA packet from node 1 (1)
+(1)  [11:00:42.357] node5: successfully registered with network
+(2)  [11:00:45.360] node5: sending data (dependent:False)
+(2)  [11:00:45.428] Server (123): received DATA packet from node 5 (5)
+(2)  [11:05:18.696] node1: sending data (dependent:False)
+(2)  [11:05:18.764] Server (123): received DATA packet from node 1 (1)
+(2)  [11:05:24.261] node8: Sending RELAY JOIN
+(2)  [11:05:24.324] node5: receiving RELAY JOIN request from node8
+(1)  [11:05:24.828] node5: RELAY JOIN for node 8 successful
+(1)  [11:05:24.891] node8: successfully registered with network (DEPENDENT)
+(2)  [11:05:29.805] node7: Sending RELAY JOIN
+(2)  [11:05:29.868] node5: receiving RELAY JOIN request from node7
+(2)  [11:05:29.868] node8: receiving RELAY JOIN request from node7
+(1)  [11:05:30.372] node5: RELAY JOIN for node 7 successful
+(1)  [11:05:30.435] node7: successfully registered with network (DEPENDENT)
+(2)  [11:05:45.366] node5: sending data (dependent:False)
+(2)  [11:05:45.434] Server (123): received DATA packet from node 5 (5)
+(2)  [11:05:45.996] node8: sending data (dependent:True)
+(2)  [11:05:46.059] node5: relaying data from node 8
+(2)  [11:05:46.127] Server (123): received DATA packet from node 8 (8)
+(2)  [11:05:46.563] node7: sending data (dependent:True)
+(2)  [11:05:46.626] node5: relaying data from node 7
+(2)  [11:05:46.694] Server (123): received DATA packet from node 7 (7)
+(2)  [11:06:01.137] node3: Sending RELAY JOIN
+(2)  [11:06:01.200] node1: receiving RELAY JOIN request from node3
+(1)  [11:06:01.704] node1: RELAY JOIN for node 3 successful
+(1)  [11:06:01.767] node3: successfully registered with network (DEPENDENT)
+(2)  [11:06:02.733] node4: Sending RELAY JOIN
+(2)  [11:06:02.796] node1: receiving RELAY JOIN request from node4
+(2)  [11:06:02.796] node3: receiving RELAY JOIN request from node4
+(1)  [11:06:03.300] node1: RELAY JOIN for node 4 successful
+(1)  [11:06:03.363] node4: successfully registered with network (DEPENDENT)
+(2)  [11:06:07.248] node6: Sending RELAY JOIN
+(2)  [11:06:07.311] node5: receiving RELAY JOIN request from node6
+(2)  [11:06:07.311] node7: receiving RELAY JOIN request from node6
+(2)  [11:06:07.311] node8: receiving RELAY JOIN request from node6
+(1)  [11:06:07.815] node5: RELAY JOIN for node 6 successful
+(2)  [11:06:17.433] node2: Sending RELAY JOIN
+(2)  [11:06:17.496] node1: receiving RELAY JOIN request from node2
+(2)  [11:06:17.496] node3: receiving RELAY JOIN request from node2
+(2)  [11:06:17.496] node4: receiving RELAY JOIN request from node2
+(2)  [11:06:55.023] node6: Sending RELAY JOIN
+(2)  [11:06:55.086] node5: receiving RELAY JOIN request from node6
+(2)  [11:06:55.086] node7: receiving RELAY JOIN request from node6
+(2)  [11:06:55.086] node8: receiving RELAY JOIN request from node6
+(2)  [11:06:55.154]     Node 6: rejoining
+(1)  [11:06:55.590] node5: RELAY JOIN for node 6 successful
+(1)  [11:06:55.653] node6: successfully registered with network (DEPENDENT)
+(2)  [11:07:15.666] node2: Sending RELAY JOIN
+(2)  [11:07:15.729] node3: receiving RELAY JOIN request from node2
+(2)  [11:07:15.729] node4: receiving RELAY JOIN request from node2
+(2)  [11:08:10.077] node2: Sending RELAY JOIN
+(2)  [11:08:10.140] node1: receiving RELAY JOIN request from node2
+(2)  [11:08:10.140] node3: receiving RELAY JOIN request from node2
+(2)  [11:08:10.140] node4: receiving RELAY JOIN request from node2
+(1)  [11:08:10.644] node1: RELAY JOIN for node 2 successful
+(1)  [11:08:10.707] node2: successfully registered with network (DEPENDENT)
+(2)  [11:10:18.702] node1: sending data (dependent:False)
+(2)  [11:10:18.770] Server (123): received DATA packet from node 1 (1)
+(2)  [11:10:19.332] node3: sending data (dependent:True)
+(2)  [11:10:19.395] node1: relaying data from node 3
+(2)  [11:10:19.463] Server (123): received DATA packet from node 3 (3)
+(2)  [11:10:19.899] node4: sending data (dependent:True)
+(2)  [11:10:19.962] node1: relaying data from node 4
+(2)  [11:10:20.030] Server (123): received DATA packet from node 4 (4)
+(2)  [11:10:20.445] node2: sending data (dependent:True)
+(2)  [11:10:20.508] node1: relaying data from node 2
+(2)  [11:10:20.576] Server (123): received DATA packet from node 2 (2)
+(2)  [11:10:45.372] node5: sending data (dependent:False)
+(2)  [11:10:46.002] node8: sending data (dependent:True)
+(2)  [11:10:46.065] node5: relaying data from node 8
+(2)  [11:10:46.133] Server (123): received DATA packet from node 8 (8)
+(2)  [11:10:46.569] node7: sending data (dependent:True)
+(2)  [11:10:46.632] node5: relaying data from node 7
+(2)  [11:10:46.700] Server (123): received DATA packet from node 7 (7)
+(2)  [11:10:47.115] node6: sending data (dependent:True)
+(2)  [11:10:47.178] node5: relaying data from node 6
+(2)  [11:10:47.246] Server (123): received DATA packet from node 6 (6)
+(2)  [11:15:18.708] node1: sending data (dependent:False)
+(2)  [11:15:18.776] Server (123): received DATA packet from node 1 (1)
+(2)  [11:15:19.338] node3: sending data (dependent:True)
+(2)  [11:15:19.401] node1: relaying data from node 3
+(2)  [11:15:19.469] Server (123): received DATA packet from node 3 (3)
+(2)  [11:15:19.905] node4: sending data (dependent:True)
+(2)  [11:15:19.968] node1: relaying data from node 4
+(2)  [11:15:20.036] Server (123): received DATA packet from node 4 (4)
+(2)  [11:15:20.451] node2: sending data (dependent:True)
+(2)  [11:15:20.514] node1: relaying data from node 2
+(2)  [11:15:20.582] Server (123): received DATA packet from node 2 (2)
+(2)  [11:15:45.378] node5: sending data (dependent:False)
+(2)  [11:15:45.446] Server (123): received DATA packet from node 5 (5)
+(2)  [11:15:46.008] node8: sending data (dependent:True)
+(2)  [11:15:46.071] node5: relaying data from node 8
+(2)  [11:15:46.139] Server (123): received DATA packet from node 8 (8)
+(2)  [11:15:46.575] node7: sending data (dependent:True)
+(2)  [11:15:47.121] node6: sending data (dependent:True)
+(2)  [11:15:47.184] node5: relaying data from node 6
+(2)  [11:15:47.252] Server (123): received DATA packet from node 6 (6)
+(2)  [11:20:18.714] node1: sending data (dependent:False)
+(2)  [11:20:18.782] Server (123): received DATA packet from node 1 (1)
+(2)  [11:20:19.344] node3: sending data (dependent:True)
+(2)  [11:20:19.407] node1: relaying data from node 3
+(2)  [11:20:19.475] Server (123): received DATA packet from node 3 (3)
+(2)  [11:20:19.911] node4: sending data (dependent:True)
+(2)  [11:20:19.974] node1: relaying data from node 4
+(2)  [11:20:20.042] Server (123): received DATA packet from node 4 (4)
+(2)  [11:20:20.457] node2: sending data (dependent:True)
+(2)  [11:20:20.520] node1: relaying data from node 2
+(2)  [11:20:20.588] Server (123): received DATA packet from node 2 (2)
+(2)  [11:20:45.384] node5: sending data (dependent:False)
+(2)  [11:20:45.452] Server (123): received DATA packet from node 5 (5)
+(2)  [11:20:46.014] node8: sending data (dependent:True)
+(2)  [11:20:46.077] node5: relaying data from node 8
+(2)  [11:20:46.145] Server (123): received DATA packet from node 8 (8)
+(2)  [11:20:46.581] node7: sending data (dependent:True)
+(2)  [11:20:46.644] node5: relaying data from node 7
+(2)  [11:20:46.712] Server (123): received DATA packet from node 7 (7)
+(2)  [11:20:47.127] node6: sending data (dependent:True)
+(2)  [11:20:47.190] node5: relaying data from node 6
+(2)  [11:20:47.258] Server (123): received DATA packet from node 6 (6)
+(2)  [11:25:00.001] Server (123): sending sleep command to all gateways
+(2)  [11:25:00.072] node1: receiving ENABLE_SLEEP request from GW100
+(2)  [11:25:00.072] node1: relaying COMMAND to dependent nodes
+(2)  [11:25:00.072] node5: receiving ENABLE_SLEEP request from GW100
+(2)  [11:25:00.072] node5: relaying COMMAND to dependent nodes
+(2)  [11:25:00.114] node2: receiving ENABLE_SLEEP request from node 1
+(2)  [11:25:00.114] node3: receiving ENABLE_SLEEP request from node 1
+(2)  [11:25:00.114] node4: receiving ENABLE_SLEEP request from node 1
+(2)  [11:25:00.114] node6: receiving ENABLE_SLEEP request from node 5
+(2)  [11:25:00.114] node7: receiving ENABLE_SLEEP request from node 5
+(2)  [11:25:00.114] node8: receiving ENABLE_SLEEP request from node 5
+(2)  [11:25:18.720] node1: sending data (dependent:False)
+(2)  [11:25:18.788] Server (123): received DATA packet from node 1 (1)
+(2)  [11:25:19.350] node3: sending data (dependent:True)
+(2)  [11:25:19.413] node1: relaying data from node 3
+(2)  [11:25:19.481] Server (123): received DATA packet from node 3 (3)
+(2)  [11:25:19.854] node3: starting to sleep
+(2)  [11:25:19.917] node4: sending data (dependent:True)
+(2)  [11:25:19.980] node1: relaying data from node 4
+(2)  [11:25:20.048] Server (123): received DATA packet from node 4 (4)
+(2)  [11:25:20.421] node4: starting to sleep
+(2)  [11:25:20.463] node2: sending data (dependent:True)
+(2)  [11:25:20.526] node1: relaying data from node 2
+(2)  [11:25:20.594] Server (123): received DATA packet from node 2 (2)
+(2)  [11:25:20.904] node1: starting to sleep
+(2)  [11:25:20.967] node2: starting to sleep
+(2)  [11:25:45.390] node5: sending data (dependent:False)
+(2)  [11:25:45.458] Server (123): received DATA packet from node 5 (5)
+(2)  [11:25:46.020] node8: sending data (dependent:True)
+(2)  [11:25:46.083] node5: relaying data from node 8
+(2)  [11:25:46.151] Server (123): received DATA packet from node 8 (8)
+(2)  [11:25:46.524] node8: starting to sleep
+(2)  [11:25:46.587] node7: sending data (dependent:True)
+(2)  [11:25:46.650] node5: relaying data from node 7
+(2)  [11:25:47.091] node7: starting to sleep
+(2)  [11:25:47.133] node6: sending data (dependent:True)
+(2)  [11:25:47.196] node5: relaying data from node 6
+(2)  [11:25:47.264] Server (123): received DATA packet from node 6 (6)
+(2)  [11:25:47.574] node5: starting to sleep
+(2)  [11:25:47.637] node6: starting to sleep
+(2)  [11:30:13.741] node1: waking up
+(2)  [11:30:14.371] node3: waking up
+(2)  [11:30:14.938] node4: waking up
+(2)  [11:30:15.484] node2: waking up
+(2)  [11:30:18.740] node1: sending data (dependent:False)
+(2)  [11:30:18.808] Server (123): received DATA packet from node 1 (1)
+(2)  [11:30:19.370] node3: sending data (dependent:True)
+(2)  [11:30:19.433] node1: relaying data from node 3
+(2)  [11:30:19.874] node3: starting to sleep
+(2)  [11:30:19.937] node4: sending data (dependent:True)
+(2)  [11:30:20.000] node1: relaying data from node 4
+(2)  [11:30:20.068] Server (123): received DATA packet from node 4 (4)
+(2)  [11:30:20.441] node4: starting to sleep
+(2)  [11:30:20.483] node2: sending data (dependent:True)
+(2)  [11:30:20.546] node1: relaying data from node 2
+(2)  [11:30:20.614] Server (123): received DATA packet from node 2 (2)
+(2)  [11:30:20.924] node1: starting to sleep
+(2)  [11:30:20.987] node2: starting to sleep
+(2)  [11:30:40.411] node5: waking up
+(2)  [11:30:41.041] node8: waking up
+(2)  [11:30:41.608] node7: waking up
+(2)  [11:30:42.154] node6: waking up
+(2)  [11:30:45.410] node5: sending data (dependent:False)
+(2)  [11:30:45.478] Server (123): received DATA packet from node 5 (5)
+(2)  [11:30:46.040] node8: sending data (dependent:True)
+(2)  [11:30:46.103] node5: relaying data from node 8
+(2)  [11:30:46.171] Server (123): received DATA packet from node 8 (8)
+(2)  [11:30:46.544] node8: starting to sleep
+(2)  [11:30:46.607] node7: sending data (dependent:True)
+(2)  [11:30:46.670] node5: relaying data from node 7
+(2)  [11:30:46.738] Server (123): received DATA packet from node 7 (7)
+(2)  [11:30:47.111] node7: starting to sleep
+(2)  [11:30:47.153] node6: sending data (dependent:True)
+(2)  [11:30:47.216] node5: relaying data from node 6
+(2)  [11:30:47.284] Server (123): received DATA packet from node 6 (6)
+(2)  [11:30:47.594] node5: starting to sleep
+(2)  [11:30:47.657] node6: starting to sleep
+(2)  [11:35:13.761] node1: waking up
+(2)  [11:35:14.391] node3: waking up
+(2)  [11:35:14.958] node4: waking up
+(2)  [11:35:15.504] node2: waking up
+(2)  [11:35:18.760] node1: sending data (dependent:False)
+(2)  [11:35:18.828] Server (123): received DATA packet from node 1 (1)
+(2)  [11:35:19.390] node3: sending data (dependent:True)
+(2)  [11:35:19.453] node1: relaying data from node 3
+(2)  [11:35:19.521] Server (123): received DATA packet from node 3 (3)
+(2)  [11:35:19.894] node3: starting to sleep
+(2)  [11:35:19.957] node4: sending data (dependent:True)
+(2)  [11:35:20.020] node1: relaying data from node 4
+(2)  [11:35:20.088] Server (123): received DATA packet from node 4 (4)
+(2)  [11:35:20.461] node4: starting to sleep
+(2)  [11:35:20.503] node2: sending data (dependent:True)
+(2)  [11:35:20.566] node1: relaying data from node 2
+(2)  [11:35:20.634] Server (123): received DATA packet from node 2 (2)
+(2)  [11:35:20.944] node1: starting to sleep
+(2)  [11:35:21.007] node2: starting to sleep
+(2)  [11:35:40.431] node5: waking up
+(2)  [11:35:41.061] node8: waking up
+(2)  [11:35:41.628] node7: waking up
+(2)  [11:35:42.174] node6: waking up
+(2)  [11:35:45.430] node5: sending data (dependent:False)
+(2)  [11:35:45.498] Server (123): received DATA packet from node 5 (5)
+(2)  [11:35:46.060] node8: sending data (dependent:True)
+(2)  [11:35:46.123] node5: relaying data from node 8
+(2)  [11:35:46.191] Server (123): received DATA packet from node 8 (8)
+(2)  [11:35:46.564] node8: starting to sleep
+(2)  [11:35:46.627] node7: sending data (dependent:True)
+(2)  [11:35:46.690] node5: relaying data from node 7
+(2)  [11:35:46.758] Server (123): received DATA packet from node 7 (7)
+(2)  [11:35:47.131] node7: starting to sleep
+(2)  [11:35:47.173] node6: sending data (dependent:True)
+(2)  [11:35:47.236] node5: relaying data from node 6
+(2)  [11:35:47.304] Server (123): received DATA packet from node 6 (6)
+(2)  [11:35:47.614] node5: starting to sleep
+(2)  [11:35:47.677] node6: starting to sleep
+(2)  [11:40:13.781] node1: waking up
+(2)  [11:40:14.411] node3: waking up
+(2)  [11:40:14.978] node4: waking up
+(2)  [11:40:15.524] node2: waking up
+(2)  [11:40:18.780] node1: sending data (dependent:False)
+(2)  [11:40:18.848] Server (123): received DATA packet from node 1 (1)
+(2)  [11:40:19.410] node3: sending data (dependent:True)
+(2)  [11:40:19.473] node1: relaying data from node 3
+(2)  [11:40:19.541] Server (123): received DATA packet from node 3 (3)
+(2)  [11:40:19.914] node3: starting to sleep
+(2)  [11:40:19.977] node4: sending data (dependent:True)
+(2)  [11:40:20.040] node1: relaying data from node 4
+(2)  [11:40:20.481] node4: starting to sleep
+(2)  [11:40:20.523] node2: sending data (dependent:True)
+(2)  [11:40:20.586] node1: relaying data from node 2
+(2)  [11:40:20.654] Server (123): received DATA packet from node 2 (2)
+(2)  [11:40:20.964] node1: starting to sleep
+(2)  [11:40:21.027] node2: starting to sleep
+(2)  [11:40:40.451] node5: waking up
+(2)  [11:40:41.081] node8: waking up
+(2)  [11:40:41.648] node7: waking up
+(2)  [11:40:42.194] node6: waking up
+(2)  [11:40:45.450] node5: sending data (dependent:False)
+(2)  [11:40:45.518] Server (123): received DATA packet from node 5 (5)
+(2)  [11:40:46.080] node8: sending data (dependent:True)
+(2)  [11:40:46.143] node5: relaying data from node 8
+(2)  [11:40:46.211] Server (123): received DATA packet from node 8 (8)
+(2)  [11:40:46.584] node8: starting to sleep
+(2)  [11:40:46.647] node7: sending data (dependent:True)
+(2)  [11:40:46.710] node5: relaying data from node 7
+(2)  [11:40:46.778] Server (123): received DATA packet from node 7 (7)
+(2)  [11:40:47.151] node7: starting to sleep
+(2)  [11:40:47.193] node6: sending data (dependent:True)
+(2)  [11:40:47.256] node5: relaying data from node 6
+(2)  [11:40:47.324] Server (123): received DATA packet from node 6 (6)
+(2)  [11:40:47.634] node5: starting to sleep
+(2)  [11:40:47.697] node6: starting to sleep
+(2)  [11:45:13.801] node1: waking up
+(2)  [11:45:14.431] node3: waking up
+(2)  [11:45:14.998] node4: waking up
+(2)  [11:45:15.544] node2: waking up
+(2)  [11:45:18.800] node1: sending data (dependent:False)
+(2)  [11:45:18.868] Server (123): received DATA packet from node 1 (1)
+(2)  [11:45:19.430] node3: sending data (dependent:True)
+(2)  [11:45:19.493] node1: relaying data from node 3
+(2)  [11:45:19.561] Server (123): received DATA packet from node 3 (3)
+(2)  [11:45:19.934] node3: starting to sleep
+(2)  [11:45:19.997] node4: sending data (dependent:True)
+(2)  [11:45:20.060] node1: relaying data from node 4
+(2)  [11:45:20.128] Server (123): received DATA packet from node 4 (4)
+(2)  [11:45:20.501] node4: starting to sleep
+(2)  [11:45:20.543] node2: sending data (dependent:True)
+(2)  [11:45:20.606] node1: relaying data from node 2
+(2)  [11:45:20.674] Server (123): received DATA packet from node 2 (2)
+(2)  [11:45:20.984] node1: starting to sleep
+(2)  [11:45:21.047] node2: starting to sleep
+(2)  [11:45:40.471] node5: waking up
+(2)  [11:45:41.101] node8: waking up
+(2)  [11:45:41.668] node7: waking up
+(2)  [11:45:42.214] node6: waking up
+(2)  [11:45:45.470] node5: sending data (dependent:False)
+(2)  [11:45:45.538] Server (123): received DATA packet from node 5 (5)
+(2)  [11:45:46.100] node8: sending data (dependent:True)
+(2)  [11:45:46.163] node5: relaying data from node 8
+(2)  [11:45:46.231] Server (123): received DATA packet from node 8 (8)
+(2)  [11:45:46.604] node8: starting to sleep
+(2)  [11:45:46.667] node7: sending data (dependent:True)
+(2)  [11:45:46.730] node5: relaying data from node 7
+(2)  [11:45:46.798] Server (123): received DATA packet from node 7 (7)
+(2)  [11:45:47.171] node7: starting to sleep
+(2)  [11:45:47.213] node6: sending data (dependent:True)
+(2)  [11:45:47.276] node5: relaying data from node 6
+(2)  [11:45:47.344] Server (123): received DATA packet from node 6 (6)
+(2)  [11:45:47.654] node5: starting to sleep
+(2)  [11:45:47.717] node6: starting to sleep
+(2)  [11:50:13.821] node1: waking up
+(2)  [11:50:14.451] node3: waking up
+(2)  [11:50:15.018] node4: waking up
+(2)  [11:50:15.564] node2: waking up
+(2)  [11:50:18.820] node1: sending data (dependent:False)
+(2)  [11:50:18.888] Server (123): received DATA packet from node 1 (1)
+(2)  [11:50:19.450] node3: sending data (dependent:True)
+(2)  [11:50:19.513] node1: relaying data from node 3
+(2)  [11:50:19.581] Server (123): received DATA packet from node 3 (3)
+(2)  [11:50:19.954] node3: starting to sleep
+(2)  [11:50:20.017] node4: sending data (dependent:True)
+(2)  [11:50:20.080] node1: relaying data from node 4
+(2)  [11:50:20.148] Server (123): received DATA packet from node 4 (4)
+(2)  [11:50:20.521] node4: starting to sleep
+(2)  [11:50:20.563] node2: sending data (dependent:True)
+(2)  [11:50:20.626] node1: relaying data from node 2
+(2)  [11:50:20.694] Server (123): received DATA packet from node 2 (2)
+(2)  [11:50:21.004] node1: starting to sleep
+(2)  [11:50:21.067] node2: starting to sleep
+(2)  [11:50:40.491] node5: waking up
+(2)  [11:50:41.121] node8: waking up
+(2)  [11:50:41.688] node7: waking up
+(2)  [11:50:42.234] node6: waking up
+(2)  [11:50:45.490] node5: sending data (dependent:False)
+(2)  [11:50:45.558] Server (123): received DATA packet from node 5 (5)
+(2)  [11:50:46.120] node8: sending data (dependent:True)
+(2)  [11:50:46.624] node8: starting to sleep
+(2)  [11:50:46.687] node7: sending data (dependent:True)
+(2)  [11:50:46.750] node5: relaying data from node 7
+(2)  [11:50:46.818] Server (123): received DATA packet from node 7 (7)
+(2)  [11:50:47.191] node7: starting to sleep
+(2)  [11:50:47.233] node6: sending data (dependent:True)
+(2)  [11:50:47.296] node5: relaying data from node 6
+(2)  [11:50:47.364] Server (123): received DATA packet from node 6 (6)
+(2)  [11:50:47.674] node5: starting to sleep
+(2)  [11:50:47.737] node6: starting to sleep
+(2)  [11:55:13.841] node1: waking up
+(2)  [11:55:14.471] node3: waking up
+(2)  [11:55:15.038] node4: waking up
+(2)  [11:55:15.584] node2: waking up
+(2)  [11:55:18.840] node1: sending data (dependent:False)
+(2)  [11:55:18.908] Server (123): received DATA packet from node 1 (1)
+(2)  [11:55:19.470] node3: sending data (dependent:True)
+(2)  [11:55:19.533] node1: relaying data from node 3
+(2)  [11:55:19.601] Server (123): received DATA packet from node 3 (3)
+(2)  [11:55:19.974] node3: starting to sleep
+(2)  [11:55:20.037] node4: sending data (dependent:True)
+(2)  [11:55:20.100] node1: relaying data from node 4
+(2)  [11:55:20.168] Server (123): received DATA packet from node 4 (4)
+(2)  [11:55:20.541] node4: starting to sleep
+(2)  [11:55:20.583] node2: sending data (dependent:True)
+(2)  [11:55:20.646] node1: relaying data from node 2
+(2)  [11:55:20.714] Server (123): received DATA packet from node 2 (2)
+(2)  [11:55:21.024] node1: starting to sleep
+(2)  [11:55:21.087] node2: starting to sleep
+(2)  [11:55:40.511] node5: waking up
+(2)  [11:55:41.141] node8: waking up
+(2)  [11:55:41.708] node7: waking up
+(2)  [11:55:42.254] node6: waking up
+(2)  [11:55:45.510] node5: sending data (dependent:False)
+(2)  [11:55:45.578] Server (123): received DATA packet from node 5 (5)
+(2)  [11:55:46.140] node8: sending data (dependent:True)
+(2)  [11:55:46.203] node5: relaying data from node 8
+(2)  [11:55:46.644] node8: starting to sleep
+(2)  [11:55:46.707] node7: sending data (dependent:True)
+(2)  [11:55:46.770] node5: relaying data from node 7
+(2)  [11:55:47.211] node7: starting to sleep
+(2)  [11:55:47.253] node6: sending data (dependent:True)
+(2)  [11:55:47.316] node5: relaying data from node 6
+(2)  [11:55:47.384] Server (123): received DATA packet from node 6 (6)
+(2)  [11:55:47.694] node5: starting to sleep
+(2)  [11:55:47.757] node6: starting to sleep
+(2)  [12:00:13.861] node1: waking up
+(2)  [12:00:14.491] node3: waking up
+(2)  [12:00:15.058] node4: waking up
+(2)  [12:00:15.604] node2: waking up
+(2)  [12:00:18.860] node1: sending data (dependent:False)
+(2)  [12:00:18.928] Server (123): received DATA packet from node 1 (1)
+(2)  [12:00:19.490] node3: sending data (dependent:True)
+(2)  [12:00:19.553] node1: relaying data from node 3
+(2)  [12:00:19.621] Server (123): received DATA packet from node 3 (3)
+(2)  [12:00:19.994] node3: starting to sleep
+(2)  [12:00:20.057] node4: sending data (dependent:True)
+(2)  [12:00:20.120] node1: relaying data from node 4
+(2)  [12:00:20.188] Server (123): received DATA packet from node 4 (4)
+(2)  [12:00:20.561] node4: starting to sleep
+(2)  [12:00:20.603] node2: sending data (dependent:True)
+(2)  [12:00:21.044] node1: starting to sleep
+(2)  [12:00:21.107] node2: starting to sleep
+(2)  [12:00:40.531] node5: waking up
+(2)  [12:00:41.161] node8: waking up
+(2)  [12:00:41.728] node7: waking up
+(2)  [12:00:42.274] node6: waking up
+(2)  [12:00:45.530] node5: sending data (dependent:False)
+(2)  [12:00:45.598] Server (123): received DATA packet from node 5 (5)
+(2)  [12:00:46.160] node8: sending data (dependent:True)
+(2)  [12:00:46.223] node5: relaying data from node 8
+(2)  [12:00:46.291] Server (123): received DATA packet from node 8 (8)
+(2)  [12:00:46.664] node8: starting to sleep
+(2)  [12:00:46.727] node7: sending data (dependent:True)
+(2)  [12:00:46.790] node5: relaying data from node 7
+(2)  [12:00:47.231] node7: starting to sleep
+(2)  [12:00:47.273] node6: sending data (dependent:True)
+(2)  [12:00:47.336] node5: relaying data from node 6
+(2)  [12:00:47.404] Server (123): received DATA packet from node 6 (6)
+(2)  [12:00:47.714] node5: starting to sleep
+(2)  [12:00:47.777] node6: starting to sleep
+(2)  [12:05:13.881] node1: waking up
+(2)  [12:05:14.511] node3: waking up
+(2)  [12:05:15.078] node4: waking up
+(2)  [12:05:15.624] node2: waking up
+(2)  [12:05:18.880] node1: sending data (dependent:False)
+(2)  [12:05:18.948] Server (123): received DATA packet from node 1 (1)
+(2)  [12:05:19.510] node3: sending data (dependent:True)
+(2)  [12:05:19.573] node1: relaying data from node 3
+(2)  [12:05:19.641] Server (123): received DATA packet from node 3 (3)
+(2)  [12:05:20.014] node3: starting to sleep
+(2)  [12:05:20.077] node4: sending data (dependent:True)
+(2)  [12:05:20.140] node1: relaying data from node 4
+(2)  [12:05:20.208] Server (123): received DATA packet from node 4 (4)
+(2)  [12:05:20.581] node4: starting to sleep
+(2)  [12:05:20.623] node2: sending data (dependent:True)
+(2)  [12:05:20.686] node1: relaying data from node 2
+(2)  [12:05:20.754] Server (123): received DATA packet from node 2 (2)
+(2)  [12:05:21.064] node1: starting to sleep
+(2)  [12:05:21.127] node2: starting to sleep
+(2)  [12:05:40.551] node5: waking up
+(2)  [12:05:41.181] node8: waking up
+(2)  [12:05:41.748] node7: waking up
+(2)  [12:05:42.294] node6: waking up
+(2)  [12:05:45.550] node5: sending data (dependent:False)
+(2)  [12:05:45.618] Server (123): received DATA packet from node 5 (5)
+(2)  [12:05:46.180] node8: sending data (dependent:True)
+(2)  [12:05:46.243] node5: relaying data from node 8
+(2)  [12:05:46.311] Server (123): received DATA packet from node 8 (8)
+(2)  [12:05:46.684] node8: starting to sleep
+(2)  [12:05:46.747] node7: sending data (dependent:True)
+(2)  [12:05:46.810] node5: relaying data from node 7
+(2)  [12:05:46.878] Server (123): received DATA packet from node 7 (7)
+(2)  [12:05:47.251] node7: starting to sleep
+(2)  [12:05:47.293] node6: sending data (dependent:True)
+(2)  [12:05:47.356] node5: relaying data from node 6
+(2)  [12:05:47.424] Server (123): received DATA packet from node 6 (6)
+(2)  [12:05:47.734] node5: starting to sleep
+(2)  [12:05:47.797] node6: starting to sleep
+====================== SIMULATION RESULTS =============================
+Simulation took: 1 min 44.30 s
+Simulated time: 01:08:00
+nodes sent in total: 102
+received in total: 92 / 102 = 90.20 %
+NODES:
+received from node1: 14 from 14
+received from node2: 11 from 12
+received from node3: 11 from 12
+received from node4: 11 from 12
+received from node5: 13 from 14
+received from node6: 12 from 12
+received from node7: 9 from 13
+received from node8: 11 from 13
+DESTROYED
+    node1 destroyed packets 6
+    node2 destroyed packets 9
+    node3 destroyed packets 6
+    node4 destroyed packets 7
+    node5 destroyed packets 5
+    node6 destroyed packets 8
+    node7 destroyed packets 5
+    node8 destroyed packets 4
+CORRUPTED
+    node1 corrupted packets 4
+    node2 corrupted packets 5
+    node3 corrupted packets 3
+    node4 corrupted packets 3
+    node5 corrupted packets 3
+    node6 corrupted packets 5
+    node7 corrupted packets 3
+    node8 corrupted packets 3
+SENT
+    node1 sent in total: 58
+    node2 sent in total: 21
+    node3 sent in total: 23
+    node4 sent in total: 22
+    node5 sent in total: 60
+    node6 sent in total: 20
+    node7 sent in total: 22
+    node8 sent in total: 23
+RECEIVED
+    node1 successfully received: 66 from 76 (76)
+    node2 successfully received: 89 from 103 (103)
+    node3 successfully received: 57 from 66 (66)
+    node4 successfully received: 75 from 85 (85)
+    node5 successfully received: 67 from 75 (75)
+    node6 successfully received: 92 from 105 (105)
+    node7 successfully received: 77 from 85 (85)
+    node8 successfully received: 59 from 66 (66)

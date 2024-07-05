@@ -6,7 +6,7 @@ WORLD:
       custom     custom     custom     custom
         1500       2200       0.05          2
 NODES:
-    central      with ID:100 @ x=     0 y=     0 using logic:             logic_gateway     with handler:     handler_dist_pid
+    central      with ID:100 @ x=     0 y=     0 using logic:        logic_gateway_lora     with handler:     handler_dist_pid
     node1        with ID:  1 @ x=   200 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
     node2        with ID:  2 @ x=   800 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
     node3        with ID:  3 @ x=  1400 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
@@ -16,72 +16,8 @@ NODES:
     node7        with ID:  7 @ x=  2200 y=     0 using logic:       logic_node_dist_pid     with handler:     handler_dist_pid
 ====================== STARTING SIMULATION ============================
 (2)  [11:01:00.001]     Server (123): Sending JOIN_ACK to node 1 for dist: 1
-(1)  [11:01:01.341] node1: successfully registered with base station at distance: 1
+(1)  [11:01:01.089] node1: successfully registered with base station at distance: 1
 (2)  [11:02:00.001]     Server (123): Sending JOIN_ACK to node 2 for dist: 1
-(1)  [11:02:01.443] node2: successfully registered with base station at distance: 1
-(2)  [11:03:00.001]     Server (123): Sending JOIN_ACK to node 3 for dist: 2
-(1)  [11:03:00.768] node3: successfully registered with base station at distance: 2
-(2)  [11:04:00.001]     Server (123): Sending JOIN_ACK to node 4 for dist: 3
-(1)  [11:04:02.193] node4: successfully registered with base station at distance: 3
-(2)  [11:05:00.001]     Server (123): Sending JOIN_ACK to node 5 for dist: 4
-(2)  [11:06:00.001]     Node 5: rejoining
-(2)  [11:06:00.001]     Server (123): Sending JOIN_ACK to node 5 for dist: 4
-(1)  [11:06:01.284] node5: successfully registered with base station at distance: 4
-(2)  [11:07:00.001]     Server (123): Sending JOIN_ACK to node 6 for dist: 5
-(1)  [11:07:03.129] node6: successfully registered with base station at distance: 5
-(2)  [11:08:00.001]     Server (123): Sending JOIN_ACK to node 7 for dist: 6
-(1)  [11:08:03.882] node7: successfully registered with base station at distance: 6
-(2)  [11:09:00.001]     Node 7: rejoining
-(2)  [11:09:00.001]     Server (123): Sending JOIN_ACK to node 7 for dist: 6
-====================== SIMULATION RESULTS =============================
-Simulation took: 1 min 17.205 s
-Simulated time: 01:08:00
-nodes sent in total: 92
-received in total: 88 / 92 = 95.65 %
-NODES:
-  node:      node1 distance:   1 battery: 97.06 %
-  node:      node2 distance:   1 battery: 97.06 %
-  node:      node3 distance:   2 battery: 97.07 %
-  node:      node4 distance:   3 battery: 97.07 %
-  node:      node5 distance:   4 battery: 97.07 %
-  node:      node6 distance:   5 battery: 97.07 %
-  node:      node7 distance:   6 battery: 97.07 %
-received from node1: 13 from 14
-received from node2: 14 from 14
-received from node3: 11 from 13
-received from node4: 13 from 13
-received from node5: 12 from 13
-received from node6: 13 from 13
-received from node7: 12 from 12
-DESTROYED
-    node1 destroyed packets 190
-    node2 destroyed packets 229
-    node3 destroyed packets 303
-    node4 destroyed packets 302
-    node5 destroyed packets 133
-    node6 destroyed packets 136
-    node7 destroyed packets 129
-CORRUPTED
-    node1 corrupted packets 67
-    node2 corrupted packets 65
-    node3 corrupted packets 98
-    node4 corrupted packets 204
-    node5 corrupted packets 40
-    node6 corrupted packets 64
-    node7 corrupted packets 171
-SENT
-    node1 sent in total: 639
-    node2 sent in total: 663
-    node3 sent in total: 173
-    node4 sent in total: 116
-    node5 sent in total: 79
-    node6 sent in total: 48
-    node7 sent in total: 32
-RECEIVED
-    node1 successfully received: 704 from 961 (961)
-    node2 successfully received: 802 from 1096 (1096)
-    node3 successfully received: 1185 from 1586 (1586)
-    node4 successfully received: 1128 from 1634 (1634)
-    node5 successfully received: 859 from 1032 (1032)
-    node6 successfully received: 863 from 1063 (1063)
-    node7 successfully received: 779 from 1079 (1079)
+(1)  [11:02:00.960] node2: successfully registered with base station at distance: 1
+(2)  [11:03:00.001]     Server (123): Sending JOIN_ACK to node 4 for dist: 2
+(1)  [11:03:01.251] node4: successfully registered with base station at distance: 2

@@ -76,6 +76,10 @@ def set_tx_params(mint, maxt, er, dc):
     tx_error_rate = er
     tx_decay = dc
 
+def set_runtime(rt):
+    global runtime
+    runtime = rt
+
 def write_configuration(cname : str):
 
     if(not use_same_offset):

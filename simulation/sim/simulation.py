@@ -703,27 +703,27 @@ class simulation(object):
                     if(cnt_other == 0):
                         cnt_only_destroyed_in_world += 1
 
-            sum_multiple = 0
-            for n in range(len(node_ids)):
-                if len(multiple_packets[n]) > 0:
-                    self.debugger.log("multiple packets from node %i: %i" % (node_ids[n], len(multiple_packets[n])) )
-                    sum_multiple += len(multiple_packets[n])
-                    for p in multiple_packets[n]:
-                        if(print_packets): self.debugger.log(p)
-                        for i in range(len(rx_central)):
-                            if(rx_central[i].debug_name == p):
-                                if(more_info and print_packets): self.debugger.log("Through hops: %s received at %s" % (str(rx_central[i].hops), datetime.fromtimestamp(rx_central_times[i]/1000).strftime("%H:%M:%S.%f")[:-3]))
+        sum_multiple = 0
+        for n in range(len(node_ids)):
+            if len(multiple_packets[n]) > 0:
+                self.debugger.log("multiple packets from node %i: %i" % (node_ids[n], len(multiple_packets[n])) )
+                sum_multiple += len(multiple_packets[n])
+                for p in multiple_packets[n]:
+                    if(print_packets): self.debugger.log(p)
+                    for i in range(len(rx_central)):
+                        if(rx_central[i].debug_name == p):
+                            if(more_info and print_packets): self.debugger.log("Through hops: %s received at %s" % (str(rx_central[i].hops), datetime.fromtimestamp(rx_central_times[i]/1000).strftime("%H:%M:%S.%f")[:-3]))
 
-            self.debugger.log("EVALUATION")
+        self.debugger.log("EVALUATION")
 
-            self.debugger.log("Analysis where the missing packets were destroyed:")   
+        self.debugger.log("Analysis where the missing packets were destroyed:")   
 
-            destroyed_total_percentage = 0 if(cnt_destroyed_total == 0) else 100.0*cnt_destroyed_in_world/cnt_destroyed_total
-            destroyed_world_only_percentage = 0 if(cnt_missing_total == 0) else 100.0*cnt_only_destroyed_in_world/cnt_missing_total
+        destroyed_total_percentage = 0 if(cnt_destroyed_total == 0) else 100.0*cnt_destroyed_in_world/cnt_destroyed_total
+        destroyed_world_only_percentage = 0 if(cnt_missing_total == 0) else 100.0*cnt_only_destroyed_in_world/cnt_missing_total
 
-            self.debugger.log("%.2f %s of missing packets were destroyed in the world (%i of %i destroyed)" % (destroyed_total_percentage, "%", cnt_destroyed_in_world, cnt_destroyed_total))
-            self.debugger.log("%.2f %s of missing packets were only destroyed in the world (%i of %i missing)" % (destroyed_world_only_percentage, "%", cnt_only_destroyed_in_world, cnt_missing_total))
-            self.debugger.log("%i multiple packets were received in total" % (sum_multiple))
+        self.debugger.log("%.2f %s of missing packets were destroyed in the world (%i of %i destroyed)" % (destroyed_total_percentage, "%", cnt_destroyed_in_world, cnt_destroyed_total))
+        self.debugger.log("%.2f %s of missing packets were only destroyed in the world (%i of %i missing)" % (destroyed_world_only_percentage, "%", cnt_only_destroyed_in_world, cnt_missing_total))
+        self.debugger.log("%i multiple packets were received in total" % (sum_multiple))
 
 
             # # print all packets 

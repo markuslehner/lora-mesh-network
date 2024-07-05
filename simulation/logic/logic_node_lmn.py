@@ -203,8 +203,9 @@ class logic_node_lmn(logic_node_lora):
                         self.last_send_time = next_interval_start + self.interval_offset
 
                 elif(rx_packet.payload[0] == Command_type.ENABLE_SLEEP):
-                    self.debugger.log("  %s: received command to ENABLE SLEEPING" % self.node.name, 2)
-                    self.sleeping_active = True
+                    if(rx_packet.target == self.node_id or rx_packet.target == 0):
+                        self.debugger.log("  %s: received command to ENABLE SLEEPING" % self.node.name, 2)
+                        self.sleeping_active = True
                 elif(rx_packet.payload[0] == Command_type.DISABLE_SLEEP):
                     self.sleeping_active = False
 

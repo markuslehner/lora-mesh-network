@@ -15,13 +15,7 @@ class transceiver(object):
         self.rec_modulation : List[str] = None
         self.bandwidth : float = 125.0 #kHz
         self.tx_power : float = 20.0 # dBm
-
         
-
-        # TODO LoRa parameters to subclass
-        # self.preamble_length : int = 12  #num symbols
-        # self.code_rate = 5 # 4/code_rate * R_b = effective bit rate
-
         # if true, aborts sending and retries when inc transmission detected
         # This is NOT the case with the used Semtech Transceivers
         self.detect_sending_collisions = False

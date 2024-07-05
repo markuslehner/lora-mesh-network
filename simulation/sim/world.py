@@ -58,17 +58,18 @@ class world(object):
         self.nodes : List[node] = []
         self.servers : Dict[str, server] = {}
         self.blocks = []
-        self.time = 0
+        self.time : int = 0
+        self.start_time : int = 0
 
         # sun light intensity for solar panel charging
-        self.weather = 0.4
+        self.weather : float = 0.4
         
         # override for LoRa transmission chart
         # print(min_dist)
-        self.min_distance = min_dist
-        self.max_distance = max_dist
-        self.error_rate = error_rate
-        self.decay = decay
+        self.min_distance : int = min_dist
+        self.max_distance : int = max_dist
+        self.error_rate : float= error_rate
+        self.decay :float = decay
 
     def add(self, node : node, x, y) -> None:
         node.position(x, y)
@@ -76,16 +77,20 @@ class world(object):
         self.nodes.append(node)
         node.register_in_world(self)
 
-    def set_time(self, time):
+    def set_time(self, time) -> None:
+        self.start_time = time
         self.time = time
 
     def set_debugger(self, debug: debugger):
         self.debugger : debugger = debug
 
-    def get_time(self):
+    def get_time(self) -> int:
         return self.time
     
-    def get_server(self, appID):
+    def get_start_time(self) -> int:
+        return self.start_time
+    
+    def get_server(self, appID) -> server:
         if(appID in self.servers):
             return self.servers.get(appID)
         else:
@@ -101,10 +106,10 @@ class world(object):
     def get_nodes(self) -> list[node]:
         return self.nodes
 
-    def get_weather(self):
+    def get_weather(self) -> float:
         return self.weather
 
-    def set_weather(self, weather):
+    def set_weather(self, weather) -> None:
         self.weather = weather
 
     def print_state(self):
@@ -446,7 +451,7 @@ class world(object):
             if(n.y > max_dim[1]):
                 max_dim[1] = n.y
 
-            if(n.x < max_dim[3]):
+            if(n.x < max_dim[2]):
                 max_dim[2] = n.x
             
             if(n.y < max_dim[3]):

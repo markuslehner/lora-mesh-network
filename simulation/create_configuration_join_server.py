@@ -1,6 +1,6 @@
 from logic.logic_node_join_dist_pid import logic_node_dist_pid
 from logic.handler_dist_pid import handler_dist_pid
-from logic.logic import logic_gateway
+from logic.logic import logic_gateway_lora
 from logic.server_join import server_join
 
 from hw.node_sensor import node_sensor
@@ -35,7 +35,7 @@ cmanager.register_server(
 cmanager.register_node(node(
     100,
     "central",
-    logic_gateway(appID=appID, node_id=100, handler=handler_to_use(), spreading_f=SF),
+    logic_gateway_lora(appID=appID, node_id=100, handler=handler_to_use(), spreading_f=SF),
     x=0,
     y=0
 ))
@@ -111,4 +111,5 @@ cmanager.register_node(node_sensor(
 ))
 
 cmanager.set_tx_params(tx_min, tx_max, tx_error_rate, tx_decay)
+cmanager.set_runtime(1000*60*60*1 + 1000*60*8)
 cmanager.write_configuration(config_name)

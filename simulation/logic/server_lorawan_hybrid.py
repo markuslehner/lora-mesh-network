@@ -1,10 +1,10 @@
 import random
 from logic.server import server
-from hw.packet import Command_type, LoRaWAN_type, packet_dist, lorawan_packet, Payload_type
+from hw.packet import LoRaWAN_type, packet_dist, lorawan_packet, Payload_type, Command_type
 
 from typing import List
 
-class server_lorawan(server):
+class server_lorawan_hybrid(server):
     def __init__(self, AppID: int, NwkKey : int):
         super().__init__(AppID)
 
@@ -21,9 +21,8 @@ class server_lorawan(server):
         self.last_packet_pid = []
         # time to wait until a packet from the same origin is relayed again
         self.store_block_time = 10000  # old way = 0
-
-        self.not_sleeping_sent = True
         
+        self.not_sleeping_sent = True
 
     def setup(self):
         self.last_join_check = self.get_time()
@@ -44,10 +43,17 @@ class server_lorawan(server):
         # add to local storage
         self.pack_list.append(rx_packet)
 
+        if rx_packet.target != 255 and rx_packet.target != gw_id:
+            self.debugger.log("Server (%i): not handling packet %s from node %i because it is not for this gateway" % (self.appID, str(rx_packet.payload_type)[13:], rx_packet.origin), 2)
+            return
+        
+        if rx_packet.origin in [gw.node_id for gw in self.gateways]:
+            self.debugger.log("Server (%i): not handling packet %s from node %i because it is from a gateway" % (self.appID, str(rx_packet.payload_type)[13:], rx_packet.origin), 2)
+            return
+
         # handle packet
         if(self.check_multiple_packet(rx_packet)):
-
-            self.debugger.log("received at Server (%i): %s" % (self.appID, str(rx_packet)), 2)
+            self.debugger.log("received at Server (%i): %s" % (self.appID, str(rx_packet)), 3)
 
             if(rx_packet.payload_type is LoRaWAN_type.JOIN_REQUEST):
                 self.debugger.log("receiving join request from node with ID: %i with RSSI:%i %s" % (rx_packet.origin, rx_packet.rssi, str(rx_packet.payload)), 3)
@@ -76,17 +82,40 @@ class server_lorawan(server):
                             ), delay=350)
 
             elif(rx_packet.payload_type is LoRaWAN_type.UNCONFIRMED_DATA_UP):
-                # update link quality statistics
-                idx = self.node_ids.index(rx_packet.origin)
-                self.num_packets_received[idx] += 1
-                self.num_packets_received_interval[idx] += 1
-                self.last_connection[idx] = self.get_time()
-                # store packet in DB
-                self.store_packet(rx_packet)
+                if rx_packet.payload[0] == Payload_type.DATA or rx_packet.payload[0] == Payload_type.DATA_RELAY:
+                    self.debugger.log("Server (%i): received DATA packet from node %i (%i)" % (self.appID, rx_packet.payload[1], rx_packet.origin), 2)
+                    # update link quality statistics
+                    idx = self.node_ids.index(rx_packet.payload[1])
+                    self.num_packets_received[idx] += 1
+                    self.num_packets_received_interval[idx] += 1
+                    self.last_connection[idx] = self.get_time()
+                    # store packet in DB
+                    self.store_packet(rx_packet)
+
+                elif rx_packet.payload[0] == Payload_type.JOIN:
+                    self.debugger.log("receiving RELAY JOIN request from node with ID: %i with RSSI:%i" % (rx_packet.payload[1], rx_packet.rssi), 3)
+                    if rx_packet.payload[2] == self.NwkKey:
+                        if(not rx_packet.payload[1] in self.node_ids):
+                            self.num_connected_nodes += 1
+                            self.first_connection[self.num_connected_nodes-1] = self.get_time()
+                            self.node_ids.append(int(rx_packet.payload[1]))
+                        else:
+                            self.debugger.log("    Node %i: rejoining" % rx_packet.payload[1], 2)
+
+                        for gw in self.gateways:
+                            if(gw.node_id == gw_id):
+                                gw.handle_server_request(lorawan_packet(
+                                    self.appID,
+                                    gw.node_id,
+                                    rx_packet.origin,
+                                    LoRaWAN_type.UNCONFIRMED_DATA_DOWN,
+                                    [Payload_type.JOIN_ACK, rx_packet.payload[1]],
+                                    packet_id= self.get_packet_id()
+                                ), delay=350)
 
 
     def update(self):
-        if (self.not_sleeping_sent and self.get_time() > self.world.get_start_time() + 1000*60*13):
+        if (self.not_sleeping_sent and self.get_time() > self.world.get_start_time() + 1000*60*25):
             self.debugger.log("Server (%i): sending sleep command to all gateways" % self.appID, 2)
             for gw in self.gateways:
                 gw.handle_server_request(lorawan_packet(

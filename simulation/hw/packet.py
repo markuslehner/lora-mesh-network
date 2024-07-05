@@ -15,7 +15,7 @@ class LoRaWAN_type(Enum):
     UNCONFIRMED_DATA_DOWN = 4
     CONFIRMED_DATA_UP = 5
     CONFIRMED_DATA_DOWN = 6
-    RFU = 7
+    ACK = 7
 
 
 class Payload_type(Enum):
@@ -26,6 +26,7 @@ class Payload_type(Enum):
     TIME_SYNC = bitarray('11001100')
     ACK = bitarray('11111111')
     DATA = bitarray('00000000')
+    DATA_RELAY = bitarray('10110001')
     COMMAND = bitarray('10111101')
     COMMAND_ACK = bitarray('01000010')
     ROUTE = bitarray('01001101')
@@ -38,6 +39,8 @@ class Payload_type(Enum):
             return Payload_type.JOIN_ACK
         elif(int(pl_type).to_bytes(1, byteorder='little') == Payload_type.DATA.value.tobytes()):
             return Payload_type.DATA
+        elif(int(pl_type).to_bytes(1, byteorder='little') == Payload_type.DATA_RELAY.value.tobytes()):
+            return Payload_type.DATA_RELAY
         elif(int(pl_type).to_bytes(1, byteorder='little') == Payload_type.TIME_SYNC.value.tobytes()):
             return Payload_type.TIME_SYNC
         elif(int(pl_type).to_bytes(1, byteorder='little') == Payload_type.ACK.value.tobytes()):
@@ -52,6 +55,8 @@ class Payload_type(Enum):
     def __str__(self) -> str:
         if(self == Payload_type.DATA):
             return "DATA"
+        elif(self == Payload_type.DATA_RELAY):
+            return "DATA_RELAY"
         elif(self == Payload_type.JOIN):
             return "JOIN"
         elif(self == Payload_type.JOIN_ACK):
@@ -190,13 +195,13 @@ class packet(object):
 
 
 class lora_packet(packet):
-    def __init__(self, appID, sender, target, payload_type, payload, debug_name=None):
+    def __init__(self, appID, sender, target, payload_type, payload, debug_name=None, origin=None):
         super().__init__(Packet_type.LORA)
         self.appID : int = appID
         # who sent the packet
         self.sender : int = sender
         # who created the packet in the first place
-        self.origin : int = sender
+        self.origin : int = sender if origin is None else origin
         # who shall receive the packet
         self.target : int = target
         # type of payload
@@ -221,8 +226,7 @@ class lora_packet(packet):
         self.corrupted : bool = False
 
     def __copy__(self):
-        cop = lora_packet(self.appID, self.origin, self.target, self.payload_type, self.payload, debug_name=self.debug_name)
-        cop.origin = self.origin
+        cop = lora_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, debug_name=self.debug_name, origin=self.origin)
         cop.frequency = self.frequency
         cop.bandwidth = self.bandwidth
         cop.modulation = self.modulation
@@ -254,7 +258,7 @@ class lora_packet(packet):
         self.hops.append(node.id)
 
     def __str__(self) -> str:
-        return "%s from %i sent by %i     payload: [%s]    hops: %s debug_name %s received at %s" % (str(self.payload_type), self.origin, self.sender, str(self.payload), str(self.hops), self.debug_name)
+        return "%s from %i to %i sent by %i     payload: [%s]    hops: %s debug_name %s" % (str(self.payload_type), self.origin, self.target, self.sender, str(self.payload), str(self.hops), self.debug_name)
     
 
 class packet_flooding(lora_packet):
@@ -327,14 +331,14 @@ class packet_dist(packet_flooding):
 
 
 class lorawan_packet(lora_packet):
-    def __init__(self, appID : int , sender : int, target : int, payload_type : LoRaWAN_type, payload : List[int], packet_id : int, debug_name=None):
-        super().__init__(appID, sender, target, payload_type, payload, debug_name=debug_name)
+    def __init__(self, appID : int , sender : int, target : int, payload_type : LoRaWAN_type, payload : List[int], packet_id : int, debug_name=None, origin=None):
+        super().__init__(appID, sender, target, payload_type, payload, debug_name=debug_name, origin=origin)
         self.packet_type : Packet_type = Packet_type.LORAWAN
         self.payload_type : LoRaWAN_type = payload_type
         self.packet_id : int = packet_id
 
     def __copy__(self):
-        cop = lorawan_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, self.packet_id, debug_name=self.debug_name)
+        cop = lorawan_packet(self.appID, self.sender, self.target, self.payload_type, self.payload, self.packet_id, debug_name=self.debug_name, origin=self.origin)
         cop.frequency = self.frequency
         cop.bandwidth = self.bandwidth
         cop.modulation = self.modulation       
